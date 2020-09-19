@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Struts2.x框架的知识点 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗反正上的是寂寞今天终于可以上网了。。发泄一下，可恶的校园网！~
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。
+1，最最最常用的就是那个配置文件啦。。Struts.xml
+1）Packa
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2009/10/struts2-x%E6%A1%86%E6%9E%B6%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Struts2.x框架的知识点" />
+<meta property="og:description" content="郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗反正上的是寂寞今天终于可以上网了。。发泄一下，可恶的校园网！~
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。
+1，最最最常用的就是那个配置文件啦。。Struts.xml
+1）Packa" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2009/10/struts2-x%E6%A1%86%E6%9E%B6%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html" />
+<meta property="article:published_time" content="2009-10-09T05:27:17+00:00" />
+<meta property="article:modified_time" content="2009-10-09T05:27:17+00:00" />
+<meta itemprop="name" content="Struts2.x框架的知识点">
+<meta itemprop="description" content="郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗反正上的是寂寞今天终于可以上网了。。发泄一下，可恶的校园网！~
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。
+1，最最最常用的就是那个配置文件啦。。Struts.xml
+1）Packa">
+<meta itemprop="datePublished" content="2009-10-09T05:27:17&#43;00:00" />
+<meta itemprop="dateModified" content="2009-10-09T05:27:17&#43;00:00" />
+<meta itemprop="wordCount" content="862">
+
+
+
+<meta itemprop="keywords" content="J2EE,JAVA,Struts2框架," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Struts2.x框架的知识点"/>
+<meta name="twitter:description" content="郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗反正上的是寂寞今天终于可以上网了。。发泄一下，可恶的校园网！~
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。
+1，最最最常用的就是那个配置文件啦。。Struts.xml
+1）Packa"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Struts2.x框架的知识点</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2009-10-09 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗<del>反正上的是寂寞</del>今天终于可以上网了。。发泄一下，可恶的校园网！~<br>
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·<br>
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。<br>
+1，最最最常用的就是那个配置文件啦。。<strong>Struts.xml</strong><br>
+1）Packa</p>
+<p>郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗<del>反正上的是寂寞</del>今天终于可以上网了。。发泄一下，可恶的校园网！~<br>
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·<br>
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。<br>
+1，最最最常用的就是那个配置文件啦。。<strong>Struts.xml</strong></p>
+<blockquote>
+<div class="quote">>   1）Package的继承（extends），通常继承struts-default这个滴，Struts默认的配置，如果不继承这个就要自己把一些拦截器配上去啦。<br /> 2）namespace命名空间<br /> 3）action中的method属性的使用<br /> 4）result中type属性的使用(主要有chain,redirectAction,dispatcher,redirect)<br /> 5）通配符的使用> </div>
+</blockquote>
+<p>2，<strong>OGNL语法</strong>，感觉学学一些基本的语法就好了，不用学太复杂的。<br>
+3，<strong>拦截器（interceptor）</strong>，主要用来在中间拦截住检查一下或者改变一下再返回，“切面编程”。<br>
+4，<strong>Struts2标签</strong>，对这个标签没什么好感，个人觉得用JSTL标签+HTML好了。不过ONGL要用到。<br>
+5，I18N国际化<br>
+6，异常的处理<br>
+7，通过ActionContext获取Request,Session,Application等可以实现接口SessionAware等<br>
+8，<strong>验证框架(Validation)</strong>，可以覆盖validate方法，也可以通过配置实现<br>
+9，其他一些零零碎碎的东西，上传啊等~~<br>
+一下子列出这么多知识点。。Struts还真不简单耶，一个框架也这么难，My God!~努力学习·~~</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2009-10-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/j2ee/">J2EE</a>
+          <a href="/tags/java/">JAVA</a>
+          <a href="/tags/struts2%E6%A1%86%E6%9E%B6/">Struts2框架</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2009/10/%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E6%8B%92%E7%BB%9D%E8%A1%A8%E7%99%BD%E6%B1%82%E5%A9%9A%E8%A2%AB%E6%8B%92%E7%BB%9D.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何应对生活中的拒绝！（表白、求婚被拒绝……）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2009/10/registry-workshop-v4-2-3-%E6%93%8D%E4%BD%9C%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%9D%9E%E5%B8%B8%E6%96%B9%E4%BE%BF.html">
+            <span class="next-text nav-default">Registry Workshop V4.2.3 操作注册表非常方便</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hue on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/hue/</link>
+    <description>Recent content in hue on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 Aug 2017 06:13:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/hue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hue cdh5.4.0 编辑器补丁</title>
+      <link>http://fatkun.github.io/2017/08/hue-cdh5-4-0-%E7%BC%96%E8%BE%91%E5%99%A8%E8%A1%A5%E4%B8%81.html</link>
+      <pubDate>Tue, 15 Aug 2017 06:13:46 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/08/hue-cdh5-4-0-%E7%BC%96%E8%BE%91%E5%99%A8%E8%A1%A5%E4%B8%81.html</guid>
+      <description>更新文件 /opt/cloudera/parcels/CDH/lib/hue/build/static/oozie/js/workflow-editor.ko.js /opt/cloudera/parcels/CDH/lib/hue/build/static/oozie/js/workflow-editor.ko.xxxxxxxx.js HUE在CENTOS7使用 编译安装python2.6 可能要把旧版本的/usr/lib64/libpython2.6.so.1.0</description>
+    </item>
+    
+    <item>
+      <title>hue runcpserver has restarted more than 3 times</title>
+      <link>http://fatkun.github.io/2012/03/hue-runcpserver-has-restarted-more-than-3-times.html</link>
+      <pubDate>Tue, 06 Mar 2012 17:07:38 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/hue-runcpserver-has-restarted-more-than-3-times.html</guid>
+      <description>运行hue时，~/hue/build/env/bin$ ./supervisor 遇到这个错误，查看logs可以看到这句： runcpserver has restarted more than 3 times 解决方法 更改hue/deskt</description>
+    </item>
+    
+    <item>
+      <title>gcc: error trying to exec ‘cc1plus’: execvp: 没有那个文件或目录</title>
+      <link>http://fatkun.github.io/2012/03/cc1plus.html</link>
+      <pubDate>Tue, 06 Mar 2012 15:47:25 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/cc1plus.html</guid>
+      <description>参考http://archive.cloudera.com/cdh/3/hue/manual.html安装hue，首先把那些lib都安装先。</description>
+    </item>
+    
+  </channel>
+</rss>

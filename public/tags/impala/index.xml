@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>impala on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/impala/</link>
+    <description>Recent content in impala on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Oct 2016 02:38:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/impala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>impala断开连接后释放session</title>
+      <link>http://fatkun.github.io/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html</link>
+      <pubDate>Mon, 17 Oct 2016 02:38:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html</guid>
+      <description>代码在这里 https://github.com/cloudera/Impala/blob/cdh5-2.2.0_5.4.0/be/src/service/impala-server.cc 如果不想断开清除session,直接return void ImpalaServer::ConnectionEnd( const ThriftServer::ConnectionContext&amp; connection_context) { return; unique_lock&amp;lt;mutex&amp;gt; l(connection_to_sessions_map_lock_); ConnectionToSessionMap::iterator it = connection_to_sessions_map_.find(connection_context.connection_id); // Not every connection must have an associated session if (it == connection_to_sessions_map_.end()) return; LOG(INFO) &amp;lt;&amp;lt; &#34;Connection from client &#34; &amp;lt;&amp;lt; connection_context.network_address &amp;lt;&amp;lt; &#34; closed, closing &#34;</description>
+    </item>
+    
+    <item>
+      <title>impala因为invalidate语句导致执行DDL语句卡住</title>
+      <link>http://fatkun.github.io/2015/02/impala-invalidate-metadata.html</link>
+      <pubDate>Sun, 01 Feb 2015 16:06:11 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2015/02/impala-invalidate-metadata.html</guid>
+      <description>现象 impala突然无法执行DDL语句，一直卡住，累积的很多任务。初步怀疑impala并发有问题，采取了一些减少并发的方法，有一点作用，但故</description>
+    </item>
+    
+    <item>
+      <title>从日志分析impala查询慢的原因（2）</title>
+      <link>http://fatkun.github.io/2015/01/analyze-slow-impala-2.html</link>
+      <pubDate>Sat, 03 Jan 2015 08:51:57 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2015/01/analyze-slow-impala-2.html</guid>
+      <description>上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103</description>
+    </item>
+    
+    <item>
+      <title>从日志分析impala查询慢的原因（1）</title>
+      <link>http://fatkun.github.io/2014/12/analyze-slow-impala.html</link>
+      <pubDate>Sun, 28 Dec 2014 18:42:52 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/12/analyze-slow-impala.html</guid>
+      <description>本文只是分析和代码的关联，并没有解决慢的问题。 有些语句在impala查询很慢，尝试把日志和代码关联起来，便于之后的分析。由于impala涉及</description>
+    </item>
+    
+    <item>
+      <title>编译impala2.0.0</title>
+      <link>http://fatkun.github.io/2014/12/compile-impala.html</link>
+      <pubDate>Sun, 21 Dec 2014 08:50:16 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/12/compile-impala.html</guid>
+      <description>使用redhat5.8没编译成功，改用redhat6.4最终编译成功。 参考官方的文档https://github.com/cloudera/</description>
+    </item>
+    
+    <item>
+      <title>在Redhat6.4手动安装impala2.0</title>
+      <link>http://fatkun.github.io/2014/12/manual-install-impala2-0.html</link>
+      <pubDate>Sun, 21 Dec 2014 08:21:17 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/12/manual-install-impala2-0.html</guid>
+      <description>背景 已经通过cloudera manager装好了hadoop，但由于不敢升级cm，所以单独升级impala，采用yum的安装方式。原本已经安</description>
+    </item>
+    
+    <item>
+      <title>impala文档的翻译</title>
+      <link>http://fatkun.github.io/2014/01/impala%E6%96%87%E6%A1%A3%E7%9A%84%E7%BF%BB%E8%AF%91.html</link>
+      <pubDate>Sun, 12 Jan 2014 06:55:41 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/01/impala%E6%96%87%E6%A1%A3%E7%9A%84%E7%BF%BB%E8%AF%91.html</guid>
+      <description>weiqingbin 翻译了很多，赞！ 电梯如下： http://my.oschina.net/weiqingbin/blog?catalog=423691</description>
+    </item>
+    
+    <item>
+      <title>使用jdbc连接impala例子</title>
+      <link>http://fatkun.github.io/2013/12/impala-jdbc-example.html</link>
+      <pubDate>Sun, 15 Dec 2013 12:51:02 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/12/impala-jdbc-example.html</guid>
+      <description>来源： https://github.com/onefoursix/Cloudera-Impala-JDBC-Example 需要依赖的lib见这篇文章。 http://www.cloudera.com/content/cloudera-content/cloudera-docs/Impala/latest/Installing-and-Using-Impala/ciiu_impala_jdbc.html import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; public class ClouderaImpalaJdbcExample { // here is an example query based on one of the Hue Beeswax sample tables private static final String SQL_STATEMENT = &#34;SELECT a FROM test limit 10&#34;; // set the impalad host private static final String IMPALAD_HOST</description>
+    </item>
+    
+    <item>
+      <title>在hive中使用parquet (CDH4.3)</title>
+      <link>http://fatkun.github.io/2013/10/hive-use-parquet.html</link>
+      <pubDate>Mon, 21 Oct 2013 17:05:47 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/10/hive-use-parquet.html</guid>
+      <description>hadoop版本 cdh4.3 使用impala创建parquet表后，查询会出错。 [impala:21000] &amp;gt; select * from foo; Query: select * from foo ERROR: AnalysisException: Failed to load metadata for table: default.foo CAUSED BY: TableLoadingException: Failed to load metadata for table: foo CAUSED BY: MetaException: org.apache.hadoop.hive.serde2.SerDeException SerDe</description>
+    </item>
+    
+  </channel>
+</rss>

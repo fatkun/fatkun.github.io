@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>错误 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E9%94%99%E8%AF%AF/</link>
+    <description>Recent content in 错误 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 25 Apr 2010 13:01:06 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E9%94%99%E8%AF%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jsp getOutputStream() has already been called for this response异常解决方法</title>
+      <link>http://fatkun.github.io/2010/04/jsp-getoutputstream-has-already-been-called-for-this-response.html</link>
+      <pubDate>Sun, 25 Apr 2010 13:01:06 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/04/jsp-getoutputstream-has-already-been-called-for-this-response.html</guid>
+      <description>添加以下两段代码即可，我是在用jsp输出图像的时候出现这个问题 out.clear(); out = pageContext.pushBody(); 附上我的输出图像的JSP代码 &amp;lt;%@ page info=&#34;Random Image Show&#34; pageEncoding=&#34;UTF-8&#34; contentType=&#34;image/jpg&#34; autoFlush=&#34;true&#34; buffer=&#34;16kb&#34; session=&#34;false&#34; import=&#34;java.io.FileInputStream&#34;% &amp;lt;% ServletOutputStream sos = null; if (sos == null) sos</description>
+    </item>
+    
+    <item>
+      <title>win7“我的电脑”右键”管理”菜单失效的解决办法</title>
+      <link>http://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</link>
+      <pubDate>Mon, 22 Mar 2010 08:41:27 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</guid>
+      <description>&lt;p&gt;不知道装了什么WIN7右键的管理菜单不能用了，提示Explorer.exe出错。上网搜索下，测试可用。记录下来。&lt;br&gt;
+————–&lt;br&gt;
+本文来源：&lt;a href=&#34;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&#34;&gt;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>错误:The type javax.servlet.ServletContext cannot be resolved</title>
+      <link>http://fatkun.github.io/2010/03/%E9%94%99%E8%AF%AFthe-type-javax-servlet-servletcontext-cannot-be-resolved.html</link>
+      <pubDate>Fri, 19 Mar 2010 12:08:56 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/03/%E9%94%99%E8%AF%AFthe-type-javax-servlet-servletcontext-cannot-be-resolved.html</guid>
+      <description>碰到这个错误，原来是tomcat里的包没有加入Build Path，我把servlet-api.jar加入jdk1.6.0\jre\lib\e</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安装文件 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6/</link>
+    <description>Recent content in 安装文件 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Sep 2009 11:59:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关闭“打开文件-安全警告”的方法（每次打开程序都弹出安全警告很烦）</title>
+      <link>http://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</link>
+      <pubDate>Sat, 12 Sep 2009 11:59:08 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</guid>
+      <description>有的优化软件再优化后，为了提高安全性，都打开了文件打开安全警告提示，可能有的不想用这个功能，可以按如下方法解决． 方法一 把下面的内容保存为ba</description>
+    </item>
+    
+  </channel>
+</rss>

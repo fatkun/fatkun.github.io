@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>事务 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E4%BA%8B%E5%8A%A1/</link>
+    <description>Recent content in 事务 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Mar 2010 16:35:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E4%BA%8B%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法]</title>
+      <link>http://fatkun.github.io/2010/03/java-lang-illegalargumentexception-cannot-convert-value-of-type.html</link>
+      <pubDate>Sat, 27 Mar 2010 16:35:20 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/03/java-lang-illegalargumentexception-cannot-convert-value-of-type.html</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found&lt;br&gt;
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)&lt;br&gt;
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)&lt;br&gt;
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)&lt;br&gt;
+… 42 more
+在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。
+本文来源：&lt;a href=&#34;http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx&#34;&gt;http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

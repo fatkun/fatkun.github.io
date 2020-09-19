@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网页前端 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 网页前端 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Mar 2013 07:37:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>codeigniter数据库错误信息获取</title>
+      <link>http://fatkun.github.io/2013/03/codeigniter-db-error-message.html</link>
+      <pubDate>Fri, 01 Mar 2013 07:37:35 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/03/codeigniter-db-error-message.html</guid>
+      <description>db_debug – TRUE/FALSE (boolean) – Whether database errors should be displayed. 需要设置db_debug = false Yes, this is the mysql_error() wrapper. $this-&amp;gt;db-&amp;gt;_error_message(); And the mysql_errno wrapper is: $this-&amp;gt;db-&amp;gt;_error_number(); via: http://stackoverflow.com/questions/3234564/under-codeigniter-is-it-possible-to-see-mysql-error</description>
+    </item>
+    
+    <item>
+      <title>使用jsduck生成extjs3.x的代码</title>
+      <link>http://fatkun.github.io/2012/12/jsduck-generate-extjs3-api.html</link>
+      <pubDate>Tue, 18 Dec 2012 15:54:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/12/jsduck-generate-extjs3-api.html</guid>
+      <description>直接按说明的命令会出错 Error: Error while parsing /root/PROJECTS/foundation-ui/src/main/webapp/scripts/ext/src/ext-core/src/adapter/ext-base-begin.js: Line 18: Unexpected end of input 解决方法 jsduck ext-3.4.0/src/{core,data,dd,direct,ext-core/src/core,ext-core/src/data,ext-core/src/util,state,widgets} --output api 来源：http://www.sencha.com/forum/showthrea</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展1.4.3版下载</title>
+      <link>http://fatkun.github.io/2012/07/batch-image-download-1-4-2.html</link>
+      <pubDate>Sun, 22 Jul 2012 09:22:53 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/07/batch-image-download-1-4-2.html</guid>
+      <description>1.4.3下载：点此下载 如果上一版本用不了，试试下载1.4.2这个版本。目前1.4.2这个版本还没自动更新。如果好了或者还有问题，在评论告诉</description>
+    </item>
+    
+    <item>
+      <title>chrome扩展让指定标签作为当前浏览标签</title>
+      <link>http://fatkun.github.io/2012/07/chrome-highlight-tab.html</link>
+      <pubDate>Sat, 21 Jul 2012 15:34:15 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/07/chrome-highlight-tab.html</guid>
+      <description>Tab有一个active表示这个标签是否是激活的，但想要把某个tab变成激活怎么办呢？ 可以使用chrome.tabs.highlight，可</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展1.3版更新了</title>
+      <link>http://fatkun.github.io/2012/05/fatkun-batch-image-download-1-3.html</link>
+      <pubDate>Tue, 01 May 2012 14:00:51 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/05/fatkun-batch-image-download-1-3.html</guid>
+      <description>1.3版插件地址：https://bath-image-download.googlecode.com/files/batch1_3.crx</description>
+    </item>
+    
+    <item>
+      <title>Extjs3 PagingToolbar下拉框分页插件</title>
+      <link>http://fatkun.github.io/2012/03/extjs3-pagingtoolbar-combbox.html</link>
+      <pubDate>Sun, 11 Mar 2012 17:37:40 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/extjs3-pagingtoolbar-combbox.html</guid>
+      <description>Extjs PagingToolbar下拉框分页插件 Ext.namespace(&#39;Ext.ui.plugins&#39;); Ext.ui.plugins.ComboPageSize = function(config) { Ext.apply(this, config); }; Ext.extend(Ext.ui.plugins.ComboPageSize, Ext.util.Observable, { pageSizes: [25, 50, 100, 200, 500], prefixText: &#39;每页显示&#39;, postfixText: &#39;条&#39;, addToItem: true, //true添加到items中去，</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展1.2版更新</title>
+      <link>http://fatkun.github.io/2012/03/fatkun-batch-image-download-1-2.html</link>
+      <pubDate>Sun, 04 Mar 2012 14:55:44 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/fatkun-batch-image-download-1-2.html</guid>
+      <description>Fatkun图片批量下载1.2版更新了！ 首先，特别感谢三位朋友的捐赠，谢谢你们的鼓励！这是我人生中第一次收到的捐赠，非常感谢你们！ 欢迎使用F</description>
+    </item>
+    
+    <item>
+      <title>js模拟限制图片同时下载个数(使用setTimeout)</title>
+      <link>http://fatkun.github.io/2012/03/limit-download-images-using-settimeout.html</link>
+      <pubDate>Sat, 03 Mar 2012 13:24:15 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/limit-download-images-using-settimeout.html</guid>
+      <description>浏览器默认会对同一域名的图片有一个限制同时最多下载X个图片，但是如果图片是多域名的，有时候就会同时下载了很多图片，导致有些图片下载失败！ 先来</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展1.0版更新了！</title>
+      <link>http://fatkun.github.io/2012/02/batch-image-download-1-0.html</link>
+      <pubDate>Thu, 02 Feb 2012 16:25:28 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/02/batch-image-download-1-0.html</guid>
+      <description>乱码的问题今天晚上更新，非常抱歉。将会自动更新，不需要任何操作。 已更新到服务器，可以等自动更新也可以下载下面链接立即更新。 （尝试解决乱码）1</description>
+    </item>
+    
+    <item>
+      <title>WP-Syntax代码编辑器插件</title>
+      <link>http://fatkun.github.io/2012/01/wp-syntax-code-editor.html</link>
+      <pubDate>Sun, 01 Jan 2012 07:54:49 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/01/wp-syntax-code-editor.html</guid>
+      <description>升级到WP3.3后，之前的那些插入代码按钮都没有用啦。。上去找插件没找到，自己改了一个syntanx-highlighter的。 感谢原作者l</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展0.5版更新了</title>
+      <link>http://fatkun.github.io/2011/12/batch-image-download-0-5.html</link>
+      <pubDate>Thu, 15 Dec 2011 15:45:21 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/12/batch-image-download-0-5.html</guid>
+      <description>0.5版插件地址：https://bath-image-download.googlecode.com/files/batch0_5.crx</description>
+    </item>
+    
+    <item>
+      <title>在Extjs Grid扩展一个链接按钮列</title>
+      <link>http://fatkun.github.io/2011/10/extjs-grid-link-column.html</link>
+      <pubDate>Sun, 30 Oct 2011 06:19:29 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/10/extjs-grid-link-column.html</guid>
+      <description>问题 想要在Extjs grid每一行添加一个链接或者添加一个按钮，怎么办？ 解决方法 实现方法一是用renderer，但是这个链接的方法必须调用全</description>
+    </item>
+    
+    <item>
+      <title>Extjs combobox下拉框模糊匹配</title>
+      <link>http://fatkun.github.io/2011/10/extjs-combobox-filter.html</link>
+      <pubDate>Fri, 21 Oct 2011 17:30:28 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/10/extjs-combobox-filter.html</guid>
+      <description>Ext中的combobox有属性typeAhead：true 可以实现模糊匹配，但是是从开始匹配的，如果需要自定的的匹配，则需要监听befor</description>
+    </item>
+    
+    <item>
+      <title>下载新浪音乐</title>
+      <link>http://fatkun.github.io/2011/09/download-sina-music.html</link>
+      <pubDate>Mon, 12 Sep 2011 07:48:21 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/09/download-sina-music.html</guid>
+      <description>新浪音乐没有直接下载音乐的地方。。听到一首好歌想要下载怎么办呢··找出它的下载地址 只要你得到新浪音乐的短地址，就行啦。（你可以分享一条歌曲获</description>
+    </item>
+    
+    <item>
+      <title>更换新主题</title>
+      <link>http://fatkun.github.io/2011/08/change-theme.html</link>
+      <pubDate>Sat, 20 Aug 2011 18:39:25 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/08/change-theme.html</guid>
+      <description>把Zindi主题改了一下，主要是改了页面宽度，文字大小。。我还是喜欢14px的文字，看起来容易阅读。 悲剧的是发现评论不是嵌套的···o(╯□</description>
+    </item>
+    
+    <item>
+      <title>Extjs FormPanel.getForm().getValues()对下拉框(Combobox)取值的问题</title>
+      <link>http://fatkun.github.io/2011/06/formpanel-get-combobox-value.html</link>
+      <pubDate>Mon, 27 Jun 2011 05:36:01 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/06/formpanel-get-combobox-value.html</guid>
+      <description>遇到的问题 我使用的是Extjs3.3 在FormPanel中，可以通过 FormPanel.getForm().getValues()取得这个F</description>
+    </item>
+    
+    <item>
+      <title>Extjs3 EditorGridPanel的beforeedit事件参数</title>
+      <link>http://fatkun.github.io/2011/06/extjs-editorgridpanel-beforeedit.html</link>
+      <pubDate>Thu, 02 Jun 2011 02:21:37 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/06/extjs-editorgridpanel-beforeedit.html</guid>
+      <description>beforeedit : ( Object e ) 只有一个事件(edit event)参数，但这个参数内容很丰富，可以满足很多需求。 参数分别如下： grid – 表格本身 record – 你要编辑的那一行记</description>
+    </item>
+    
+    <item>
+      <title>Extjs renderer参数</title>
+      <link>http://fatkun.github.io/2011/05/extjs-renderer.html</link>
+      <pubDate>Tue, 31 May 2011 09:05:24 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/extjs-renderer.html</guid>
+      <description>function myRenderer(value, cellmeta, record, rowIndex, columnIndex, store) { […] } 看上面的myRenderer，依次最多有6个参数 1 value： 当前单元格的值 2 cellmeta里保存的是cellId</description>
+    </item>
+    
+    <item>
+      <title>Ext.encode与Ext.decode的JSON转换</title>
+      <link>http://fatkun.github.io/2011/05/ext-encode-and-decode.html</link>
+      <pubDate>Sat, 14 May 2011 13:51:30 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/ext-encode-and-decode.html</guid>
+      <description>在Extjs中，我们可以通过json来交换数据，Extjs内置了两个方法来互相转换。 Ext.decode( String json ) : Object 把json字符串转换为对象 Ext.encode( Mixed o ) : String 把对象</description>
+    </item>
+    
+    <item>
+      <title>CSS实现的三角形</title>
+      <link>http://fatkun.github.io/2011/04/css-triangle.html</link>
+      <pubDate>Sun, 10 Apr 2011 07:23:49 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/04/css-triangle.html</guid>
+      <description>看着喜欢，就试着自己做一个了。 原理 主要是利用border来实现。 看上图的的正方形的代码 &amp;lt;div style=&#34;width:0; height:0; border:40px solid transparent;border-top-color:green;border-left-color:red;border-right-color:blue;border-bottom-color:yellow;&#34;&amp;gt;&amp;lt;/div&amp;gt; 分别给四边的border设了四种颜色。也许</description>
+    </item>
+    
+    <item>
+      <title>HTML Canvas 鼠标画图</title>
+      <link>http://fatkun.github.io/2011/02/html5-canvas-paint.html</link>
+      <pubDate>Sun, 20 Feb 2011 07:32:27 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/02/html5-canvas-paint.html</guid>
+      <description>&lt;p&gt;原文来自:&lt;a href=&#34;http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app&#34;&gt;http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app&lt;/a&gt;(已被墙)
+译文: &lt;a href=&#34;http://fatkun.com/2011/02/html5-canvas-paint.html&#34;&gt;http://fatkun.com/2011/02/html5-canvas-paint.html&lt;/a&gt;
+我也不打算全部翻译了…大部分也看的懂,就算看不懂,代码也能看懂….o(╯□╰)o原谅我非常懒…很久没写博客了.&lt;br&gt;
+&lt;img src=&#34;http://wah88w.blu.livefilestore.com/y1pIqIdhuRNQzBo5xMVKTT97SV5E_bTIEr-ocWYMiE0iCXldxf0rIUXOiclvrtlhCChQc2zC9xFUClmwEgJS6t6NKiM_hE3flJ5/canvas.png?psid=1&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>正则表达式-非捕获组</title>
+      <link>http://fatkun.github.io/2011/01/regex-ncap.html</link>
+      <pubDate>Sun, 23 Jan 2011 05:59:32 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/01/regex-ncap.html</guid>
+      <description>非捕获组 (?:xxx) 使用 (?: ) 包含其他表达式，可使被包含的表达式组成一个整体，在被修饰匹配次数时，可作为整体被修饰。 &amp;nbsp; ## 说明 与普通分组不同的是，非捕获组</description>
+    </item>
+    
+    <item>
+      <title>Jquery的ajax在IE提交数据乱码解决方法</title>
+      <link>http://fatkun.github.io/2010/12/jquery-ajax.html</link>
+      <pubDate>Thu, 02 Dec 2010 06:14:09 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/jquery-ajax.html</guid>
+      <description>乱码是因为编码不同而造成的。在ajax post 或 get时都有可能出现乱码。 为了避免乱码，可以做到以下几步 解决方法 1，保持编码的统一，包括文件编码，</description>
+    </item>
+    
+    <item>
+      <title>在IE下动态创建canvas使用excanvas时失效解决方法</title>
+      <link>http://fatkun.github.io/2010/11/excanvas.html</link>
+      <pubDate>Sat, 20 Nov 2010 15:21:17 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/excanvas.html</guid>
+      <description>excanvas用来支持ie6使用canvas画布。(现在叫explorercanvas) 引入excanvas.js以后，在ie下，文档中的</description>
+    </item>
+    
+    <item>
+      <title>在Dreamweaver使用正则表达式替换</title>
+      <link>http://fatkun.github.io/2010/11/dreamweaver-with-regex-replace.html</link>
+      <pubDate>Mon, 15 Nov 2010 13:12:18 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/dreamweaver-with-regex-replace.html</guid>
+      <description>有时我们需要比较复杂的替换文本，这时要用到正则表达式来进行替换。你可以使用其他可以使用正则表达式的替换工具，这里以Dreamweaver为例</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展0.3版已更新</title>
+      <link>http://fatkun.github.io/2010/11/batch-image-download-0-3.html</link>
+      <pubDate>Sun, 14 Nov 2010 11:18:13 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/batch-image-download-0-3.html</guid>
+      <description>图片批量下载，可以找出当前页面的所有图片（Img标签）,提供按分辨率筛选图片，用另存为页面就可以把所有图片下载下来。 0.3版update:2</description>
+    </item>
+    
+    <item>
+      <title>PSD:折角橙色标题栏</title>
+      <link>http://fatkun.github.io/2010/09/psd-nav.html</link>
+      <pubDate>Wed, 22 Sep 2010 11:59:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/psd-nav.html</guid>
+      <description>上图是我自己做的。比较简单，主要注意的是黄条阴影的方向是向上的，那个折角的三角形我是用钢笔画的，一样是同样的渐变颜色。有这个折角感觉立体化多</description>
+    </item>
+    
+    <item>
+      <title>CSS中的部分缩写</title>
+      <link>http://fatkun.github.io/2010/09/css-shortcut.html</link>
+      <pubDate>Wed, 22 Sep 2010 03:21:23 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/css-shortcut.html</guid>
+      <description>对于想学习好CSS的话，缩写的顺序必须是正确的（虽然有些不正确的浏览器能自动修正），既能看懂别人的缩写，也能省点敲键盘的时间~~ 边距（mar</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展（Chrome Extensions）(1.8版)（已不再维护）</title>
+      <link>http://fatkun.github.io/2010/09/batch-image-download.html</link>
+      <pubDate>Sun, 12 Sep 2010 03:29:53 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/batch-image-download.html</guid>
+      <description>&lt;h1 style=&#34;font-size: 40px;&#34;&gt;  &lt;span style=&#34;color: #ff0000;&#34;&gt;已卖给其他人，之后我不再维护。&lt;/span&gt;&lt;/h1&gt;
+&amp;nbsp;
+图片批量下载，可以找出当前页面的所有图片,提供按分辨率筛选图片，用另存为页面就可以把所有图片下载下来。  
+只为做一个**简单好用的**批量下图扩展。
+## 推荐
+&lt;p&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;新写了一个安卓手机应用，如果你爱美女，可以试试这个应用：&lt;a title=&#34;安卓应用：爱美女1.3 için Kalıcı Bağlantı&#34; href=&#34;http://fatkun.com/2013/08/pretty-girl.html&#34; rel=&#34;bookmark&#34;&gt;爱美女&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;声明&#34;&gt;声明&lt;/h2&gt;
+&lt;p&gt;在参考和借鉴小乐图客源代码过程中，未严格按照相关源代码协议，&lt;wbr /&gt;擅自恶意抄袭部分核心源代码，&lt;wbr /&gt;给原创作者小乐zzllrr造成伤害和不必要的损失，&lt;wbr /&gt;属于个人行为，与其他组织或个人无关。&lt;wbr /&gt;在此本人表示对小乐图客诚挚的正式道歉。
+Fatkun图片批量下载（下称本软件）使用了基于MIT协议的&lt;a href=&#34;http://chrome.google.com/webstore/detail/gfjhimhkjmipphnaminnnnjpnlneeplk?hl=zh_cn&#34; target=&#34;_blank&#34;&gt;《小乐图客》&lt;/a&gt;源码，《小乐图客》的作者是zzllrr(&lt;a href=&#34;http://weibo.com/zzllrr&#34;&gt;http://weibo.com/zzllrr&lt;/a&gt;)，在此声明。本软件不继承MIT协议发布。
+隐私声明：本扩展会获取域名（非完整URL）等信息用于分析用户使用情况改进扩展，不会传输个人隐私信息。&lt;/p&gt;
+&lt;h2 id=&#34;下载&#34;&gt;下载&lt;/h2&gt;
+&lt;p&gt;chrome store下载（推荐）：&lt;a href=&#34;https://chrome.google.com/webstore/detail/nnjjahlikiabnchcpehcpkdeckfgnohf&#34; target=&#34;_blank&#34;&gt;点我下载，赶紧的&lt;/a&gt;
+ &lt;/p&gt;
+&lt;h2 id=&#34;我用不了这个扩展&#34;&gt;我用不了这个扩展&lt;/h2&gt;
+&lt;p&gt;目前此扩展只保证谷歌浏览器稳定版本能正常使用，其他浏览器可能有问题。&lt;br&gt;
+如果有其他问题，可以用你的浏览器打开这个网页 &lt;a href=&#34;https://aboutmybrowser.com&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://aboutmybrowser.com&#34;&gt;https://aboutmybrowser.com&lt;/a&gt;&lt;/a&gt;获取你的浏览器版本信息，把地址栏拷贝出来+问题留言给我。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Javascript正则表达式在线验证工具</title>
+      <link>http://fatkun.github.io/2010/09/javascript-regexpal.html</link>
+      <pubDate>Sat, 11 Sep 2010 06:21:48 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/javascript-regexpal.html</guid>
+      <description>regexpal用起来感觉还不错，可以高亮匹配的文字出来。想弄一个Chrome的扩展出来批量下载图片，感觉Chrome扩展还是蛮好学的，一个</description>
+    </item>
+    
+    <item>
+      <title>Photoshop的自由变换（Ctrl&#43;T）使用方法</title>
+      <link>http://fatkun.github.io/2010/09/photoshop-ctrl-t.html</link>
+      <pubDate>Sat, 04 Sep 2010 09:05:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/photoshop-ctrl-t.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://wah88w.blu.livefilestore.com/y1paVtBIieeAJhffeqXJReXM3M6BZZXHeIKLdqAISj6k5DqfK1k3ngf390IuU2JZ-mkd5Y6FwOJ6B-0_w1c3fUlXZunkEmpHo0M/ctrlt.png?psid=1&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+感觉还是挺容易使用的。变换一下可以让上图中的字母贴近那里&lt;del&gt;原来这么简单。&lt;br&gt;
+当图像处于自由变换的状态时（快捷键Ctrl+T），我们仅仅拖动鼠标可以改变图像形状。&lt;br&gt;
+可以用Ctrl或Shift或Alt+鼠标有其他效果&lt;/del&gt;试试就知道了，文字上不好说~&lt;strong&gt;不用注意到下面的文字这么麻烦，自己试试其实很简单的&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>30个优秀的网站导航例子</title>
+      <link>http://fatkun.github.io/2010/07/30-examples-of-excellent-website-navigation.html</link>
+      <pubDate>Sat, 17 Jul 2010 11:04:16 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/07/30-examples-of-excellent-website-navigation.html</guid>
+      <description>&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  一个网站的导航能使访问者一页一页的找到内容。所以把它弄漂亮点是非常重要滴~~然而，一些设计者想要把导航设计得更好一点，但是当一个网站变成一个迷题时，访问者一般会带着挫败离去的。一个网站导航或菜单应该看起来像一个导航。它应该突出并且符合整体风格，并且出现在用户期望出现的地方（译者注：通常在头部右上角）。这里有30个优秀的网站导航例子，希望能给你带来灵感。&lt;/p&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  原文：&lt;a href=&#34;http://webdesignledger.com/inspiration/30-examples-of-excellent-website-navigation&#34; target=&#34;_blank&#34;&gt;30 Examples of Excellent Website Navigation&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  翻译：&lt;a href=&#34;http://fatkun.com/2010/07/30-examples-of-excellent-website-navigation/&#34; target=&#34;_blank&#34;&gt;http://fatkun.com/2010/07/30-examples-of-excellent-website-navigation/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 style=&#34;margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, &#39;Nimbus Roman No9 L&#39;, serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://theidealists.com/home&#34; target=&#34;_blank&#34;&gt;The Idea Lists&lt;/a&gt;&lt;/h3&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://theidealists.com/home&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;margin: 0px; border: 5px solid #e3e3e3;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2010/07/web_navs_1.jpg&#34; alt=&#34;website navigation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>JQuery无限联动的下拉框插件（选城市）</title>
+      <link>http://fatkun.github.io/2010/05/json2select.html</link>
+      <pubDate>Fri, 28 May 2010 08:34:38 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/05/json2select.html</guid>
+      <description>经常可能会用到一些需要联动的下拉框，包括选择城市之类的。可能是二级联动，三级联动等等~ JQuery中有个双联动的doubleselect，不</description>
+    </item>
+    
+    <item>
+      <title>使用JQuery的ajax方法造成浏览器假死</title>
+      <link>http://fatkun.github.io/2010/05/jquery-ajax-browers-dead.html</link>
+      <pubDate>Tue, 04 May 2010 16:07:31 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/05/jquery-ajax-browers-dead.html</guid>
+      <description>问题 最近做项目时使用JQuery的load等方法时会造成浏览器假死，在本地测试到不是很明显，上传到服务器后，浏览器居然能卡个10多秒。。（假</description>
+    </item>
+    
+    <item>
+      <title>在博客上显示QQ签名</title>
+      <link>http://fatkun.github.io/2009/12/show-qq-signed-on-blog.html</link>
+      <pubDate>Tue, 29 Dec 2009 15:19:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/show-qq-signed-on-blog.html</guid>
+      <description>&lt;p&gt;先看看效果&lt;del&gt;也可以在上面看到&lt;/del&gt;那就是QQ签名了。&lt;br&gt;
+&lt;img src=&#34;http://farm5.static.flickr.com/4038/4225675170_4d9dcd1c34.jpg&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+QQ签名哪里来呢·嘿嘿，我们可以利用taotao.com来取到我们的QQ签名，当然，需要你设置把签名保存在滔滔里，不然只能获取到滔滔的信息了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>11个使用JQuery的WordPress插件</title>
+      <link>http://fatkun.github.io/2009/12/11-useful-jquery-powered-wordpress-plugins.html</link>
+      <pubDate>Fri, 18 Dec 2009 10:43:12 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/11-useful-jquery-powered-wordpress-plugins.html</guid>
+      <description>&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  我们都知道各种各样的动态效果和功能都可以通过JQuery添加到网页上,但是至少要懂得一些JQuery的知识才会使用。这不是一个大问题，但是一些Wordpress用户总喜欢一些简单的插件。这篇文章的目的帮助你发现一些好用的WP插件（使用JQuery的~）&lt;/p&gt;
+&lt;h3 style=&#34;margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, &#39;Nimbus Roman No9 L&#39;, serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress&#34; target=&#34;_blank&#34;&gt;Carousel Gallery (jQuery) for WordPress&lt;/a&gt;&lt;/h3&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;margin: 0px; border: 5px solid #e3e3e3;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_1.jpg&#34; alt=&#34;wordpress jquery plugin&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  这个插件使用了Wordpress内建的图库，并且使用幻灯片的显示。</description>
+    </item>
+    
+    <item>
+      <title>2009年最好的WordPress免费主题</title>
+      <link>http://fatkun.github.io/2009/12/the-best-free-wordpress-theme-of-2009.html</link>
+      <pubDate>Mon, 14 Dec 2009 07:55:45 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/the-best-free-wordpress-theme-of-2009.html</guid>
+      <description>&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  这是webdesignledger.com评出的2009年最好的WordPress免费主题~感觉还可以吧~~第一个我喜欢~~&lt;/p&gt;
+&lt;h3 style=&#34;margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, &#39;Nimbus Roman No9 L&#39;, serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://www.smashingmagazine.com/2009/02/23/magazeen-free-magazine-look-wordpress-theme/&#34; target=&#34;_blank&#34;&gt;Magazeen&lt;/a&gt;&lt;/h3&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://www.smashingmagazine.com/2009/02/23/magazeen-free-magazine-look-wordpress-theme/&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;margin: 0px; border: 5px solid #e3e3e3;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2009/11/themes_2009_1.jpg&#34; alt=&#34;wordpress theme&#34; /&gt;&lt;/a&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS圆角框&#43;Jquery圆角框</title>
+      <link>http://fatkun.github.io/2009/12/css-corner-and-jquery-corner.html</link>
+      <pubDate>Fri, 11 Dec 2009 12:30:32 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/css-corner-and-jquery-corner.html</guid>
+      <description>&lt;p&gt;刚在群上看到一个CSS/CSS+JS的圆角框，所以发上来了~平时做网页的时候很多时候都想要做成圆角的~~一般的做法都是做一个圆角的图片~然后上中下三个div类似~但是这样做一般只对固定宽度的有效~不固定宽度的就有点烦了。&lt;br&gt;
+现在用JS来实现吧。这个JS可以对图片进行圆角~&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一些网页截图工具</title>
+      <link>http://fatkun.github.io/2009/10/%E4%B8%80%E4%BA%9B%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7.html</link>
+      <pubDate>Sun, 25 Oct 2009 21:20:55 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/10/%E4%B8%80%E4%BA%9B%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7.html</guid>
+      <description>&lt;p&gt; &lt;span class=&#34;Apple-style-span&#34; style=&#34;font-family: Verdana, &#39;Lucida Grande&#39;, Arial, Helvetica, sans-serif; line-height: 25px; font-size: 14px; color: rgb(68, 68, 68); &#34;&gt;&lt;img src=&#34;http://www.kekaku.com/wp-content/uploads/2009/10/200910220834.jpg&#34; alt=&#34;我收集的一些网页截图工具&#34; title=&#34;我收集的一些网页截图工具&#34; width=&#34;440&#34; height=&#34;485&#34; class=&#34;alignnone size-full wp-image-937&#34; style=&#34;background-image: url(http://www.kekaku.com/wp-content/themes/kekaku_v2/images/shadow.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; padding-top: 5px; padding-right: 10px; padding-bottom: 10px; padding-left: 5px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; background-position: 100% 100%; background-repeat: no-repeat no-repeat; &#34; /&gt;…&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用javascript操作table(表格)Dom,添加/删除一行</title>
+      <link>http://fatkun.github.io/2009/10/%E4%BD%BF%E7%94%A8javascript%E6%93%8D%E4%BD%9Ctable%E8%A1%A8%E6%A0%BCdom%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E4%B8%80%E8%A1%8C.html</link>
+      <pubDate>Thu, 22 Oct 2009 19:09:32 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/10/%E4%BD%BF%E7%94%A8javascript%E6%93%8D%E4%BD%9Ctable%E8%A1%A8%E6%A0%BCdom%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E4%B8%80%E8%A1%8C.html</guid>
+      <description>&lt;p&gt;看代码吧…&lt;br&gt;
+主要三个方法是insertRow和insertCell，deleteRow&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>76个脏、极端并且有创意的免费脏乱字体</title>
+      <link>http://fatkun.github.io/2009/10/76%E4%B8%AA%E8%84%8F%E6%9E%81%E7%AB%AF%E5%B9%B6%E4%B8%94%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E5%85%8D%E8%B4%B9%E8%84%8F%E4%B9%B1%E5%AD%97%E4%BD%93.html</link>
+      <pubDate>Wed, 14 Oct 2009 02:22:31 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/10/76%E4%B8%AA%E8%84%8F%E6%9E%81%E7%AB%AF%E5%B9%B6%E4%B8%94%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E5%85%8D%E8%B4%B9%E8%84%8F%E4%B9%B1%E5%AD%97%E4%BD%93.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://www.1stwebdesigner.com/wp-content/uploads/2009/09/extreme-grunge-fonts/karabine-free-grunge-fonts.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;
+ 现在，这种脏乱，或者说带有一些非主流风格的设计，当然其中也包括那些复古风格越来越流行，如果要进行类似的设计，我们也许最需要的就是类似的字体和笔刷，那么下面是由Dainis Graveris为我们收集的76组字体，不多做介绍，大家看图就好了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版</title>
+      <link>http://fatkun.github.io/2009/10/%E5%8E%9F%E5%88%9Bz-blog%E6%8F%92%E4%BB%B6-syntaxhighlighter-for-z-blog%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE0-2%E7%89%88.html</link>
+      <pubDate>Tue, 13 Oct 2009 02:27:45 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/10/%E5%8E%9F%E5%88%9Bz-blog%E6%8F%92%E4%BB%B6-syntaxhighlighter-for-z-blog%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE0-2%E7%89%88.html</guid>
+      <description>&lt;p&gt;Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在Z-Blog上使用SyntaxHighlighter1.5（代码高亮，不复制行号）修改方法</title>
+      <link>http://fatkun.github.io/2009/09/%E5%9C%A8z-blog%E4%B8%8A%E4%BD%BF%E7%94%A8syntaxhighlighter1-5%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E4%B8%8D%E5%A4%8D%E5%88%B6%E8%A1%8C%E5%8F%B7%E4%BF%AE%E6%94%B9%E6%96%B9.html</link>
+      <pubDate>Sun, 20 Sep 2009 04:44:52 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/09/%E5%9C%A8z-blog%E4%B8%8A%E4%BD%BF%E7%94%A8syntaxhighlighter1-5%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E4%B8%8D%E5%A4%8D%E5%88%B6%E8%A1%8C%E5%8F%B7%E4%BF%AE%E6%94%B9%E6%96%B9.html</guid>
+      <description>&lt;p&gt;这里我是使用了SyntaxHighlighter1.51版本来修改的，到目前为止已经有SyntaxHighlighter2.0版本了。可以到这里下载：http://code.google.com/p/syntaxhighlighter/&lt;br&gt;
+至于选择1.5版本修改的其中一个原因是1.5版本前面的行号是用CSS实现的，直接复制代码时不会把前面的行号复制，这是我选择它的一个重要原因。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

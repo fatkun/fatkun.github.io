@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android Handler和HandlerThread使用方法 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Handler的官方注释如下： A Handler allows you to send and process &amp;lt;a href=&amp;quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/Message.html&amp;quot;&amp;gt;Message&amp;lt;/a&amp;gt; and Runnable objects associated with a thread’s &amp;lt;a href=&amp;quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/MessageQueue.html&amp;quot;&amp;gt;MessageQueue&amp;lt;/a&amp;gt;. Each Handler instance is associated with a single thread and that thread’s message queue. Handler会" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2012/02/android-handler-and-handlerthread.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Android Handler和HandlerThread使用方法" />
+<meta property="og:description" content="Handler的官方注释如下： A Handler allows you to send and process &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/Message.html&quot;&gt;Message&lt;/a&gt; and Runnable objects associated with a thread’s &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/MessageQueue.html&quot;&gt;MessageQueue&lt;/a&gt;. Each Handler instance is associated with a single thread and that thread’s message queue. Handler会" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2012/02/android-handler-and-handlerthread.html" />
+<meta property="article:published_time" content="2012-02-05T14:10:55+00:00" />
+<meta property="article:modified_time" content="2012-02-05T14:10:55+00:00" />
+<meta itemprop="name" content="Android Handler和HandlerThread使用方法">
+<meta itemprop="description" content="Handler的官方注释如下： A Handler allows you to send and process &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/Message.html&quot;&gt;Message&lt;/a&gt; and Runnable objects associated with a thread’s &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/MessageQueue.html&quot;&gt;MessageQueue&lt;/a&gt;. Each Handler instance is associated with a single thread and that thread’s message queue. Handler会">
+<meta itemprop="datePublished" content="2012-02-05T14:10:55&#43;00:00" />
+<meta itemprop="dateModified" content="2012-02-05T14:10:55&#43;00:00" />
+<meta itemprop="wordCount" content="423">
+
+
+
+<meta itemprop="keywords" content="Handler,HandlerThread," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android Handler和HandlerThread使用方法"/>
+<meta name="twitter:description" content="Handler的官方注释如下： A Handler allows you to send and process &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/Message.html&quot;&gt;Message&lt;/a&gt; and Runnable objects associated with a thread’s &lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/MessageQueue.html&quot;&gt;MessageQueue&lt;/a&gt;. Each Handler instance is associated with a single thread and that thread’s message queue. Handler会"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android Handler和HandlerThread使用方法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-02-05 </span>
+        <div class="post-category">
+            <a href="/categories/android/"> Android </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#handler使用方法">Handler使用方法：</a></li>
+        <li><a href="#handlerthread使用方法">HandlerThread使用方法：</a></li>
+        <li><a href="#参考">参考：</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Handler的官方注释如下：</p>
+<blockquote>
+<p>A Handler allows you to send and process <code>&lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/Message.html&quot;&gt;Message&lt;/a&gt;</code> and Runnable objects associated with a thread’s <code>&lt;a href=&quot;file:///F:/android%E5%AD%A6%E4%B9%A0/docs-3.0_r01-linux/docs/reference/android/os/MessageQueue.html&quot;&gt;MessageQueue&lt;/a&gt;</code>. Each Handler instance is associated with a single thread and that thread’s message queue.
+Handler会关联一个单独的线程和消息队列。Handler默认关联主线程，虽然要提供Runnable参数 ，但默认是直接调用Runnable中的run()方法。也就是默认下会在主线程执行，如果在这里面的操作会有阻塞，界面也会卡住。如果要在其他线程执行，可以使用HandlerThread。</p>
+</blockquote>
+<h2 id="handler使用方法">Handler使用方法：</h2>
+<pre lang="java">Handler handler = new Handler() {
+
+			@Override
+			public void handleMessage(Message msg) {
+				// 处理发送过来的消息
+				Bundle b = msg.getData();
+				System.out.println("msg:" + msg.arg1);
+				System.out.println("msg:" + b.getString("name") + " - age:" + b.getInt("age"));
+				super.handleMessage(msg);
+			}
+
+        };
+
+        Message msg = handler.obtainMessage();
+        msg.arg1 = 121;
+        Bundle b = new Bundle();
+        b.putInt("age", 24);
+        b.putString("name", "Fatkun");
+        msg.setData(b);
+        msg.sendToTarget();
+
+        handler.post(r);
+
+    }
+
+    Runnable r = new Runnable() {
+
+		public void run() {
+			try {
+                                // 在这里只是睡一下
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+	};</pre>
+<h2 id="handlerthread使用方法">HandlerThread使用方法：</h2>
+<pre escaped="true" lang="java">//把上面创建Handler的代码
+Handler handler = new Handler() {
+...
+}
+
+//改为：
+HandlerThread thread = new HandlerThread("athread");
+thread.start(); //要把线程启动
+        
+Handler handler = new Handler(thread.getLooper()) {
+...
+}</pre>
+<h2 id="参考">参考：</h2>
+<p><a href="http://www.cnblogs.com/xirihanlin/archive/2011/04/11/2012746.html" title="Android中的Handler, Looper, MessageQueue和Thread" target="_blank">Android中的Handler, Looper, MessageQueue和Thread的关系</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2012-02-05
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/handler/">Handler</a>
+          <a href="/tags/handlerthread/">HandlerThread</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2012/02/android-get-localhost-access.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Android真机调试访问本地服务器（localhost）的解决方案</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2012/02/batch-image-download-1-0.html">
+            <span class="next-text nav-default">Fatkun图片批量下载谷歌浏览器扩展1.0版更新了！</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

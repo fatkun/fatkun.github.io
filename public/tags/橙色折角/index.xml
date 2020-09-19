@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>橙色折角 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E6%A9%99%E8%89%B2%E6%8A%98%E8%A7%92/</link>
+    <description>Recent content in 橙色折角 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Sep 2010 11:59:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E6%A9%99%E8%89%B2%E6%8A%98%E8%A7%92/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PSD:折角橙色标题栏</title>
+      <link>http://fatkun.github.io/2010/09/psd-nav.html</link>
+      <pubDate>Wed, 22 Sep 2010 11:59:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/09/psd-nav.html</guid>
+      <description>上图是我自己做的。比较简单，主要注意的是黄条阴影的方向是向上的，那个折角的三角形我是用钢笔画的，一样是同样的渐变颜色。有这个折角感觉立体化多</description>
+    </item>
+    
+  </channel>
+</rss>

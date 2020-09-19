@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>knative on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/knative/</link>
+    <description>Recent content in knative on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 May 2019 13:47:33 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/knative/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>knative serving 0.6 版本变更</title>
+      <link>http://fatkun.github.io/2019/05/knative-serving-0-6-change.html</link>
+      <pubDate>Sun, 19 May 2019 13:47:33 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2019/05/knative-serving-0-6-change.html</guid>
+      <description>翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes</description>
+    </item>
+    
+    <item>
+      <title>knative分析 – controller</title>
+      <link>http://fatkun.github.io/2018/08/knative-controller.html</link>
+      <pubDate>Mon, 06 Aug 2018 12:06:37 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2018/08/knative-controller.html</guid>
+      <description>由于service名称重复，这里会用knative service 和 k8s service区分两者。 总体流程 用户创建knative service后，会创建出ro</description>
+    </item>
+    
+    <item>
+      <title>knative分析 – activator</title>
+      <link>http://fatkun.github.io/2018/08/knative-activator.html</link>
+      <pubDate>Mon, 06 Aug 2018 12:04:51 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2018/08/knative-activator.html</guid>
+      <description>当scale到0时，是怎样唤醒业务容器的？ activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起</description>
+    </item>
+    
+    <item>
+      <title>knative分析 – autoscaler</title>
+      <link>http://fatkun.github.io/2018/08/knative-autoscaler.html</link>
+      <pubDate>Mon, 06 Aug 2018 12:00:42 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2018/08/knative-autoscaler.html</guid>
+      <description>文档说目前的实现只是为了快速实现，后期还会修改。 knative是如何做伸缩容的？ 处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？c</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flash on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/flash/</link>
+    <description>Recent content in flash on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 17 Jun 2010 16:04:04 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/flash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Flash游戏-叠叠乐（Super stacker2），挺好玩的</title>
+      <link>http://fatkun.github.io/2010/06/super-stacker2.html</link>
+      <pubDate>Thu, 17 Jun 2010 16:04:04 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/06/super-stacker2.html</guid>
+      <description>叠叠乐，我自己起的名字= =！非常之好玩，很奇特。用你自己的方法。每个人玩的结果都不同。 好过瘾啊.哇哈哈哈哈哈!!!!! 要有耐心先嘚噶.</description>
+    </item>
+    
+    <item>
+      <title>flash游戏-射断绳子救人</title>
+      <link>http://fatkun.github.io/2010/06/flash-help-people.html</link>
+      <pubDate>Wed, 16 Jun 2010 16:01:38 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/06/flash-help-people.html</guid>
+      <description>玩法：射断绳子，救下这些上吊的人，千万小心，别射中他们了.会很惨的啊。。 /yy</description>
+    </item>
+    
+    <item>
+      <title>FlashGame:围住小猫猫~</title>
+      <link>http://fatkun.github.io/2009/12/catch-cat-flash-game.html</link>
+      <pubDate>Tue, 15 Dec 2009 07:00:18 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/catch-cat-flash-game.html</guid>
+      <description>围住小猫游戏。用鼠标操作，猫只能踩浅色圆点，点击浅色圆点把它变成深色，阻挡小猫的逃跑。猫每次只能移动一步，如果能用深色圆点把它圈起来的话你就</description>
+    </item>
+    
+  </channel>
+</rss>

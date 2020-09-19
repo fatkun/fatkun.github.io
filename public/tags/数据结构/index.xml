@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据结构 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <description>Recent content in 数据结构 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 04 Dec 2010 15:24:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>选择排序算法(JAVA版)</title>
+      <link>http://fatkun.github.io/2010/12/select-sort-java.html</link>
+      <pubDate>Sat, 04 Dec 2010 15:24:59 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/select-sort-java.html</guid>
+      <description>选择排序和插入排序差不多，交换的次数减少。平均/最好/最坏时间复杂度是O(n2)，是不稳定的排序算法。（插入排序是稳定排序算法） update</description>
+    </item>
+    
+    <item>
+      <title>直接插入排序算法（JAVA版）</title>
+      <link>http://fatkun.github.io/2010/12/insert-sort.html</link>
+      <pubDate>Fri, 03 Dec 2010 02:23:31 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/insert-sort.html</guid>
+      <description>时间复杂度：O(n*n) 直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：） 1.a[i]和前一个值a[i-1]比较，如果小</description>
+    </item>
+    
+  </channel>
+</rss>

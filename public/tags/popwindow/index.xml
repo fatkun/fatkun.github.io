@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>popwindow on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/popwindow/</link>
+    <description>Recent content in popwindow on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Jun 2012 05:28:13 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/popwindow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>android PopupWindow</title>
+      <link>http://fatkun.github.io/2012/06/android-popupwindow.html</link>
+      <pubDate>Sun, 24 Jun 2012 05:28:13 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/06/android-popupwindow.html</guid>
+      <description>View loadingView = this.getLayoutInflater().inflate(R.layout.loading, null); PopupWindow loaddingPopup = new PopupWindow(loadingView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT); loaddingPopup.setAnimationStyle(R.style.popupWindow); //配置动画 loaddingPopup.update(); loaddingPopup.showAtLocation(findViewById(R.id.btnRefresh), Gravity.CENTER, 0, 0); //显示在中间 配置一个animate, popupwindow.xml &amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt; &amp;lt;set xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; &amp;gt; &amp;lt;alpha android:duration=&#34;500&#34; android:fromAlpha=&#34;0.0&#34; android:interpolator=&#34;@android:anim/accelerate_interpolator&#34; android:toAlpha=&#34;1.0&#34; /&amp;gt; &amp;lt;/set&amp;gt; 除了要配置一个animat</description>
+    </item>
+    
+  </channel>
+</rss>

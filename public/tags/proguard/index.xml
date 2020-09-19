@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>proguard on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/proguard/</link>
+    <description>Recent content in proguard on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 06 Aug 2013 17:37:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/proguard/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>芒果广告平台混淆代码后不显示广告解决方法</title>
+      <link>http://fatkun.github.io/2013/08/adsmogo-proguard-config.html</link>
+      <pubDate>Tue, 06 Aug 2013 17:37:59 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/08/adsmogo-proguard-config.html</guid>
+      <description>使用芒果广告平台(adsmogo)混淆代码后广告不显示，我试了N次打包。。。o(╯□╰)o 解决方法 新建proguard.cfg文件，不要用芒</description>
+    </item>
+    
+  </channel>
+</rss>

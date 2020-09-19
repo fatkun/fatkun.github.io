@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloudera on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/cloudera/</link>
+    <description>Recent content in cloudera on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 26 Dec 2017 10:00:52 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/cloudera/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cloudera manager在下载日志返回502 BAD_GATEWAY错误</title>
+      <link>http://fatkun.github.io/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Tue, 26 Dec 2017 10:00:52 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html</guid>
+      <description>下载日志是通过status_server.py的download_log方法进行的 /usr/lib64/cmf/agent/build/env/lib/python2.6/site-packages/cmf-5.13.1-py2.6.egg/cmf/status_server.py 如果日志目录包含以下开头就禁止下载 # Simple blacklist of path prefixes that are not reasonable for</description>
+    </item>
+    
+    <item>
+      <title>安装cloudera manger（中科大反向代理）</title>
+      <link>http://fatkun.github.io/2017/09/%E5%AE%89%E8%A3%85cloudera-manger.html</link>
+      <pubDate>Sun, 03 Sep 2017 07:02:09 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/09/%E5%AE%89%E8%A3%85cloudera-manger.html</guid>
+      <description>从文档Cloudera Manager Version and Download Information 找到下载地址，按系统版本下载 国外的下载地址很慢，使用中科大做的反向代理访问，下面是centos6的cm地址 wget</description>
+    </item>
+    
+    <item>
+      <title>构建cloudera自定义parcels</title>
+      <link>http://fatkun.github.io/2017/08/create-cloudera-local-parcels.html</link>
+      <pubDate>Mon, 28 Aug 2017 10:15:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/08/create-cloudera-local-parcels.html</guid>
+      <description>构建命令： tar zcvf GPLEXTRAS-5.0.0-gplextras5b2.p0.32-el6.parcel GPLEXTRAS-5.0.0-gplextras5b2.p0.32/ --owner=root --group=root 把文件都放到一个http可访问的目录下，然后在“Parcel 设置”里面配置URL 目录结构 -rw-r--r-- 1 kpi kpi 15509175 Jul 19 15:34 CUSTOM-5.4.0-1.cdh5.4.0.p2.5-el6.parcel -rw-rw-r-- 1 kpi kpi 41 Jul</description>
+    </item>
+    
+  </channel>
+</rss>

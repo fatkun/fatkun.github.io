@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jquery on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/jquery/</link>
+    <description>Recent content in jquery on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 04 Aug 2013 08:01:54 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jquery选择行(tr)勾选checkbox（避免冲突）</title>
+      <link>http://fatkun.github.io/2013/08/jquery-click-tr-and-check.html</link>
+      <pubDate>Sun, 04 Aug 2013 08:01:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/08/jquery-click-tr-and-check.html</guid>
+      <description>一般情况下点击行可以勾选多选框，但直接点勾选框会因为事件的冒泡导致再点击了一次。。 解决方法是判断最初点击的是不是checkbox 来源是：ht</description>
+    </item>
+    
+    <item>
+      <title>Jquery的ajax在IE提交数据乱码解决方法</title>
+      <link>http://fatkun.github.io/2010/12/jquery-ajax.html</link>
+      <pubDate>Thu, 02 Dec 2010 06:14:09 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/jquery-ajax.html</guid>
+      <description>乱码是因为编码不同而造成的。在ajax post 或 get时都有可能出现乱码。 为了避免乱码，可以做到以下几步 解决方法 1，保持编码的统一，包括文件编码，</description>
+    </item>
+    
+    <item>
+      <title>JQUERY实现背景图渐显（淡入淡出）</title>
+      <link>http://fatkun.github.io/2010/01/jquery-animate-background.html</link>
+      <pubDate>Fri, 01 Jan 2010 16:31:29 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/01/jquery-animate-background.html</guid>
+      <description>&lt;p&gt;普通的CSS Hover最多就换一下背景图，不是很好看~我们利用jquery给它加上一些淡入的效果~
+在&lt;a href=&#34;http://leotheme.cn/javascript/jquery-dragoninteractive-navi.html&#34; target=&#34;_blank&#34;&gt;这里&lt;/a&gt;看到这个例子，我想我还是自己练习一下吧·~效果可以看&lt;a href=&#34;http://dragoninteractive.com/&#34;&gt;http://dragoninteractive.com/&lt;/a&gt;网站~，挺帅的~&lt;br&gt;
+&lt;img src=&#34;http://farm3.static.flickr.com/2741/4232344401_a6bb0be121.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>11个使用JQuery的WordPress插件</title>
+      <link>http://fatkun.github.io/2009/12/11-useful-jquery-powered-wordpress-plugins.html</link>
+      <pubDate>Fri, 18 Dec 2009 10:43:12 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/11-useful-jquery-powered-wordpress-plugins.html</guid>
+      <description>&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  我们都知道各种各样的动态效果和功能都可以通过JQuery添加到网页上,但是至少要懂得一些JQuery的知识才会使用。这不是一个大问题，但是一些Wordpress用户总喜欢一些简单的插件。这篇文章的目的帮助你发现一些好用的WP插件（使用JQuery的~）&lt;/p&gt;
+&lt;h3 style=&#34;margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, &#39;Nimbus Roman No9 L&#39;, serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress&#34; target=&#34;_blank&#34;&gt;Carousel Gallery (jQuery) for WordPress&lt;/a&gt;&lt;/h3&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;margin: 0px; border: 5px solid #e3e3e3;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_1.jpg&#34; alt=&#34;wordpress jquery plugin&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  这个插件使用了Wordpress内建的图库，并且使用幻灯片的显示。</description>
+    </item>
+    
+    <item>
+      <title>2009 年度最佳 jQuery 插件</title>
+      <link>http://fatkun.github.io/2009/12/the-best-jquery-plugins-of-2009.html</link>
+      <pubDate>Sat, 12 Dec 2009 11:03:20 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/the-best-jquery-plugins-of-2009.html</guid>
+      <description>&lt;p&gt;jQuery 是个宝库，而 jQuery 的插件体系是个取之不竭的宝库，众多开发者在 jQuery 框架下，设计了数不清的插件，jQuery  的特长是网页效果，因此，它的插件库也多与 UI 有关。本文是 &lt;a style=&#34;font-family: Arial, 宋体; font-size: 12px; text-decoration: none; border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: initial; color: #800080;&#34; href=&#34;http://www.webdesignledger.com/&#34;&gt;webdesignledger.com&lt;/a&gt; 网站推选的2009年度最佳 jQuery 插件。&lt;/p&gt;
+&lt;h3 style=&#34;line-height: 32px; border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #c0c0c0;&#34;&gt;  拉洋片&lt;/h3&gt;
+在一个固定区域，循环显示几段内容，这种方式很像旧时的拉洋片，2009年，这种 Web 效果大行其道，jQuery 有大量与此有关的插件，以下插件无疑是最佳的。
+### &lt;a style=&#34;font-family: Arial, 宋体; font-size: 12px; text-decoration: none; border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: initial; color: #305080;&#34; href=&#34;http://css-tricks.com/anythingslider-jquery-plugin/&#34; target=&#34;_blank&#34;&gt;AnythingSlider&lt;/a&gt;
+&lt;p&gt;&lt;a style=&#34;font-family: Arial, 宋体; font-size: 12px; text-decoration: none; border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: initial; color: #305080;&#34; href=&#34;http://css-tricks.com/anythingslider-jquery-plugin/&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;border: 1px solid #c0c0c0;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2009/12/jquery_2009_1.jpg&#34; alt=&#34;jquery plugins&#34; /&gt;&lt;/a&gt;
+由 CSS-Tricks 的 Chris Coyier 设计，功能齐全，应用十分广泛。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS圆角框&#43;Jquery圆角框</title>
+      <link>http://fatkun.github.io/2009/12/css-corner-and-jquery-corner.html</link>
+      <pubDate>Fri, 11 Dec 2009 12:30:32 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/css-corner-and-jquery-corner.html</guid>
+      <description>&lt;p&gt;刚在群上看到一个CSS/CSS+JS的圆角框，所以发上来了~平时做网页的时候很多时候都想要做成圆角的~~一般的做法都是做一个圆角的图片~然后上中下三个div类似~但是这样做一般只对固定宽度的有效~不固定宽度的就有点烦了。&lt;br&gt;
+现在用JS来实现吧。这个JS可以对图片进行圆角~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

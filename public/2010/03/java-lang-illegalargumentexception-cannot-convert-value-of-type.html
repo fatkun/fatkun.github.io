@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法] - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content=" Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)
+… 42 more 在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。 本文来源：http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2010/03/java-lang-illegalargumentexception-cannot-convert-value-of-type.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法]" />
+<meta property="og:description" content="
+Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)
+… 42 more
+在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。
+本文来源：http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2010/03/java-lang-illegalargumentexception-cannot-convert-value-of-type.html" />
+<meta property="article:published_time" content="2010-03-27T16:35:20+00:00" />
+<meta property="article:modified_time" content="2010-03-27T16:35:20+00:00" />
+<meta itemprop="name" content="java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法]">
+<meta itemprop="description" content="
+Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)
+… 42 more
+在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。
+本文来源：http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx
+">
+<meta itemprop="datePublished" content="2010-03-27T16:35:20&#43;00:00" />
+<meta itemprop="dateModified" content="2010-03-27T16:35:20&#43;00:00" />
+<meta itemprop="wordCount" content="404">
+
+
+
+<meta itemprop="keywords" content="事务,报错," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法]"/>
+<meta name="twitter:description" content="
+Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)
+… 42 more
+在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。
+本文来源：http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0[解决方法]</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-03-27 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>Caused by: java.lang.IllegalArgumentException: Cannot convert value of type [$Proxy0 implementing com.mysoft.applications.database.interfaces.MyInterface,org.springframework.aop.SpringProxy,org.springframework.aop.framework.Advised] to required type [ibatis.ibator.services.TestService] for property ‘service’: no matching editors or conversion strategy found<br>
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:231)<br>
+at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:138)<br>
+at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:386)<br>
+… 42 more
+在配置事务时加入了aspectjweaver.jar这个包后出现了这个问题。
+本文来源：<a href="http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx">http://blog.csdn.net/taochenpfj/archive/2009/07/29/4390158.aspx</a></p>
+</blockquote>
+<p>如果在Spring配置文件中配置的事务是通过AOP标签实现的，那就在&lt;aop:config /&gt;中增加proxy-target-class=”true”属性。就异常显示的信息可以看到，Spring在转换时，主要是将代理类转换成接口，反而不能转换成实际类。
+如果是通过bean方式增加事务控制，则在配置文件中增加</p>
+<pre escaped="true" lang="xml">&lt;bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+&lt;property name="proxyTargetClass">
+       &lt;value>true&lt;/value>
+       &lt;/property>
+&lt;/bean>
+</pre>
+<p>上面这段配置信息只是一部分。其他的各位再摸索吧！
+这里有个兄弟也是这样的问题，他的是bean控制事务的http://longterm.javaeye.com/blog/394395</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-03-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a>
+          <a href="/tags/%E6%8A%A5%E9%94%99/">报错</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/04/tortoisehg-and-mercurial-version-control.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">TortoiseHg 1.0.1 与 Mercurial 1.5.1 版本控制软件</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">
+            <span class="next-text nav-default">win7“我的电脑”右键”管理”菜单失效的解决办法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

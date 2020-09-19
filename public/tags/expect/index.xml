@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>expect on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/expect/</link>
+    <description>Recent content in expect on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Dec 2013 12:00:40 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/expect/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux expect自动登录ssh</title>
+      <link>http://fatkun.github.io/2013/12/linux-expect-login-ssh.html</link>
+      <pubDate>Thu, 12 Dec 2013 12:00:40 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/12/linux-expect-login-ssh.html</guid>
+      <description>#!/usr/bin/expect # 传送文件并且执行 set timeout 30 set host [lindex $argv 0] set username [lindex $argv 1] set password [lindex $argv 2] set file [lindex $argv 3] set center_password [lindex $argv 4] spawn scp -P22 $file $username@$host:/tmp/tmp.sh sleep 1 expect { &#34;*yes/no*&#34; {send &#34;yes\n&#34;; exp_continue} &#34;*password:*&#34; {send &#34;$password\n&#34; } } interact spawn ssh -p22 $username@$host sleep 1 expect { &#34;*yes/no*&#34; {send &#34;yes\n&#34;; exp_continue} &#34;*password:*&#34;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debug on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/debug/</link>
+    <description>Recent content in debug on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Feb 2014 08:13:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/debug/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在eclipse远程调试mapreduce（hadoop2）</title>
+      <link>http://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html</link>
+      <pubDate>Sat, 22 Feb 2014 08:13:20 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html</guid>
+      <description>背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse</description>
+    </item>
+    
+    <item>
+      <title>使用eclipse调试hive mapreduce</title>
+      <link>http://fatkun.github.io/2012/10/debug-hive-mapreduce-with-eclipse.html</link>
+      <pubDate>Sun, 21 Oct 2012 12:12:35 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/10/debug-hive-mapreduce-with-eclipse.html</guid>
+      <description>我们知道Hive经过一些转换后，提交job到hadoop，一般我们只能debug到submitJob这里，而不知道后面那些mapper到底是</description>
+    </item>
+    
+    <item>
+      <title>eclipse上单步调试Hive</title>
+      <link>http://fatkun.github.io/2012/04/eclipse-debug-hive.html</link>
+      <pubDate>Sat, 14 Apr 2012 10:06:16 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/04/eclipse-debug-hive.html</guid>
+      <description>在百度找到这篇文章：在Windows eclipse上单步调试Hive教程 可是我死活搞不定在windows安装hadoop和hive，cgyw</description>
+    </item>
+    
+  </channel>
+</rss>

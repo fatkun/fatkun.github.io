@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dreamweaver on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/dreamweaver/</link>
+    <description>Recent content in Dreamweaver on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 15 Nov 2010 13:12:18 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/dreamweaver/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Dreamweaver使用正则表达式替换</title>
+      <link>http://fatkun.github.io/2010/11/dreamweaver-with-regex-replace.html</link>
+      <pubDate>Mon, 15 Nov 2010 13:12:18 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/dreamweaver-with-regex-replace.html</guid>
+      <description>有时我们需要比较复杂的替换文本，这时要用到正则表达式来进行替换。你可以使用其他可以使用正则表达式的替换工具，这里以Dreamweaver为例</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 25 Dec 2010 10:16:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hibernate事务管理</title>
+      <link>http://fatkun.github.io/2010/12/hibernate-transaction.html</link>
+      <pubDate>Sat, 25 Dec 2010 10:16:03 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/hibernate-transaction.html</guid>
+      <description>1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gfw on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/gfw/</link>
+    <description>Recent content in gfw on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Apr 2010 12:10:17 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/gfw/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>“菊花文”与反屏蔽</title>
+      <link>http://fatkun.github.io/2010/04/juhua-anti-block.html</link>
+      <pubDate>Fri, 16 Apr 2010 12:10:17 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/04/juhua-anti-block.html</guid>
+      <description>菊花文（菊花文转换工具）貌似很久就出现了，到现在也没有多流行起来，不太容易反屏蔽，也不能代表非主流，始终不能流行起来。菊花文的原理在于每个字</description>
+    </item>
+    
+  </channel>
+</rss>

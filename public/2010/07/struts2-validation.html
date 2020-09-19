@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Struts2校验框架(validation) - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：
+ 使用Annotation（注解）进行校验 使用xml配置校验 使用覆盖validate方法校验 文章出处：http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx 作者:马召 " /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2010/07/struts2-validation.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Struts2校验框架(validation)" />
+<meta property="og:description" content="Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：
+
+使用Annotation（注解）进行校验
+使用xml配置校验
+使用覆盖validate方法校验
+文章出处：http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx 作者:马召
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2010/07/struts2-validation.html" />
+<meta property="article:published_time" content="2010-07-07T07:16:39+00:00" />
+<meta property="article:modified_time" content="2010-07-07T07:16:39+00:00" />
+<meta itemprop="name" content="Struts2校验框架(validation)">
+<meta itemprop="description" content="Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：
+
+使用Annotation（注解）进行校验
+使用xml配置校验
+使用覆盖validate方法校验
+文章出处：http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx 作者:马召
+">
+<meta itemprop="datePublished" content="2010-07-07T07:16:39&#43;00:00" />
+<meta itemprop="dateModified" content="2010-07-07T07:16:39&#43;00:00" />
+<meta itemprop="wordCount" content="2715">
+
+
+
+<meta itemprop="keywords" content="Struts2,validate,validation,validation.xml," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Struts2校验框架(validation)"/>
+<meta name="twitter:description" content="Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：
+
+使用Annotation（注解）进行校验
+使用xml配置校验
+使用覆盖validate方法校验
+文章出处：http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx 作者:马召
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Struts2校验框架(validation)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-07-07 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#51节校验类型和配置方法说明">5.1节：校验类型和配置方法说明</a></li>
+        <li><a href="#52节validator与validation">5.2节：Validator与Validation</a></li>
+        <li><a href="#53节validation与intercepter">5.3节：Validation与Intercepter</a></li>
+        <li><a href="#54节使用java-annotation配置校验">5.4节：使用Java Annotation配置校验</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#55节使用xml配置validation">5.5节：使用XML配置Validation</a></li>
+        <li><a href="#56节validator和field-validator">5.6节：Validator和Field Validator</a></li>
+        <li><a href="#57节短路short-circuiting">5.7节：短路（Short-Circuiting）</a></li>
+        <li><a href="#58节validate方法">5.8节：validate方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：</p>
+<ol>
+<li>使用Annotation（注解）进行校验</li>
+<li>使用xml配置校验</li>
+<li>使用覆盖validate方法校验
+文章出处：<a href="http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx">http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx</a> 作者:马召</li>
+</ol>
+<h2 id="51节校验类型和配置方法说明">5.1节：校验类型和配置方法说明</h2>
+<p>从Struts2 校验框架在验证的场所上可以分为：客户端校验和服务端校验。<br>
+客户端校验是指，在HTML画面上自动生成JavaScript校验代码，在用户提交到服务器之前在客户端浏览器中进行校验。默认位客户端校验。<br>
+服务端校验是指，在数据提交到服务器上之后，在Action处理之前，对客户但提交的数据进行校验。
+从Struts2校验框架的配置上可以分为：Java Annotation配置和XML配置文件配置<br>
+Java Annotation配置是指，使用Java Annotation语法，在Java源代码上标记需要校验的内容，和校验的方式。<br>
+XML配置文件配置是指，使用XML配置文件配置需要校验的内容和校验方式。</p>
+<h2 id="52节validator与validation">5.2节：Validator与Validation</h2>
+<p>Validation指校验，Validator指谁来校验。<br>
+在Struts2框架中Validator必须在系统中注册，如果没有注册，系统使用默认的注册，这些validator注册文件在xwork的jar文件中，内容如下：</p>
+<pre escaped="true" lang="xml">&lt;validators&gt;
+    &lt;validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/&gt;
+    &lt;validator name="requiredstring" class="com.opensymphony.xwork2.validator.validators.RequiredStringValidator"/&gt;
+    &lt;validator name="int" class="com.opensymphony.xwork2.validator.validators.IntRangeFieldValidator"/&gt;
+    &lt;validator name="double" class="com.opensymphony.xwork2.validator.validators.DoubleRangeFieldValidator"/&gt;
+    &lt;validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/&gt;
+    &lt;validator name="expression" class="com.opensymphony.xwork2.validator.validators.ExpressionValidator"/&gt;
+    &lt;validator name="fieldexpression" class="com.opensymphony.xwork2.validator.validators.FieldExpressionValidator"/&gt;
+    &lt;validator name="email" class="com.opensymphony.xwork2.validator.validators.EmailValidator"/&gt;
+    &lt;validator name="url" class="com.opensymphony.xwork2.validator.validators.URLValidator"/&gt;
+    &lt;validator name="visitor" class="com.opensymphony.xwork2.validator.validators.VisitorFieldValidator"/&gt;
+    &lt;validator name="conversion" class="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator"/&gt;
+    &lt;validator name="stringlength" class="com.opensymphony.xwork2.validator.validators.StringLengthFieldValidator"/&gt;
+    &lt;validator name="regex" class="com.opensymphony.xwork2.validator.validators.RegexFieldValidator"/&gt;
+&lt;/validators&gt;</pre>
+<p>自己需要注册自己的Validator时，可以使用上述相似的内容，这个文件需要放在WEB-INF/classes目录下，文件的名字叫validators.xml。
+一旦自己定义了validators.xml文件，系统就不会在加载默认的Validators文件，所以在Validators.xml中需要拷贝默认的内容。</p>
+<h2 id="53节validation与intercepter">5.3节：Validation与Intercepter</h2>
+<p>Validation使用名字叫做validator的Intercepter，在默认情况下，struts2已经定义了这个Intercepter，我们在不加声明的情况下就可以使用Validation了。</p>
+<h2 id="54节使用java-annotation配置校验">5.4节：使用Java Annotation配置校验</h2>
+<p>import com.opensymphony.xwork2.validator.annotations包提供了一些必要的Annotation用来配置校验信息。<br>
+这些内容包括：<br>
+枚举类型<br>
+ValidatorType<br>
+Field 校验字段<br>
+Simple 校验其他<br>
+Annotation（标注）类型<br>
+Validation<br>
+用来标记一个类需要被校验<br>
+ConversionErrorFieldValidator<br>
+字段转换出错<br>
+DateRangeFieldValidator<br>
+日期范围校验<br>
+DoubleRangeFieldValidator<br>
+Double类型范围校验<br>
+EmailValidator<br>
+Email地址校验<br>
+ExpressionValidator<br>
+使用一个OGNL表达式的校验，功能非常强大<br>
+FieldExpressionValidator<br>
+针对一个字段的使用OGNL表达式的校验<br>
+IntRangeFieldValidator<br>
+Int类型范围校验<br>
+RegexFieldValidator<br>
+正则表达式校验<br>
+RequiredFieldValidator<br>
+必填字段校验<br>
+RequiredStringValidator<br>
+必填String校验，<br>
+StringLengthFieldValidator<br>
+字符串长度校验<br>
+UrlValidator<br>
+URL校验<br>
+Validations<br>
+可以组合上述的各种校验类型以满足更多的需求。<br>
+VisitorFieldValidator<br>
+可以将Action中的对象的属性的校验方法定位到已经定义的对象原有的校验方法
+CustomValidator<br>
+ValidationParameter<br>
+两个类一起完成自定义的校验</p>
+<h2 id="示例">示例</h2>
+<pre escaped="true" lang="java" line="1">package com.jpleasure;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.FieldExpressionValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.Validation;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+
+@Validation()
+public class RegisterAction extends ActionSupport {
+    private String name;
+    private String password;
+    private String rePassword;
+    private String mail;
+    private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    @RequiredFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "name is required")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @RequiredFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "password is required")
+    @StringLengthFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "password must has proper legnth",
+            minLength = "5", maxLength = "12")
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    @RequiredFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true,
+            message = "input password again please!")
+    @StringLengthFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "password must has proper legnth",
+            minLength = "5", maxLength = "12")
+    @FieldExpressionValidator(expression = "password eq rePassword",
+            message = "two password must match")
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    @RequiredFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "mail is required")
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @RequiredFieldValidator(type = ValidatorType.FIELD,
+            shortCircuit = true, message = "description is required")
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String execute() throws Exception {
+
+        return SUCCESS;
+    }
+}</pre>
+<h2 id="55节使用xml配置validation">5.5节：使用XML配置Validation</h2>
+<p>Xml配置文件与Action的关系为：<br>
+SomeAction.java – SomeAction-validation.xml<br>
+且与SomeAction.class处在相同的目录中。<br>
+SimpleAction-validation.xml文件示例：</p>
+<pre escaped="true" lang="xml" line="1">&lt;!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd"&gt;
+&lt;validators&gt;
+  &lt;field name="bar"&gt;
+      &lt;field-validator type="required"&gt;
+          &lt;message&gt;You must enter a value for bar.&lt;/message&gt;
+      &lt;/field-validator&gt;
+      &lt;field-validator type="int"&gt;
+          &lt;param name="min"&gt;6&lt;/param&gt;
+          &lt;param name="max"&gt;10&lt;/param&gt;
+          &lt;message&gt;
+bar must be between ${min} and ${max}, current value is ${bar}.
+&lt;/message&gt;
+      &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;field name="bar2"&gt;
+      &lt;field-validator type="regex"&gt;
+          &lt;param name="regex"&gt;[0-9],[0-9]&lt;/param&gt;
+          &lt;message&gt;
+The value of bar2 must be in the format "x, y", where x and y are between 0 and 9
+&lt;/message&gt;
+     &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;field name="date"&gt;
+      &lt;field-validator type="date"&gt;
+          &lt;param name="min"&gt;12/22/2002&lt;/param&gt;
+          &lt;param name="max"&gt;12/25/2002&lt;/param&gt;
+          &lt;message&gt;The date must be between 12-22-2002 and 12-25-2002.&lt;/message&gt;
+      &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;field name="foo"&gt;
+      &lt;field-validator type="int"&gt;
+          &lt;param name="min"&gt;0&lt;/param&gt;
+          &lt;param name="max"&gt;100&lt;/param&gt;
+          &lt;message key="foo.range"&gt;Could not find foo.range!&lt;/message&gt;
+      &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;validator type="expression"&gt;
+      &lt;param name="expression"&gt;foo lt bar &lt;/param&gt;
+      &lt;message&gt;Foo must be greater than Bar. Foo = ${foo}, Bar = ${bar}.&lt;/message&gt;
+  &lt;/validator&gt;
+&lt;/validators&gt;</pre>
+<p>我们看看上面的配置文件，首先每一个validatior都必须有一个type属性，type属性的值为我们前面定义的validator的name。<br>
+Message提供了校验出错的信息，message有一个属性key，通过可以可以找到i18n文件定义的内容，但是key并不是必须的。Message体内部的消息为默认消息，当i18n文件中不存在时表示该消息。消息中可以使用${}来引用被校验的对象例如：${foo}，${bar}</p>
+<h2 id="56节validator和field-validator">5.6节：Validator和Field Validator</h2>
+<p>Field Validator用来校验一个字段，例如：</p>
+<pre escaped="true" lang="xml" line="1">&lt;field name="email_address"&gt;
+  &lt;field-validator type="required"&gt;
+      &lt;message&gt;You cannot leave the email address field empty.&lt;/message&gt;
+  &lt;/field-validator&gt;
+  &lt;field-validator type="email"&gt;
+      &lt;message&gt;The email address you entered is not valid.&lt;/message&gt;
+  &lt;/field-validator&gt;
+&lt;/field&gt;</pre>
+<p>Filed validator可以从filed集成字段名字，这样可以将摸个Field的所有的校验局限在一定的范围内。
+使用Validator可以校验多个字段之间的关系，例如：</p>
+<pre escaped="true" lang="xml" line="1">&lt;validator type="expression&gt;
+         &lt;param name="expression"&gt;foo gt bar&lt;/param&gt;
+         &lt;message&gt;foo must be great than bar.&lt;/message&gt;
+&lt;/validator&gt;</pre>
+<p>Validator也可以校验一个字段，例如：</p>
+<pre escaped="true" lang="xml" line="1">&lt;validator type="required"&gt;
+        &lt;param name="fieldName"&gt;bar&lt;/param&gt;
+        &lt;message&gt;You must enter a value for bar.&lt;/message&gt;
+&lt;/validator&gt;</pre>
+<p>但是为了将一个字段的所有校验放在一起，我们倾向于尽量使用field validator</p>
+<h2 id="57节短路short-circuiting">5.7节：短路（Short-Circuiting）</h2>
+<p>参看如下例子：</p>
+<pre escaped="true" lang="xml" line="1">&lt;!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd"&gt;
+&lt;validators&gt;
+  &lt;!-- Field Validators for email field --&gt;
+  &lt;field name="email"&gt;
+      &lt;field-validator type="required" short-circuit="true"&gt;
+          &lt;message&gt;You must enter a value for email.&lt;/message&gt;
+      &lt;/field-validator&gt;
+      &lt;field-validator type="email" short-circuit="true"&gt;
+          &lt;message&gt;Not a valid e-mail.&lt;/message&gt;
+      &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;!-- Field Validators for email2 field --&gt;
+  &lt;field name="email2"&gt;
+     &lt;field-validator type="required"&gt;
+          &lt;message&gt;You must enter a value for email2.&lt;/message&gt;
+      &lt;/field-validator&gt;
+     &lt;field-validator type="email"&gt;
+          &lt;message&gt;Not a valid e-mail2.&lt;/message&gt;
+      &lt;/field-validator&gt;
+  &lt;/field&gt;
+  &lt;!-- Plain Validator 1 --&gt;
+  &lt;validator type="expression"&gt;
+      &lt;param name="expression"&gt;email.equals(email2)&lt;/param&gt;
+      &lt;message&gt;Email not the same as email2&lt;/message&gt;
+  &lt;/validator&gt;
+  &lt;!-- Plain Validator 2 --&gt;
+  &lt;validator type="expression" short-circuit="true"&gt;
+      &lt;param name="expression"&gt;email.startsWith('mark')&lt;/param&gt;
+      &lt;message&gt;Email does not start with mark&lt;/message&gt;
+  &lt;/validator&gt;
+&lt;/validators&gt;</pre>
+<p>校验的顺序：首先Validator，其次Field Validator，但是在Validator或者Field Validator执行的过程中，顺序按照xml文件中的定义。短路的意思是，一旦一个短路的校验出错，其余后续的校验将不再进行。例如上述的顺序是：
+1）Plain Validator 1<br>
+2）Plain Validator 2<br>
+3）Field Validators for email field<br>
+4）Field Validators for email2 field
+由于Validator 2是短路的，一旦Validator 2校验出错，则email和email2都不会进入校验过程。</p>
+<h2 id="58节validate方法">5.8节：validate方法</h2>
+<p>ActionSupport实现了Validatable接口，这个接口中定义了一个validate方法，通过重写validate方法可以完成更详细的校验，例如：</p>
+<pre escaped="true" lang="java" line="1">public void validate() {
+  User user = getUser();
+  if (StringUtils.isBlank(user.getName())) {
+    addActionError(getText("user.name.empty"));
+  }
+  if (StringUtils.isBlank(user.getAddress())) {
+    addActionError(getText("user.address.empty"));
+  }
+}</pre>
+<p>ActionSupport同时也实现了ValidationAware接口，该接口提供了addActionError等输出错误消息的方法。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-07-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/struts2/">Struts2</a>
+          <a href="/tags/validate/">validate</a>
+          <a href="/tags/validation/">validation</a>
+          <a href="/tags/validation.xml/">validation.xml</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/07/free-jsp-host-of-jhost-cn.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">免费JSP空间-JHost邀请码(2011更新)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/07/qq-sound.html">
+            <span class="next-text nav-default">win7放着音乐，QQ来消息声音变小解决方法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

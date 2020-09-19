@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>join on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/join/</link>
+    <description>Recent content in join on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Jan 2013 15:12:31 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/join/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive – JOIN实现过程</title>
+      <link>http://fatkun.github.io/2013/01/hive-join.html</link>
+      <pubDate>Sun, 20 Jan 2013 15:12:31 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/01/hive-join.html</guid>
+      <description>准备数据 语句 SELECT a.uid,a.name,b.age FROM logs a JOIN users b ON (a.uid=b.uid); 我们希望的结果是把users表join进来获取age字段。 hive&amp;gt; select * from logs; OK a 苹果 5 a 橙子 3 b 烧鸡 1 hive&amp;gt; select * from users; OK a</description>
+    </item>
+    
+    <item>
+      <title>MSSQL多个外键对应同一个表时查询外键的内容</title>
+      <link>http://fatkun.github.io/2010/05/mssql-foreign-key.html</link>
+      <pubDate>Sat, 29 May 2010 04:11:05 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/05/mssql-foreign-key.html</guid>
+      <description>当有一个表同时有多个外键同时指向某一个表时，需要通过外键来查询到相应的信息。 举个例子：这是一个订车票的 城市表 CityID CityName 1 广州 2 湛江 3 江门 4 肇庆 5 惠</description>
+    </item>
+    
+  </channel>
+</rss>

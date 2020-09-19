@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JDK源码分析：java.lang.String - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2011/03/jdk-source-java-lang-string.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JDK源码分析：java.lang.String" />
+<meta property="og:description" content="最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2011/03/jdk-source-java-lang-string.html" />
+<meta property="article:published_time" content="2011-03-10T15:24:57+00:00" />
+<meta property="article:modified_time" content="2011-03-10T15:24:57+00:00" />
+<meta itemprop="name" content="JDK源码分析：java.lang.String">
+<meta itemprop="description" content="最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，">
+<meta itemprop="datePublished" content="2011-03-10T15:24:57&#43;00:00" />
+<meta itemprop="dateModified" content="2011-03-10T15:24:57&#43;00:00" />
+<meta itemprop="wordCount" content="1308">
+
+
+
+<meta itemprop="keywords" content="JAVA,JDK源码分析,String," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JDK源码分析：java.lang.String"/>
+<meta name="twitter:description" content="最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JDK源码分析：java.lang.String</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2011-03-10 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#string结构">String结构</a></li>
+        <li><a href="#public-string-concatstring-str">public String concat(String str)</a></li>
+        <li><a href="#public-int-indexofstring-str-int-fromindex">public int indexOf(String str, int fromIndex)</a></li>
+        <li><a href="#public-boolean-equalsobject-anobject">public boolean equals(Object anObject)</a></li>
+        <li><a href="#replace与replaceall">replace与replaceAll</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>最近开始看JDK源码，不能太懒了<del>注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，一是为了记忆，二是给自己一个坚持的理由</del>哇咔咔，英文不算很好，那就对着中文API一起看吧。。</p>
+<h2 id="string结构">String结构</h2>
+<p>这个类结构很简单。。</p>
+<pre escaped="true" lang="java">/** The value is used for character storage. */
+    private final char value[];
+
+    /** The offset is the first index of the storage that is used. */
+    private final int offset;
+
+    /** The count is the number of characters in the String. */
+    private final int count;</pre>
+<p>用了一个char数组来存储字符，然后offset是偏移（这个我还搞不懂有啥用），count是String的长度。<br>
+注意到String类是final的，不可以被继承，而且private final char value[];，只能赋值一次，赋值后就不能变了，只有从新生成一个String对象。</p>
+<h2 id="public-string-concatstring-str">public String concat(String str)</h2>
+<pre escaped="true" lang="java">public String concat(String str) {
+	int otherLen = str.length();
+	if (otherLen == 0) {
+	    return this;
+	}
+	char buf[] = new char[count + otherLen];
+	getChars(0, count, buf, 0);
+	str.getChars(0, otherLen, buf, count);
+	return new String(0, count + otherLen, buf);
+    }</pre>
+<p>这段代码是连接两个String的，先拿个char数组当容器，从this和str分别取出char放入buf内，注意getChars方法的第四个参数，这个是说buf从count个开始拷贝。也就是说把两个string的char放在了一个char数组内，再返回一个新的String对象。(因为之前的String已经不可以改变)</p>
+<h2 id="public-int-indexofstring-str-int-fromindex">public int indexOf(String str, int fromIndex)</h2>
+<pre escaped="true" lang="java">public int indexOf(String str, int fromIndex) {
+        return indexOf(value, offset, count,
+                       str.value, str.offset, str.count, fromIndex);
+    }
+    
+    //source源字符，sourceOffset源偏移，sourceCount源长度
+    //target查找的字符 ...
+    static int indexOf(char[] source, int sourceOffset, int sourceCount,
+                       char[] target, int targetOffset, int targetCount,
+                       int fromIndex) {
+        //如果fromIndex比源字符还长(从0算起)，并且查找的字符长度为0，那就返回源字符的长度，否则返回-1
+	if (fromIndex >= sourceCount) {
+            return (targetCount == 0 ? sourceCount : -1);
+	}
+    	if (fromIndex &lt; 0) {
+    	    fromIndex = 0;
+    	}
+        //如果fromIndex比源字符短，查找的字符长度为0，直接返回fromIndex
+	if (targetCount == 0) {
+	    return fromIndex;
+	}
+
+        //先取出第一个字符
+        char first  = target[targetOffset];
+        int max = sourceOffset + (sourceCount - targetCount);
+
+        //循环每一个字符
+        for (int i = sourceOffset + fromIndex; i &lt;= max; i++) {
+            /* 直到找到第一个字符 */
+            if (source[i] != first) {
+                while (++i &lt;= max &#038;&#038; source[i] != first);
+            }
+
+            /* 找到第一个字符后，比较剩下的字符 */
+            if (i &lt;= max) {
+                int j = i + 1;
+                int end = j + targetCount - 1;
+                for (int k = targetOffset + 1; j &lt; end &#038;&#038; source[j] ==
+                         target[k]; j++, k++);
+
+                if (j == end) {
+                    /* 如果j能到end，那就说明找到整个字符串啦，返回偏移 */
+                    return i - sourceOffset;
+                }
+            }
+        }
+        return -1;
+    }
+</pre>
+<p>indexOf只要看它的查找方法，先找到第一个，然后再匹配剩下的。</p>
+<h2 id="public-boolean-equalsobject-anobject">public boolean equals(Object anObject)</h2>
+<pre escaped="true" lang="java">public boolean equals(Object anObject) {
+	if (this == anObject) {
+	    return true;
+	}
+	if (anObject instanceof String) {
+	    String anotherString = (String)anObject;
+	    int n = count;
+	    if (n == anotherString.count) {
+		char v1[] = value;
+		char v2[] = anotherString.value;
+		int i = offset;
+		int j = anotherString.offset;
+		while (n-- != 0) {
+		    if (v1[i++] != v2[j++])
+			return false;
+		}
+		return true;
+	    }
+	}
+	return false;
+    }</pre>
+<p>比较char~~</p>
+<h2 id="replace与replaceall">replace与replaceAll</h2>
+<pre escaped="true" lang="java">public String replace(CharSequence target, CharSequence replacement) {
+        return Pattern.compile(target.toString(), Pattern.LITERAL).matcher(
+            this).replaceAll(Matcher.quoteReplacement(replacement.toString()));
+    }
+
+    public String replaceAll(String regex, String replacement) {
+	return Pattern.compile(regex).matcher(this).replaceAll(replacement);
+    }</pre>
+<p>这两句真短啊。。用正则表达式来替换的。可以看出他们的区别。<br>
+replace只支持普通字符的替换哦，Pattern.LITERAL是指启用模式的字面值解析。Matcher.quoteReplacement(str)返回指定 String 的字面值替换 String。这个方法也就是替换\为\\(四个反斜杠)，$换为\$。这样，它就不能用正则表达式了，但是看到依然是replaceAll，替换所有。<br>
+replaceAll很简单的一个正则表达式使用~~<br>
+要注意的是源字符串替换后内容并没有发生变化。<br>
+举例如下: <a href="http://satellite.javaeye.com/blog/224820">来源</a><br>
+String src = new String(&ldquo;ab43a2c43d&rdquo;);<br>
+System.out.println(src.replace(&ldquo;3&rdquo;,&ldquo;f&rdquo;));=&gt;ab4f2c4fd.<br>
+System.out.println(src.replace(&lsquo;3&rsquo;,&lsquo;f&rsquo;));=&gt;ab4f2c4fd.<br>
+System.out.println(src.replaceAll(&quot;\d&rdquo;,&ldquo;f&rdquo;));=&gt;abffafcffd.<br>
+System.out.println(src.replaceAll(&ldquo;a&rdquo;,&ldquo;f&rdquo;));=&gt;fb43fc23d.<br>
+System.out.println(src.replaceFirst(&quot;\d,&ldquo;f&rdquo;));=&gt;abf32c43d<br>
+System.out.println(src.replaceFirst(&ldquo;4&rdquo;,&ldquo;h&rdquo;));=&gt;abh32c43d.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2011-03-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">JAVA</a>
+          <a href="/tags/jdk%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">JDK源码分析</a>
+          <a href="/tags/string/">String</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2011/03/vsto-get-mail-recipient.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">VSTO获取邮件联系人邮箱</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2011/03/this-application-has-requested-the-runtime-to-terminate-it-in-an-unusual-way.html">
+            <span class="next-text nav-default">安装.net framework 3.5错误</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

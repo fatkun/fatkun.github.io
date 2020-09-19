@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>信息管理实验4-向数据库插入数据 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。 2程序步骤：
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C4-%E5%90%91%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="信息管理实验4-向数据库插入数据" />
+<meta property="og:description" content="1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。 2程序步骤：
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C4-%E5%90%91%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE.html" />
+<meta property="article:published_time" content="2009-09-27T08:35:11+00:00" />
+<meta property="article:modified_time" content="2009-09-27T08:35:11+00:00" />
+<meta itemprop="name" content="信息管理实验4-向数据库插入数据">
+<meta itemprop="description" content="1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。 2程序步骤：
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片">
+<meta itemprop="datePublished" content="2009-09-27T08:35:11&#43;00:00" />
+<meta itemprop="dateModified" content="2009-09-27T08:35:11&#43;00:00" />
+<meta itemprop="wordCount" content="701">
+
+
+
+<meta itemprop="keywords" content="SqlCommand,信息管理实验," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="信息管理实验4-向数据库插入数据"/>
+<meta name="twitter:description" content="1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。 2程序步骤：
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">信息管理实验4-向数据库插入数据</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2009-09-27 </span>
+        <div class="post-category">
+            <a href="/categories/asp.net/"> ASP.NET </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。 2程序步骤：<br>
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)<br>
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片</p>
+<p>1实验目的：复习上次实验—把数据库中的数据显示出来的基础上，向数据库中插入数据，并且即使的把更新的数据显示在Gridview控件中。
+2程序步骤：
+0，用SqlServer创建一个名为“ProductDB”的数据库，新建表Product(ID,ProductID,ProductDes)<br>
+1，从工具栏拖入GridView，两个TextBox，一个Button ，具体看下面图片<br>
+2，注意此步骤，双击网页上Button按钮进入代码编辑（为了绑定事件Button1_Click）<br>
+3，把对应的代码复制
+实验的原始界面：<img onload="ResizeImage(this,620)" src="http://fatkun.com/upload/2009/9/截图1121883855.jpg" alt="" title="" />
+最后效果：<img onload="ResizeImage(this,620)" src="http://fatkun.com/upload/2009/9/200909270101006411.jpg" alt="" title="" />
+Default.aspx文件内容</p>
+<pre class="html">&lt;%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" %&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
+&lt;head runat="server"&gt;
+&lt;title&gt;无标题页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id="form1" runat="server"&gt;
+&lt;div&gt;
+&lt;asp:GridView ID="GridView1" runat="server"&gt;
+&lt;/asp:GridView&gt;
+&lt;/div&gt;
+商品ID：&lt;asp:TextBox ID="TextBox1" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+商品描述：&lt;asp:TextBox ID="TextBox2" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+&lt;asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>Default.aspx.cs文件内容</p>
+<pre class="c#">using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Data.SqlClient;
+public partial class _Default : System.Web.UI.Page
+{
+string constr = "server=.;database=ProductDB;Uid=sa;pwd=;";
+protected void Page_Load(object sender, EventArgs e)
+{
+if (!IsPostBack) {
+Bind();
+}
+}
+public void Bind() {
+string sqlstr = "select * from Product";
+SqlConnection sqlConn = new SqlConnection(constr);
+SqlDataAdapter sda = new SqlDataAdapter(sqlstr, sqlConn);
+DataSet ds = new DataSet();
+sda.Fill(ds);
+this.GridView1.DataSource = ds;
+this.GridView1.DataBind();
+sqlConn.Close();
+}
+protected void Button1_Click(object sender, EventArgs e)
+{
+string sqlStr = "insert into Product(ProductID,ProductDes) VALUES ('"+TextBox1.Text.Trim()+"','"+TextBox2.Text.Trim()+"')";
+SqlConnection sqlConn = new SqlConnection(constr);
+sqlConn.Open();
+SqlCommand sqlCmd = new SqlCommand(sqlStr, sqlConn);
+sqlCmd.ExecuteNonQuery();
+sqlConn.Close();
+this.Bind();
+}
+}</pre><blockquote>
+</blockquote>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2009-09-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/sqlcommand/">SqlCommand</a>
+          <a href="/tags/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C/">信息管理实验</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2009/09/%E6%AD%A3%E5%A6%B9%E7%9A%84%E5%B1%81%E9%A6%99%E7%94%A8%E5%B1%81%E5%BA%A6%E8%A8%88%E6%B8%AC%E6%B8%AC%E7%9C%8B%E6%89%8D%E7%9F%A5%E9%81%93.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">正妹的屁香？用「屁度計」測測看才知道</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2009/09/ubuntu-9-10%E5%85%A8%E6%96%B0%E5%9B%BE%E6%A0%87%E4%B8%BB%E9%A2%98%E5%92%8C%E5%A3%81%E7%BA%B8%E5%B7%B2%E7%BB%8F%E5%B0%B1%E7%BB%AA.html">
+            <span class="next-text nav-default">Ubuntu 9.10全新图标，主题和壁纸已经就绪</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

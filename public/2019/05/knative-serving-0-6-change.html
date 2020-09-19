@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>knative serving 0.6 版本变更 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2019/05/knative-serving-0-6-change.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="knative serving 0.6 版本变更" />
+<meta property="og:description" content="翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2019/05/knative-serving-0-6-change.html" />
+<meta property="article:published_time" content="2019-05-19T13:47:33+00:00" />
+<meta property="article:modified_time" content="2019-05-19T13:47:33+00:00" />
+<meta itemprop="name" content="knative serving 0.6 版本变更">
+<meta itemprop="description" content="翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes">
+<meta itemprop="datePublished" content="2019-05-19T13:47:33&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-19T13:47:33&#43;00:00" />
+<meta itemprop="wordCount" content="2741">
+
+
+
+<meta itemprop="keywords" content="knative," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="knative serving 0.6 版本变更"/>
+<meta name="twitter:description" content="翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">knative serving 0.6 版本变更</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-19 </span>
+        <div class="post-category">
+            <a href="/categories/docker/"> docker </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div class="header___O32EY">  <div class="title___3ntsK">    <p>      翻译了一下0.6的版本变更    </p>
+    <h1 id="article-title">      概要    </h1>  </div></div>
+<div class="content___2v1LS">  <div class="yuque-doc-content" data-df="lake">    <div class="lake-engine-view">      <h3 id="Nr256">        新API模型      </h3>
+      <p>        我们已经通过了knative serving “v1beta1” API模型<a href="https://docs.google.com/presentation/d/10wuLMFXyol731WKuO5x7lalWrH0A6YVHa4exIERQaQ8/edit#slide=id.p" target="_blank" rel="noopener noreferrer">提议</a>，这些改变会使得kubernetes用户更容易使用Serving资源，解锁了在knative Service中使用Route，并且可以自己指定Revision名称，开启了GitOps场景。我们争取在接下来几个发布中完成。      </p>
+      <p>        在这次发布中，我们移植新的API定义到v1alpha1 API，作为转换到v1beta1（又称lemonade）的第一步。以下不兼容的变更会在0.7+版本实施：      </p>
+      <ul>        <li>          Service和Configuration不再支持内嵌Build。        </li>
+        <li>          Service不支持 manual 模式。        </li>      </ul>
+      <p>        你可以通过knative/docs的<a href="https://github.com/knative/docs/blob/master/docs/serving/samples/README.md" target="_blank" rel="noopener noreferrer">例子</a>来了解新API接口，我们会继续支持大多数v1alpha1的接口直到我们停用它。      </p>
+      <h3 id="imY1F">        彻底改变缩容到零      </h3>
+      <p>        我们从根本上改变了缩容到零的机制，新的架构通过Serving资源模型较少的改动，获得职责上更好的分离，并且解决了一些长期存在的问题（一些在这次版本发布，一些将来发布）。看下面内容了解更多。      </p>
+      <h3 id="5EeUA">        <a href="https://github.com/knative/docs/blob/204c5b959a269d5c804ff18ec50bbbcefe5b63ca/docs/serving/using-auto-tls.md" target="_blank" rel="noopener noreferrer">自动证书</a>（alpha，可选）      </h3>
+      <p>        我们添加了自动证书集成！默认的实现基于 <a href="https://github.com/jetstack/cert-manager" target="_blank" rel="noopener noreferrer">cert-manager</a> 来提供证书（例如通过Let’s Encrypt），但和Istio插件化类似，你也可以替换cert-manager为其他证书提供系统。当前证书针对每个路由提供，但泛域名将在未来版本支持。这个功能依赖Istio 1.1，并且需要显式的开启。      </p>
+      <h3 id="7PdgO">        控制器解耦      </h3>
+      <p>        我们已经开始将Knative中的“可插拔”控制器拆分为它们自己的控制器进程，以便希望替换Knative子系统的人能够更容易地删除绑定的默认实现。例如，要安装Knative Serving但不包含Istio:      </p>
+      <div id="z7BA2" contenteditable="false" data-card-type="block" data-lake-card="codeblock" data-card-value="data:%7B%22mode%22%3A%22plain%22%2C%22code%22%3A%22kubectl%20apply%20-f%20serving.yaml%20%5C%5C%5Cn%20%20-l%20networking.knative.dev%2Fingress-provider!%3Distio%22%2C%22id%22%3A%22z7BA2%22%7D">        <div data-card-element="body">          <div data-card-element="center">            <div class="lake-codeblock lake-codeblock-plain">              <div class="lake-codeblock-content">                <div class="CodeMirror">                  <pre class="cm-s-default">kubectl apply -f serving.yaml \
+  -l networking.knative.dev/ingress-provider!=istio</pre>                </div>              </div>            </div>          </div>        </div>      </div>
+      <p>        注意，由于kubectl不能理解Istio对象的yaml（尽管他们已经被label选择器过滤掉了），我们会看到一些错误。可以安全的忽略找不到 &#8220;networking.istio.io/v1alpha3&#8221; 的 &#8220;Gateway&#8221; 资源。      </p>
+      <p>        你也可以用以下命令忽略基于cert-manager实现的自动证书（Auto-TLS）控制器：      </p>
+      <div id="hc2om" contenteditable="false" data-card-type="block" data-lake-card="codeblock" data-card-value="data:%7B%22mode%22%3A%22plain%22%2C%22code%22%3A%22kubectl%20apply%20-f%20serving.yaml%20%5C%5C%5Cn%20%20-l%20networking.knative.dev%2Fcertificate-provider!%3Dcert-manager%22%2C%22id%22%3A%22hc2om%22%7D">        <div data-card-element="body">          <div data-card-element="center">            <div class="lake-codeblock lake-codeblock-plain">              <div class="lake-codeblock-content">                <div class="CodeMirror">                  <pre class="cm-s-default">kubectl apply -f serving.yaml \
+  -l networking.knative.dev/certificate-provider!=cert-manager</pre>                </div>              </div>            </div>          </div>        </div>      </div>
+      <h2 id="gNVUb">        扩缩容      </h2>
+      <p>        把Knative PodAutoscaler（又称KPA） /scale 子资源移出来，变成一个PodScalable 通用类型（“duck type”）。这样可以利用informer缓存，并且扩展的字段可以让ServerlessService（又称SKS）利用PodSpec在未来版本优化。      </p>
+      <p>        （具体修改见<a href="https://github.com/knative/serving/pull/3889" target="_blank" rel="noopener noreferrer">#3889</a> ，题外话，之前每次调解都需要使用scale client连接API server读取/scale子资源，用不上缓存）      </p>
+      <p>        &nbsp;      </p>
+      <p>        我们现在确保在Revision缩容到零前，“activator”组件已经接管流量（又称正向切换[positive hand-off], <a href="https://github.com/knative/serving/issues/2949" target="_blank" rel="noopener noreferrer">#2949</a>）。这个改动开启了Revision能够管理激活。      </p>
+      <p>        (实现这个是为了解决缩容到0之前，要等待30秒，这个值是个经验值，主要是等待istio切换路由。但我们也不清楚30秒是否足够，还是说可以缩短。目前这个实现是在activator和queue proxy都加一个响应探测的接口，当需要缩容到零时，由pa发起请求探测检查确认是否路由到activator了。但目前的实现还不是完美的，由于istio有很多sidecar，更新路由需要时间，我们只能确定某个sidecar配置更新了)      </p>
+      <p>        &nbsp;      </p>
+      <p>        新的注解 <code>autoscaling.knative.dev/window</code>, <code>autoscaling.knative.dev/panicWindowPercentage</code>, and <code>autoscaling.knative.dev/panicThresholdPercentage</code> 允许用户自定义 KPA 类型的扩缩容敏感性。(<a href="https://github.com/knative/serving/pull/3103" target="_blank" rel="noopener noreferrer">#3103</a>)      </p>
+      <p>        （译者注：增加配置时间窗口、panic的一些参数）      </p>
+      <p>        添加activator的链路耗时（tracing）获取更详细的数据，并且可以持续的测量性能数据（<a href="https://github.com/knative/serving/pull/2726" target="_blank" rel="noopener noreferrer">#2726</a>）。这个解决了<a href="https://github.com/knative/serving/issues/1276" target="_blank" rel="noopener noreferrer">#1276</a> 并且允许我们去定位性能问题，例如冷启动。      </p>
+      <p>        缩短默认transports的空闲超时时间，解决了使用Istio 1.1 lean安装，缩容到零的问题(<a href="https://github.com/knative/serving/issues/3987" target="_blank" rel="noopener noreferrer">#3987</a>)。原因是当endpoints变更时，通过k8s的service没有断开连接。      </p>
+      <p>        解决一个阻止缩容到零的问题 (<a href="https://github.com/knative/serving/pull/3688" target="_blank" rel="noopener noreferrer">#3688</a>)，解决方法，把enable-scale-to-zero配置加入KPA调解计算中。如果minScaler注解没有设或者设为0，并且enable-scale-to-zero设为false，保留最少一个pod。      </p>
+      <p>        修复autoscaler重启时，做出轻率的决定（<a href="https://github.com/knative/serving/pull/3771" target="_blank" rel="noopener noreferrer">#3771</a>）（在没有指标时不扩缩容）。      </p>
+      <h2 id="XaWtj">        核心API      </h2>
+      <p>        我们已经批准了v1beta的API定义！如上所述，我们要开始在接下来的几个里程碑实现v1beta1.这次里程碑把v1beta1 API接口作为v1alpha1的子集。      </p>
+      <p>        我们改变了执行校验的方式，基于在支持的字段使用“fieldmask”。我们现在会给每个Kubernetes对象创建一个副本（仅限于我们需要的字段），并和原来的对象比较，这样确保我们在Kubernetes API发展中仔细考虑使用哪些资源字段(<a href="https://github.com/knative/serving/issues/3424" target="_blank" rel="noopener noreferrer">#3424</a>, <a href="https://github.com/knative/serving/pull/3779" target="_blank" rel="noopener noreferrer">#3779</a>)<strong>。</strong> 在这基础上，清理了内部API的校验 (<a href="https://github.com/knative/serving/issues/3789" target="_blank" rel="noopener noreferrer">#3789</a>, <a href="https://github.com/knative/serving/pull/3911" target="_blank" rel="noopener noreferrer">#3911</a>)。      </p>
+      <p>        status.domain已经过时，使用status.url 来替换 (<a href="https://github.com/knative/serving/pull/3970" target="_blank" rel="noopener noreferrer">#3970</a>) 。使用 <code>apis.URL</code> 类型作为URL status 字段，解决issue &#8220;无法获取服务 URL&#8221; (<a href="https://github.com/knative/serving/issues/1590" target="_blank" rel="noopener noreferrer">#1590</a>)。      </p>
+      <p>        添加可以通过configmap设置默认的cpu、内存request和limit值。并且删除了之前默认的CPU limit，这样可以回退到k8s的默认值，除了由operator特别指定的。(<a href="https://github.com/knative/serving/issues/3550" target="_blank" rel="noopener noreferrer">#3550</a>, <a href="https://github.com/knative/serving/pull/3912" target="_blank" rel="noopener noreferrer">#3912</a>)      </p>
+      <p>        去掉configurationMetadataGeneration label的使用 (<a href="https://github.com/knative/serving/pull/4012" target="_blank" rel="noopener noreferrer">#4012</a>) ，并完成了我们转向CRD 子资源的最后一个改动(<a href="https://github.com/knative/serving/issues/643" target="_blank" rel="noopener noreferrer">#643</a>)。      </p>
+      <h2 id="y2Y9b">        网络      </h2>
+      <p>        彻底改变了我们缩容到零的方式！这个开启了Revision管理自己启动的语义。需要缩容到零时实现了正向切换，并且增加了autoscaling控制器的同步周期，保持和其他控制器一致。      </p>
+      <p>        添加自动配置TLS证书。      </p>
+      <p>        停止发布Istio yaml文件。重新分发istio不是我们的本意，并且之前的版本暴露我们的改动-优化了Istio yamls。用户应该请教Istio或者厂商指定的文档来如何获得一个支持knative的Istio版本。      </p>
+      <p>        我们已经开始在Service或者Route的子路由中采取扁平命名方案。老的URL目前还可以使用，但新的URL会出现在 <code>status.traffic[*].url</code> 字段里。      </p>
+      <p>        支持安装Istio 1.1 (<a href="https://github.com/knative/serving/issues/3515" target="_blank" rel="noopener noreferrer">#3515</a>, <a href="https://github.com/knative/serving/pull/3353" target="_blank" rel="noopener noreferrer">#3353</a>)      </p>
+      <p>        解决在开启Istio mTLS时，readiness 探测的问题(<a href="https://github.com/knative/serving/pull/4017" target="_blank" rel="noopener noreferrer">#4017</a>)      </p>
+      <h2 id="yZHfT">        监控      </h2>
+      <p>        Activator也把请求日志记录下来(<a href="https://github.com/knative/serving/issues/3781" target="_blank" rel="noopener noreferrer">#3781</a>)      </p>
+      <h2 id="dLxaX">        测试和发布      </h2>
+      <ul>        <li>          label serving.knative.dev/release: devel需要有发布名字或者数字来替代devel，暴露TAG来填充        </li>
+        <li>          总是用istio的HEAD版本来做升级测试，解决在升级降级knative测试遇到的错误        </li>
+        <li>          添加额外一致性测试（9个新增的测试），改进现有的一致性测试和v1beta1的覆盖率。        </li>      </ul>
+      <h2>        参考内容      </h2>
+      <p>        内容翻译自knative/serving release node <a href="https://github.com/knative/serving/releases/tag/v0.6.0">https://github.com/knative/serving/releases/tag/v0.6.0</a>      </p>    </div>  </div></div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/knative/">knative</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/05/kvm%E8%99%9A%E6%8B%9F%E6%9C%BAvirsh%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">kvm虚拟机virsh常用命令</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/02/minikube%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%AF%B7%E6%B1%82%E9%9B%86%E7%BE%A4ip.html">
+            <span class="next-text nav-default">minikube在宿主机请求集群IP</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

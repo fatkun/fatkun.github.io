@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Mar 2014 07:23:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql 排序规则 COLLATE 修改</title>
+      <link>http://fatkun.github.io/2014/03/mysql-alter-collate.html</link>
+      <pubDate>Mon, 24 Mar 2014 07:23:59 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/03/mysql-alter-collate.html</guid>
+      <description>使用以下语句转换。 alter table &amp;lt;some_table&amp;gt; convert to character set utf8 collate utf8_unicode_ci; 来源：http://stackoverflow.com/questions/742205/mysql-</description>
+    </item>
+    
+    <item>
+      <title>mysql修改表、字段、库的字符集</title>
+      <link>http://fatkun.github.io/2011/05/mysql-alter-charset.html</link>
+      <pubDate>Mon, 02 May 2011 08:20:27 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/mysql-alter-charset.html</guid>
+      <description>修改数据库字符集： ALTER DATABASE db_name DEFAULT CHARACTER SET character_name [COLLATE ...]; 把表默认的字符集和所有字符列（CHAR,VARCHAR,TEXT）改为新的字符集： ALTER TABLE tbl_name CONVERT TO CHARACTER SET character_name [COLLATE ...] 如</description>
+    </item>
+    
+    <item>
+      <title>数据库并发问题</title>
+      <link>http://fatkun.github.io/2010/12/database-transaction-concurrency-problem.html</link>
+      <pubDate>Sun, 26 Dec 2010 06:40:15 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/database-transaction-concurrency-problem.html</guid>
+      <description>以下内容为在数据库并发中出现的各种问题。 脏读（dirty read） A事务读到B事务刚修改的值，但是B事务撤销了，也A事务读到的值就是假的了。</description>
+    </item>
+    
+    <item>
+      <title>hibernate事务管理</title>
+      <link>http://fatkun.github.io/2010/12/hibernate-transaction.html</link>
+      <pubDate>Sat, 25 Dec 2010 10:16:03 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/12/hibernate-transaction.html</guid>
+      <description>1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。</description>
+    </item>
+    
+    <item>
+      <title>SQL的连接（JOIN，左连接，右连接，全连接，内连接）</title>
+      <link>http://fatkun.github.io/2010/11/sql-join.html</link>
+      <pubDate>Tue, 23 Nov 2010 06:33:25 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/sql-join.html</guid>
+      <description>下图中，有两个表，T1,T2 自然连接时的语句是 SELECT * FROM T1 JOIN T2，把表1,2的值全显示出来 等值连接（内连接），按照某个条件，只返回符合条件的值 左</description>
+    </item>
+    
+    <item>
+      <title>数据库存储过程的优缺点</title>
+      <link>http://fatkun.github.io/2010/11/database-procedure.html</link>
+      <pubDate>Mon, 22 Nov 2010 05:37:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/database-procedure.html</guid>
+      <description>优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随</description>
+    </item>
+    
+    <item>
+      <title>数据库UNION和UNION ALL比较</title>
+      <link>http://fatkun.github.io/2010/11/union-and-union-all.html</link>
+      <pubDate>Mon, 22 Nov 2010 05:22:08 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/union-and-union-all.html</guid>
+      <description>UNION能够把结果集合并 select * from A union select * from B 如果能确定没有重复行，建议使用UNION ALL，不用排序。 order by子句必须写在最后一个结果集里，并</description>
+    </item>
+    
+    <item>
+      <title>如何在SQL中先排序后分组</title>
+      <link>http://fatkun.github.io/2010/07/group-by-and-order-by.html</link>
+      <pubDate>Sat, 03 Jul 2010 13:50:44 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/07/group-by-and-order-by.html</guid>
+      <description>标题说的有点奇怪，换句话说是让order by比group by先执行。还不明白对吧？ 举个例子：实现场景，要实现QQ空间的动态消息，首先要按最新</description>
+    </item>
+    
+    <item>
+      <title>Mysql指定编码创建数据库</title>
+      <link>http://fatkun.github.io/2010/06/mysql-charset.html</link>
+      <pubDate>Mon, 21 Jun 2010 06:42:23 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/06/mysql-charset.html</guid>
+      <description>mysql 创建数据库时指定编码很重要，一般都指定为统一的UTF-8编码，如果不指定编码，默认编码为lan1，插入中文时是会提示错误的，类似”\x22</description>
+    </item>
+    
+    <item>
+      <title>MSSQL多个外键对应同一个表时查询外键的内容</title>
+      <link>http://fatkun.github.io/2010/05/mssql-foreign-key.html</link>
+      <pubDate>Sat, 29 May 2010 04:11:05 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/05/mssql-foreign-key.html</guid>
+      <description>当有一个表同时有多个外键同时指向某一个表时，需要通过外键来查询到相应的信息。 举个例子：这是一个订车票的 城市表 CityID CityName 1 广州 2 湛江 3 江门 4 肇庆 5 惠</description>
+    </item>
+    
+    <item>
+      <title>MSSQL触发器基础（在触发器遍历所有数据）</title>
+      <link>http://fatkun.github.io/2009/11/mssql%E8%A7%A6%E5%8F%91%E5%99%A8%E5%9F%BA%E7%A1%80%E5%9C%A8%E8%A7%A6%E5%8F%91%E5%99%A8%E9%81%8D%E5%8E%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE.html</link>
+      <pubDate>Mon, 23 Nov 2009 21:14:07 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/11/mssql%E8%A7%A6%E5%8F%91%E5%99%A8%E5%9F%BA%E7%A1%80%E5%9C%A8%E8%A7%A6%E5%8F%91%E5%99%A8%E9%81%8D%E5%8E%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE.html</guid>
+      <description>最近很懒，也有忙的原因一些东西懒得发上来了·还是要写上来才可以，不然学到的东西以后我就忘记了 以下只保证在MSSQL下顺利执行可能在MySql</description>
+    </item>
+    
+    <item>
+      <title>MSSQL存储过程的用法：基础</title>
+      <link>http://fatkun.github.io/2009/09/mssql-store-procedure.html</link>
+      <pubDate>Wed, 16 Sep 2009 08:23:59 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/09/mssql-store-procedure.html</guid>
+      <description>创建存储过程的基本格式： Create procedure update_createtime @tbID int as update t_member set createTime = GetDate() where tbID = @tbID go 添加返回值时就可以这样做 --Developer:zhihui Zhou --Date：New（）as 2008-10-18 --Email：zhou</description>
+    </item>
+    
+  </channel>
+</rss>

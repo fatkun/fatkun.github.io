@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>代码分析 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 代码分析 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 Aug 2014 06:07:21 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hive简单查询的过程</title>
+      <link>http://fatkun.github.io/2014/08/hive-simple-query.html</link>
+      <pubDate>Thu, 21 Aug 2014 06:07:21 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/08/hive-simple-query.html</guid>
+      <description>查询以下语句的过程 select fr from xxxxxx where substr(fr, 1, 1) = &#39;a&#39;; Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。 ExecMapp</description>
+    </item>
+    
+  </channel>
+</rss>

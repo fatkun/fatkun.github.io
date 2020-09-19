@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/" />
+  <link href="http://fatkun.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Fatkun&#39;s Blog" />
+  <link href="http://fatkun.github.io/index.xml" rel="feed" type="application/rss+xml" title="Fatkun&#39;s Blog" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Fatkun&#39;s Blog" />
+<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://fatkun.github.io/" />
+<meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
+<meta itemprop="name" content="Fatkun&#39;s Blog">
+<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fatkun&#39;s Blog"/>
+<meta name="twitter:description" content="Hugo theme even example site."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/10/hive-10815-%E9%9A%8F%E6%9C%BA%E9%80%89%E6%8B%A9hivemetastoreclient.html">HIVE-10815 随机选择HiveMetaStoreClient</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-10-22 </span>
+      <div class="post-category">
+          <a href="/categories/hive/"> hive </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      https://issues.apache.org/jira/browse/HIVE-10815 目前cdh5.4.0版本的hive第一次连接的时候，固定是使用第一个，只有连接失败后，才随机选择。 HiveMetaStoreClient.java // user wants file store based configuration if (conf.getVar(HiveConf.ConfVars.METASTOREURIS) != null) { String metastoreUrisString[] = conf.getVar( HiveConf.ConfVars.METASTOREURIS).split(","); metastoreUris =
+    </div>
+    <div class="read-more">
+      <a href="/2016/10/hive-10815-%E9%9A%8F%E6%9C%BA%E9%80%89%E6%8B%A9hivemetastoreclient.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html">impala断开连接后释放session</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-10-17 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      代码在这里 https://github.com/cloudera/Impala/blob/cdh5-2.2.0_5.4.0/be/src/service/impala-server.cc 如果不想断开清除session,直接return void ImpalaServer::ConnectionEnd( const ThriftServer::ConnectionContext& connection_context) { return; unique_lock&lt;mutex&gt; l(connection_to_sessions_map_lock_); ConnectionToSessionMap::iterator it = connection_to_sessions_map_.find(connection_context.connection_id); // Not every connection must have an associated session if (it == connection_to_sessions_map_.end()) return; LOG(INFO) &lt;&lt; "Connection from client " &lt;&lt; connection_context.network_address &lt;&lt; " closed, closing "
+    </div>
+    <div class="read-more">
+      <a href="/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/09/hive-10956-hs2-leaks-hms-connections.html">HIVE-10956 HS2 leaks HMS connections</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-09-08 </span>
+      <div class="post-category">
+          <a href="/categories/hive/"> hive </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      https://issues.apache.org/jira/browse/HIVE-10956 HMS链接泄露 https://issues.apache.org/jira/browse/HIVE-13002 HIVE-11934 Transaction lock retry logic results in infinite loop
+    </div>
+    <div class="read-more">
+      <a href="/2016/09/hive-10956-hs2-leaks-hms-connections.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/08/powermock.html">使用powermock</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-17 </span>
+      <div class="post-category">
+          <a href="/categories/j2ee/"> J2EE </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在pom.xml加入 &lt;dependency&gt; &lt;groupId&gt;org.easymock&lt;/groupId&gt; &lt;artifactId&gt;easymock&lt;/artifactId&gt; &lt;version&gt;3.3.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-module-junit4&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-api-easymock&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 如果报错，有可能项目中包含有低版本的javassist java.lang.NoSuchMethodError: javassist.CtMethod.hasAnnotation(Ljava/lang/Class;)Z 尝试加入新版本的javas
+    </div>
+    <div class="read-more">
+      <a href="/2016/08/powermock.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/08/get-user-group-mapping.html">获取linux用户和组映射脚本</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-08 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/linux/"> Linux </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      记录一下 python代码 #!/usr/bin/env python # -*- coding: utf-8 -*- import re import os import sys p = os.popen('id %s' % sys.argv[1]) s = p.read() # s = 'uid=486(yarn) gid=484(yarn) groups=484(yarn),493(hadoop),513(supergroup)' user = re.findall("uid=\d+\((.*?)\)", s)[0] s = s.split("groups=")[1] match = re.findall("\((.*?)\)", s) groups = [] for group in match: groups.append(group) print user + "=" + ",".join(sorted(groups)) shell
+    </div>
+    <div class="read-more">
+      <a href="/2016/08/get-user-group-mapping.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    <a class="prev" href="/page/11/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    <a class="next" href="/page/13/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

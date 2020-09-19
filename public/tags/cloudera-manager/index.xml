@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloudera manager on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/cloudera-manager/</link>
+    <description>Recent content in cloudera manager on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 May 2015 03:19:57 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/cloudera-manager/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cloudera manager添加hive时报错找不到jdbc driver</title>
+      <link>http://fatkun.github.io/2015/05/cloudera-manage-jdbc-driver-cannot-be-found.html</link>
+      <pubDate>Thu, 07 May 2015 03:19:57 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2015/05/cloudera-manage-jdbc-driver-cannot-be-found.html</guid>
+      <description>cm 4.7 报错 JDBC driver cannot be found. Unable to find the JDBC database jar on host 解决方法 把包放入这个目录，注意文件名要保持一致 /usr/share/java/mysql-connector-java.jar 来源 https://groups.google.com/a/cloudera.org/forum/#!topic/cdh-user/OpXSfmzsnuo</description>
+    </item>
+    
+  </channel>
+</rss>

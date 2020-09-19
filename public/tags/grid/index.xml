@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>grid on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/grid/</link>
+    <description>Recent content in grid on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 30 Oct 2011 06:19:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/grid/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Extjs Grid扩展一个链接按钮列</title>
+      <link>http://fatkun.github.io/2011/10/extjs-grid-link-column.html</link>
+      <pubDate>Sun, 30 Oct 2011 06:19:29 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/10/extjs-grid-link-column.html</guid>
+      <description>问题 想要在Extjs grid每一行添加一个链接或者添加一个按钮，怎么办？ 解决方法 实现方法一是用renderer，但是这个链接的方法必须调用全</description>
+    </item>
+    
+  </channel>
+</rss>

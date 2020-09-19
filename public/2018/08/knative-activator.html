@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>knative分析 – activator - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="当scale到0时，是怎样唤醒业务容器的？ activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2018/08/knative-activator.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="knative分析 – activator" />
+<meta property="og:description" content="当scale到0时，是怎样唤醒业务容器的？ activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2018/08/knative-activator.html" />
+<meta property="article:published_time" content="2018-08-06T12:04:51+00:00" />
+<meta property="article:modified_time" content="2018-08-06T12:04:51+00:00" />
+<meta itemprop="name" content="knative分析 – activator">
+<meta itemprop="description" content="当scale到0时，是怎样唤醒业务容器的？ activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起">
+<meta itemprop="datePublished" content="2018-08-06T12:04:51&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-06T12:04:51&#43;00:00" />
+<meta itemprop="wordCount" content="898">
+
+
+
+<meta itemprop="keywords" content="k8s,knative," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="knative分析 – activator"/>
+<meta name="twitter:description" content="当scale到0时，是怎样唤醒业务容器的？ activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">knative分析 – activator</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-06 </span>
+        <div class="post-category">
+            <a href="/categories/docker/"> docker </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="qxxgwm" data-type="h">  当scale到0时，是怎样唤醒业务容器的？</h1>
+<p data-type="p">  activator就是负责做这个事情的组件。activator做两件事情，一个是负责把pod启动起来，另外一个是把启动中的请求转发给pod。</p>
+<p data-type="p">  <p data-type="p">    请求是怎么转发到activator的？  </p>
+  <p data-type="p">    当业务pod scale到0的时候，会更新istio VirtualServer，把流量按权重分配给activator。在pod启动ready之后，流量权重又直接指向业务pod，所有revision都ready的情况下，activator不会分配到流量。  </p>
+  <p data-type="p">    <p data-type="p">      唤醒pod是通过更新 revision.Spec.ServingState = v1alpha1.RevisionServingStateActive 状态实现的，controller会根据状态，创建出业务pod和autoscaler。    </p>
+    <p data-type="p">      这里要解决的一个问题是在pod没启动之前，可能会有很多个请求，这里做了限制每个revision只会触发一次。    </p>
+    <p data-type="p">      还有个问题是在pod没ready前，把请求阻塞。    </p>
+    <p data-type="p">      activator本身是个HTTP服务，在POD启动的期间，当pod ready之后，会把请求转发到到pod里（通过FQDN域名）    </p>
+    <div data-type="p">    </div>
+    <div data-type="p">    </div>
+    <div data-type="p">    </div>
+    <h1 id="1b60dl" data-type="h">      流量转发    </h1>
+    <div data-type="p">    </div>
+    <div data-type="p">      以下内容主要来自：<a class="bi-link" href="https://github.com/knative/serving/blob/master/pkg/activator/README.md" target="_blank" rel="noopener">https://github.com/knative/serving/blob/master/pkg/activator/README.md</a>    </div>
+    <div data-type="p">    </div>
+    <div data-type="p">      这个图感觉没更新，目前没有看到有用ingress来路由，而是由istio ingress gateway来路由。    </div>
+    <div data-type="p">    </div>
+    <div data-type="p">      <div data-type="image" data-display="block" data-align="left" data-src="https://cdn.nlark.com/lark/0/2018/png/2023/1533027397839-996997db-e966-4428-a41a-e9dbe232f825.png" data-width="782">        <img src="https://cdn.nlark.com/lark/0/2018/png/2023/1533027397839-996997db-e966-4428-a41a-e9dbe232f825.png" width="782" />      </div>    </div>
+    <div data-type="p">    </div>
+    <h2 id="q03mkb" data-type="h">      Istio Route Rules Configurations    </h2>
+    <div data-type="p">      <span data-type="ranges">Knative Serving 使用istio route rules来控制流量（根据Route对象指定的比例分配），如果某个revision因为不活跃变为Reserve状态，会把部分流量转向activator。</span>    </div>
+    <div data-type="p">      下面分三种情况    </div>
+    <h3 id="ifipty" data-type="h">      All revisions are active    </h3>
+    <div data-type="p">      <span data-type="ranges">如果所有revision都是活跃的，activator 不会收到任何流量。</span>    </div>
+    <div data-type="p">    </div>
+    <div data-type="p">      <div data-type="image" data-display="block" data-align="left" data-src="https://cdn.nlark.com/lark/0/2018/png/2023/1533030224312-c79a3bec-15a4-4d04-bceb-29fa13019e95.png" data-width="528">        <img src="https://cdn.nlark.com/lark/0/2018/png/2023/1533030224312-c79a3bec-15a4-4d04-bceb-29fa13019e95.png" width="528" />      </div>    </div>
+    <h3 id="18kegg" data-type="h">      One revision is in Reserve state    </h3>
+    <div data-type="p">      如果一个revision是Reserve状态，则会把原本给revision b的流量转发给activator，activator收到请求后，会启动revision b，revision b ready后会把流量导入revision b。后续的流量直接到revision b。    </div>
+    <div data-type="p">    </div>
+    <div data-type="p">      <div data-type="image" data-display="block" data-align="left" data-src="https://cdn.nlark.com/lark/0/2018/png/2023/1533030284503-bf5220e4-1ce4-47ab-8c81-5bac26f9f3d8.png" data-width="697">        <img src="https://cdn.nlark.com/lark/0/2018/png/2023/1533030284503-bf5220e4-1ce4-47ab-8c81-5bac26f9f3d8.png" width="697" />      </div>    </div>
+    <div data-type="p">    </div>
+    <h3 id="lqnnql" data-type="h">      Multiple revisions are in Reserve state    </h3>
+    <div data-type="p">      如果有两个或两个以上revision是Reserve状态，所有到reserve状态的流量转向activator    </div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-08-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/k8s/">k8s</a>
+          <a href="/tags/knative/">knative</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2018/08/knative-controller.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">knative分析 – controller</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2018/08/knative-autoscaler.html">
+            <span class="next-text nav-default">knative分析 – autoscaler</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

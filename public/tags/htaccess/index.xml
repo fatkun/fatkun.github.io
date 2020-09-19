@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>htaccess on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/htaccess/</link>
+    <description>Recent content in htaccess on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 06 Jul 2010 04:35:17 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/htaccess/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>000webhost开启gzip压缩(使用htaccess开启gzip)</title>
+      <link>http://fatkun.github.io/2010/07/000webhost-htaccess-gzip.html</link>
+      <pubDate>Tue, 06 Jul 2010 04:35:17 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/07/000webhost-htaccess-gzip.html</guid>
+      <description>对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题</description>
+    </item>
+    
+    <item>
+      <title>利用.htaccess解决000webhost免费主机Google Adsense验证问题(adsense.txt)</title>
+      <link>http://fatkun.github.io/2010/05/000webhost-and-google-adsense-adsense-txt.html</link>
+      <pubDate>Fri, 28 May 2010 02:41:27 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/05/000webhost-and-google-adsense-adsense-txt.html</guid>
+      <description>最近在申请Google Adsense，提示要验证域名的所有者，所以上网找到了这个方法。我使用的是wordpress，用super-cache</description>
+    </item>
+    
+  </channel>
+</rss>

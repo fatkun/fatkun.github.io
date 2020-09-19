@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux shell on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/linux-shell/</link>
+    <description>Recent content in linux shell on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 25 Mar 2012 13:31:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/linux-shell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记录一些常用的linux shell命令</title>
+      <link>http://fatkun.github.io/2012/03/linux-shell.html</link>
+      <pubDate>Sun, 25 Mar 2012 13:31:35 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/03/linux-shell.html</guid>
+      <description>日期 取前一天 date -d ‘1 days ago’ +%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n</description>
+    </item>
+    
+  </channel>
+</rss>

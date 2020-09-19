@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>嵌套作用域 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <description>Recent content in 嵌套作用域 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 27 Dec 2012 16:28:02 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python嵌套作用域问题</title>
+      <link>http://fatkun.github.io/2012/12/python-nested-scopes.html</link>
+      <pubDate>Thu, 27 Dec 2012 16:28:02 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/12/python-nested-scopes.html</guid>
+      <description>之前都不太理解这个。。。 在Python中，使用一个变量之前不必预先声明它，但是在真正使用它之前，它必须已经绑定到某个对象；而名字绑定将在当前</description>
+    </item>
+    
+  </channel>
+</rss>

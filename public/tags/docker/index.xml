@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/docker/</link>
+    <description>Recent content in docker on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 28 Jan 2018 03:01:28 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker pull 访问registry过程</title>
+      <link>http://fatkun.github.io/2018/01/docker-pull.html</link>
+      <pubDate>Sun, 28 Jan 2018 03:01:28 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2018/01/docker-pull.html</guid>
+      <description>执行 docker pull daocloud.io/busybox 之后 步骤 请求 返回 1 GET https://daocloud.io/v2/ HTTP/1.1 HTTP/1.1 401 Unauthorized Server: nginx/1.11.13 Date: Sun, 28 Jan 2018 02:35:17 GMT Content-Type: application/json; charset=utf-8 Content-Length: 87 Connection: close Docker-Distribution-Api-Version: registry/2.0 Www-Authenticate: Bearer realm=&amp;#8221;https://daohub-auth.daocloud.io/auth&amp;#8221;,service=&amp;#8221;daocloud.io&amp;#8221; X-Content-Type-Options: nosniff{&amp;#8220;errors&amp;#8221;:[{&amp;#8220;code&amp;#8221;:&amp;#8221;UNAUTHORIZED&amp;#8221;,&amp;#8221;message&amp;#8221;:&amp;#8221;authentication required&amp;#8221;,&amp;#8221;detail&amp;#8221;:null}]} 2 GET https://daohub-auth.daocloud.io/auth?scope=repository%3Abusybox%3Apull&amp;service=daocloud.io HTTP/1.1 HTTP/1.1 200 OK Server: nginx/1.11.6 Date: Sun, 28 Jan 2018 02:35:17 GMT Content-Type: application/json Content-Length: 570 Connection: close X-Qequest-Time: 0.0</description>
+    </item>
+    
+    <item>
+      <title>在win10启动minikube</title>
+      <link>http://fatkun.github.io/2018/01/%E5%9C%A8win10%E5%90%AF%E5%8A%A8minikube.html</link>
+      <pubDate>Sat, 13 Jan 2018 13:18:34 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2018/01/%E5%9C%A8win10%E5%90%AF%E5%8A%A8minikube.html</guid>
+      <description>Setting up Kubernetes on Windows10 Laptop with Minikube 如果建虚拟交换机提示权限失败，使用管理员权限开启hyper-v。如果提示一般性拒绝，试一下把其他的虚拟网卡都卸载掉。 一定要指</description>
+    </item>
+    
+    <item>
+      <title>在docker里无法用jinfo</title>
+      <link>http://fatkun.github.io/2017/12/%E5%9C%A8docker%E9%87%8C%E6%97%A0%E6%B3%95%E7%94%A8jinfo.html</link>
+      <pubDate>Sun, 31 Dec 2017 13:23:10 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/12/%E5%9C%A8docker%E9%87%8C%E6%97%A0%E6%B3%95%E7%94%A8jinfo.html</guid>
+      <description>在命令里加参数 docker run --cap-add=SYS_PTRACE alpine sh -c &#39;apk add -U strace &amp;&amp; strace echo&#39; 或者在compose里某个service里面加 cap_add: - SYS_PTRACE JVM in Docker and PTRACE_ATTACH</description>
+    </item>
+    
+    <item>
+      <title>使用docker部署hadoop hdfs</title>
+      <link>http://fatkun.github.io/2017/12/deploy-hadoop-hdfs-use-docker.html</link>
+      <pubDate>Sun, 24 Dec 2017 10:15:12 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/12/deploy-hadoop-hdfs-use-docker.html</guid>
+      <description>先创建一个网络 docker network create hadoop 把本机新建一个目录hadoop，以下xml保存为docker-compose.yml version: &#34;3&#34; services: namenode: image: uhopper/hadoop-namenode hostname: namenode1 container_name: namenode1 # 要和netw</description>
+    </item>
+    
+    <item>
+      <title>docker常用命令</title>
+      <link>http://fatkun.github.io/2017/12/docker-command.html</link>
+      <pubDate>Sun, 24 Dec 2017 07:50:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/12/docker-command.html</guid>
+      <description># 指定子网 docker network create --subnet=172.18.0.0/16 hadoop # attach进container里面，i参数表示交互，t参数表示tty docker exec -i -t &amp;lt;CONTAINER_ID&amp;gt; bash</description>
+    </item>
+    
+  </channel>
+</rss>

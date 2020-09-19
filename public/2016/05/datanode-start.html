@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>DataNode启动流程源码分析 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2016/05/datanode-start.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="DataNode启动流程源码分析" />
+<meta property="og:description" content="背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2016/05/datanode-start.html" />
+<meta property="article:published_time" content="2016-05-02T09:28:42+00:00" />
+<meta property="article:modified_time" content="2016-05-02T09:28:42+00:00" />
+<meta itemprop="name" content="DataNode启动流程源码分析">
+<meta itemprop="description" content="背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测">
+<meta itemprop="datePublished" content="2016-05-02T09:28:42&#43;00:00" />
+<meta itemprop="dateModified" content="2016-05-02T09:28:42&#43;00:00" />
+<meta itemprop="wordCount" content="3644">
+
+
+
+<meta itemprop="keywords" content="datanode,hadoop,hdfs," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DataNode启动流程源码分析"/>
+<meta name="twitter:description" content="背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">DataNode启动流程源码分析</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-05-02 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#源码分析">源码分析</a></li>
+        <li><a href="#结论">结论</a></li>
+        <li><a href="#其他">其他</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="背景">背景</h2>
+<p>最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测DataNode是否已经准备好了。<br>
+本文分析的源码版本是hadoop cdh5.4.0</p>
+<h2 id="源码分析">源码分析</h2>
+<p>从Datanode.java main方法开始</p>
+<pre lang="java" escaped="true">public static void main(String args[]) {
+    if (DFSUtil.parseHelpArgument(args, DataNode.USAGE, System.out, true)) {
+      System.exit(0);
+    }
+
+    secureMain(args, null);
+  }</pre>
+<p>进入secureMain方法，这里调用了createDataNode方法</p>
+<pre lang="java" escaped="true">public static DataNode createDataNode(String args[], Configuration conf,
+      SecureResources resources) throws IOException {
+    // 实例化datanode
+    DataNode dn = instantiateDataNode(args, conf, resources);
+    if (dn != null) {
+      // 启动BPOfferService、dataXceiverServer、ipcServer等
+      dn.runDatanodeDaemon();
+    }
+    return dn;
+  }</pre>
+<pre lang="java" escaped="true">public static DataNode instantiateDataNode(String args [], Configuration conf,
+      SecureResources resources) throws IOException {
+    if (conf == null)
+      conf = new HdfsConfiguration();
+    
+    if (args != null) {
+      // parse generic hadoop options
+      GenericOptionsParser hParser = new GenericOptionsParser(conf, args);
+      args = hParser.getRemainingArgs();
+    }
+    
+    if (!parseArguments(args, conf)) {
+      printUsage(System.err);
+      return null;
+    }
+    // 获取实际的存储路径（根据配置dfs.datanode.data.dir）
+    Collection&lt;StorageLocation&gt; dataLocations = getStorageLocations(conf);
+    UserGroupInformation.setConfiguration(conf);
+    SecurityUtil.login(conf, DFS_DATANODE_KEYTAB_FILE_KEY,
+        DFS_DATANODE_KERBEROS_PRINCIPAL_KEY);
+    return makeInstance(dataLocations, conf, resources);
+  }</pre>
+<pre lang="java" escaped="true">static DataNode makeInstance(Collection&lt;StorageLocation&gt; dataDirs,
+      Configuration conf, SecureResources resources) throws IOException {
+    LocalFileSystem localFS = FileSystem.getLocal(conf);
+    FsPermission permission = new FsPermission(
+        conf.get(DFS_DATANODE_DATA_DIR_PERMISSION_KEY,
+                 DFS_DATANODE_DATA_DIR_PERMISSION_DEFAULT));
+    // DataNode磁盘检查类，检查目录权限以及是否能够创建目录
+    DataNodeDiskChecker dataNodeDiskChecker =
+        new DataNodeDiskChecker(permission);
+    // 找出能够正常读写的路径
+    List&lt;StorageLocation&gt; locations =
+        checkStorageLocations(dataDirs, localFS, dataNodeDiskChecker);
+    DefaultMetricsSystem.initialize("DataNode");
+
+    assert locations.size() &gt; 0 : "number of data directories should be &gt; 0";
+    return new DataNode(conf, locations, resources);
+  }</pre>
+<p>进入DataNode构造方法，主要看startDataNode(conf, dataDirs, resources)方法</p>
+<pre lang="java" escaped="true">void startDataNode(Configuration conf, 
+                     List&lt;StorageLocation&gt; dataDirs,
+                     SecureResources resources
+                     ) throws IOException {
+
+    // settings global for all BPs in the Data Node
+    this.secureResources = resources;
+    synchronized (this) {
+      this.dataDirs = dataDirs;
+    }
+    this.conf = conf;
+    this.dnConf = new DNConf(conf);
+    checkSecureConfig(dnConf, conf, resources);
+
+    this.spanReceiverHost = SpanReceiverHost.getInstance(conf);
+
+    if (dnConf.maxLockedMemory &gt; 0) {
+      if (!NativeIO.POSIX.getCacheManipulator().verifyCanMlock()) {
+        throw new RuntimeException(String.format(
+            "Cannot start datanode because the configured max locked memory" +
+            " size (%s) is greater than zero and native code is not available.",
+            DFS_DATANODE_MAX_LOCKED_MEMORY_KEY));
+      }
+      if (Path.WINDOWS) {
+        NativeIO.Windows.extendWorkingSetSize(dnConf.maxLockedMemory);
+      } else {
+        long ulimit = NativeIO.POSIX.getCacheManipulator().getMemlockLimit();
+        if (dnConf.maxLockedMemory &gt; ulimit) {
+          throw new RuntimeException(String.format(
+            "Cannot start datanode because the configured max locked memory" +
+            " size (%s) of %d bytes is more than the datanode's available" +
+            " RLIMIT_MEMLOCK ulimit of %d bytes.",
+            DFS_DATANODE_MAX_LOCKED_MEMORY_KEY,
+            dnConf.maxLockedMemory,
+            ulimit));
+        }
+      }
+    }
+    LOG.info("Starting DataNode with maxLockedMemory = " +
+        dnConf.maxLockedMemory);
+
+    storage = new DataStorage();
+    
+    // global DN settings
+    registerMXBean();
+    // 初始化xceiverServer一些对象
+    initDataXceiver(conf);
+    // 启动http web hdfs
+    startInfoServer(conf);
+    pauseMonitor = new JvmPauseMonitor(conf);
+    pauseMonitor.start();
+  
+    // BlockPoolTokenSecretManager is required to create ipc server.
+    this.blockPoolTokenSecretManager = new BlockPoolTokenSecretManager();
+
+    // Login is done by now. Set the DN user name.
+    dnUserName = UserGroupInformation.getCurrentUser().getShortUserName();
+    LOG.info("dnUserName = " + dnUserName);
+    LOG.info("supergroup = " + supergroup);
+    // 初始化ipc服务
+    initIpcServer(conf);
+
+    metrics = DataNodeMetrics.create(conf, getDisplayName());
+    metrics.getJvmMetrics().setPauseMonitor(pauseMonitor);
+    
+    // 重要，构造BlockPoolManager
+    blockPoolManager = new BlockPoolManager(this);
+    blockPoolManager.refreshNamenodes(conf);
+
+    // Create the ReadaheadPool from the DataNode context so we can
+    // exit without having to explicitly shutdown its thread pool.
+    readaheadPool = ReadaheadPool.getInstance();
+    saslClient = new SaslDataTransferClient(dnConf.conf, 
+        dnConf.saslPropsResolver, dnConf.trustedChannelResolver);
+    saslServer = new SaslDataTransferServer(dnConf, blockPoolTokenSecretManager);
+  }</pre>
+<p>在blockPoolManager.refreshNamenodes里面调用了doRefreshNamenodes()方法</p>
+<pre lang="java" escaped="true">private void doRefreshNamenodes(
+      Map&lt;String, Map&lt;String, InetSocketAddress&gt;&gt; addrMap) throws IOException {
+    assert Thread.holdsLock(refreshNamenodesLock);
+
+    Set&lt;String&gt; toRefresh = Sets.newLinkedHashSet();
+    Set&lt;String&gt; toAdd = Sets.newLinkedHashSet();
+    Set&lt;String&gt; toRemove;
+    
+    synchronized (this) {
+      // Step 1. For each of the new nameservices, figure out whether
+      // it's an update of the set of NNs for an existing NS,
+      // or an entirely new nameservice.
+      for (String nameserviceId : addrMap.keySet()) {
+        if (bpByNameserviceId.containsKey(nameserviceId)) {
+          toRefresh.add(nameserviceId);
+        } else {
+          toAdd.add(nameserviceId);
+        }
+      }
+      
+      // Step 2. Any nameservices we currently have but are no longer present
+      // need to be removed.
+      toRemove = Sets.newHashSet(Sets.difference(
+          bpByNameserviceId.keySet(), addrMap.keySet()));
+      
+      assert toRefresh.size() + toAdd.size() ==
+        addrMap.size() :
+          "toAdd: " + Joiner.on(",").useForNull("&lt;default&gt;").join(toAdd) +
+          "  toRemove: " + Joiner.on(",").useForNull("&lt;default&gt;").join(toRemove) +
+          "  toRefresh: " + Joiner.on(",").useForNull("&lt;default&gt;").join(toRefresh);
+
+      
+       // 由于是重启，所以都是在toAdd里面
+      // Step 3. Start new nameservices
+      if (!toAdd.isEmpty()) {
+        LOG.info("Starting BPOfferServices for nameservices: " +
+            Joiner.on(",").useForNull("&lt;default&gt;").join(toAdd));
+        // 这里遍历的是nameServices，如果用了hdfs federation就会有多个
+        for (String nsToAdd : toAdd) {
+          ArrayList&lt;InetSocketAddress&gt; addrs =
+            Lists.newArrayList(addrMap.get(nsToAdd).values());
+          // 创建BPOfferService
+          BPOfferService bpos = createBPOS(addrs);
+          // 加入bpByNameserviceId里面，下次再执行这个方法的话，就是加入toRefresh里面了
+          bpByNameserviceId.put(nsToAdd, bpos);
+          offerServices.add(bpos);
+        }
+      }
+      // 启动所有offerServices的BPOfferService
+      startAll();
+    }</pre>
+<p>关注一下createBPOS方法，里面会包含多个BPServiceActor，存储在 BPOfferService.bpServices 变量内</p>
+<pre lang="java" escaped="true">protected BPOfferService createBPOS(List&lt;InetSocketAddress&gt; nnAddrs) {
+    return new BPOfferService(nnAddrs, dn);
+  }
+
+  BPOfferService(List&lt;InetSocketAddress&gt; nnAddrs, DataNode dn) {
+    Preconditions.checkArgument(!nnAddrs.isEmpty(),
+        "Must pass at least one NN.");
+    this.dn = dn;
+
+    // 如果有standby和active两个namenode，就会创建两个BPServiceActor
+    for (InetSocketAddress addr : nnAddrs) {
+      this.bpServices.add(new BPServiceActor(addr, this));
+    }
+  }</pre>
+<p>上面的startAll()把所有的BPOfferService都启动了，实际是调用下面的BPServiceActor.start()，BPServiceActor的作用在这文件的最上面注释写着：1.和namenode预注册，2.和namenode注册，3.周期性发送心跳到namenode，4.处理来自于namenode的命令。继续看这个类的run()方法</p>
+<pre lang="java" escaped="true">public void run() {
+    LOG.info(this + " starting to offer service");
+
+    try {
+      while (true) {
+        // init stuff
+        try {
+          // 向namenode注册以及初始化blockPool
+          // setup storage
+          connectToNNAndHandshake();
+          break;
+        } catch (IOException ioe) {
+          // Initial handshake, storage recovery or registration failed
+          runningState = RunningState.INIT_FAILED;
+          if (shouldRetryInit()) {
+            // Retry until all namenode's of BPOS failed initialization
+            LOG.error("Initialization failed for " + this + " "
+                + ioe.getLocalizedMessage());
+            sleepAndLogInterrupts(5000, "initializing");
+          } else {
+            runningState = RunningState.FAILED;
+            LOG.fatal("Initialization failed for " + this + ". Exiting. ", ioe);
+            return;
+          }
+        }
+      }
+
+      runningState = RunningState.RUNNING;
+
+      while (shouldRun()) {
+        try {
+          // 更新当前那个是active actor，发送blockReport给namenode等
+          offerService();
+        } catch (Exception ex) {
+          LOG.error("Exception in BPOfferService for " + this, ex);
+          sleepAndLogInterrupts(5000, "offering service");
+        }
+      }
+      runningState = RunningState.EXITED;
+    } catch (Throwable ex) {
+      LOG.warn("Unexpected exception in block pool " + this, ex);
+      runningState = RunningState.FAILED;
+    } finally {
+      LOG.warn("Ending block pool service for: " + this);
+      cleanUp();
+    }
+  }</pre>
+<p>关注connectToNNAndHandshake()方法，这里初始化了blockPool</p>
+<pre lang="java" escaped="true">private void connectToNNAndHandshake() throws IOException {
+    // get NN proxy
+    bpNamenode = dn.connectToNN(nnAddr);
+
+     // 从namenode获取一些版本等信息用于校验
+    // First phase of the handshake with NN - get the namespace
+    // info.
+    NamespaceInfo nsInfo = retrieveNamespaceInfo();
+    
+    // Verify that this matches the other NN in this HA pair.
+    // This also initializes our block pool in the DN if we are
+    // the first NN connection for this BP.
+    bpos.verifyAndSetNamespaceInfo(nsInfo);
+    
+     // 向namenode注册，并且设定了一下blockReport的时间（当前时间 - (blockReportInterval - delay)），默认是马上
+    // Second phase of the handshake with the NN.
+    register();
+  }</pre>
+<p>在verifyAndSetNamespaceInfo()方法里，主要看dn.initBlockPool(this);</p>
+<pre lang="java" escaped="true">void initBlockPool(BPOfferService bpos) throws IOException {
+    NamespaceInfo nsInfo = bpos.getNamespaceInfo();
+    if (nsInfo == null) {
+      throw new IOException("NamespaceInfo not found: Block pool " + bpos
+          + " should have retrieved namespace info before initBlockPool.");
+    }
+    
+    setClusterId(nsInfo.clusterID, nsInfo.getBlockPoolID());
+
+    // 把BlockPoolId和BPOfferService关联起来，存放在bpByBlockPoolId
+    // Register the new block pool with the BP manager.
+    blockPoolManager.addBlockPool(bpos);
+    
+    // 初始化data变量，创建出FsDatasetImpl
+    // In the case that this is the first block pool to connect, initialize
+    // the dataset, block scanners, etc.
+    initStorage(nsInfo);
+
+    // 去掉坏了的磁盘
+    // Exclude failed disks before initializing the block pools to avoid startup
+    // failures.
+    checkDiskError();
+
+    // 开启DirectoryScanner，定期运行，用于处理内存中的对象和实际存储文件的差异
+    initDirectoryScanner(conf);
+    // 添加blockPool
+    data.addBlockPool(nsInfo.getBlockPoolID(), conf);
+    blockScanner.enableBlockPoolId(bpos.getBlockPoolId());
+  }</pre>
+<p>这里面关注的是data.addBlockPool方法</p>
+<pre lang="java" escaped="true">public void addBlockPool(String bpid, Configuration conf)
+      throws IOException {
+    LOG.info("Adding block pool " + bpid);
+    synchronized(this) {
+      // 创建BlockPoolSlice对象，加入bpSlices变量内
+      volumes.addBlockPool(bpid, conf);
+      // 初始化ReplicaMap对象（ReplicaMap：Maintains the replica map）
+      volumeMap.initBlockPool(bpid);
+    }
+    // 获取所有磁盘的副本map
+    volumes.getAllVolumesMap(bpid, volumeMap, ramDiskReplicaTracker);
+  }</pre>
+<p>volumes.addBlockPool方法里，是创建BlockPoolSlice。BlockPoolSlice的介绍是说这是BlockPool存储在一个磁盘的一部分，里面主要是记录一些目录，还有使用大小等。注意这个有个计算磁盘使用大小非常耗时，这里使用了缓存，每600秒更新一次，在datanode退出的时候会写把数值写到文件里。</p>
+<pre lang="java" escaped="true">void addBlockPool(final String bpid, final Configuration conf) throws IOException {
+    long totalStartTime = Time.monotonicNow();
+    
+    final List&lt;IOException&gt; exceptions = Collections.synchronizedList(
+        new ArrayList&lt;IOException&gt;());
+    List&lt;Thread&gt; blockPoolAddingThreads = new ArrayList&lt;Thread&gt;();
+    for (final FsVolumeImpl v : volumes.get()) {
+      Thread t = new Thread() {
+        public void run() {
+          try (FsVolumeReference ref = v.obtainReference()) {
+            FsDatasetImpl.LOG.info("Scanning block pool " + bpid +
+                " on volume " + v + "...");
+            long startTime = Time.monotonicNow();
+            // 创建BlockPoolSlice
+            v.addBlockPool(bpid, conf);
+            long timeTaken = Time.monotonicNow() - startTime;
+            FsDatasetImpl.LOG.info("Time taken to scan block pool " + bpid +
+                " on " + v + ": " + timeTaken + "ms");
+          } catch (ClosedChannelException e) {
+            // ignore.
+          } catch (IOException ioe) {
+            FsDatasetImpl.LOG.info("Caught exception while scanning " + v +
+                ". Will throw later.", ioe);
+            exceptions.add(ioe);
+          }
+        }
+      };</pre>
+<p>volumes.getAllVolumesMap()方法，实际是调用每一个BlockPoolSlice.getVolumeMap()，我们当前版本在这里没有cache，因为要遍历目录，所以这里的操作比较耗时。添加cache具体见<a href="https://issues.apache.org/jira/browse/HDFS-7928">HDFS-7928</a>补丁。</p>
+<pre lang="java" escaped="true">void getVolumeMap(ReplicaMap volumeMap,
+                    final RamDiskReplicaTracker lazyWriteReplicaMap)
+      throws IOException {
+    // Recover lazy persist replicas, they will be added to the volumeMap
+    // when we scan the finalized directory.
+    if (lazypersistDir.exists()) {
+      int numRecovered = moveLazyPersistReplicasToFinalized(lazypersistDir);
+      FsDatasetImpl.LOG.info(
+          "Recovered " + numRecovered + " replicas from " + lazypersistDir);
+    }
+
+    // 遍历底下所有目录，构造副本map
+    // add finalized replicas
+    addToReplicasMap(volumeMap, finalizedDir, lazyWriteReplicaMap, true);
+    // add rbw replicas
+    addToReplicasMap(volumeMap, rbwDir, lazyWriteReplicaMap, false);
+  }</pre>
+<p>回到最上面，执行完bpos.verifyAndSetNamespaceInfo(nsInfo);后，执行register()方法，向namenode注册。执行完后，再往上就是调用offerService()，发送心跳，blockMap等。</p>
+<h2 id="结论">结论</h2>
+<p>namenode启动过程中会有多个线程，http和rpc的端口会先启动，但是这个时候还是不能提供服务的。当前版本主要耗时在构建volumeMap上，需要遍历磁盘目录。<br>
+初始化完volumeMap会向namenode注册，注册成功后会在日志打印successfully registered with NN（有两条，active和standby namenode）<br>
+之后datanode向namenode汇报块信息，发送完成后在日志打印Successfully sent block report（同样有两条）<br>
+只有在blockReport完成后才算真的启动完成。
+在重启的过程中，如果时间不算太长，在namenode中还没有判定这个datanode为dead node，里面的block map信息还保留着，所以在完成磁盘扫描 volumeMap 之后也算完成了。</p>
+<h2 id="其他">其他</h2>
+<p>代码比较多，限于个人能力，可能理解也有误，如果发现错误以后再更新。<br>
+<del>同时也没找出可编程的方法来判断datanode是否启动完成，除非修改datanode代码自己加标志位。</del>
+update(2017-07-18)：判断datanode是否启动完成核心在判断两次blockreport是否完成（分别向active和standby namenode发送），所以可以通过访问datanode jmx地址http://xxx:50075/jmx,检查参数”BlockReportsNumOps” : 大于等于2来判断。
+ </p>
+<h2 id="参考">参考</h2>
+<p><a href="http://huashuizhuhui.iteye.com/blog/1869512">第七章：小朱笔记hadoop之源码分析-hdfs分析 第五节：Datanode 分析</a> 版本差异比较大<br>
+<a href="http://blog.csdn.net/androidlushangderen/article/details/50500136">记一次DataNode慢启动问题</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2016-05-02
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/datanode/">datanode</a>
+          <a href="/tags/hadoop/">hadoop</a>
+          <a href="/tags/hdfs/">hdfs</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2016/05/hadoop-11238.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[HADOOP-11238]hdfs namenode getGroups延迟</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2016/05/hdfs-8824.html">
+            <span class="next-text nav-default">HDFS-8824 平衡数据的时候不移动小文件</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

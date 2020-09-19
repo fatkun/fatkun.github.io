@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSTO on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/vsto/</link>
+    <description>Recent content in VSTO on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 Mar 2011 01:23:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/vsto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VSTO获取邮件联系人邮箱</title>
+      <link>http://fatkun.github.io/2011/03/vsto-get-mail-recipient.html</link>
+      <pubDate>Tue, 15 Mar 2011 01:23:56 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/03/vsto-get-mail-recipient.html</guid>
+      <description>C# VSTO获取邮件联系人邮箱，包括获取To,CC等 直接从mailItem.Recipients取得所有这封邮件的联系人，然后在根据Type来</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jboss on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/jboss/</link>
+    <description>Recent content in jboss on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 21 Sep 2009 17:40:43 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/jboss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JBOSS把网页文件放入哪里才能在浏览器浏览？</title>
+      <link>http://fatkun.github.io/2009/09/jboss%E6%8A%8A%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%94%BE%E5%85%A5%E5%93%AA%E9%87%8C%E6%89%8D%E8%83%BD%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B5%8F%E8%A7%88.html</link>
+      <pubDate>Mon, 21 Sep 2009 17:40:43 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/09/jboss%E6%8A%8A%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%94%BE%E5%85%A5%E5%93%AA%E9%87%8C%E6%89%8D%E8%83%BD%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B5%8F%E8%A7%88.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/xxxx.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+如果使用EclipseJee等工具的就不会有这个疑问了，IDE会自动帮你放到某个目录下面。&lt;br&gt;
+那到底文件要放在哪里呢？&lt;br&gt;
+答案就是在JBOSS所在目录\server\default\deploy下，新建一个文件夹xxxx.war（xxxx可以为任意字母，区分大小写，从浏览器访问也是这个名字）在里面放入你的网页文件。&lt;br&gt;
+我写一个最简单的网页测试一下&lt;br&gt;
+index.jsp&lt;/p&gt;
+&lt;pre class=&#34;java&#34;&gt;&amp;lt;%
+out.println(&#34;Hello,Fatkun!&#34;);
+%&gt;
+&lt;/pre&gt;
+&lt;p&gt;把index.jsp放入xxxx.war文件夹内，启动JBOSS（如果原先开了的话先关了再开），等一会儿，再启动浏览器访问：http://localhost:8080/xxxx/index.jsp&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>【基础教程】JBOSS4的安装与测试</title>
+      <link>http://fatkun.github.io/2009/09/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8Bjboss4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B5%8B%E8%AF%95.html</link>
+      <pubDate>Mon, 21 Sep 2009 17:19:56 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/09/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8Bjboss4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B5%8B%E8%AF%95.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/200909211001011467.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+准备软件：&lt;br&gt;
+JBoss-4.2.3.GA：http://sourceforge.net/projects/jboss/&lt;br&gt;
+&lt;a href=&#34;http://sourceforge.net/projects/jboss/files/JBoss/JBoss-4.2.3.GA/jboss-4.2.3.GA.zip/download&#34; target=&#34;_blank&#34;&gt;点我下载吧&lt;/a&gt;&lt;br&gt;
+JDK1.6：http://java.sun.com/javase/downloads/找到JDK6下载&lt;br&gt;
+如果本来已经安装JDK1.6了就不用再下载安装了。（注意：JBoss-4.2.3与JDK依赖，&lt;font color=&#34;Red&#34;&gt;请尽量使用JDK1.6版&lt;/font&gt;，其他版本JDK我没测试过）&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

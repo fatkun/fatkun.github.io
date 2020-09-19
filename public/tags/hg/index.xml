@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hg on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/hg/</link>
+    <description>Recent content in hg on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 Oct 2010 03:22:18 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/hg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mercurial(HG)版本控制服务用户名验证</title>
+      <link>http://fatkun.github.io/2010/10/mercurial-authentication.html</link>
+      <pubDate>Sun, 17 Oct 2010 03:22:18 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/10/mercurial-authentication.html</guid>
+      <description>在之前的文章中，在Windows使用apache搭建Mercurial版本控制服务，并没有说到如何验证用户，而是允许所有人都提交。当时还不会</description>
+    </item>
+    
+    <item>
+      <title>TortoiseHg 1.0.1 与 Mercurial 1.5.1 版本控制软件</title>
+      <link>http://fatkun.github.io/2010/04/tortoisehg-and-mercurial-version-control.html</link>
+      <pubDate>Sat, 10 Apr 2010 15:12:11 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/04/tortoisehg-and-mercurial-version-control.html</guid>
+      <description>&lt;p&gt;Mercurial 是一款跨平台的快速、轻量级的分布式源代码管理软件， 使用python开发，免费开源。高效的实现、简易的学习曲线使得它既适合于大规模项目，也适用于小项目的代码管理。目前很多著名项目都已经开始使用 Mercurial来管理代码， 如 Mozilla、OpenOffice、Python等。&lt;strong&gt;Google Code在09年早期也已经提供了对Mercurial的支持。（在后台source设置一下即可）&lt;/strong&gt;
+TortoiseHg为Mercurial集成了一系列图形化工具和Shell扩展， 类似于TortoiseSVN为SVN提供的功能。&lt;br&gt;
+&lt;img src=&#34;http://farm5.static.flickr.com/4009/4508101528_e9d8aa127b_o.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

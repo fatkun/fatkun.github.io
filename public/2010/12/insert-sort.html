@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>直接插入排序算法（JAVA版） - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="时间复杂度：O(n*n) 直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：） 1.a[i]和前一个值a[i-1]比较，如果小" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2010/12/insert-sort.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="直接插入排序算法（JAVA版）" />
+<meta property="og:description" content="时间复杂度：O(n*n) 直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：） 1.a[i]和前一个值a[i-1]比较，如果小" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2010/12/insert-sort.html" />
+<meta property="article:published_time" content="2010-12-03T02:23:31+00:00" />
+<meta property="article:modified_time" content="2010-12-03T02:23:31+00:00" />
+<meta itemprop="name" content="直接插入排序算法（JAVA版）">
+<meta itemprop="description" content="时间复杂度：O(n*n) 直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：） 1.a[i]和前一个值a[i-1]比较，如果小">
+<meta itemprop="datePublished" content="2010-12-03T02:23:31&#43;00:00" />
+<meta itemprop="dateModified" content="2010-12-03T02:23:31&#43;00:00" />
+<meta itemprop="wordCount" content="964">
+
+
+
+<meta itemprop="keywords" content="排序算法,数据结构,直接插入,算法," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="直接插入排序算法（JAVA版）"/>
+<meta name="twitter:description" content="时间复杂度：O(n*n) 直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：） 1.a[i]和前一个值a[i-1]比较，如果小"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">直接插入排序算法（JAVA版）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-12-03 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>时间复杂度：O(n*n)
+直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插进去：）<br>
+1.a[i]和前一个值a[i-1]比较，如果小于前一个值<br>
+2.设此值为temp，把a[i-1]向后移一位a[i]=a[i-1]<br>
+3.检查前面的a[&lt;=i-2]是否有比temp大的，如果比temp大，后移一位<br>
+4.直到一个比temp小的或者j=-1，此时把temp赋值到j+1即可
+举例子：<br>
+<strong>原序列</strong>：8 4 5 3<br>
+<strong>第一次</strong> 4 8 5 3<br>
+<strong>第二次</strong> 5&lt;8，所以temp = 5, 序列变成 4 8 8 3,然后和i-2=0前面的4比较大小，5&gt;4，所以5应该在1的位置上，把temp赋值到1位置上，4 5 8 3<br>
+<strong>第三次</strong> 3&lt;8，所以temp = 3, 序列变成 4 5 8 8,然后和i-2=2前面的5比较大小，3&gt;5，序列变成 4 5 5 8,再比较3&gt;4，序列变成 4 4 5 8，此时j=-1，那temp肯定在0位上，最终序列3 4 5 8</p>
+<pre lang="java" escaped="true">public class Paixu {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int[] a = {8,4,5,3};
+		int[] insertSorta = new Paixu().insertSort(a);
+		pw(insertSorta);
+	}
+
+	/*
+http://fatkun.com
+直接插入排序：遍历第二个到最后一个，找到每一个值的最佳位置，插入进去
+1.a[i]和前一个值a[i-1]比较，如果小于前一个值
+2.设此值为temp，把a[i-1]向后移一位a[i]=a[i-1]
+3.检查前面的a[&lt;=i-2]是否有比temp大的，如果比temp大，后移一位
+4.直到一个比temp小的或者j=-1，此时把temp赋值到j+1即可
+
+初始序列：8 4 5 3
+4 8 5 3
+4 5 8 3
+3 4 5 8
+	 */
+	int[] insertSort(int[] arr) {
+		int temp;
+		for (int i = 1; i &lt; arr.length; i++) {
+			pw(arr);
+			if (arr[i] &lt; arr[i - 1]) {//如果当前值小于前一个
+				temp = arr[i]; //设定岗哨
+				arr[i] = arr[i - 1]; //把前一个值移到后一位
+
+				//继续和前面的进行比较，如果比temp大，则后移一位
+				//这里j从前两个开始，因为前一个知道必定比temp大了，无需再比较
+				int j = i - 2;
+				while (j&gt;=0 && temp &lt; arr[j]){
+					arr[j + 1] = arr[j];
+					j--;
+				}
+				//上一个循环结束后，j在最后一个比temp小的位置或者-1，所以j+1，把当前值放在这里
+				arr[j + 1] = temp;
+			}
+		}
+		return arr;
+	}
+
+	//打印数组
+	private static void pw(int[] arr){
+		for (int i : arr)
+		System.out.print(i+" ");
+		System.out.println("");
+	}
+
+}</pre>
+<p><strong>简化一些，去掉一些注释，代码基本一样</strong></p>
+<pre lang="java" escaped="true">int[] insertSort(int[] arr) {
+		int temp;
+		for (int i = 1; i &lt; arr.length; i++) {
+			pw(arr);
+			if (arr[i] &lt; arr[i - 1]) {
+				temp = arr[i];
+				//这里和前面不太一样，从i的前一个就开始比较，也就是判断前面所有元素（多判断了一次arr[i]和arr[i-1]）
+				int j = i - 1;
+				while (j&gt;=0 && temp &lt; arr[j]){
+					arr[j + 1] = arr[j];
+					j--;
+				}
+				arr[j + 1] = temp;
+			}
+		}
+		return arr;
+	}</pre><blockquote>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-12-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          <a href="/tags/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5/">直接插入</a>
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/12/bubble-sort.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">冒泡排序算法(JAVA)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/12/newwy-patitta-attayatamavitaya.html">
+            <span class="next-text nav-default">泰國版豆花妹清新MV&#43;图片</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>信息管理实验5-ASP.NET操作XML - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="1：实验目的，实验要求（自己写）
+2：实验步骤：
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？
+在应用程序的头部添加：
+using System.Xml
+二：新建patient.xml文档
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C5-asp-net%E6%93%8D%E4%BD%9Cxml.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="信息管理实验5-ASP.NET操作XML" />
+<meta property="og:description" content="
+1：实验目的，实验要求（自己写）
+2：实验步骤：
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？
+在应用程序的头部添加：
+using System.Xml
+二：新建patient.xml文档
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;gb2312&#34;?&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C5-asp-net%E6%93%8D%E4%BD%9Cxml.html" />
+<meta property="article:published_time" content="2009-09-30T08:49:49+00:00" />
+<meta property="article:modified_time" content="2009-09-30T08:49:49+00:00" />
+<meta itemprop="name" content="信息管理实验5-ASP.NET操作XML">
+<meta itemprop="description" content="
+1：实验目的，实验要求（自己写）
+2：实验步骤：
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？
+在应用程序的头部添加：
+using System.Xml
+二：新建patient.xml文档
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;gb2312&#34;?&gt;">
+<meta itemprop="datePublished" content="2009-09-30T08:49:49&#43;00:00" />
+<meta itemprop="dateModified" content="2009-09-30T08:49:49&#43;00:00" />
+<meta itemprop="wordCount" content="738">
+
+
+
+<meta itemprop="keywords" content="ASP.NET,xml,XmlDocument,信息管理实验,遍历xml," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="信息管理实验5-ASP.NET操作XML"/>
+<meta name="twitter:description" content="
+1：实验目的，实验要求（自己写）
+2：实验步骤：
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？
+在应用程序的头部添加：
+using System.Xml
+二：新建patient.xml文档
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;gb2312&#34;?&gt;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">信息管理实验5-ASP.NET操作XML</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2009-09-30 </span>
+        <div class="post-category">
+            <a href="/categories/asp.net/"> ASP.NET </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><img onload="ResizeImage(this,620)" src="http://fatkun.com/upload/2009/9/200909300056007868.jpg" alt="" title="" /><br>
+1：实验目的，实验要求（自己写）<br>
+2：实验步骤：<br>
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？<br>
+在应用程序的头部添加：<br>
+using System.Xml<br>
+二：新建patient.xml文档</p>
+<pre class="xml"><?xml version="1.0" encoding="gb2312"?>
+e>
+<p>  三：创建ASP.NET应用程序，并在窗体上添加两个BUTTON按钮，5个TextBox，如图：<br />
+  <img onload="ResizeImage(this,620)" src="http://fatkun.com/upload/2009/9/200909300056007868.jpg" alt="" title="" /><br />
+  给出代码：<br />
+  Default.aspx</p>
+<pre class="html">
+&lt;%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" %&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
+&lt;head runat="server"&gt;
+&lt;title&gt;无标题页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id="form1" runat="server"&gt;
+&lt;div&gt;
+ID:&lt;asp:TextBox ID="TextBox1" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+姓名:&lt;asp:TextBox ID="TextBox2" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+性别:&lt;asp:TextBox ID="TextBox3" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+E-mail:&lt;asp:TextBox ID="TextBox4" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+地址:&lt;asp:TextBox ID="TextBox5" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+&lt;br /&gt;
+&nbsp;&lt;asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="输出所有节点(Button1)" /&gt;
+&lt;asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="添加一个节点(Button2)" /&gt;&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>  Default.aspx.cs</p>
+<pre class="c#">
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Xml;
+public partial class _Default : System.Web.UI.Page
+{
+//注意修改为自己patient.xml文件的路径
+string filePath = "C:\\Documents and Settings\\Administrator\\My Documents\\Visual Studio 2005\\WebSites\\WebSite5\\patient.xml";
+protected void Page_Load(object sender, EventArgs e)
+{
+}
+//输出所有节点
+public void getAllElements() {
+XmlDocument xmlDoc = new XmlDocument();
+xmlDoc.Load(filePath);
+XmlNodeList nodeList = xmlDoc.SelectNodes("/patientsmaterial/patient");
+Response.Write("所有节点:<br />");
+for (int i = 0; i &lt; nodeList.Count; i++)
+{
+Response.Write("ID："+nodeList.Item(i).Attributes["ID"].Value);//输出ID
+Response.Write("<br />");
+for (int j = 0; j &lt; nodeList.Item(i).ChildNodes.Count; j++)
+{
+Response.Write(nodeList.Item(i).ChildNodes[j].Name + "：");
+Response.Write(nodeList.Item(i).ChildNodes[j].InnerText);
+Response.Write("<br />");
+}
+Response.Write("<br />");
+}
+}
+protected void Button1_Click(object sender, EventArgs e)
+{
+getAllElements();
+}
+protected void Button2_Click(object sender, EventArgs e)
+{
+XmlDocument xmlDoc = new XmlDocument();
+xmlDoc.Load(filePath);
+//查找&lt;patientsmaterial>
+XmlNode root = xmlDoc.SelectSingleNode("patientsmaterial");
+//创建patient节点
+XmlElement xe1 = xmlDoc.CreateElement("patient");
+//设置节点ID属性
+xe1.SetAttribute("ID", TextBox1.Text.Trim());
+XmlElement xesub1 = xmlDoc.CreateElement("name");
+//设置文本节点
+xesub1.InnerText = TextBox2.Text.Trim();
+//添加到patient节点去
+xe1.AppendChild(xesub1);
+XmlElement xesub2 = xmlDoc.CreateElement("sex");
+xesub2.InnerText = TextBox3.Text.Trim();
+xe1.AppendChild(xesub2);
+XmlElement xesub3 = xmlDoc.CreateElement("email");
+xesub3.InnerText = TextBox4.Text.Trim();
+xe1.AppendChild(xesub3);
+XmlElement xesub4 = xmlDoc.CreateElement("address");
+xesub4.InnerText = TextBox5.Text.Trim();
+xe1.AppendChild(xesub4);
+//添加到patientsmaterial节点
+root.AppendChild(xe1);
+xmlDoc.Save(filePath);
+getAllElements();
+}
+}
+</pre><blockquote>
+</blockquote>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2009-09-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/asp.net/">ASP.NET</a>
+          <a href="/tags/xml/">xml</a>
+          <a href="/tags/xmldocument/">XmlDocument</a>
+          <a href="/tags/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C/">信息管理实验</a>
+          <a href="/tags/%E9%81%8D%E5%8E%86xml/">遍历xml</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2009/10/%E5%86%B7%E6%96%B0%E9%97%BB%E5%B7%A8%E5%A4%A7%E9%B8%A1%E8%9B%8B%E8%AE%A9%E5%AE%83%E7%9A%84%E9%B8%A1%E5%A6%88%E5%A6%88%E6%AD%BB%E4%BA%A1.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">冷新闻：巨大鸡蛋让它的鸡妈妈死亡</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2009/09/%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4%E4%B8%8D%E5%87%86%E7%A1%AE%E6%80%8E%E4%B9%88%E5%8A%9Ewinxp%E7%9A%84%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5.html">
+            <span class="next-text nav-default">电脑时间不准确怎么办？WinXP的时间同步</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

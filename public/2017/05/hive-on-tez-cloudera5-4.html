@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hive On Tez cloudera5.4 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="配置 tez-site.xml &amp;lt;configuration&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.lib.uris&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.use.cluster.hadoop-libs&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress.codec&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;org.apache.hadoop.io.compress.SnappyCodec&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;/configuration&amp;gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hive On Tez cloudera5.4" />
+<meta property="og:description" content="配置 tez-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;tez.lib.uris&lt;/name&gt; &lt;value&gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.use.cluster.hadoop-libs&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress.codec&lt;/name&gt; &lt;value&gt;org.apache.hadoop.io.compress.SnappyCodec&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html" />
+<meta property="article:published_time" content="2017-05-01T10:52:17+00:00" />
+<meta property="article:modified_time" content="2017-05-01T10:52:17+00:00" />
+<meta itemprop="name" content="Hive On Tez cloudera5.4">
+<meta itemprop="description" content="配置 tez-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;tez.lib.uris&lt;/name&gt; &lt;value&gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.use.cluster.hadoop-libs&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress.codec&lt;/name&gt; &lt;value&gt;org.apache.hadoop.io.compress.SnappyCodec&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz">
+<meta itemprop="datePublished" content="2017-05-01T10:52:17&#43;00:00" />
+<meta itemprop="dateModified" content="2017-05-01T10:52:17&#43;00:00" />
+<meta itemprop="wordCount" content="330">
+
+
+
+<meta itemprop="keywords" content="hadoop,hive,tez," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hive On Tez cloudera5.4"/>
+<meta name="twitter:description" content="配置 tez-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;tez.lib.uris&lt;/name&gt; &lt;value&gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.use.cluster.hadoop-libs&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;tez.runtime.compress.codec&lt;/name&gt; &lt;value&gt;org.apache.hadoop.io.compress.SnappyCodec&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hive On Tez cloudera5.4</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-01 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            <a href="/categories/hive/"> hive </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#配置">配置</a></li>
+        <li><a href="#调优参数">调优参数</a></li>
+        <li><a href="#报错处理">报错处理</a></li>
+        <li><a href="#写的不错的文章">写的不错的文章</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="配置">配置</h2>
+<p>tez-site.xml</p>
+<pre escaped="true" lang="xml">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;tez.lib.uris&lt;/name&gt;
+    &lt;value&gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;tez.use.cluster.hadoop-libs&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;tez.runtime.compress&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;tez.runtime.compress.codec&lt;/name&gt;
+    &lt;value&gt;org.apache.hadoop.io.compress.SnappyCodec&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</pre>
+<h2 id="调优参数">调优参数</h2>
+<p>tez.grouping.min-size 分片最小限制</p>
+<h2 id="报错处理">报错处理</h2>
+<p>找不到lzo</p>
+<pre lang="bash" escaped="true">Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found
+        at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018)
+        at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128)
+        ... 23 more</pre>
+<p>LZO包没加载到，我是把lzo.jar放入tez的lib里面，但是这样会导致不能用到native库，暂时没找到解决方法。
+找不到org.apache.hadoop.hive.ql.exec.tez.HiveSplitGenerator</p>
+<pre escaped="true" lang="bash">Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hive.ql.exec.tez.HiveSplitGenerator</pre>
+<p>同样的解决方法，把hive-exec.jar放进去</p>
+<pre escaped="true" lang="bash">errorMessage=Shuffle Runner Failed:org.apache.tez.runtime.library.common.shuffle.orderedgrouped.Shuffle$ShuffleError: Error while doing final merge 
+        at org.apache.tez.runtime.library.common.shuffle.orderedgrouped.Shuffle$RunShuffleCallable.callInternal(Shuffle.java:320)
+        at org.apache.tez.runtime.library.common.shuffle.orderedgrouped.Shuffle$RunShuffleCallable.callInternal(Shuffle.java:285)
+        at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: Not a valid ifile header
+        at org.apache.tez.runtime.library.common.sort.impl.IFile$Reader.verifyHeaderMagic(IFile.java:837)
+        at org.apache.tez.runtime.library.common.sort.impl.IFile$Reader.isCompressedFlagEnabled(IFile.java:844)
+        at org.apache.tez.runtime.library.common.sort.impl.IFile$Reader.&lt;init&gt;(IFile.java:547)
+        at org.apache.tez.runtime.library.common.sort.impl.TezMerger$DiskSegment.init(TezMerger.java:407)
+        at org.apache.tez.runtime.library.common.sort.impl.TezMerger$MergeQueue.merge(TezMerger.java:753)
+        at org.apache.tez.runtime.library.common.sort.impl.TezMerger.merge(TezMerger.java:192)
+        at org.apache.tez.runtime.library.common.shuffle.orderedgrouped.MergeManager.finalMerge(MergeManager.java:1203)
+        at org.apache.tez.runtime.library.common.shuffle.orderedgrouped.MergeManager.close(MergeManager.java:583)
+        at org.apache.tez.runtime.library.common.shuffle.orderedgrouped.Shuffle$RunShuffleCallable.callInternal(Shuffle.java:316)</pre>
+<p>我是重新指定了一下压缩算法（tez.runtime.compress.codec），不知道为什么。压缩关掉也可以。</p>
+<pre escaped="true" lang="xml">&lt;property&gt;
+    &lt;name&gt;tez.runtime.compress&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;tez.runtime.compress.codec&lt;/name&gt;
+    &lt;value&gt;org.apache.hadoop.io.compress.SnappyCodec&lt;/value&gt;
+  &lt;/property&gt;</pre>
+<h2 id="写的不错的文章">写的不错的文章</h2>
+<p><a href="http://www.leocook.org/2016/05/09/Tez%E7%B3%BB%E5%88%97%E7%AC%AC%E4%BA%8C%E7%AF%87-hive_on_tez/" target="_blank">Tez系列第二篇 Hive_on_tez</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-05-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hadoop/">hadoop</a>
+          <a href="/tags/hive/">hive</a>
+          <a href="/tags/tez/">tez</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2017/06/jdk-native-memory-tracking.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">JDK Native Memory Tracking</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2017/04/jobhistory%E5%85%B3%E6%B3%A8%E7%9A%84issue.html">
+            <span class="next-text nav-default">jobhistory关注的issue</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

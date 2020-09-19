@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mercurial on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/mercurial/</link>
+    <description>Recent content in Mercurial on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 29 Aug 2010 07:40:28 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/mercurial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Windows使用apache搭建Mercurial版本控制服务</title>
+      <link>http://fatkun.github.io/2010/08/mercurial-server-with-apache.html</link>
+      <pubDate>Sun, 29 Aug 2010 07:40:28 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/08/mercurial-server-with-apache.html</guid>
+      <description>最近工作需要，建立一个本地版本控制服务，用来共享代码。搭建简单的SVN服务可以使用VisualSVN，但Mercurial有没有类似的工具呢</description>
+    </item>
+    
+  </channel>
+</rss>

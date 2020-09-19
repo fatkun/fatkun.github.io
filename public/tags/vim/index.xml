@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vim on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/vim/</link>
+    <description>Recent content in vim on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 08 Jan 2014 02:36:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vim格式化json</title>
+      <link>http://fatkun.github.io/2014/01/1597.html</link>
+      <pubDate>Wed, 08 Jan 2014 02:36:08 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2014/01/1597.html</guid>
+      <description>在vim输入以下命令就可以格式化 :%!python -m json.tool 可以在~/.vimrc增加快捷键 map &amp;lt;F4&amp;gt; &amp;lt;Esc&amp;gt;:%!python -m json.tool&amp;lt;CR&amp;gt; 来源: http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/ vim快捷键： http://uniquejava.iteye.com/blog/1485884</description>
+    </item>
+    
+    <item>
+      <title>在VIM加入Ctrl&#43;S快捷键保存当前文件</title>
+      <link>http://fatkun.github.io/2011/05/vim-ctrl-s.html</link>
+      <pubDate>Sun, 01 May 2011 03:56:22 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/vim-ctrl-s.html</guid>
+      <description>由于Ctrl+S被其他使用，首先要修改~/.bashrc文件，在最后加上 stty stop &#39;&#39; 然后在~/.vimrc文件中加入 map &amp;lt;C-s&amp;gt; :w&amp;lt;CR&amp;gt; imap &amp;lt;C-s&amp;gt; &amp;lt;C-o&amp;gt;:w&amp;lt;CR&amp;gt; 参考来源，有修改：</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android ViewHolder模式 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2012/01/android-viewholder.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Android ViewHolder模式" />
+<meta property="og:description" content="这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2012/01/android-viewholder.html" />
+<meta property="article:published_time" content="2012-01-07T07:46:54+00:00" />
+<meta property="article:modified_time" content="2012-01-07T07:46:54+00:00" />
+<meta itemprop="name" content="Android ViewHolder模式">
+<meta itemprop="description" content="这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少">
+<meta itemprop="datePublished" content="2012-01-07T07:46:54&#43;00:00" />
+<meta itemprop="dateModified" content="2012-01-07T07:46:54&#43;00:00" />
+<meta itemprop="wordCount" content="855">
+
+
+
+<meta itemprop="keywords" content="Adapter,ViewHolder," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android ViewHolder模式"/>
+<meta name="twitter:description" content="这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android ViewHolder模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-01-07 </span>
+        <div class="post-category">
+            <a href="/categories/android/"> Android </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码<br>
+<a href="http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html" title="http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html" target="_blank"><a href="http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html">http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html</a></a></p>
+<pre escaped="true" lang="java">static class ViewHolder {
+            TextView text;
+            ImageView icon;
+        }</pre>
+<p>可以看到它只是一个静态类，<strong>它的作用就在于减少不必要的调用findViewById</strong><br>
+完整的官方例子，官方例子中convertView 也是避免inflating View。<br>
+然后把对底下的控件引用存在ViewHolder里面，再在View.setTag(holder)把它放在view里，下次就可以直接取了。
+效率相差多少？看这篇文章：<a href="http://www.ideasandroid.com/archives/295#more-295" title="http://www.ideasandroid.com/archives/295#more-295" target="_blank">Android开发之ListView 适配器（Adapter）优化</a></p>
+<pre escaped="true" lang="java">/*
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.example.android.apis.view;
+
+import android.app.ListActivity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
+import com.example.android.apis.R;
+
+/**
+ * Demonstrates how to write an efficient list adapter. The adapter used in this example binds
+ * to an ImageView and to a TextView for each row in the list.
+ *
+ * To work efficiently the adapter implemented here uses two techniques:
+ * - It reuses the convertView passed to getView() to avoid inflating View when it is not necessary
+ * - It uses the ViewHolder pattern to avoid calling findViewById() when it is not necessary
+ *
+ * The ViewHolder pattern consists in storing a data structure in the tag of the view returned by
+ * getView(). This data structures contains references to the views we want to bind data to, thus
+ * avoiding calls to findViewById() every time getView() is invoked.
+ */
+public class List14 extends ListActivity {
+
+    private static class EfficientAdapter extends BaseAdapter {
+        private LayoutInflater mInflater;
+        private Bitmap mIcon1;
+        private Bitmap mIcon2;
+
+        public EfficientAdapter(Context context) {
+            // Cache the LayoutInflate to avoid asking for a new one each time.
+            mInflater = LayoutInflater.from(context);
+
+            // Icons bound to the rows.
+            mIcon1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon48x48_1);
+            mIcon2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon48x48_2);
+        }
+
+        /**
+         * The number of items in the list is determined by the number of speeches
+         * in our array.
+         *
+         * @see android.widget.ListAdapter#getCount()
+         */
+        public int getCount() {
+            return DATA.length;
+        }
+
+        /**
+         * Since the data comes from an array, just returning the index is
+         * sufficent to get at the data. If we were using a more complex data
+         * structure, we would return whatever object represents one row in the
+         * list.
+         *
+         * @see android.widget.ListAdapter#getItem(int)
+         */
+        public Object getItem(int position) {
+            return position;
+        }
+
+        /**
+         * Use the array index as a unique id.
+         *
+         * @see android.widget.ListAdapter#getItemId(int)
+         */
+        public long getItemId(int position) {
+            return position;
+        }
+
+        /**
+         * Make a view to hold each row.
+         *
+         * @see android.widget.ListAdapter#getView(int, android.view.View,
+         *      android.view.ViewGroup)
+         */
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // A ViewHolder keeps references to children views to avoid unneccessary calls
+            // to findViewById() on each row.
+            ViewHolder holder;
+
+            // When convertView is not null, we can reuse it directly, there is no need
+            // to reinflate it. We only inflate a new View when the convertView supplied
+            // by ListView is null.
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.list_item_icon_text, null);
+
+                // Creates a ViewHolder and store references to the two children views
+                // we want to bind data to.
+                holder = new ViewHolder();
+                holder.text = (TextView) convertView.findViewById(R.id.text);
+                holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+
+                convertView.setTag(holder);
+            } else {
+                // Get the ViewHolder back to get fast access to the TextView
+                // and the ImageView.
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            // Bind the data efficiently with the holder.
+            holder.text.setText(DATA[position]);
+            holder.icon.setImageBitmap((position & 1) == 1 ? mIcon1 : mIcon2);
+
+            return convertView;
+        }
+
+        static class ViewHolder {
+            TextView text;
+            ImageView icon;
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setListAdapter(new EfficientAdapter(this));
+    }
+
+    private static final String[] DATA = Cheeses.sCheeseStrings;
+}</pre><blockquote>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2012-01-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/adapter/">Adapter</a>
+          <a href="/tags/viewholder/">ViewHolder</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2012/01/motionevent-action_mask.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">event.getAction()&amp;MotionEvent.ACTION_MASK的原因</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2012/01/manager-web-page.html">
+            <span class="next-text nav-default">找不到管理网页和文件夹对处理方法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

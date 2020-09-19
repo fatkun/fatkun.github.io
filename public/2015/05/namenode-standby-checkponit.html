@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>namenode standby checkponit时间过长导致的问题 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2015/05/namenode-standby-checkponit.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="namenode standby checkponit时间过长导致的问题" />
+<meta property="og:description" content="我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2015/05/namenode-standby-checkponit.html" />
+<meta property="article:published_time" content="2015-05-03T13:30:28+00:00" />
+<meta property="article:modified_time" content="2015-05-03T13:30:28+00:00" />
+<meta itemprop="name" content="namenode standby checkponit时间过长导致的问题">
+<meta itemprop="description" content="我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了">
+<meta itemprop="datePublished" content="2015-05-03T13:30:28&#43;00:00" />
+<meta itemprop="dateModified" content="2015-05-03T13:30:28&#43;00:00" />
+<meta itemprop="wordCount" content="1748">
+
+
+
+<meta itemprop="keywords" content="hadoop,hdfs," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="namenode standby checkponit时间过长导致的问题"/>
+<meta name="twitter:description" content="我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">namenode standby checkponit时间过长导致的问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-05-03 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hdfs-ha的实现">HDFS HA的实现</a></li>
+        <li><a href="#hdfs-5064">HDFS-5064</a></li>
+        <li><a href="#hdfs-7097">HDFS-7097</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了1分钟。这里面使用了一些读写锁，导致阻塞了其他的一些请求。</p>
+<h2 id="hdfs-ha的实现">HDFS HA的实现</h2>
+<p>要理解整个过程，先来看看是如何实现hdfs ha的，我自己不懂，只能看其他大神的文章了。
+<a href="http://www.infoq.com/cn/articles/hadoop-2-0-namenode-ha-federation-practice-zh">Hadoop 2.0 NameNode HA和Federation实践</a>
+<a href="http://yanbohappy.sinaapp.com/?p=50">Hadoop目前的HA(High Availability)机制分析和源代码研究(1)</a>
+<a href="http://yanbohappy.sinaapp.com/?p=205">基于QJM/Qurom Journal Manager/Paxos的HDFS HA原理及代码分析</a>
+还有一些fsimage、editlog的文章见: <a href="http://yanbohappy.sinaapp.com/?tag=hdfs">http://yanbohappy.sinaapp.com/?tag=hdfs</a>
+概括一下：</p>
+<ul>
+<li>fsimage是历史的元数据，会定期把editlog合并进来，editlog是最近一段时间对namenode的操作，当前的文件状态等于fsimage+editlog</li>
+<li>Datanode会同时向两个Namenode汇报块信息</li>
+<li>保证在一个时间内，客户端只会连接active Namenode，由active Namenode负责写editlog（写入QJM），standby Namenode从QJM中获取editlog，更新自己内存中的块信息。这样当standby 变成active时，只用合并最近一小段时间的editlog就可以提供服务了。</li>
+<li>客户端根据抛出的异常(StandbyException)来切换连接的namenode</li>
+<li>隔离(fence)，需要避免同时存在两个active Namenode，同时服务，同时往QJM写editlog</li>
+<li>为了避免namenode启动时合并fsimage和editlog时间过长，standby Namenode 负责定期合并editlog，生成新的fsimage，并且同步给active Namenode。(StandbyCheckpointer)
+cdh4.2.1
+回到原来的问题，在checkpoint时，FSNamesystem有一个ReentrantReadWriteLock fslock，它包含一个读写锁。
+读锁时，允许其他线程读，但写操作会被阻塞。
+写锁时，其他线程的读写都会被阻塞。
+cdh4.2.1版本的代码在checkpoint时，会加上writelock，导致一些rpc操作需要readlock被阻塞。当时检查日志发现failover controller的心跳RPC请求被阻塞了，但没找到它用到这个锁。后来发现NameNodeRpcServer里public synchronized void monitorHealth()方法使用了synchronized，同时还有public synchronized HAServiceStatus getServiceStatus()等方法，在这个类中，同时只允许进入一个synchronized的方法内。在checkpoint期间，getServiceStatus使用了readLock，导致monitorHealth也被阻塞住。</li>
+</ul>
+<h2 id="hdfs-5064">HDFS-5064</h2>
+<p><a href="https://issues.apache.org/jira/browse/HDFS-5064">Standby checkpoints should not block concurrent readers</a>
+找到的第一个补丁是这个，主要修改是在checkpoint的过程中，不应该阻塞那些读操作（如getServiceStatus、monitorHealth）。专门给checkpoint增加了一个读锁fsLongReadLock，在writeLock方法先锁定fsLongReadLock</p>
+<h2 id="hdfs-7097">HDFS-7097</h2>
+<p>但是这样修改后，依然会阻塞一些需要writeLock的操作，然后有了新的patch</p>
+<p id="summary-val">  <a href="https://issues.apache.org/jira/browse/HDFS-7097">Allow block reports to be processed during checkpointing on standby name node</a></p>
+Since block reports are not modifying any state that is being saved to fsimage, I propose letting them through during checkpointing.
+补丁作者说&#8221;块汇报&#8221;不改变任何保存在fsimage的状态，所以允许在checkpoint期间执行块报告。（<del><strong>没看懂为什么不影响</strong>，代码中好像是把当前的FSNameSystem持久化为文件，而block report也会操作FSNameSystem&#8230;有可能我理解错了</del>）
+这次修改也是新加了一个锁，去掉了上一个补丁的fsLongReadLock，换为cpLock，但是没有在writeLock中先锁定cpLock。
+&nbsp;
+update: 2015-05-05
+fsimage的存储结构可以看这篇文章，[NameNode启动过程详细剖析][5]
+  * block mapping(block ID <=> DN location)没有存储在fsimage内，只是保留在内存。
+  * block report汇报每个block在datanode的状况(block id <-> localtion)
+  * fsimage里面存储的只是blockid
+&nbsp;
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-05-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hadoop/">hadoop</a>
+          <a href="/tags/hdfs/">hdfs</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2015/05/cloudera-manage-jdbc-driver-cannot-be-found.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">cloudera manager添加hive时报错找不到jdbc driver</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html">
+            <span class="next-text nav-default">hdfs选择datanode策略</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reflect on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/reflect/</link>
+    <description>Recent content in reflect on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 21 Apr 2013 13:50:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/reflect/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>java反射引起的java.lang.OutOfMemoryError: PermGen space</title>
+      <link>http://fatkun.github.io/2013/04/java-reflection-outofmemoryerror.html</link>
+      <pubDate>Sun, 21 Apr 2013 13:50:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/04/java-reflection-outofmemoryerror.html</guid>
+      <description>由于之前为了不改hive的代码，用了反射的方式动态修改，导致了另一个问题出现。 我用的反射代码如下：（代码是针对local metastore写</description>
+    </item>
+    
+    <item>
+      <title>JAVA反射(Reflect)的使用</title>
+      <link>http://fatkun.github.io/2012/10/java-reflect.html</link>
+      <pubDate>Sun, 07 Oct 2012 15:59:52 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/10/java-reflect.html</guid>
+      <description>反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class</description>
+    </item>
+    
+  </channel>
+</rss>

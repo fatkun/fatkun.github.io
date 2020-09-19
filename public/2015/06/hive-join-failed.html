@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hive1.1.0查询和旧版本不一致问题分析 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2015/06/hive-join-failed.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hive1.1.0查询和旧版本不一致问题分析" />
+<meta property="og:description" content="背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2015/06/hive-join-failed.html" />
+<meta property="article:published_time" content="2015-06-28T07:08:22+00:00" />
+<meta property="article:modified_time" content="2015-06-28T07:08:22+00:00" />
+<meta itemprop="name" content="hive1.1.0查询和旧版本不一致问题分析">
+<meta itemprop="description" content="背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有">
+<meta itemprop="datePublished" content="2015-06-28T07:08:22&#43;00:00" />
+<meta itemprop="dateModified" content="2015-06-28T07:08:22&#43;00:00" />
+<meta itemprop="wordCount" content="1540">
+
+
+
+<meta itemprop="keywords" content="hive," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hive1.1.0查询和旧版本不一致问题分析"/>
+<meta name="twitter:description" content="背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hive1.1.0查询和旧版本不一致问题分析</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-06-28 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            <a href="/categories/hive/"> hive </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#单步调试span-langen-us2-8211-span输入内容字段描述从哪里来">单步调试<span lang="EN-US">2 – </span>输入内容、字段描述从哪里来</a></li>
+            <li><a href="#单步调试span-langen-us3-8211-span为什么错误语句少了span-langen-usselect-operatorspan">单步调试<span lang="EN-US">3 – </span>为什么错误语句少了<span lang="EN-US">SELECT Operator</span>？</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div>  <h2>    背景  </h2></div>
+在查询以下语句的时候结果不正确，无法<span lang="EN-US">join tab1.tm=tab2.hour</span>。如果存在以下类似的语句，有子查询的<span lang="EN-US">group by</span>，外层有<span lang="EN-US">join</span>语句，返回的结果不正确，无法<span lang="EN-US">join</span>成功。
+<pre lang="sql" escaped="true">select tab1.ip, tab1.tm, tab2.hour
+from (
+    select c.ip,c.lkid, c.hour,min(s.hour) as tm from Tclick_iphone c join Tsndata_iphone s 
+    on c.ip=s.ip group by c.ip,c.lkid,c.hour
+) tab1 join Tsndata_iphone tab2
+on tab1.ip=tab2.ip and tab1.tm=tab2.hour;</pre>
+<div></div>
+<div>  <h2>    分析  </h2></div>
+首先是构造可重复测试语句，减少所需要查询的数据，然后尝试替换其中的语句，检查语句是否正常。缩小错误范围。
+测试中发现如果把子查询替换为表，能够正常查询。另外在随机测试的过程中，发现这样的语句也可以成功。
+<pre lang="sql" escaped="true">select tab1.ip, tab1.tm, tab2.hour
+from (
+    select c.ip,c.lkid, min(s.hour) as tm from Tclick_iphone c join Tsndata_iphone s 
+    on c.ip=s.ip group by c.ip,c.lkid,c.hour
+) tab1 join Tsndata_iphone tab2
+on tab1.ip=tab2.ip and tab1.tm=tab2.hour;</pre>
+<div></div>
+### 单步调试<span lang="EN-US">1</span>
+<p>反复单步调试对比错误、正确语句，发现第二步的输入和正确的语句不一样。
+这是字节数组，还有个解析这个字节数组的描述信息（多少个字段，各个字段的类型） ，正确语句输入的内容为：
+<span lang="EN-US">[3, 14, 49, 50, 49, 46, 50, 51, 54, 46, 49, 54, 52, 46, 50, 56, -114, 11, -82, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span>
+描述信息有两个字段
+错误的语句输入内容为：
+<span lang="EN-US">[15, 14, 49, 50, 49, 46, 50, 51, 54, 46, 49, 54, 52, 46, 50, 56, 4, 119, 105, 102, 105, -114, 10, -84, -114, 11, -82, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span>
+描述信息有两个字段
+这个字节第一位是判断符号，判断是否是<span lang="EN-US">null</span>，后面的字符如果是<span lang="EN-US">string</span>，第一位是字符长度。如果是数字，会有类似这样的<span lang="EN-US">bytes [-114, 10, -84]</span>
+从这里看出输入的内容不一致，但字段描述信息却一样。那错误可能发生在输入的内容不正确或者字段描述解析不正确。</p>
+<h3 id="单步调试span-langen-us2-8211-span输入内容字段描述从哪里来">单步调试<span lang="EN-US">2 – </span>输入内容、字段描述从哪里来</h3>
+<p>从<span lang="EN-US">explain</span>知道第二步的输入来源于子查询的输出，也就是子查询的<span lang="EN-US">reduce</span>输出。单步调试发现字段描述是在编译语句阶段已经确定好，每个<span lang="EN-US">Operator</span>已经确定了输出的字段数和类型。
+另外在对比<span lang="EN-US">explain</span>中，发现正确的语句比错误的语句多了个<span lang="EN-US">SELECT Operator</span>（列裁剪）。</p>
+<h3 id="单步调试span-langen-us3-8211-span为什么错误语句少了span-langen-usselect-operatorspan">单步调试<span lang="EN-US">3 – </span>为什么错误语句少了<span lang="EN-US">SELECT Operator</span>？</h3>
+<p>范围缩小到语句的语法编译。
+发现代码中会打印一些日志出来，可以修改<span lang="EN-US">hive</span>的<span lang="EN-US">log4j</span>文件改为<span lang="EN-US">debug</span>模式，发现语句优化的过程中把<span lang="EN-US">SELECT Operator</span>去掉了。
+优化前</p>
+<div>  <pre><code>&lt;span lang="EN-US">TS[0]-FIL[2]-RS[3]-JOIN[6]-SEL[7]-GBY[8]-RS[9]-GBY[10]-SEL[11]-FIL[13]-RS[14]-JOIN[17]-SEL[18]-FS[19]&lt;/span></code></pre>
+  <pre><code>&lt;span lang="EN-US">ppd.PredicatePushDown: After PPD&lt;/span></code></pre>
+  <pre><code>&lt;span lang="EN-US">TS[0]-FIL[21]-RS[3]-JOIN[6]-SEL[7]-GBY[8]-RS[9]-GBY[10]-FIL[20]-SEL[11]-RS[14]-JOIN[17]-SEL[18]-FS[19]&lt;/span></code></pre></div>
+优化后
+<div>  <pre><code>&lt;span lang="EN-US">TS[0]-FIL[21]-RS[3]-JOIN[6]-GBY[8]-RS[9]-GBY[10]-FIL[20]-RS[14]-JOIN[17]-SEL[18]-FS[19]&lt;/span></code></pre></div>
+可以看到在<span lang="EN-US">GBY[10]-FIL[20]-SEL[11]-RS[14]</span>中，<span lang="EN-US">SEL[11]</span>被去掉了。
+单步调试语句的优化过程，由于优化步骤有<span lang="EN-US">21</span>个，使用二分法检查到底是运行到哪一个优化器把<span lang="EN-US">SEL</span>去掉了。
+最终发现是 <span lang="EN-US">IdentityProjectRemover </span>优化器。
+这个优化器的功能是根据前后输入输出，去掉不必要的<span lang="EN-US">SELECT Operator</span>。检查到这里，没有继续往下查了，还有一些为什么<span lang="EN-US">FIL[20] row schema</span>为什么是两个字段，但实际输出内容却不是的问题。
+### 搜索
+<p>使用关键词<span lang="EN-US">IdentityProjectRemover</span>搜索源代码，看看这个代码最新版本有没有修改过。搜索发现一些<span lang="EN-US">issue</span>，找到了关闭这个优化器的参数。<code>&lt;span lang=&quot;EN-US&quot;&gt;hive.optimize.remove.identity.project=false&lt;/span&gt;</code>，另外发现在<span lang="EN-US">hive1.2.0</span>版本，增加了另一个参数，间接默认关闭了这个优化。
+另外发现这个<span lang="EN-US">issue</span>和我们这次的错误类似，应该是同一个问题<span lang="EN-US"> <a href="https://issues.apache.org/jira/browse/HIVE-10996" target="_blank">HIVE-10996</a> </span>。这个<span lang="EN-US">issue</span>里面有说明更详细的错误原因，见<span lang="EN-US"><a href="https://issues.apache.org/jira/browse/HIVE-10996?focusedCommentId=14592859&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-14592859" target="_blank"><span lang="EN-US"><span lang="EN-US">评论</span></span></a></span>
+这个<span lang="EN-US">issue</span>已经有补丁，但目前还没有合并到主干。它的解决的方法是在<span lang="EN-US">GBY-FIL-SEL</span>中插入一个<span lang="EN-US">SEL</span>，变成<span lang="EN-US">GBY-SEL-FIL-SEL</span></p>
+<div>  <h2>    当前解决方案  </h2></div>
+设置参数 <span lang="EN-US">hive.optimize.remove.identity.project=false </span>关闭这个优化器
+这个优化是从<span lang="EN-US">1.1.0</span>版本引入（我们当前使用的版本）
+<div>  <h2>    技巧  </h2></div>
+刚开始<span lang="EN-US">debug</span>的时候很慢，而且越用越慢，后来发现限制<span lang="EN-US">hive</span>客户端使用内存有一定效果。可能<span lang="EN-US">debug</span>时需要<span lang="EN-US">dump</span>内存。
+使用 <span lang="EN-US">hive &#8211;debug </span>可以远程<span lang="EN-US">debug</span>
+使用 <span lang="EN-US">hive &#8211;hiveconf hive.root.logger=DEBUG,console </span>可以临时打印日志
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-06-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hive/">hive</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2015/07/compile-hive-cdh5-4-0.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">编译hive cdh5.4.0</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2015/05/compile-hadoop-cdh5-4-on-windows.html">
+            <span class="next-text nav-default">在Windows上编译hadoop cdh5.4</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>三角形 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E4%B8%89%E8%A7%92%E5%BD%A2/</link>
+    <description>Recent content in 三角形 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 10 Apr 2011 07:23:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E4%B8%89%E8%A7%92%E5%BD%A2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSS实现的三角形</title>
+      <link>http://fatkun.github.io/2011/04/css-triangle.html</link>
+      <pubDate>Sun, 10 Apr 2011 07:23:49 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/04/css-triangle.html</guid>
+      <description>看着喜欢，就试着自己做一个了。 原理 主要是利用border来实现。 看上图的的正方形的代码 &amp;lt;div style=&#34;width:0; height:0; border:40px solid transparent;border-top-color:green;border-left-color:red;border-right-color:blue;border-bottom-color:yellow;&#34;&amp;gt;&amp;lt;/div&amp;gt; 分别给四边的border设了四种颜色。也许</description>
+    </item>
+    
+  </channel>
+</rss>

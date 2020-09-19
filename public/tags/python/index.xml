@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/python/</link>
+    <description>Recent content in python on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 16 Aug 2017 09:46:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在用户目录安装python lib</title>
+      <link>http://fatkun.github.io/2017/08/%E5%9C%A8%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E5%AE%89%E8%A3%85python-lib.html</link>
+      <pubDate>Wed, 16 Aug 2017 09:46:03 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2017/08/%E5%9C%A8%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E5%AE%89%E8%A3%85python-lib.html</guid>
+      <description>wget https://bootstrap.pypa.io/get-pip.py python get-pip.py --user pip install --user xxxxxx</description>
+    </item>
+    
+    <item>
+      <title>hiveserver2 python client</title>
+      <link>http://fatkun.github.io/2013/11/hiveserver2-python-client.html</link>
+      <pubDate>Sun, 17 Nov 2013 16:45:11 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/11/hiveserver2-python-client.html</guid>
+      <description>一个hiveserver2 python客户端的例子，大部分代码来自于hue。 忽略了一些必要的判断，只是做一个简单的例子。 需要安装thrift</description>
+    </item>
+    
+    <item>
+      <title>使用base64加密在URL传递(python和php版本)</title>
+      <link>http://fatkun.github.io/2013/06/python-and-php-base64-urlencode.html</link>
+      <pubDate>Wed, 12 Jun 2013 06:37:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/06/python-and-php-base64-urlencode.html</guid>
+      <description>把base64加密后在url传输，会把“+“，”/”分别替换为”-“，”_”，以及会把末尾的等号“=”去掉。 另外base64加密后的长度必然</description>
+    </item>
+    
+    <item>
+      <title>python嵌套作用域问题</title>
+      <link>http://fatkun.github.io/2012/12/python-nested-scopes.html</link>
+      <pubDate>Thu, 27 Dec 2012 16:28:02 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/12/python-nested-scopes.html</guid>
+      <description>之前都不太理解这个。。。 在Python中，使用一个变量之前不必预先声明它，但是在真正使用它之前，它必须已经绑定到某个对象；而名字绑定将在当前</description>
+    </item>
+    
+    <item>
+      <title>python安装pywin32出现DLL load failed的解决办法</title>
+      <link>http://fatkun.github.io/2012/09/python-pywin32-dll-load-failed.html</link>
+      <pubDate>Fri, 21 Sep 2012 05:46:22 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/09/python-pywin32-dll-load-failed.html</guid>
+      <description>在cmd执行python c:/Python26/Scripts/pywin32_postinstall.py -install 我的python目录是python2.6 来源：http://stackoverflow.com/question</description>
+    </item>
+    
+    <item>
+      <title>Django values(*fields) 如何使用</title>
+      <link>http://fatkun.github.io/2011/08/django-values.html</link>
+      <pubDate>Sun, 14 Aug 2011 09:08:12 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/08/django-values.html</guid>
+      <description>官方文档:https://docs.djangoproject.com/en/1.3/ref/models/querysets/#value</description>
+    </item>
+    
+    <item>
+      <title>Python遍历淘宝成交记录（版本二）</title>
+      <link>http://fatkun.github.io/2011/05/python-get-taobao-deal-data-2.html</link>
+      <pubDate>Tue, 10 May 2011 15:49:15 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/python-get-taobao-deal-data-2.html</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://fatkun.com/2011/05/python-get-taobao-deal-data.html&#34;&gt;前一版本&lt;/a&gt;的基础上，加入了排序。按物品和日期来排序，排除重复的价格和物品&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python list的多列排序</title>
+      <link>http://fatkun.github.io/2011/05/python-list-sort.html</link>
+      <pubDate>Mon, 09 May 2011 15:02:55 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/python-list-sort.html</guid>
+      <description>Python 中的排序真的很方便 你可以使用alist.sort()或者sorted(alist)进行排序。不同的是，前者会改变原来list的顺序。 在py</description>
+    </item>
+    
+    <item>
+      <title>Python遍历淘宝成交记录</title>
+      <link>http://fatkun.github.io/2011/05/python-get-taobao-deal-data.html</link>
+      <pubDate>Sun, 08 May 2011 13:19:21 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/05/python-get-taobao-deal-data.html</guid>
+      <description>&lt;p&gt;本着学习urllib和正则re的原因和无比蛋疼，另外想把淘宝的成交记录全部列出来看看价格的变化&lt;br&gt;
+在这个例子中你可以学到&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;urllib2 addHeader的使用&lt;/li&gt;
+&lt;li&gt;正则表达式的使用
+使用前需要配置一下url变量，淘宝物品的成交记录下一页的链接，请复制链接，把最后一个页数的数字删掉，放在url变量里&lt;br&gt;
+因为里面太多参数了，没办法只改变某些变量
+结果会保存在c:\log.txt文件内。&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>python实现一个简单的地址簿</title>
+      <link>http://fatkun.github.io/2011/04/python-addressbook.html</link>
+      <pubDate>Sun, 17 Apr 2011 10:51:16 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/04/python-addressbook.html</guid>
+      <description>&lt;p&gt;看了简明python教程，动手试试，用python实现一个简单的地址簿&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

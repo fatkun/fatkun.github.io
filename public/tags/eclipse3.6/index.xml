@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>eclipse3.6 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/eclipse3.6/</link>
+    <description>Recent content in eclipse3.6 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 24 Jun 2010 05:27:50 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/eclipse3.6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse3.6正式版的下载地址</title>
+      <link>http://fatkun.github.io/2010/06/eclipse3-6-download.html</link>
+      <pubDate>Thu, 24 Jun 2010 05:27:50 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/06/eclipse3-6-download.html</guid>
+      <description>Eclipse3.6正式版官方的下载地址还没有放出，不过捐赠Eclipse就可以成为Friends，可以提前从官网下载到3.6正式版。。。其</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>group by on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/group-by/</link>
+    <description>Recent content in group by on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Jan 2013 14:53:23 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/group-by/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive – Group By 的实现</title>
+      <link>http://fatkun.github.io/2013/01/hive-group-by.html</link>
+      <pubDate>Sun, 20 Jan 2013 14:53:23 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/01/hive-group-by.html</guid>
+      <description>准备数据 SELECT uid, sum(count) FROM logs group by uid; hive&amp;gt; select * from logs; a 苹果 5 a 橙子 3 a 苹果 2 b 烧鸡 1 hive&amp;gt; SELECT uid, sum(count) FROM logs group by uid; a 10 b 1 计算过程 默认设置了hive.map.aggr=t</description>
+    </item>
+    
+    <item>
+      <title>如何在SQL中先排序后分组</title>
+      <link>http://fatkun.github.io/2010/07/group-by-and-order-by.html</link>
+      <pubDate>Sat, 03 Jul 2010 13:50:44 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/07/group-by-and-order-by.html</guid>
+      <description>标题说的有点奇怪，换句话说是让order by比group by先执行。还不明白对吧？ 举个例子：实现场景，要实现QQ空间的动态消息，首先要按最新</description>
+    </item>
+    
+  </channel>
+</rss>

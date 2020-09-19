@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在eclipse远程调试mapreduce（hadoop2） - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="在eclipse远程调试mapreduce（hadoop2）" />
+<meta property="og:description" content="背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html" />
+<meta property="article:published_time" content="2014-02-22T08:13:20+00:00" />
+<meta property="article:modified_time" content="2014-02-22T08:13:20+00:00" />
+<meta itemprop="name" content="在eclipse远程调试mapreduce（hadoop2）">
+<meta itemprop="description" content="背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse">
+<meta itemprop="datePublished" content="2014-02-22T08:13:20&#43;00:00" />
+<meta itemprop="dateModified" content="2014-02-22T08:13:20&#43;00:00" />
+<meta itemprop="wordCount" content="869">
+
+
+
+<meta itemprop="keywords" content="debug,hadoop,远程调试," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在eclipse远程调试mapreduce（hadoop2）"/>
+<meta name="twitter:description" content="背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">在eclipse远程调试mapreduce（hadoop2）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-02-22 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#实现">实现</a></li>
+        <li><a href="#调试nodemanager">调试NodeManager</a></li>
+        <li><a href="#调试resoucemanager">调试ResouceManager</a></li>
+        <li><a href="#调试appmaster">调试appMaster</a></li>
+        <li><a href="#不足">不足</a></li>
+        <li><a href="#远程调试hive">远程调试hive</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="背景">背景</h2>
+<p>线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。</p>
+<h2 id="实现">实现</h2>
+<p>远程调试实际上实在服务端开启一个监听端口，通过eclipse连接进行debug。调试mapreduce程序需要修改配置，让mapreduce就在本机运行。从hadoop拷贝一份配置出来，修改mapper-site.xml配置（基于hadoop2配置说明）</p>
+<pre lang="xml" escaped="true">&lt;property&gt;
+    &lt;name&gt;mapreduce.jobtracker.staging.root.dir&lt;/name&gt;
+    &lt;value&gt;/tmp&lt;/value&gt;
+  &lt;/property&gt;
+   &lt;property&gt;
+    &lt;name&gt;yarn.app.mapreduce.am.staging-dir&lt;/name&gt;
+    &lt;value&gt;/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;local&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.jobtracker.address&lt;/name&gt;
+    &lt;value&gt;local&lt;/value&gt;
+  &lt;/property&gt;
+&lt;property&gt;
+&lt;name&gt;mapred.job.tracker&lt;/name&gt;
+&lt;value&gt;local&lt;/value&gt;
+&lt;/property&gt;</pre>
+<p>注意检查这些标签是不是都有了。。可以放到最后覆盖原来的值
+在hadoop-env.sh加上，这里的address=52902是监听的端口，suspend=y表示等待我们连接才继续执行下去</p>
+<pre lang="xml" escaped="true">export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=52902"</pre>
+<p>执行hadoop程序，指定配置文件目录为我们改过的配置目录</p>
+<pre lang="bash" escaped="true">hadoop --config ./conf jar xx.jar xxx</pre>
+<p>最后，在eclipse的debug configuration新增一个remote java application，填入IP和端口，点击debug即可。</p>
+<h2 id="调试nodemanager">调试NodeManager</h2>
+<p>在yarn-env.sh加入</p>
+<pre escaped="true" lang="bash">YARN_NODEMANAGER_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8092"</pre>
+<h2 id="调试resoucemanager">调试ResouceManager</h2>
+<p>在yarn-env.sh加入</p>
+<pre escaped="true" lang="bash">export YARN_RESOURCEMANAGER_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8091"</pre>
+<h2 id="调试appmaster">调试appMaster</h2>
+<p>设置只有一台nodemanager，在mapred-site.xml 加入</p>
+<pre lang="xml" escaped="true">&lt;property&gt;
+    &lt;name&gt;yarn.app.mapreduce.am.command-opts&lt;/name&gt;
+    &lt;value&gt; -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8314&lt;/value&gt;
+  &lt;/property&gt;</pre>
+<p>如果不可以，试多几次。。不知道为什么。检查一下进程有没有启动。 ps aux|grep MRAppMaster</p>
+<h2 id="不足">不足</h2>
+<p>不能调试一个jar包有两个job，执行到第二个job时会报错，可能原因是HADOOP_CLIENT_OPTS被加载了两次，并且第二个job启动时需要更换端口，否则会冲突。<br>
+不是很清楚hadoop LocalJobRunner是怎样调用的，并且暂时没调试第二个job就不深究了。</p>
+<h2 id="远程调试hive">远程调试hive</h2>
+<p>执行命令，会启动监听端口8000</p>
+<pre lang="bash" escaped="true">hive --debug</pre>
+<p>如果报错，<span style="color: #555555;">ERROR: Cannot load this JVM TI agent twice, check your java command line for duplicate jdwp options.。打开${Hadoop_HOME}/bin/hadoop，注释掉HADOOP_OPTS=”$HADOOP_OPTS $HADOOP_CLIENT_OPTS”</span>
+在hive输入以下命令，在单机执行</p>
+<pre lang="java" escaped="true">SET mapred.job.tracker=local;
+SET hive.exec.mode.local.auto=true;
+SET fs.defaultFS=file:///;</pre>
+<p> 
+打印日志</p>
+<pre class="lang-java prettyprint prettyprinted"><code>&lt;span class="pln">hive &lt;/span>&lt;span class="pun">--&lt;/span>&lt;span class="pln">hiveconf hive&lt;/span>&lt;span class="pun">.&lt;/span>&lt;span class="pln">root&lt;/span>&lt;span class="pun">.&lt;/span>&lt;span class="pln">logger&lt;/span>&lt;span class="pun">=&lt;/span>&lt;span class="pln">DEBUG&lt;/span>&lt;span class="pun">,&lt;/span>&lt;span class="pln">console&lt;/span></code></pre>
+<p>via: <a href="http://fatkun.com/2012/10/debug-hive-mapreduce-with-eclipse.html">http://fatkun.com/2012/10/debug-hive-mapreduce-with-eclipse.html</a></p>
+<h2 id="参考">参考</h2>
+<p><a title="hadoop2.2.0 源码远程调试" href="http://blog.sina.com.cn/s/blog_5ccc692d0101pikf.html" target="_blank">hadoop2.2.0 源码远程调试</a> 这里有图<br>
+<a href="http://www.aboutyun.com/thread-6504-1-1.html">http://www.aboutyun.com/thread-6504-1-1.html</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-02-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/debug/">debug</a>
+          <a href="/tags/hadoop/">hadoop</a>
+          <a href="/tags/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/">远程调试</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2014/03/hadoop-2-0-yarn-state.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">【转】HADOOP 2.0 YARN中的MR/RM/NM状态转换图</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2014/01/hive-limit.html">
+            <span class="next-text nav-default">【转】hive 结合执行计划 分析 limit 执行原理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="http://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>优点与缺点 on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/%E4%BC%98%E7%82%B9%E4%B8%8E%E7%BC%BA%E7%82%B9/</link>
+    <description>Recent content in 优点与缺点 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 22 Nov 2010 05:37:54 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/%E4%BC%98%E7%82%B9%E4%B8%8E%E7%BC%BA%E7%82%B9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据库存储过程的优缺点</title>
+      <link>http://fatkun.github.io/2010/11/database-procedure.html</link>
+      <pubDate>Mon, 22 Nov 2010 05:37:54 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/database-procedure.html</guid>
+      <description>优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随</description>
+    </item>
+    
+  </channel>
+</rss>

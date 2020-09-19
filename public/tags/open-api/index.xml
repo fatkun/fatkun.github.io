@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>open api on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/open-api/</link>
+    <description>Recent content in open api on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 26 Oct 2019 10:41:26 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/open-api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从CustomResourceDefinition生成k8s java模型代码</title>
+      <link>http://fatkun.github.io/2019/10/generate-java-codes-from-customresourcedefinition.html</link>
+      <pubDate>Sat, 26 Oct 2019 10:41:26 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2019/10/generate-java-codes-from-customresourcedefinition.html</guid>
+      <description>目标 已经有了go版本的模型定义，需要生成java版本 看了下官方介绍的文档 generate-model-from-third-party-resources.md 感觉不会太难，照着尝试一下。 开始干活 首先看到要k8s 1.15以上的</description>
+    </item>
+    
+  </channel>
+</rss>

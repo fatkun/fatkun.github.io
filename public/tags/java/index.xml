@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JAVA on Fatkun&#39;s Blog</title>
+    <link>http://fatkun.github.io/tags/java/</link>
+    <description>Recent content in JAVA on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 18 Sep 2019 02:18:15 +0000</lastBuildDate>
+    
+	<atom:link href="http://fatkun.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用java kubenetes client replaceClusterCustomObject报错Bad Request</title>
+      <link>http://fatkun.github.io/2019/09/java-kubenetes-client-replaceclustercustomobject-throw-bad-request.html</link>
+      <pubDate>Wed, 18 Sep 2019 02:18:15 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2019/09/java-kubenetes-client-replaceclustercustomobject-throw-bad-request.html</guid>
+      <description>报错 报错Bad Request只是显式的错误，在ApiException里面有个resp返回的内容，在里面可以看到实际的错误，报错如下 coul</description>
+    </item>
+    
+    <item>
+      <title>java反射引起的java.lang.OutOfMemoryError: PermGen space</title>
+      <link>http://fatkun.github.io/2013/04/java-reflection-outofmemoryerror.html</link>
+      <pubDate>Sun, 21 Apr 2013 13:50:58 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2013/04/java-reflection-outofmemoryerror.html</guid>
+      <description>由于之前为了不改hive的代码，用了反射的方式动态修改，导致了另一个问题出现。 我用的反射代码如下：（代码是针对local metastore写</description>
+    </item>
+    
+    <item>
+      <title>JAVA反射(Reflect)的使用</title>
+      <link>http://fatkun.github.io/2012/10/java-reflect.html</link>
+      <pubDate>Sun, 07 Oct 2012 15:59:52 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/10/java-reflect.html</guid>
+      <description>反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 11.04 下安装配置 JDK 7</title>
+      <link>http://fatkun.github.io/2012/04/ubuntu-11-04-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-jdk-7.html</link>
+      <pubDate>Sun, 29 Apr 2012 17:44:19 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2012/04/ubuntu-11-04-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-jdk-7.html</guid>
+      <description>文章来源：Ubuntu 11.04 下安装配置 JDK 7 这篇文章说得很清晰。。复制过来。。以作备用。。 ——————— 第一步：下载jdk-7-linux-i58</description>
+    </item>
+    
+    <item>
+      <title>JDK源码分析：java.lang.String</title>
+      <link>http://fatkun.github.io/2011/03/jdk-source-java-lang-string.html</link>
+      <pubDate>Thu, 10 Mar 2011 15:24:57 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2011/03/jdk-source-java-lang-string.html</guid>
+      <description>最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，</description>
+    </item>
+    
+    <item>
+      <title>EL表达式</title>
+      <link>http://fatkun.github.io/2010/11/el-expression.html</link>
+      <pubDate>Fri, 19 Nov 2010 15:14:26 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/11/el-expression.html</guid>
+      <description>期待已久的日子即将到来: 最新版JavaServer Pages (JSP)2.0 规范即将和其他的J2EE 1.4一同发布。新的JSP版本有一个新的飞跃，采用了新的方式：</description>
+    </item>
+    
+    <item>
+      <title>jsp getOutputStream() has already been called for this response异常解决方法</title>
+      <link>http://fatkun.github.io/2010/04/jsp-getoutputstream-has-already-been-called-for-this-response.html</link>
+      <pubDate>Sun, 25 Apr 2010 13:01:06 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2010/04/jsp-getoutputstream-has-already-been-called-for-this-response.html</guid>
+      <description>添加以下两段代码即可，我是在用jsp输出图像的时候出现这个问题 out.clear(); out = pageContext.pushBody(); 附上我的输出图像的JSP代码 &amp;lt;%@ page info=&#34;Random Image Show&#34; pageEncoding=&#34;UTF-8&#34; contentType=&#34;image/jpg&#34; autoFlush=&#34;true&#34; buffer=&#34;16kb&#34; session=&#34;false&#34; import=&#34;java.io.FileInputStream&#34;% &amp;lt;% ServletOutputStream sos = null; if (sos == null) sos</description>
+    </item>
+    
+    <item>
+      <title>开始学习Google App Engine(Java) – 准备篇</title>
+      <link>http://fatkun.github.io/2009/12/the-first-of-google-app-engine-java.html</link>
+      <pubDate>Tue, 15 Dec 2009 12:40:01 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/12/the-first-of-google-app-engine-java.html</guid>
+      <description>&lt;p&gt;发现我挺喜欢Google的东西&lt;del&gt;也算一个G粉吧&lt;/del&gt;&lt;del&gt;好喜欢啊好喜欢·~好多免费的东西&lt;/del&gt;~&lt;/p&gt;
+&lt;h2 id=&#34;什么是google-app-engine&#34;&gt;什么是Google App Engine?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;按我的理解，简单的一句话就是Google提供一个网络平台，这个平台目前支持 Python、Java，我们可以通过编写程序运行在google的服务器上。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Struts2.x框架的知识点</title>
+      <link>http://fatkun.github.io/2009/10/struts2-x%E6%A1%86%E6%9E%B6%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+      <pubDate>Fri, 09 Oct 2009 05:27:17 +0000</pubDate>
+      
+      <guid>http://fatkun.github.io/2009/10/struts2-x%E6%A1%86%E6%9E%B6%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+      <description>&lt;p&gt;郁闷，从10月5日开始四天不能上网，杯具了。。。。不能上网就不上呗&lt;del&gt;反正上的是寂寞&lt;/del&gt;今天终于可以上网了。。发泄一下，可恶的校园网！~&lt;br&gt;
+不过在不能上网的几天内把Struts2的视频看完了·~哇咔咔。。不过还没练习~~可能很多还不会·&lt;br&gt;
+不说郁闷的事了，把知识点列出来先，以后一点点的把例子弄出来。&lt;br&gt;
+1，最最最常用的就是那个配置文件啦。。&lt;strong&gt;Struts.xml&lt;/strong&gt;&lt;br&gt;
+1）Packa&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
