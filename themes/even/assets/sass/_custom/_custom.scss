@@ -3,6 +3,24 @@
 // ==============================
 // You can override the variables in _variables.scss to customize the style
 
-pre {
+.post pre {
     font-size: 14px !important;
+}
+
+.post p {
+    margin: 0 0 10px 0;
+}
+
+.post .post-header h1.post-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #16982B;
+}
+
+.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
+    margin: 20px 0px 10px 0;
+    font-weight: bold !important;
+    border-left: #16982B solid 5px;
+    color: #16982B;
+    padding-left: 10px;
 }
