@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,106 +116,115 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/10/extjs-combobox-filter.html">Extjs combobox下拉框模糊匹配</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2012/01/android-viewholder.html">Android ViewHolder模式</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2011-10-21 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Ext中的combobox有属性typeAhead：true 可以实现模糊匹配，但是是从开始匹配的，如果需要自定的的匹配，则需要监听befor
-    </div>
-    <div class="read-more">
-      <a href="/2011/10/extjs-combobox-filter.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/10/recovery-contacts-apk.html">误删contacts.apk解决方法（不用刷机）</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2011-10-03 </span>
+      <span class="post-time"> 2012-01-07 </span>
       <div class="post-category">
           <a href="/categories/android/"> Android </a>
+          </div>
+        <span class="more-meta"> 约 855 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少
+    </div>
+    <div class="read-more">
+      <a href="/2012/01/android-viewholder.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2012/01/manager-web-page.html">找不到管理网页和文件夹对处理方法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-01-04 </span>
+      <div class="post-category">
           <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
           </div>
+        <span class="more-meta"> 约 181 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      从完整的刷机包内，注意，版本最好是和你手机一致的。如果找不到，可以上网问别人要。 在压缩包目录下android2.3.6.zip\system
+      把下面内容保存为aa.reg文件，双击运行导入 （未测试是否成功，注册表从我电脑导出的,WIN7和XP应该是一样可以用的） Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Thickets] "Tex
     </div>
     <div class="read-more">
-      <a href="/2011/10/recovery-contacts-apk.html" class="read-more-link">阅读更多</a>
+      <a href="/2012/01/manager-web-page.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/09/thrift-tutorial.html">Thrift入门篇-运行Tutorial</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2012/01/activity-startactivityforresult.html">Activity startActivityForResult</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2011-09-12 </span>
+      <span class="post-time"> 2012-01-01 </span>
       <div class="post-category">
-          <a href="/categories/python/"> python </a>
+          <a href="/categories/android/"> Android </a>
           </div>
+        <span class="more-meta"> 约 612 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      本文假设你已经了解Thrift是什么了，如果还不了解，请借助强大的谷歌。 本文的开发环境是windows 7 + python2.6 Thrift官方主页：http:
+      public void startActivityForResult (Intent intent, int requestCode) 从一个Activity启动另一个activity，得到结果返回给前一个activity。 简单说 OneActivity实现onA
     </div>
     <div class="read-more">
-      <a href="/2011/09/thrift-tutorial.html" class="read-more-link">阅读更多</a>
+      <a href="/2012/01/activity-startactivityforresult.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/09/download-sina-music.html">下载新浪音乐</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2012/01/android-broadcastreceiver-%E5%B9%BF%E6%92%AD.html">Android BroadcastReceiver 广播</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2011-09-12 </span>
+      <span class="post-time"> 2012-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/android/"> Android </a>
+          </div>
+        <span class="more-meta"> 约 358 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      总结如下： 广播可用于Service与Activity的之间的通信，也可用于接收一些系统的事件，例如收到短信，电量等信息。 有两种方法注册，静态
+    </div>
+    <div class="read-more">
+      <a href="/2012/01/android-broadcastreceiver-%E5%B9%BF%E6%92%AD.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2012/01/wp-syntax-code-editor.html">WP-Syntax代码编辑器插件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-01-01 </span>
       <div class="post-category">
           <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
           </div>
+        <span class="more-meta"> 约 468 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      新浪音乐没有直接下载音乐的地方。。听到一首好歌想要下载怎么办呢··找出它的下载地址 只要你得到新浪音乐的短地址，就行啦。（你可以分享一条歌曲获
+      升级到WP3.3后，之前的那些插入代码按钮都没有用啦。。上去找插件没找到，自己改了一个syntanx-highlighter的。 感谢原作者l
     </div>
     <div class="read-more">
-      <a href="/2011/09/download-sina-music.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/08/change-theme.html">更换新主题</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2011-08-20 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      把Zindi主题改了一下，主要是改了页面宽度，文字大小。。我还是喜欢14px的文字，看起来容易阅读。 悲剧的是发现评论不是嵌套的···o(╯□
-    </div>
-    <div class="read-more">
-      <a href="/2011/08/change-theme.html" class="read-more-link">阅读更多</a>
+      <a href="/2012/01/wp-syntax-code-editor.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

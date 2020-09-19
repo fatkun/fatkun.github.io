@@ -18,7 +18,7 @@
 
 <meta name="author" content="fatkun" /><meta name="description" content="web开发中常常要实现“复制到剪切板”功能。这个功能很实用，但是由于安全问题，浏览器的限制越来越严，实现的方法也越来越有限了。 Firefox 默认下不能直接通过Javascript操作剪切板，必须开启相关的设置才行。想只通过Javascript技术实现跨浏览器的剪切板是行不通的。现在常用的方法是利用JavaScript&#43;Flash实现，普遍流传的办法是_clipboard.swf，这是国外最早实现的（著名的Clipboard Copy解决方案:　http://www.jeffothy.com/weblog/clipboard-copy/）。但是很可惜，_clipboard.swf在新出来的flash10中无效，因为flash10中规定了只有在swf上进行了实际的操作（比如鼠标点击）才能启动剪切板。而_clipboard.swf方法的swf是隐藏的，通过JavaScript来操作flash的剪切板，显然没有对swf进行实际的用户操作。
 …
-" /><meta name="keywords" content="Hugo, theme, even" />
+" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -87,12 +87,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -107,11 +109,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -130,6 +134,8 @@
         <div class="post-category">
             <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
             </div>
+          <span class="more-meta"> 约 1058 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>

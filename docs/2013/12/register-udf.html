@@ -19,7 +19,7 @@
 <meta name="author" content="fatkun" /><meta name="description" content="目标 可以不重启hive服务端动态增加或更新udf，本文用到动态加载以及hive hook实现。
 看看原来的代码是怎样写的 我看的是cdh4.3.0代码，目前有两个地方注册udf， 一个是在org.apache.hadoop.hive.ql.exec.FunctionRegistry类里，大部分的内置udf都是在这里注册的，很多网站都是通过修改这里代码重新打包来注册udf。 第二个是最近新增了一个hive-builtins*.jar文件，注册函数是在
 public SessionState(HiveConf conf) {...Class&amp;lt;?&amp;gt; pluginClass = Utilities.getBuiltinUtilsClass();URL jarLocation = pluginClass.getProtectionDomain().getCodeSource().getLocation();add_builtin_resource(ResourceType.JAR, jarLocation.toString());FunctionRegistry.registerFunctionsFromPluginJar(jarLocation, pluginClass.getClassLoader());...} 通过找到org.apache.hive.builtins.BuiltinUtils类定位jar的位置，把jar包加入hive.added.jars.path配置里，然后通过FunctionRegistry.registerFunctionsFromPluginJar来注册udf
-//我们可以用这两个方法来注册udfpublic static void registerTemporaryUDF(String functionName, Class&amp;lt;? extends UDF&amp;gt; UDFClass, boolean isOperator)public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader classLoader)" /><meta name="keywords" content="Hugo, theme, even" />
+//我们可以用这两个方法来注册udfpublic static void registerTemporaryUDF(String functionName, Class&amp;lt;? extends UDF&amp;gt; UDFClass, boolean isOperator)public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader classLoader)" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -38,7 +38,7 @@ public SessionState(HiveConf conf) {...Class&amp;lt;?&amp;gt; pluginClass = Ut
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -136,12 +136,14 @@ public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader c
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -156,11 +158,13 @@ public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader c
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -179,6 +183,8 @@ public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader c
         <div class="post-category">
             <a href="/categories/hive/"> hive </a>
             </div>
+          <span class="more-meta"> 约 840 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>

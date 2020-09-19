@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="create &#39;ucbrowser_imei2&#39;, {NAME=&amp;gt;&#39;date&#39;, VERSIONS=&amp;gt;5} disable &#39;test_imei&#39; drop &#39;test_imei&#39; # 预先指定分区 create &#39;ucbrowser_utdid&#39;, &#39;date&#39;, { VERSIONS =&amp;gt; &#39;5&#39;, DATA_BLOCK_ENCODING =&amp;gt; &#39;PREFIX&#39;, COMPRESSION =&amp;gt; &#39;SNAPPY&#39;, SPLITS=&amp;gt;[&#39;03ufUX/IWscQABV&#43;EwvaHDOo&#39;]} # 预先分区（200个region） hbase org.apache.hadoop.hbase.util.RegionSplitter -c 200 -f &#34;date&#34; &#34;ucbrowser_imei2&#34; &#34;HexStringSplit&#34; # 修改版本 alter &#39;test_imei&#39;, {NAME =&amp;gt; &#39;date&#39;, VERSIONS =&amp;gt; 5 } # 查" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="create &#39;ucbrowser_imei2&#39;, {NAME=&amp;gt;&#39;date&#39;, VERSIONS=&amp;gt;5} disable &#39;test_imei&#39; drop &#39;test_imei&#39; # 预先指定分区 create &#39;ucbrowser_utdid&#39;, &#39;date&#39;, { VERSIONS =&amp;gt; &#39;5&#39;, DATA_BLOCK_ENCODING =&amp;gt; &#39;PREFIX&#39;, COMPRESSION =&amp;gt; &#39;SNAPPY&#39;, SPLITS=&amp;gt;[&#39;03ufUX/IWscQABV&#43;EwvaHDOo&#39;]} # 预先分区（200个region） hbase org.apache.hadoop.hbase.util.RegionSplitter -c 200 -f &#34;date&#34; &#34;ucbrowser_imei2&#34; &#34;HexStringSplit&#34; # 修改版本 alter &#39;test_imei&#39;, {NAME =&amp;gt; &#39;date&#39;, VERSIONS =&amp;gt; 5 } # 查" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -82,12 +82,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -102,11 +104,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -125,6 +129,8 @@
         <div class="post-category">
             <a href="/categories/hbase/"> hbase </a>
             </div>
+          <span class="more-meta"> 约 170 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
     </header>

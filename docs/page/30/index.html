@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,105 +116,115 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/01/hive-distinct.html">Hive – Distinct 的实现</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-familyfilter.html">Hbase FamilyFilter</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-01-20 </span>
+      <span class="post-time"> 2013-03-24 </span>
       <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
+          <a href="/categories/hbase/"> hbase </a>
           </div>
+        <span class="more-meta"> 约 351 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      准备数据 语句 select count, count(distinct uid) from logs group by count; hive&gt; select * from logs; OK a 苹果 3 a 橙子 3 a 烧鸡 1 b 烧鸡 3 hive&gt; select count, count(distinct uid) from logs group by count; 1 1 3 2 根据count分组，计算独立用户数。 计
+      FamilyFilter 用于过滤Family package com.fatkun.filter; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor; import org.apache.hadoop.hbase.HTableDescriptor; import org.apache.hadoop.hbase.client.Get; import org.apache.hadoop.hbase.client.HBaseAdmin; import org.apache.hadoop.hbase.client.HTable; import org.apache.hadoop.hbase.client.Put; import org.apache.hadoop.hbase.client.Result; import org.apache.hadoop.hbase.client.ResultScanner; import org.apache.hadoop.hbase.client.Scan; import org.apache.hadoop.hbase.filter.BinaryComparator; import org.apache.hadoop.hbase.filter.CompareFilter; import org.apache.hadoop.hbase.filter.FamilyFilter; import org.apache.hadoop.hbase.filter.Filter; import org.apache.hadoop.hbase.util.Bytes; public class TestHbaseFamilyFilter { String tableName = "test_family_filter"; Configuration config = HBaseConfiguration.create(); /** * 部分代码来自hba
     </div>
     <div class="read-more">
-      <a href="/2013/01/hive-distinct.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/03/hbase-familyfilter.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/12/python-nested-scopes.html">python嵌套作用域问题</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-rowfilter.html">hbase RowFilter</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2012-12-27 </span>
+      <span class="post-time"> 2013-03-24 </span>
       <div class="post-category">
-          <a href="/categories/python/"> python </a>
+          <a href="/categories/hbase/"> hbase </a>
           </div>
+        <span class="more-meta"> 约 750 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      之前都不太理解这个。。。 在Python中，使用一个变量之前不必预先声明它，但是在真正使用它之前，它必须已经绑定到某个对象；而名字绑定将在当前
+      RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()
     </div>
     <div class="read-more">
-      <a href="/2012/12/python-nested-scopes.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/03/hbase-rowfilter.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/12/extjs3-x-mulitcombo.html">Extjs3.x带搜索的下拉多选框</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/03/android-recive-sms-logic.html">android接收长短信处理逻辑</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2012-12-22 </span>
+      <span class="post-time"> 2013-03-10 </span>
       <div class="post-category">
-          <a href="/categories/jquery/"> jquery </a>
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
           </div>
+        <span class="more-meta"> 约 1080 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      修改自deebugger：https://github.com/deebugger/Ext.ux.form.ExtendedComboBox
+      长短信会分割成多条发送过来，每一条头部会带上总共有多少条，和这是第几条。（具体的细节我也没太深究） 手机收到其中一条短信时，如果辨别出是长短信
     </div>
     <div class="read-more">
-      <a href="/2012/12/extjs3-x-mulitcombo.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/03/android-recive-sms-logic.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/12/ext-util-delayedtask.html">Ext.util.DelayedTask很好用</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/03/install-android-sdk-can-not-find-jdk.html">安装android sdk提示找不到JDK解决方法</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2012-12-22 </span>
+      <span class="post-time"> 2013-03-10 </span>
       <div class="post-category">
-          <a href="/categories/jquery/"> jquery </a>
+          <a href="/categories/android/"> Android </a>
           </div>
+        <span class="more-meta"> 约 52 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Ext3.x有个这个类Ext.util.DelayedTask， 实现好简单。。做个定时器，如果还没执行又被触发就取消上一个定时器。。 应用场景
+      我的环境WIN7 64bit win7可以使用mklink做软链 Can also create symbolic link if you don't want to copy the files. (requires administrator privileges): mklink C:\Windows\SysWOW64\java.exe C:\Windows\System32\java.exe mklink C:\Windows\SysWOW64\javaw.exe C:\Windows\System32\javaw.exe 参考 http://stackoverflow.com/questions/4382178/android-sdk-installation-doesnt-find-jdk http://android-er.blogspot.com/2011/02/android-sdk-cannot-detect-jdk.html
     </div>
     <div class="read-more">
-      <a href="/2012/12/ext-util-delayedtask.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/03/install-android-sdk-can-not-find-jdk.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/12/jsduck-generate-extjs3-api.html">使用jsduck生成extjs3.x的代码</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/03/codeigniter-db-error-message.html">codeigniter数据库错误信息获取</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2012-12-18 </span>
+      <span class="post-time"> 2013-03-01 </span>
       <div class="post-category">
           <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
           </div>
+        <span class="more-meta"> 约 40 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      直接按说明的命令会出错 Error: Error while parsing /root/PROJECTS/foundation-ui/src/main/webapp/scripts/ext/src/ext-core/src/adapter/ext-base-begin.js: Line 18: Unexpected end of input 解决方法 jsduck ext-3.4.0/src/{core,data,dd,direct,ext-core/src/core,ext-core/src/data,ext-core/src/util,state,widgets} --output api 来源：http://www.sencha.com/forum/showthrea
+      db_debug – TRUE/FALSE (boolean) – Whether database errors should be displayed. 需要设置db_debug = false Yes, this is the mysql_error() wrapper. $this-&gt;db-&gt;_error_message(); And the mysql_errno wrapper is: $this-&gt;db-&gt;_error_number(); via: http://stackoverflow.com/questions/3234564/under-codeigniter-is-it-possible-to-see-mysql-error
     </div>
     <div class="read-more">
-      <a href="/2012/12/jsduck-generate-extjs3-api.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/03/codeigniter-db-error-message.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

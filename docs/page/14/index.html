@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,105 +116,115 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/datanode-start.html">DataNode启动流程源码分析</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-group-mapping-from-file.html">hadoop组映射从配置文件读取</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-05-02 </span>
+      <span class="post-time"> 2016-07-31 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 720 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测
+      hadoop实现类似linux系统的文件权限，需要知道某个用户是属于哪个组。系统默认是使用ShellBasedUnixGroupsMappi
     </div>
     <div class="read-more">
-      <a href="/2016/05/datanode-start.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/07/hadoop-group-mapping-from-file.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/hdfs-8824.html">HDFS-8824 平衡数据的时候不移动小文件</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/07/migrate-hadoop-namenode.html">迁移Hadoop NameNode</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-05-01 </span>
+      <span class="post-time"> 2016-07-22 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 1639 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Do not use small blocks for balancing the cluster https://issues.apache.org/jira/browse/HDFS-8824 Allow Balancer to run faster https://issues.apache.org/jira/browse/HDFS-8818 平衡设置的文章：https://community.hortonworks.com/articles/438
+      版本：hadoop cdh5.4 传输文件 接收方 nc -l &lt;span class="hljs-number"19999&lt;/span &lt;span class="hljs-string"| tar zxvf -&lt;/span 发送方 tar czvf - ./current &lt;span class="hljs-string"| nc serverip 19999&lt;/span 迁移方案 采用修改/etc/hosts的方式，把原hostname
     </div>
     <div class="read-more">
-      <a href="/2016/05/hdfs-8824.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/07/migrate-hadoop-namenode.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-complete-file-timeout.html">hdfs complete file 超时</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-volume-choosing-policy.html">hadoop磁盘写入选择策略</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-04-25 </span>
+      <span class="post-time"> 2016-07-14 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 131 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      修改一下超时次数，具体代码在 DFSOutputStream.java private void completeFile(ExtendedBlock last) throws IOException { long localstart = Time.now(); long localTimeout = 400; boolean fileComplete = false; int retries = dfsClient.getConf().nBlockWriteLocateFollowingRetry; while (!fileComplete) { fileComplete = dfsClient.namenode.complete(src, dfsClient.clientName, last, fileId); if (!fileComplete) { final int hdfsTimeout = dfsClient.getHdfsTimeout(); if (!dfsClient.clientRunning &brvbar;&brvbar; (hdfsTimeout &gt; 0 && localstart + hdfsTimeout &lt; Time.now())) { String msg
+      hadoop写入时，默认磁盘选择是轮询的方式。可以改用按空间大小来分配，避免某个磁盘特别满。 参数 ：dfs.datanode.fsdatase
     </div>
     <div class="read-more">
-      <a href="/2016/04/hdfs-complete-file-timeout.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/07/hadoop-volume-choosing-policy.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-start.html">hdfs启动相关文章</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html">hadoop更换namenode注意事项</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-04-24 </span>
+      <span class="post-time"> 2016-05-25 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 179 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      记一次DataNode慢启动问题 ：启动过程中，datanode为了获取used size，如果超过时间，可能会执行DU。
+      所有机器hosts都要加上新namenode 新namenode要建立好以前的用户和组 zookeeper中HA的信息可以删除，然后重建zook
     </div>
     <div class="read-more">
-      <a href="/2016/04/hdfs-start.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/04/hadoop-check-disk-error.html">hadoop检查目录健康状态</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop-11238.html">[HADOOP-11238]hdfs namenode getGroups延迟</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-04-10 </span>
+      <span class="post-time"> 2016-05-15 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 1014 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      DiskChecker负责检查目录是否有建目录和判断权限。 datanode BlockPoolSlice.checkDirs() DataNode.checkDiskError() nodeManager LocalDirsHandlerService.checkDirs()
+      在namenode日志看到如下错误 2016-05-11 01:00:26,360 WARN org.apache.hadoop.security.Groups: Potential performance problem: getGroups(user=xxx) took 5046 milliseconds 这个方法是hadoop为了获取某个用户是哪个组。 分析补丁 补丁：https://iss
     </div>
     <div class="read-more">
-      <a href="/2016/04/hadoop-check-disk-error.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/05/hadoop-11238.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

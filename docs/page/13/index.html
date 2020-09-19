@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,105 +116,156 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-group-mapping-from-file.html">hadoop组映射从配置文件读取</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html">impala断开连接后释放session</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-07-31 </span>
+      <span class="post-time"> 2016-10-17 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
           </div>
+        <span class="more-meta"> 约 106 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      hadoop实现类似linux系统的文件权限，需要知道某个用户是属于哪个组。系统默认是使用ShellBasedUnixGroupsMappi
+      代码在这里 https://github.com/cloudera/Impala/blob/cdh5-2.2.0_5.4.0/be/src/service/impala-server.cc 如果不想断开清除session,直接return void ImpalaServer::ConnectionEnd( const ThriftServer::ConnectionContext& connection_context) { return; unique_lock&lt;mutex&gt; l(connection_to_sessions_map_lock_); ConnectionToSessionMap::iterator it = connection_to_sessions_map_.find(connection_context.connection_id); // Not every connection must have an associated session if (it == connection_to_sessions_map_.end()) return; LOG(INFO) &lt;&lt; "Connection from client " &lt;&lt; connection_context.network_address &lt;&lt; " closed, closing "
     </div>
     <div class="read-more">
-      <a href="/2016/07/hadoop-group-mapping-from-file.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/07/migrate-hadoop-namenode.html">迁移Hadoop NameNode</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/09/hive-10956-hs2-leaks-hms-connections.html">HIVE-10956 HS2 leaks HMS connections</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-07-22 </span>
+      <span class="post-time"> 2016-09-08 </span>
       <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/hive/"> hive </a>
           </div>
+        <span class="more-meta"> 约 18 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      版本：hadoop cdh5.4 传输文件 接收方 nc -l &lt;span class="hljs-number"19999&lt;/span &lt;span class="hljs-string"| tar zxvf -&lt;/span 发送方 tar czvf - ./current &lt;span class="hljs-string"| nc serverip 19999&lt;/span 迁移方案 采用修改/etc/hosts的方式，把原hostname
+      https://issues.apache.org/jira/browse/HIVE-10956 HMS链接泄露 https://issues.apache.org/jira/browse/HIVE-13002 HIVE-11934 Transaction lock retry logic results in infinite loop
     </div>
     <div class="read-more">
-      <a href="/2016/07/migrate-hadoop-namenode.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/09/hive-10956-hs2-leaks-hms-connections.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-volume-choosing-policy.html">hadoop磁盘写入选择策略</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/test/shortcodes/">Shortcodes</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-07-14 </span>
+      <span class="post-time"> 2016-08-30 </span>
       <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/shortcodes/"> shortcodes </a>
           </div>
+        <span class="more-meta"> 约 338 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      hadoop写入时，默认磁盘选择是轮询的方式。可以改用按空间大小来分配，避免某个磁盘特别满。 参数 ：dfs.datanode.fsdatase
+      <h1 id="admonition">Admonition</h1>
+<div class="admonition note"><p class="admonition-title">I&#39;m title!</p>
+<p>biu biu biu.</p>
+<details class="admonition note"><summary class="admonition-title">note</summary>
+  <p>biu biu biu.</p>
+</details>
+<div class="admonition example">
+  <p>Without title.</p>
+</div>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{% admonition note &#34;I&#39;m title!&#34; false %}}
+biu biu biu.
+
+{{% admonition type=&#34;note&#34; title=&#34;note&#34; details=&#34;true&#34; %}}
+biu biu biu.
+{{% /admonition %}}
+
+{{% admonition example %}}
+Without title.
+{{% /admonition %}}
+
+{{% /admonition %}}
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
     <div class="read-more">
-      <a href="/2016/07/hadoop-volume-choosing-policy.html" class="read-more-link">阅读更多</a>
+      <a href="/post/test/shortcodes/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html">hadoop更换namenode注意事项</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/08/powermock.html">使用powermock</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-05-25 </span>
+      <span class="post-time"> 2016-08-17 </span>
       <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/j2ee/"> J2EE </a>
           </div>
+        <span class="more-meta"> 约 145 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      所有机器hosts都要加上新namenode 新namenode要建立好以前的用户和组 zookeeper中HA的信息可以删除，然后重建zook
+      在pom.xml加入 &lt;dependency&gt; &lt;groupId&gt;org.easymock&lt;/groupId&gt; &lt;artifactId&gt;easymock&lt;/artifactId&gt; &lt;version&gt;3.3.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-module-junit4&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-api-easymock&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 如果报错，有可能项目中包含有低版本的javassist java.lang.NoSuchMethodError: javassist.CtMethod.hasAnnotation(Ljava/lang/Class;)Z 尝试加入新版本的javas
     </div>
     <div class="read-more">
-      <a href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/08/powermock.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop-11238.html">[HADOOP-11238]hdfs namenode getGroups延迟</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2016/08/get-user-group-mapping.html">获取linux用户和组映射脚本</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2016-05-15 </span>
+      <span class="post-time"> 2016-08-08 </span>
       <div class="post-category">
           <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/linux/"> Linux </a>
           </div>
+        <span class="more-meta"> 约 85 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      在namenode日志看到如下错误 2016-05-11 01:00:26,360 WARN org.apache.hadoop.security.Groups: Potential performance problem: getGroups(user=xxx) took 5046 milliseconds 这个方法是hadoop为了获取某个用户是哪个组。 分析补丁 补丁：https://iss
+      记录一下 python代码 #!/usr/bin/env python # -*- coding: utf-8 -*- import re import os import sys p = os.popen('id %s' % sys.argv[1]) s = p.read() # s = 'uid=486(yarn) gid=484(yarn) groups=484(yarn),493(hadoop),513(supergroup)' user = re.findall("uid=\d+\((.*?)\)", s)[0] s = s.split("groups=")[1] match = re.findall("\((.*?)\)", s) groups = [] for group in match: groups.append(group) print user + "=" + ",".join(sorted(groups)) shell
     </div>
     <div class="read-more">
-      <a href="/2016/05/hadoop-11238.html" class="read-more-link">阅读更多</a>
+      <a href="/2016/08/get-user-group-mapping.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

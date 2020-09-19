@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,109 +116,124 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2010/06/win7-menu-can-not-hide.html">WIN7的菜单栏无法隐藏解决方法（QtTabBar）</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2010/07/struts2-validation.html">Struts2校验框架(validation)</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2010-06-29 </span>
+      <span class="post-time"> 2010-07-07 </span>
+      <div class="post-category">
+          <a href="/categories/j2ee/"> J2EE </a>
+          </div>
+        <span class="more-meta"> 约 2715 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>Struts2的校验方法也是挺常用的，找到了一篇挺全面的文章,主要包括以下内容：</p>
+<ol>
+<li>使用Annotation（注解）进行校验</li>
+<li>使用xml配置校验</li>
+<li>使用覆盖validate方法校验
+文章出处：<a href="http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx">http://blog.csdn.net/struts2/archive/2007/08/02/1721989.aspx</a> 作者:马召</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/2010/07/struts2-validation.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2010/07/qq-sound.html">win7放着音乐，QQ来消息声音变小解决方法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2010-07-06 </span>
       <div class="post-category">
           <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
           </div>
+        <span class="more-meta"> 约 130 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，
+      QQ来消息声音就减低了，很不爽，一首歌都被打扰。。按图中的方法设置即可。 在控制面板或鼠标右键单击系统托盘上的喇叭图标 ，弹出菜单中选择“ 声音(
     </div>
     <div class="read-more">
-      <a href="/2010/06/win7-menu-can-not-hide.html" class="read-more-link">阅读更多</a>
+      <a href="/2010/07/qq-sound.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2010/06/xiao-pan-niu.html">《小胖妞》- 广美学生何伟锋毕业作品</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2010/07/fchg.html">卑鄙作品《非诚互搞》正式版，恶搞《非诚勿扰》</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2010-06-28 </span>
+      <span class="post-time"> 2010-07-06 </span>
       <div class="post-category">
           <a href="/categories/%E6%90%9E%E7%AC%91%E5%A8%B1%E4%B9%90/"> 搞笑娱乐 </a>
           </div>
+        <span class="more-meta"> 约 126 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      这种实景加漫画的方式挺好看的·~真的很牛B牙签筒当武器小胖妞，当她的样子变丑了，你还会爱她吗？
+      <p>继2007年推出的《感快超声》，又一部讽刺当代缺心眼儿娱乐节目的搞笑视频《非诚互搞》新鲜出炉！拍摄+后期突击了1个多礼拜，终于赶在该栏目被广电总局取缔前上映了！请大家尽情欢笑吧！
+UPDATE:优酷的被和谐了。。贴上土豆的</p>
+<h2 id="宣传片">宣传片</h2>
+<p>完整版请点入内页观看</p>
     </div>
     <div class="read-more">
-      <a href="/2010/06/xiao-pan-niu.html" class="read-more-link">阅读更多</a>
+      <a href="/2010/07/fchg.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2010/06/zuo-ji-nan.html">哥不是Android女，哥是座机男</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2010/07/000webhost-htaccess-gzip.html">000webhost开启gzip压缩(使用htaccess开启gzip)</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2010-06-25 </span>
+      <span class="post-time"> 2010-07-06 </span>
       <div class="post-category">
-          <a href="/categories/%E6%90%9E%E7%AC%91%E5%A8%B1%E4%B9%90/"> 搞笑娱乐 </a>
+          <a href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"> 胡言乱语 </a>
           </div>
+        <span class="more-meta"> 约 539 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      弹android，弹Iphone算什么，哥弹的是电话座机~~厉害了·~
+      对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题
     </div>
     <div class="read-more">
-      <a href="/2010/06/zuo-ji-nan.html" class="read-more-link">阅读更多</a>
+      <a href="/2010/07/000webhost-htaccess-gzip.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2010/06/oecura-mambo.html">惠比寿麝香葡萄最新第二首单曲《OECURA MAMBO》</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2010/07/super-mario.html">最难的《超级马里奥》关卡</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2010-06-25 </span>
+      <span class="post-time"> 2010-07-03 </span>
       <div class="post-category">
           <a href="/categories/%E6%90%9E%E7%AC%91%E5%A8%B1%E4%B9%90/"> 搞笑娱乐 </a>
           </div>
+        <span class="more-meta"> 约 6 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p style="padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; outline-style: none; outline-width: initial; outline-color: initial; text-decoration: none; margin: 0px;">  一波未平，一波又起，日本美女苍井空AV女优团又带来最新第二首单曲《OECURA MAMBO》：<br style="list-style-type: none; list-style-position: initial; list-style-image: initial; outline-style: none; outline-width: initial; outline-color: initial; text-decoration: none; padding: 0px; margin: 0px;" />
+      真牛B啊。。
     </div>
     <div class="read-more">
-      <a href="/2010/06/oecura-mambo.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2010/06/mu-ma-zhi-ge.html">木马之歌等-令人抓狂的MM思语全集</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2010-06-24 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%90%9E%E7%AC%91%E5%A8%B1%E4%B9%90/"> 搞笑娱乐 </a>
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>受不了，这么强大。。。歌唱得挺糟糕的。。哇咔咔<br>
-**甩葱歌（轻度抽风版）<br>
-**
-**还有很多，如果在首页记得点“阅读全文”观看下面的视频~~</p>
-    </div>
-    <div class="read-more">
-      <a href="/2010/06/mu-ma-zhi-ge.html" class="read-more-link">阅读更多</a>
+      <a href="/2010/07/super-mario.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="fatkun" /><meta name="description" content="fatkun&#39;s blog" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -37,19 +37,19 @@
 
 
 
-<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Fatkun&#39;s Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="fatkun&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fatkun.github.io/" />
 <meta property="og:updated_time" content="2009-12-08T09:41:00+00:00" />
 <meta itemprop="name" content="Fatkun&#39;s Blog">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="fatkun&#39;s blog"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fatkun&#39;s Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="fatkun&#39;s blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -76,12 +76,14 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">首页</li>
-      </a><a href="/posts/">
+      </a><a href="/post/">
         <li class="mobile-menu-item">存档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -96,11 +98,13 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/posts/">存档</a>
+        <a class="menu-item-link" href="/post/">存档</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -112,105 +116,115 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-dependentcolumnfilter.html">Hbase DependentColumnFilter</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/06/filenotfoundexception-hive-builtins.html">hive-builtins文件找不到</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-03-25 </span>
+      <span class="post-time"> 2013-06-11 </span>
       <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
+          <a href="/categories/hive/"> hive </a>
           </div>
+        <span class="more-meta"> 约 360 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Here you have a more complex filter that does not simply filter out data based on directly available information. Rather, it lets you specify a dependent column—or reference column—that controls how other columns are filtered. It uses the timestamp of the reference column and includes all other columns that have the same
+      java.io.FileNotFoundException: File does not exist: hdfs://localhost:8020/home/fatkun/hive-0.10.0-cdh4.3.0/lib/hive-builtins-0.10.0-cdh4.3.0.jar at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:824) at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.getFileStatus(ClientDistributedCacheManager.java:288) at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.getFileStatus(ClientDistributedCacheManager.java:224) at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.determineTimestamps(ClientDistributedCacheManager.java:93) at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.determineTimestampsAndCacheVisibilities(ClientDistributedCacheManager.java:57) at org.apache.hadoop.mapreduce.JobSubmitter.copyAndConfigureFiles(JobSubmitter.java:254) at org.apache.hadoop.mapreduce.JobSubmitter.copyAndConfigureFiles(JobSubmitter.java:290) at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:361) at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1269) at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1266) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:396) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408) at org.apache.hadoop.mapreduce.Job.submit(Job.java:1266) at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:606) at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:601) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:396) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408) at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:601) at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:586) at org.apache.hadoop.hive.ql.exec.ExecDriver.execute(ExecDriver.java:448) at org.apache.hadoop.hive.ql.exec.ExecDriver.main(ExecDriver.java:690) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) at java.lang.reflect.Method.invoke(Method.java:597) at org.apache.hadoop.util.RunJar.main(RunJar.java:208) Job Submission failed with exception
     </div>
     <div class="read-more">
-      <a href="/2013/03/hbase-dependentcolumnfilter.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/06/filenotfoundexception-hive-builtins.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-valuefilter.html">Hbase ValueFilter</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/06/cloudera-doc-max.html">[蛋疼向]cloudera文档最大化</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-03-25 </span>
+      <span class="post-time"> 2013-06-04 </span>
       <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
           </div>
+        <span class="more-meta"> 约 78 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Hbase ValueFilter用于过滤值 package com.fatkun.filter.comparison; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor; import org.apache.hadoop.hbase.HTableDescriptor; import org.apache.hadoop.hbase.client.Get; import org.apache.hadoop.hbase.client.HBaseAdmin; import org.apache.hadoop.hbase.client.HTable; import org.apache.hadoop.hbase.client.Put; import org.apache.hadoop.hbase.client.Result; import org.apache.hadoop.hbase.client.ResultScanner; import org.apache.hadoop.hbase.client.Scan; import org.apache.hadoop.hbase.filter.BinaryComparator; import org.apache.hadoop.hbase.filter.CompareFilter; import org.apache.hadoop.hbase.filter.Filter; import org.apache.hadoop.hbase.filter.SubstringComparator; import org.apache.hadoop.hbase.filter.ValueFilter; import org.apache.hadoop.hbase.util.Bytes; public class TestHbaseValueFilter { String tableName = "test_value_filter"; Configuration config = HBaseConfiguration.create(); /** * 部
+      cloudera的文档可视面积太小了。。。头部占了很大高度。。 点我到文档地址 解决方法 使用css改变一下样式。。 在浏览器加入一个书签 代码如下：
     </div>
     <div class="read-more">
-      <a href="/2013/03/hbase-valuefilter.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/06/cloudera-doc-max.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-qualifierfilter.html">Hbase QualifierFilter</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/06/alter-table-partition-file-format.html">Hive更改输入输出文件格式</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-03-25 </span>
+      <span class="post-time"> 2013-06-04 </span>
       <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
+          <a href="/categories/hive/"> hive </a>
           </div>
+        <span class="more-meta"> 约 491 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Hbase QualifierFilter用于过滤qualifier，也就是一个列族里面data:xxx，冒号后面的字符串。 =。= package com.fatkun.filter.comparison; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor;
+      文档：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
     </div>
     <div class="read-more">
-      <a href="/2013/03/hbase-qualifierfilter.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/06/alter-table-partition-file-format.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-familyfilter.html">Hbase FamilyFilter</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/05/hive-rename.html">Hive改表名后查询不了数据(DataNucleus缓存问题)</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-03-24 </span>
+      <span class="post-time"> 2013-05-29 </span>
       <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
+          <a href="/categories/hive/"> hive </a>
           </div>
+        <span class="more-meta"> 约 407 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      FamilyFilter 用于过滤Family package com.fatkun.filter; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor; import org.apache.hadoop.hbase.HTableDescriptor; import org.apache.hadoop.hbase.client.Get; import org.apache.hadoop.hbase.client.HBaseAdmin; import org.apache.hadoop.hbase.client.HTable; import org.apache.hadoop.hbase.client.Put; import org.apache.hadoop.hbase.client.Result; import org.apache.hadoop.hbase.client.ResultScanner; import org.apache.hadoop.hbase.client.Scan; import org.apache.hadoop.hbase.filter.BinaryComparator; import org.apache.hadoop.hbase.filter.CompareFilter; import org.apache.hadoop.hbase.filter.FamilyFilter; import org.apache.hadoop.hbase.filter.Filter; import org.apache.hadoop.hbase.util.Bytes; public class TestHbaseFamilyFilter { String tableName = "test_family_filter"; Configuration config = HBaseConfiguration.create(); /** * 部分代码来自hba
+      现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv
     </div>
     <div class="read-more">
-      <a href="/2013/03/hbase-familyfilter.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/05/hive-rename.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-rowfilter.html">hbase RowFilter</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/2013/04/java-dir-classpath.html">[备忘]java指定一个目录加入classpath</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2013-03-24 </span>
+      <span class="post-time"> 2013-04-22 </span>
       <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
+          <a href="/categories/j2ee/"> J2EE </a>
           </div>
+        <span class="more-meta"> 约 5 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()
+      java -classpath test.jar -Djava.ext.dirs=./lib com.fatkun.Test
     </div>
     <div class="read-more">
-      <a href="/2013/03/hbase-rowfilter.html" class="read-more-link">阅读更多</a>
+      <a href="/2013/04/java-dir-classpath.html" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

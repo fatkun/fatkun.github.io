@@ -13,10 +13,10 @@
     
     <item>
       <title>Shortcodes</title>
-      <link>https://fatkun.github.io/posts/test/shortcodes/</link>
+      <link>https://fatkun.github.io/post/test/shortcodes/</link>
       <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
       
-      <guid>https://fatkun.github.io/posts/test/shortcodes/</guid>
+      <guid>https://fatkun.github.io/post/test/shortcodes/</guid>
       <description>&lt;h1 id=&#34;admonition&#34;&gt;Admonition&lt;/h1&gt;
 &lt;div class=&#34;admonition note&#34;&gt;&lt;p class=&#34;admonition-title&#34;&gt;I&amp;#39;m title!&lt;/p&gt;
 &lt;p&gt;biu biu biu.&lt;/p&gt;
