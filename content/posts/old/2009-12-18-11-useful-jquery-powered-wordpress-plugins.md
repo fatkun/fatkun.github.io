@@ -1,0 +1,54 @@
+---
+title: 11个使用JQuery的WordPress插件
+author: fatkun
+type: post
+date: 2009-12-18T10:43:12+00:00
+excerpt: 我们都知道各种各样的动态效果和功能都可以通过JQuery添加到网页上,但是至少要懂得一些JQuery的知识才会使用...
+url: /2009/12/11-useful-jquery-powered-wordpress-plugins.html
+views:
+  - 42
+duoshuo_thread_id:
+  - 6300408706815230721
+categories:
+  - 网页前端
+tags:
+  - jquery
+  - plugin
+  - wordpress
+
+---
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  我们都知道各种各样的动态效果和功能都可以通过JQuery添加到网页上,但是至少要懂得一些JQuery的知识才会使用。这不是一个大问题，但是一些Wordpress用户总喜欢一些简单的插件。这篇文章的目的帮助你发现一些好用的WP插件（使用JQuery的~）</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress" target="_blank">Carousel Gallery (jQuery) for WordPress</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://noscope.com/journal/2009/03/carousel-gallery-jquery-for-wordpress" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_1.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  这个插件使用了Wordpress内建的图库，并且使用幻灯片的显示。<!--more--></p>
+
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.viper007bond.com/wordpress-plugins/jquery-lightbox-for-native-galleries/" target="_blank">jQuery Lightbox For Native Galleries</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.viper007bond.com/wordpress-plugins/jquery-lightbox-for-native-galleries/" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_2.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  使用ColorBox来显示全尺寸的图片。</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://wordpress.org/extend/plugins/jquery-image-lazy-loading/" target="_blank">jQuery Image Lazy Load WP</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://wordpress.org/extend/plugins/jquery-image-lazy-loading/" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_3.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  这个插件可以给Wordpress加上延迟加载图片的功能，也就是说在页面底下很远的图片会暂时不加载直到用户拖动滚动条下来。</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://wordpress.org/extend/plugins/jquery-comment-preview/" target="_blank">jQuery Comment Preview</a></h3>
+这个插件可以给评论者一个实时的预览自己的评论，它包括一个简单的HTML编辑器，还可以调整评论预览的样式。
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://ronaldheft.com/code/analyticator/" target="_blank">Google Analyticator</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://ronaldheft.com/code/analyticator/" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_4.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  Google Analyticator把开启谷歌分析（Google Analytics）必须用到的JavaScript代码添加进你的博客，这样就避免了自己修改模板添加代码的麻烦了。还有多个小工具（widgets），可以在前台和后台显示分析数据。（译者注：我也有在用这个插件，很方便）</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://articlesss.com/jquery-post-preview-wordpress-plugin/" target="_blank">jQuery Post Preview WordPress Plugin</a></h3>
+如果你不喜欢WordPress内置的编辑器（因为它添加了一些不必要的标签或者其它原因），但是你又想要一个实时预览（所见即所得？）的编辑器，那么这个插件很适合你。
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://wordpress.org/extend/plugins/jquery-pagebar/" target="_blank">jQuery-Pagebar</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://wordpress.org/extend/plugins/jquery-pagebar/" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_5.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  jQuery-Pagebar 把原来的上一页、下一页替换成滑动条了~</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.prodeveloper.org/j-post-slider-WordPress-plugin-jquery-post-animation-show.html" target="_blank">J Post Slider</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.prodeveloper.org/j-post-slider-WordPress-plugin-jquery-post-animation-show.html" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_6.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  这个插件可以循环显示最新的文章，图片，标题，或者摘要。</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://transientmonkey.com/wp-slimbox2" target="_blank">WP-Slimbox2</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://transientmonkey.com/wp-slimbox2" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_7.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  这个插件继承了Christophe Beyls写的优秀的Slimbox2。</p>
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.siolon.com/blog/wordpress-post-information-plugin/" target="_blank">WordPress Post Information Plugin</a></h3>
+这个插件可以把文章内容放入一个可以折叠的框内~可以节省网页空间~
+<h3 style="margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, 'Nimbus Roman No9 L', serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.pedrolamas.com/projectos/jquery-lightbox-en/" target="_blank">WordPress jQuery Lightbox</a></h3>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <a style="text-decoration: none; color: #2b8dc0;" href="http://www.pedrolamas.com/projectos/jquery-lightbox-en/" target="_blank"><img style="margin: 0px; border: 5px solid #e3e3e3;" src="http://webdesignledger.com/wp-content/uploads/2009/12/wordpress_jquery_8.jpg" alt="wordpress jquery plugin" /></a></p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  这个使用了balupton写的jQuery Lightbox插件。</p>
+<p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">  <p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">    第一次翻译~~四级还没过呢~~所以有错漏笑笑就好了。。这个星期六考英语四级~ fatkun  </p>
+  <p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">    本文来源：<a href="http://webdesignledger.com/resources/11-useful-jquery-powered-wordpress-plugins">http://webdesignledger.com/resources/11-useful-jquery-powered-wordpress-plugins</a>  </p>
+  <p style="line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;">    中文翻译：<a href="http://fatkun.com/2009/12/11-useful-jquery-powered-wordpress-plugins">http://fatkun.com/2009/12/11-useful-jquery-powered-wordpress-plugins</a>  </p>
