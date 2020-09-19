@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>简洁 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E7%AE%80%E6%B4%81/</link>
+    <description>Recent content in 简洁 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Oct 2009 11:01:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E7%AE%80%E6%B4%81/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>谷歌向部分用户推超简洁页面</title>
+      <link>https://fatkun.github.io/2009/10/%E8%B0%B7%E6%AD%8C%E5%90%91%E9%83%A8%E5%88%86%E7%94%A8%E6%88%B7%E6%8E%A8%E8%B6%85%E7%AE%80%E6%B4%81%E9%A1%B5%E9%9D%A2.html</link>
+      <pubDate>Fri, 09 Oct 2009 11:01:53 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/10/%E8%B0%B7%E6%AD%8C%E5%90%91%E9%83%A8%E5%88%86%E7%94%A8%E6%88%B7%E6%8E%A8%E8%B6%85%E7%AE%80%E6%B4%81%E9%A1%B5%E9%9D%A2.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/10/200910090320324111.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+ 谷歌已开始对小众用户推出一个新的实验性页面,页面上只有谷歌的标志和一个搜索框,此举将这个搜索大鳄的极简主义表现到了极致.只有当你移动鼠标的时候,搜索框才会出现导航选项.目前谷歌页面上的文字超过了30个.谷歌在10月8日早上(当地时间)发布了一个特殊的代码,用户可以复制该代码,粘贴到浏览器中,然后就可以使用一个简化的页面设计.。。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

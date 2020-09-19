@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hbase RowFilter - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &amp;nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2013/03/hbase-rowfilter.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hbase RowFilter" />
+<meta property="og:description" content="RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2013/03/hbase-rowfilter.html" />
+<meta property="article:published_time" content="2013-03-24T13:58:40+00:00" />
+<meta property="article:modified_time" content="2013-03-24T13:58:40+00:00" />
+<meta itemprop="name" content="hbase RowFilter">
+<meta itemprop="description" content="RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()">
+<meta itemprop="datePublished" content="2013-03-24T13:58:40&#43;00:00" />
+<meta itemprop="dateModified" content="2013-03-24T13:58:40&#43;00:00" />
+<meta itemprop="wordCount" content="750">
+
+
+
+<meta itemprop="keywords" content="filter,hbase," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hbase RowFilter"/>
+<meta name="twitter:description" content="RowFilter用于过滤row key Operator Description LESS 小于 LESS_OR_EQUAL 小于等于 EQUAL 等于 NOT_EQUAL 不等于 GREATER_OR_EQUAL 大于等于 GREATER 大于 NO_OP 排除所有 &nbsp; Comparator Description BinaryComparator 使用Bytes.compareTo()"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hbase RowFilter</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-03-24 </span>
+        <div class="post-category">
+            <a href="/categories/hbase/"> hbase </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#输出结果">输出结果</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>RowFilter用于过滤row key</p>
+<table summary="The possible comparison operators for CompareFilter-based           filters">  <tr>    <th>      Operator    </th>
+    <th>      Description    </th>  </tr>
+  <tr>    <td>      <code>LESS</code>    </td>
+    <td>      小于    </td>  </tr>
+  <tr>    <td>      <code>LESS_OR_EQUAL</code>    </td>
+    <td>      小于等于    </td>  </tr>
+  <tr>    <td>      <code>EQUAL</code>    </td>
+    <td>      等于    </td>  </tr>
+  <tr>    <td>      <code>NOT_EQUAL</code>    </td>
+    <td>      不等于    </td>  </tr>
+  <tr>    <td>      <code>GREATER_OR_EQUAL</code>    </td>
+    <td>      大于等于    </td>  </tr>
+  <tr>    <td>      <code>GREATER</code>    </td>
+    <td>      大于    </td>  </tr>
+  <tr>    <td>      <code>NO_OP</code>    </td>
+    <td>      排除所有    </td>  </tr></table>
+&nbsp;
+<table summary="The HBase-supplied comparators, used with CompareFilter-based           filters">  <tr>    <th>      Comparator    </th>
+    <th>      Description    </th>  </tr>
+  <tr>    <td>      <code>BinaryComparator</code>    </td>
+    <td>      使用Bytes.compareTo()比较    </td>  </tr>
+  <tr>    <td>      <code>BinaryPrefixComparator</code>    </td>
+    <td>      和BinaryComparator差不多，从前面开始比较    </td>  </tr>
+  <tr>    <td>      <code>NullComparator</code>    </td>
+    <td>      Does<a id="I_indexterm4_d1e13563"></a> not compare against an actual value but whether a given one is <code>null</code>, or not <code>null</code>.    </td>  </tr>
+  <tr>    <td>      <code>BitComparator</code>    </td>
+    <td>      Performs<a id="I_indexterm4_d1e13579"></a> a bitwise comparison, providing a <code>BitwiseOp</code> class with <code>AND</code>, <code>OR</code>, and <code>XOR</code> operators.    </td>  </tr>
+  <tr>    <td>      <code>RegexStringComparator</code>    </td>
+    <td>      正则表达式    </td>  </tr>
+  <tr>    <td>      <code>SubstringComparator</code>    </td>
+    <td>      把数据当成字符串，用contains()来判断    </td>  </tr></table>
+&nbsp;
+&nbsp;
+<pre lang="java" escaped="true">import java.io.IOException;
+<p>import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.Put;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.filter.BinaryComparator;
+import org.apache.hadoop.hbase.filter.BinaryPrefixComparator;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.Filter;
+import org.apache.hadoop.hbase.filter.RegexStringComparator;
+import org.apache.hadoop.hbase.filter.RowFilter;
+import org.apache.hadoop.hbase.filter.SubstringComparator;</p>
+<p>public class TestHbaseRowFilter {
+String tableName = &ldquo;test_row_filter&rdquo;;
+Configuration config = HBaseConfiguration.create();</p>
+<pre><code>/**
+ * 部分代码来自hbase权威指南
+ * @throws IOException
+ */
+public void testRowFilter() throws IOException {
+
+    HTable table = new HTable(config, tableName);
+    Scan scan = new Scan();
+
+    System.out.println(&quot;小于等于row010的行&quot;);
+    Filter filter1 = new RowFilter(CompareFilter.CompareOp.LESS_OR_EQUAL,
+            new BinaryComparator(&quot;row010&quot;.getBytes()));
+    scan.setFilter(filter1);
+    ResultScanner scanner1 = table.getScanner(scan);
+    for (Result res : scanner1) {
+        System.out.println(res);
+    }
+    scanner1.close();
+
+    System.out.println(&quot;正则获取结尾为5的行&quot;);
+    Filter filter2 = new RowFilter(CompareFilter.CompareOp.EQUAL,
+            new RegexStringComparator(&quot;.*5$&quot;));
+    scan.setFilter(filter2);
+    ResultScanner scanner2 = table.getScanner(scan);
+    for (Result res : scanner2) {
+        System.out.println(res);
+    }
+    scanner2.close();
+
+    System.out.println(&quot;包行有5的行&quot;);
+    Filter filter3 = new RowFilter(CompareFilter.CompareOp.EQUAL,
+            new SubstringComparator(&quot;5&quot;));
+    scan.setFilter(filter3);
+    ResultScanner scanner3 = table.getScanner(scan);
+    for (Result res : scanner3) {
+        System.out.println(res);
+    }
+    scanner3.close();
+
+    System.out.println(&quot;开头是row01的&quot;);
+    Filter filter4 = new RowFilter(CompareFilter.CompareOp.EQUAL,
+            new BinaryPrefixComparator(&quot;row01&quot;.getBytes()));
+    scan.setFilter(filter4);
+    ResultScanner scanner4 = table.getScanner(scan);
+    for (Result res : scanner4) {
+        System.out.println(res);
+    }
+    scanner3.close();
+}
+
+/**
+ * 初始化数据
+ */
+public void init() {
+    // 创建表和初始化数据
+    try {
+        HBaseAdmin admin = new HBaseAdmin(config);
+        if (!admin.tableExists(tableName)) {
+            HTableDescriptor htd = new HTableDescriptor(tableName);
+            HColumnDescriptor hcd1 = new HColumnDescriptor(&quot;data&quot;);
+            htd.addFamily(hcd1);
+            HColumnDescriptor hcd2 = new HColumnDescriptor(&quot;url&quot;);
+            htd.addFamily(hcd2);
+
+            admin.createTable(htd);
+        }
+
+        HTable table = new HTable(config, tableName);
+
+        table.setAutoFlush(false);
+        int count = 50;
+        for (int i = 1; i &amp;lt;= count; ++i) {
+            Put p = new Put(String.format(&quot;row%03d&quot;, i).getBytes());
+            p.add(&quot;data&quot;.getBytes(), String.format(&quot;col%01d&quot;, i % 10)
+                    .getBytes(), String.format(&quot;data%03d&quot;, i).getBytes());
+            p.add(&quot;url&quot;.getBytes(), String.format(&quot;col%01d&quot;, i % 10)
+                    .getBytes(), String.format(&quot;url%03d&quot;, i).getBytes());
+            table.put(p);
+        }
+        table.close();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+/**
+ * @param args
+ * @throws IOException
+ */
+public static void main(String[] args) throws IOException {
+    TestHbaseRowFilter test = new TestHbaseRowFilter();
+    test.init();
+    test.testRowFilter();
+}
+</code></pre>
+<p>}</pre></p>
+<h2 id="输出结果">输出结果</h2>
+<pre escaped="true" lang="other">小于等于row010的行
+keyvalues={row001/data:col1/1364133382268/Put/vlen=7, row001/url:col1/1364133382268/Put/vlen=6}
+keyvalues={row002/data:col2/1364133382268/Put/vlen=7, row002/url:col2/1364133382268/Put/vlen=6}
+keyvalues={row003/data:col3/1364133382268/Put/vlen=7, row003/url:col3/1364133382268/Put/vlen=6}
+keyvalues={row004/data:col4/1364133382268/Put/vlen=7, row004/url:col4/1364133382268/Put/vlen=6}
+keyvalues={row005/data:col5/1364133382268/Put/vlen=7, row005/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row006/data:col6/1364133382268/Put/vlen=7, row006/url:col6/1364133382268/Put/vlen=6}
+keyvalues={row007/data:col7/1364133382268/Put/vlen=7, row007/url:col7/1364133382268/Put/vlen=6}
+keyvalues={row008/data:col8/1364133382268/Put/vlen=7, row008/url:col8/1364133382268/Put/vlen=6}
+keyvalues={row009/data:col9/1364133382268/Put/vlen=7, row009/url:col9/1364133382268/Put/vlen=6}
+keyvalues={row010/data:col0/1364133382268/Put/vlen=7, row010/url:col0/1364133382268/Put/vlen=6}
+正则获取结尾为5的行
+keyvalues={row005/data:col5/1364133382268/Put/vlen=7, row005/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row015/data:col5/1364133382268/Put/vlen=7, row015/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row025/data:col5/1364133382268/Put/vlen=7, row025/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row035/data:col5/1364133382268/Put/vlen=7, row035/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row045/data:col5/1364133382268/Put/vlen=7, row045/url:col5/1364133382268/Put/vlen=6}
+包行有5的行
+keyvalues={row005/data:col5/1364133382268/Put/vlen=7, row005/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row015/data:col5/1364133382268/Put/vlen=7, row015/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row025/data:col5/1364133382268/Put/vlen=7, row025/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row035/data:col5/1364133382268/Put/vlen=7, row035/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row045/data:col5/1364133382268/Put/vlen=7, row045/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row050/data:col0/1364133382268/Put/vlen=7, row050/url:col0/1364133382268/Put/vlen=6}
+开头是row01的
+keyvalues={row010/data:col0/1364133382268/Put/vlen=7, row010/url:col0/1364133382268/Put/vlen=6}
+keyvalues={row011/data:col1/1364133382268/Put/vlen=7, row011/url:col1/1364133382268/Put/vlen=6}
+keyvalues={row012/data:col2/1364133382268/Put/vlen=7, row012/url:col2/1364133382268/Put/vlen=6}
+keyvalues={row013/data:col3/1364133382268/Put/vlen=7, row013/url:col3/1364133382268/Put/vlen=6}
+keyvalues={row014/data:col4/1364133382268/Put/vlen=7, row014/url:col4/1364133382268/Put/vlen=6}
+keyvalues={row015/data:col5/1364133382268/Put/vlen=7, row015/url:col5/1364133382268/Put/vlen=6}
+keyvalues={row016/data:col6/1364133382268/Put/vlen=7, row016/url:col6/1364133382268/Put/vlen=6}
+keyvalues={row017/data:col7/1364133382268/Put/vlen=7, row017/url:col7/1364133382268/Put/vlen=6}
+keyvalues={row018/data:col8/1364133382268/Put/vlen=7, row018/url:col8/1364133382268/Put/vlen=6}
+keyvalues={row019/data:col9/1364133382268/Put/vlen=7, row019/url:col9/1364133382268/Put/vlen=6}</pre>
+<h2 id="参考">参考</h2>
+<p>hbase权威指南</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2013-03-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/filter/">filter</a>
+          <a href="/tags/hbase/">hbase</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2013/03/hbase-familyfilter.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hbase FamilyFilter</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2013/03/android-recive-sms-logic.html">
+            <span class="next-text nav-default">android接收长短信处理逻辑</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

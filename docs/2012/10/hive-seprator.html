@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hive内容包含有\001会当成分割符 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="起因 发现某一行一列数据多了一个\001字符，导致select的时候在这一列后面的结果都不正确。 重现 hive版本：0.7.1cdh3u4 # 建表" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2012/10/hive-seprator.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hive内容包含有\001会当成分割符" />
+<meta property="og:description" content="起因 发现某一行一列数据多了一个\001字符，导致select的时候在这一列后面的结果都不正确。 重现 hive版本：0.7.1cdh3u4 # 建表" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2012/10/hive-seprator.html" />
+<meta property="article:published_time" content="2012-10-21T14:45:54+00:00" />
+<meta property="article:modified_time" content="2012-10-21T14:45:54+00:00" />
+<meta itemprop="name" content="Hive内容包含有\001会当成分割符">
+<meta itemprop="description" content="起因 发现某一行一列数据多了一个\001字符，导致select的时候在这一列后面的结果都不正确。 重现 hive版本：0.7.1cdh3u4 # 建表">
+<meta itemprop="datePublished" content="2012-10-21T14:45:54&#43;00:00" />
+<meta itemprop="dateModified" content="2012-10-21T14:45:54&#43;00:00" />
+<meta itemprop="wordCount" content="1047">
+
+
+
+<meta itemprop="keywords" content="hive,seprator,分割符," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hive内容包含有\001会当成分割符"/>
+<meta name="twitter:description" content="起因 发现某一行一列数据多了一个\001字符，导致select的时候在这一列后面的结果都不正确。 重现 hive版本：0.7.1cdh3u4 # 建表"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hive内容包含有\001会当成分割符</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-10-21 </span>
+        <div class="post-category">
+            <a href="/categories/hive/"> hive </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#起因">起因</a></li>
+        <li><a href="#重现">重现</a></li>
+        <li><a href="#原因">原因</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="起因">起因</h2>
+<p>发现某一行一列数据多了一个\001字符，导致select的时候在这一列后面的结果都不正确。</p>
+<h2 id="重现">重现</h2>
+<p>hive版本：0.7.1cdh3u4</p>
+<pre lang="sql" escaped="true"># 建表语句
+create table test ( sn string, pv int) ROW FORMAT DELIMITED FIELDS TERMINATED BY '`';
+# 在另一个窗口构造一个错误数据文件
+printf "a\001`12" &gt; /tmp/test.txt
+# 把数据load进表里
+LOAD DATA LOCAL INPATH '/tmp/test.txt' OVERWRITE INTO TABLE test;</pre>
+<p>这里指定了字段的分割符为反引号（`），后来发现中途并不是全部用这个分割字段。<br>
+这时如果查询</p>
+<pre lang="sql" escaped="true">select sn,pv from test;</pre>
+<p>返回的值居然是a NULL，而不是 a 12</p>
+<h2 id="原因">原因</h2>
+<p>这条语句（select sn,pv from test;）会有三个Opertor，分别是TableScanOperator, SelectOperator, FileSinkOperator。FileSinkOperator是负责把结果输出到文件，输出前需要把对象做一次序列化存储到文件里。</p>
+<pre escaped="true" lang="java">//FileSinkOperator.java文件
+  @Override
+  public void processOp(Object row, int tag) throws HiveException {
+...
+        // use SerDe to serialize r, and write it out
+        recordValue = serializer.serialize(row, inputObjInspectors[0]);
+...
+  }</pre>
+<p>这里的row是由它的父Operator（SelectOperator）传入的，值是一个数组，暂且用row = [a\001, 12]表示(实际上这里面还包裹一些对象，但不妨碍分析)。<br>
+单步跟进后，发现recordValue返回的值是a\001\00112，这里的serializer用的分割符号是\001，所以现在变成了两个\001。<br>
+那么，这个serializer哪里来的？</p>
+<pre escaped="true" lang="java">//FileSinkOperator.java文件
+      serializer       = (Serializer) conf.getTableInfo().getDeserializerClass().newInstance();
+      serializer.initialize(null, conf.getTableInfo().getProperties());</pre>
+<p>conf.getTableInfo()返回的是一个TableDesc，这个是在编译阶段genFileSinkPlan()构造的。</p>
+<pre escaped="true" lang="java">// SemanticAnalyzer.java
+  private Operator genFileSinkPlan(String dest, QB qb, Operator input)
+      throws SemanticException {
+...
+CreateTableDesc tblDesc = qb.getTableDesc(); //到qb里面找
+...
+
+      if (tblDesc == null) {
+        if (qb.getIsQuery()) {
+          String fileFormat = HiveConf.getVar(conf, HiveConf.ConfVars.HIVEQUERYRESULTFILEFORMAT);
+          table_desc = PlanUtils.getDefaultQueryOutputTableDesc(cols, colTypes, fileFormat);
+        } else {
+          table_desc = PlanUtils.getDefaultTableDesc(Integer
+              .toString(Utilities.ctrlaCode), cols, colTypes, false);
+        }
+      } else {
+        table_desc = PlanUtils.getTableDesc(tblDesc, cols, colTypes);
+      }
+
+...
+ }</pre>
+<p>发现在SemanticAnalyzer.java文件里，只有在CTAS的语句才会调用qb.setTableDesc()，所以这里tblDesc没有值，它自己用默认值创建了一个。PlanUtils.getDefaultQueryOutputTableDesc(cols, colTypes, fileFormat);分割符是Utilities.ctrlaCode，也就是\001
+目前还没搞明白为什么分割符这么混乱。但可以知道为什么第二列本来应该返回数字却返回了null，是这里的分割符号是\001，那么就多了一列出来。</p>
+<h2 id="结论">结论</h2>
+<p>就算你指定了分割符（FIELDS TERMINATED BY），但hive在中间交换数据时仍然使用它默认的分割符号\001-\009，暂时只想到在数据中过滤这些字符了，还不了解hive的序列化\反序列化。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2012-10-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hive/">hive</a>
+          <a href="/tags/seprator/">seprator</a>
+          <a href="/tags/%E5%88%86%E5%89%B2%E7%AC%A6/">分割符</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2012/12/m2crypto-install-error.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">解决M2Crypto报错ImportError: DLL load failed</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2012/10/debug-hive-mapreduce-with-eclipse.html">
+            <span class="next-text nav-default">使用eclipse调试hive mapreduce</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>照片 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E7%85%A7%E7%89%87/</link>
+    <description>Recent content in 照片 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 12 Oct 2009 20:23:40 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E7%85%A7%E7%89%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>第一次使用Flickr.com【7P】</title>
+      <link>https://fatkun.github.io/2009/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8flickr-com7p.html</link>
+      <pubDate>Mon, 12 Oct 2009 20:23:40 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8flickr-com7p.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3476/3999820551_90897a6c18.jpg&#34; alt=&#34;&#34;&gt;
+博客也是刚建立不到一个月的时间。很多东西还不会~看到很多人都使用其他图库来存储图像，我想有几个原因： 节省博客占用的空间以及流量（一般合租国外虚拟主机流量都不多吧） 转移博客到其他主机方便。至少不需要把大量的图片转移。 放在其他图站速度更快。 无论是那个原因，找个适合的图站都非常重要。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>minikube on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/minikube/</link>
+    <description>Recent content in minikube on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 12 Aug 2019 06:20:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/minikube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>minikube生成内置证书的kubeconfig</title>
+      <link>https://fatkun.github.io/2019/08/minikube-embed-certs.html</link>
+      <pubDate>Mon, 12 Aug 2019 06:20:20 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2019/08/minikube-embed-certs.html</guid>
+      <description>minikube默认生成的证书都是文件路径，如果要在其他地方使用不方便，需要把证书内置。 如果还没启动minikube，可以看下 https://github.com/kubernetes/minikube/issues/3064 如果已经生成</description>
+    </item>
+    
+    <item>
+      <title>minikube在宿主机请求集群IP</title>
+      <link>https://fatkun.github.io/2019/02/minikube%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%AF%B7%E6%B1%82%E9%9B%86%E7%BE%A4ip.html</link>
+      <pubDate>Mon, 18 Feb 2019 03:34:47 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2019/02/minikube%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%AF%B7%E6%B1%82%E9%9B%86%E7%BE%A4ip.html</guid>
+      <description>添加路由进行请求 sudo ip route add 172.17.0.0/16 via $(minikube ip) 来源 https://stackoverflow.com/questions/42268814/routing-an-internal-kubernetes-ip-address-to-the-host-system</description>
+    </item>
+    
+  </channel>
+</rss>

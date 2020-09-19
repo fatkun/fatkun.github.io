@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ViewHolder on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/viewholder/</link>
+    <description>Recent content in ViewHolder on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 07 Jan 2012 07:46:54 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/viewholder/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android ViewHolder模式</title>
+      <link>https://fatkun.github.io/2012/01/android-viewholder.html</link>
+      <pubDate>Sat, 07 Jan 2012 07:46:54 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/01/android-viewholder.html</guid>
+      <description>这个ViewHolder到底是什么呢？我们可以在官方sample看到这段代码 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html static class ViewHolder { TextView text; ImageView icon; } 可以看到它只是一个静态类，它的作用就在于减少</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hive简单查询的过程 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="查询以下语句的过程 select fr from xxxxxx where substr(fr, 1, 1) = &#39;a&#39;; Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。 ExecMapp" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2014/08/hive-simple-query.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hive简单查询的过程" />
+<meta property="og:description" content="查询以下语句的过程 select fr from xxxxxx where substr(fr, 1, 1) = &#39;a&#39;; Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。 ExecMapp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2014/08/hive-simple-query.html" />
+<meta property="article:published_time" content="2014-08-21T06:07:21+00:00" />
+<meta property="article:modified_time" content="2014-08-21T06:07:21+00:00" />
+<meta itemprop="name" content="hive简单查询的过程">
+<meta itemprop="description" content="查询以下语句的过程 select fr from xxxxxx where substr(fr, 1, 1) = &#39;a&#39;; Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。 ExecMapp">
+<meta itemprop="datePublished" content="2014-08-21T06:07:21&#43;00:00" />
+<meta itemprop="dateModified" content="2014-08-21T06:07:21&#43;00:00" />
+<meta itemprop="wordCount" content="897">
+
+
+
+<meta itemprop="keywords" content="hive,代码分析," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hive简单查询的过程"/>
+<meta name="twitter:description" content="查询以下语句的过程 select fr from xxxxxx where substr(fr, 1, 1) = &#39;a&#39;; Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。 ExecMapp"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hive简单查询的过程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-08-21 </span>
+        <div class="post-category">
+            <a href="/categories/hive/"> hive </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>查询以下语句的过程</p>
+<pre escaped="true" lang="sql">select fr from xxxxxx where substr(fr, 1, 1) = 'a';</pre>
+<p>Hive查询在编译的阶段把语句转换成一个个有层级关系的Operator，然后执行下去。
+ExecMapper中mo是一个MapOperator对象，里面有个childOperators存储了一个树形的操作步骤(Operator)，如本次查询的Operator结构如下:</p>
+<pre lang="html" escaped="true">TableScanOperator  表扫描
+  FilterOperator         过滤条件
+    SelectOperator       列裁剪，只查询fr出来
+      FileSinkOperator   输出到文件
+</pre>
+<p>首先第一步是mo.process()，传入的value是整行内容</p>
+<pre lang="java" escaped="true">public void map(Object key, Object value, OutputCollector output,
+      Reporter reporter) throws IOException {
+...
+        mo.process((Writable)value);
+...
+}</pre>
+<p>没做什么处理，只是做了个反序列化，放入rowWithPart[0]中</p>
+<pre lang="java" escaped="true">rowWithPart[0] = deserializer.deserialize((Writable) value);
+...
+forward(rowWithPart, rowObjectInspector); // 传递给下一个Operator
+</pre>
+<p>遍历它的所有子Operator，一个个做</p>
+<pre lang="java" escaped="true">for (int i = 0; i &lt; childOperatorsArray.length; i++) {
+      Operator&lt;? extends OperatorDesc&gt; o = childOperatorsArray[i];
+      if (o.getDone()) {
+        childrenDone++;
+      } else {
+        o.process(row, childOperatorsTag[i]);
+      }
+    }</pre>
+<p>下一个Operator是TableScan，这个只是单纯传给下一个Operator</p>
+<pre lang="java" escaped="true">public void processOp(Object row, int tag) throws HiveException {
+    if (conf != null && conf.isGatherStats()) {
+      gatherStats(row);
+    }
+    forward(row, inputObjInspectors[tag]);
+  }</pre>
+<p>下一个Operator是FilterOperator，执行udf和判断条件是否成立，如果成立才传给下一个<br>
+这里有个计数器 PASSED记录通过的， FILTERED记录被过滤掉的。</p>
+<pre lang="java" escaped="true">Object condition = conditionEvaluator.evaluate(row);</pre>
+<p>从FilterOperator可以看到conditionEvaluator的expr值有</p>
+<pre escaped="true" lang="java">class org.apache.hadoop.hive.ql.udf.generic.GenericUDFOPEqual(class org.apache.hadoop.hive.ql.udf.generic.GenericUDFBridge(Column[fr], Const int 1, Const int 1(), Const string a()</pre>
+<p>这里面有一个substr的udf，来看一下他是怎么处理的。substr(fr, 1, 1) = ‘a’ ，这里很多地方都调用了get()方法，用来获取值。<br>
+udf是通过反射调用的, udf function看起来只实例化一次</p>
+<pre lang="java" escaped="true">@Override
+  public Object evaluate(DeferredObject[] arguments) throws HiveException {
+    assert (arguments.length == realArguments.length);
+
+    // Calculate all the arguments
+    for (int i = 0; i &lt; realArguments.length; i++) {
+      realArguments[i] = arguments[i].get();
+    }
+
+    // Call the function
+    Object result = FunctionRegistry.invoke(udfMethod, udf, conversionHelper
+        .convertIfNecessary(realArguments));
+
+    return result;
+  }</pre>
+<p>下一个Operator是SelectOperator，只输出某些列，如果是select *，就原样输出</p>
+<pre lang="java" escaped="true">if (conf.isSelStarNoCompute()) {
+      forward(row, inputObjInspectors[tag]);
+      return;
+    }</pre>
+<p>我们是只取出fr的，所以有个eval[0]，取出的结果放到output里面，这里输出的是output=[‘android’]</p>
+<pre lang="java" escaped="true">for (int i = 0; i &lt; eval.length; i++) {
+      try {
+        output[i] = eval[i].evaluate(row);
+      } catch (HiveException e) {
+        throw e;
+      } catch (RuntimeException e) {
+        throw new HiveException("Error evaluating "
+            + conf.getColList().get(i).getExprString(), e);
+      }
+    }
+    forward(output, outputObjInspector);</pre>
+<p>最后一步FileSinkOperator,序列化结果写到磁盘</p>
+<pre lang="java" escaped="true">recordValue = serializer.serialize(row, inputObjInspectors[0]);
+...
+rowOutWriters[0].write(recordValue);</pre>
+<p>重复以上步骤，直到所有数据全部读完。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-08-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hive/">hive</a>
+          <a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">代码分析</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2014/09/hadoop-local-dir.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">hadoop本地目录相关代码分析</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2014/08/linux-compile-hadoop-cdh4-2-1.html">
+            <span class="next-text nav-default">Linux 编译 hadoop-cdh4.2.1</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

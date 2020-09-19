@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COLLATE on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/collate/</link>
+    <description>Recent content in COLLATE on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Mar 2014 07:23:59 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/collate/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql 排序规则 COLLATE 修改</title>
+      <link>https://fatkun.github.io/2014/03/mysql-alter-collate.html</link>
+      <pubDate>Mon, 24 Mar 2014 07:23:59 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/03/mysql-alter-collate.html</guid>
+      <description>使用以下语句转换。 alter table &amp;lt;some_table&amp;gt; convert to character set utf8 collate utf8_unicode_ci; 来源：http://stackoverflow.com/questions/742205/mysql-</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xml on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/xml/</link>
+    <description>Recent content in xml on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 30 Sep 2009 08:49:49 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>信息管理实验5-ASP.NET操作XML</title>
+      <link>https://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C5-asp-net%E6%93%8D%E4%BD%9Cxml.html</link>
+      <pubDate>Wed, 30 Sep 2009 08:49:49 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C5-asp-net%E6%93%8D%E4%BD%9Cxml.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/200909300056007868.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+1：实验目的，实验要求（自己写）&lt;br&gt;
+2：实验步骤：&lt;br&gt;
+一：Xml是实现病历共享的另外一种较好的方式。C#通过System.Xml空间下的一系列类来处理XML文档，如何使用这些类呢？&lt;br&gt;
+在应用程序的头部添加：&lt;br&gt;
+using System.Xml&lt;br&gt;
+二：新建patient.xml文档&lt;/p&gt;
+&lt;pre class=&#34;xml&#34;&gt;&lt;?xml version=&#34;1.0&#34; encoding=&#34;gb2312&#34;?&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

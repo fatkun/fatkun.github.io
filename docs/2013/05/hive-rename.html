@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hive改表名后查询不了数据(DataNucleus缓存问题) - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2013/05/hive-rename.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hive改表名后查询不了数据(DataNucleus缓存问题)" />
+<meta property="og:description" content="现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2013/05/hive-rename.html" />
+<meta property="article:published_time" content="2013-05-29T17:21:15+00:00" />
+<meta property="article:modified_time" content="2013-05-29T17:21:15+00:00" />
+<meta itemprop="name" content="Hive改表名后查询不了数据(DataNucleus缓存问题)">
+<meta itemprop="description" content="现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv">
+<meta itemprop="datePublished" content="2013-05-29T17:21:15&#43;00:00" />
+<meta itemprop="dateModified" content="2013-05-29T17:21:15&#43;00:00" />
+<meta itemprop="wordCount" content="407">
+
+
+
+<meta itemprop="keywords" content="cache,datanucleus,hive,缓存," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hive改表名后查询不了数据(DataNucleus缓存问题)"/>
+<meta name="twitter:description" content="现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hive改表名后查询不了数据(DataNucleus缓存问题)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-05-29 </span>
+        <div class="post-category">
+            <a href="/categories/hive/"> hive </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#现象">现象</a></li>
+        <li><a href="#重现方式">重现方式</a></li>
+        <li><a href="#调试">调试</a></li>
+        <li><a href="#解决方法"> 解决方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="现象">现象</h2>
+<p>改了Hive表名后查询不了任何数据。</p>
+<h2 id="重现方式">重现方式</h2>
+<p>开启两个hive命令行，<br>
+先在第一个hive查询一条语句：select * from logs1;<br>
+然后在第二个hive把表名更改：alter table logs1 rename to logs2;<br>
+再在第一个hive查询：select * from logs2;//这时查询成功，但没有数据</p>
+<h2 id="调试">调试</h2>
+<p>想到可能是缓存或者事务的原因。。虽然发现查询条件没有错，但返回结果的预期不一样</p>
+<pre lang="java" escaped="true">public void getMetaData(QB qb) throws SemanticException {
+    tab = db.getTable(tab_name); // 这里返回了上一次的结果
+}</pre>
+<p>代码太多了。。最终还是没搞懂哪里缓存了。。实际上跟踪调试是经过了mysql-connector的查询，中间结果返回了JDBCResult，但是二进制的结果，看不出什么东西，不知道为什么最后返回的结果却是缓存的。只能随便试试看DataNucleus有那些缓存的参数了，死马当活马医。
+找到有以下参数：
+datanucleus.query.compilation.cached<br>
+datanucleus.query.results.cached<br>
+datanucleus.cache.level2.type
+最终试了datanucleus.cache.level2.type可行。。</p>
+<h2 id="解决方法"> 解决方法</h2>
+<p>在hive-site.xml加上这个参数</p>
+<pre lang="xml" escaped="true">&lt;property&gt;
+  &lt;name&gt;datanucleus.cache.level2.type&lt;/name&gt;
+  &lt;value&gt;none&lt;/value&gt;
+&lt;/property&gt;</pre><blockquote>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2013-05-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cache/">cache</a>
+          <a href="/tags/datanucleus/">datanucleus</a>
+          <a href="/tags/hive/">hive</a>
+          <a href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2013/06/alter-table-partition-file-format.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hive更改输入输出文件格式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2013/04/java-dir-classpath.html">
+            <span class="next-text nav-default">[备忘]java指定一个目录加入classpath</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>left join on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/left-join/</link>
+    <description>Recent content in left join on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Nov 2010 06:33:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/left-join/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SQL的连接（JOIN，左连接，右连接，全连接，内连接）</title>
+      <link>https://fatkun.github.io/2010/11/sql-join.html</link>
+      <pubDate>Tue, 23 Nov 2010 06:33:25 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/11/sql-join.html</guid>
+      <description>下图中，有两个表，T1,T2 自然连接时的语句是 SELECT * FROM T1 JOIN T2，把表1,2的值全显示出来 等值连接（内连接），按照某个条件，只返回符合条件的值 左</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>datanode on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/datanode/</link>
+    <description>Recent content in datanode on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 02 May 2016 09:28:42 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/datanode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DataNode启动流程源码分析</title>
+      <link>https://fatkun.github.io/2016/05/datanode-start.html</link>
+      <pubDate>Mon, 02 May 2016 09:28:42 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/05/datanode-start.html</guid>
+      <description>背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测</description>
+    </item>
+    
+  </channel>
+</rss>

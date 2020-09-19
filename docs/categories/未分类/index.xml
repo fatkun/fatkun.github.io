@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>未分类 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</link>
+    <description>Recent content in 未分类 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 05 Jul 2020 16:29:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mac使用/home目录</title>
+      <link>https://fatkun.github.io/2020/07/mac-use-home-dir.html</link>
+      <pubDate>Sun, 05 Jul 2020 16:29:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2020/07/mac-use-home-dir.html</guid>
+      <description>编辑/etc/auto_master文件，把/home那一行注释掉 重新挂载sudo automount -vc 来源：https://stackoverflow.co</description>
+    </item>
+    
+    <item>
+      <title>kvm虚拟机virsh常用命令</title>
+      <link>https://fatkun.github.io/2019/05/kvm%E8%99%9A%E6%8B%9F%E6%9C%BAvirsh%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</link>
+      <pubDate>Wed, 29 May 2019 02:26:43 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2019/05/kvm%E8%99%9A%E6%8B%9F%E6%9C%BAvirsh%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</guid>
+      <description># 列出所有虚拟机 virsh --connect qemu:///system list --all # 停掉虚拟机 virsh --connect qemu:///system shutdown kvm-1 # 删除虚拟机 virsh --connect qemu:///system undefine kvm-1 更多命令见：https://www.centos.bz/2017/07</description>
+    </item>
+    
+    <item>
+      <title>cuDNN下载链接</title>
+      <link>https://fatkun.github.io/2018/06/cudnn%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5.html</link>
+      <pubDate>Sun, 10 Jun 2018 11:00:04 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2018/06/cudnn%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5.html</guid>
+      <description>cuDNN需要注册才能下载，实际上可以从nvidia的gitlab上找到下载地址 &amp;nbsp; https://gitlab.com/nvidia/cuda/tree/centos7/9.0 &amp;nbsp; 比如这个地址：http://developer.dow</description>
+    </item>
+    
+    <item>
+      <title>linux系统镜像</title>
+      <link>https://fatkun.github.io/2018/05/linux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.html</link>
+      <pubDate>Tue, 08 May 2018 07:19:58 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2018/05/linux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.html</guid>
+      <description>debian sed -i &#34;s#deb.debian.org#mirrors.aliyun.com#g&#34; /etc/apt/sources.list sed -i &#34;s#security.debian.org#mirrors.aliyun.com#g&#34; /etc/apt/sources.list ubuntu sed -i &#34;s#archive.ubuntu.com#mirrors.aliyun.com#g&#34; /etc/apt/sources.list sed -i &#34;s#security.ubuntu.com#mirrors.aliyun.com#g&#34; /etc/apt/sources.list alpline sed -i &#34;s#dl-cdn.alpinelinux.org#mirrors.aliyun.com#g&#34; /etc/apk/repositories</description>
+    </item>
+    
+    <item>
+      <title>在win10启动minikube</title>
+      <link>https://fatkun.github.io/2018/01/%E5%9C%A8win10%E5%90%AF%E5%8A%A8minikube.html</link>
+      <pubDate>Sat, 13 Jan 2018 13:18:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2018/01/%E5%9C%A8win10%E5%90%AF%E5%8A%A8minikube.html</guid>
+      <description>Setting up Kubernetes on Windows10 Laptop with Minikube 如果建虚拟交换机提示权限失败，使用管理员权限开启hyper-v。如果提示一般性拒绝，试一下把其他的虚拟网卡都卸载掉。 一定要指</description>
+    </item>
+    
+    <item>
+      <title>在docker里无法用jinfo</title>
+      <link>https://fatkun.github.io/2017/12/%E5%9C%A8docker%E9%87%8C%E6%97%A0%E6%B3%95%E7%94%A8jinfo.html</link>
+      <pubDate>Sun, 31 Dec 2017 13:23:10 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/12/%E5%9C%A8docker%E9%87%8C%E6%97%A0%E6%B3%95%E7%94%A8jinfo.html</guid>
+      <description>在命令里加参数 docker run --cap-add=SYS_PTRACE alpine sh -c &#39;apk add -U strace &amp;&amp; strace echo&#39; 或者在compose里某个service里面加 cap_add: - SYS_PTRACE JVM in Docker and PTRACE_ATTACH</description>
+    </item>
+    
+    <item>
+      <title>使用docker部署hadoop hdfs</title>
+      <link>https://fatkun.github.io/2017/12/deploy-hadoop-hdfs-use-docker.html</link>
+      <pubDate>Sun, 24 Dec 2017 10:15:12 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/12/deploy-hadoop-hdfs-use-docker.html</guid>
+      <description>先创建一个网络 docker network create hadoop 把本机新建一个目录hadoop，以下xml保存为docker-compose.yml version: &#34;3&#34; services: namenode: image: uhopper/hadoop-namenode hostname: namenode1 container_name: namenode1 # 要和netw</description>
+    </item>
+    
+    <item>
+      <title>docker常用命令</title>
+      <link>https://fatkun.github.io/2017/12/docker-command.html</link>
+      <pubDate>Sun, 24 Dec 2017 07:50:54 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/12/docker-command.html</guid>
+      <description># 指定子网 docker network create --subnet=172.18.0.0/16 hadoop # attach进container里面，i参数表示交互，t参数表示tty docker exec -i -t &amp;lt;CONTAINER_ID&amp;gt; bash</description>
+    </item>
+    
+    <item>
+      <title>hg to git fastexport 中文乱码问题</title>
+      <link>https://fatkun.github.io/2017/11/hg-to-git-fastexport-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html</link>
+      <pubDate>Tue, 28 Nov 2017 07:20:49 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/11/hg-to-git-fastexport-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html</guid>
+      <description>使用-fe指定编码 sh d:/workspace/fast-export/hg-fast-export.sh -r ../ssp-dev –force -fe gbk</description>
+    </item>
+    
+    <item>
+      <title>php curl ssl错误</title>
+      <link>https://fatkun.github.io/2017/10/php-curl-ssl%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Fri, 20 Oct 2017 07:10:07 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/10/php-curl-ssl%E9%94%99%E8%AF%AF.html</guid>
+      <description>可以使用 echo curl_error($ch); 打印错误信息 如果是 SSL certificate problem, verify that the CA cert is OK 这种错误 在php.ini搜索curl.cainfo，改成这个值 curl.cainfo=”/</description>
+    </item>
+    
+    <item>
+      <title>在centos7编译安装python2.6</title>
+      <link>https://fatkun.github.io/2017/08/%E5%9C%A8centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python2-6.html</link>
+      <pubDate>Tue, 22 Aug 2017 06:40:07 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/08/%E5%9C%A8centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python2-6.html</guid>
+      <description>遇到一些库安装不上，可以忽略掉，具体见网址 http://blog.useasp.net/archive/2014/05/07/compile-and-install-python-2-dot-7-dot-6-on-centos.aspx Python build finished, but the necessary bits to build these modules were not found: _bsddb _sqlite3 _ssl _tkinter bsddb185 bz2 dbm gdbm readline sunaudiodev To find the necessary bits, look in setup.py in detect_modules() for the module&#39;s name. &amp;nbsp; 模块 依赖 说明 _bsddb bsddb Interface</description>
+    </item>
+    
+    <item>
+      <title>安装Ubuntu提示can’t open /dev/sr0:No medium found</title>
+      <link>https://fatkun.github.io/2017/08/%E5%AE%89%E8%A3%85ubuntu%E6%8F%90%E7%A4%BAcant-open-devsr0no-medium-found.html</link>
+      <pubDate>Fri, 04 Aug 2017 17:44:19 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/08/%E5%AE%89%E8%A3%85ubuntu%E6%8F%90%E7%A4%BAcant-open-devsr0no-medium-found.html</guid>
+      <description>从U盘启动进入到有LOGO的界面，按F6，然后把U盘拔掉重新插入。 http://www.linuxdiyf.com/linux/22270.html</description>
+    </item>
+    
+    <item>
+      <title>PandoraBox路由多线多拨</title>
+      <link>https://fatkun.github.io/2015/12/pandorabox-mwan.html</link>
+      <pubDate>Sat, 12 Dec 2015 13:12:15 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/12/pandorabox-mwan.html</guid>
+      <description>划分VLAN 在网络-&amp;gt;交换机里面，添加一个VLAN，看一下第二个vlan是怎么配置的，WAN的接口是在哪一个，然后自己插入lan接口，</description>
+    </item>
+    
+    <item>
+      <title>路由器FQ配置</title>
+      <link>https://fatkun.github.io/2015/09/%E8%B7%AF%E7%94%B1%E5%99%A8fq%E9%85%8D%E7%BD%AE.html</link>
+      <pubDate>Sun, 20 Sep 2015 15:44:13 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/09/%E8%B7%AF%E7%94%B1%E5%99%A8fq%E9%85%8D%E7%BD%AE.html</guid>
+      <description>记录一下主要步骤 使用ss-redir和iptable转发流量 ss-redir主要用于nat透明代理，注意不要使用ss-local的端口，那个</description>
+    </item>
+    
+    <item>
+      <title>编译hive cdh5.4.0</title>
+      <link>https://fatkun.github.io/2015/07/compile-hive-cdh5-4-0.html</link>
+      <pubDate>Thu, 23 Jul 2015 03:17:06 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/07/compile-hive-cdh5-4-0.html</guid>
+      <description>编译命令 mvn clean install -Phadoop-2,dist -DskipTests https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-BuildingHivefromSource</description>
+    </item>
+    
+    <item>
+      <title>解决“已在此计算机上检测到Microsoft Visual C&#43;&#43; 2010 Redistributable的更新版本”</title>
+      <link>https://fatkun.github.io/2015/05/microsoft-visual-c-2010-redistributable.html</link>
+      <pubDate>Sun, 17 May 2015 08:55:41 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/05/microsoft-visual-c-2010-redistributable.html</guid>
+      <description>安装Windows SDK for win7时失败，查看错误日志发现是安装vcredist_x64.exe时出错，原因是已经安装了Microsoft Visual C++ 2010</description>
+    </item>
+    
+    <item>
+      <title>hdfs选择datanode策略</title>
+      <link>https://fatkun.github.io/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html</link>
+      <pubDate>Thu, 23 Apr 2015 07:04:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html</guid>
+      <description>前几天报错如下： Error: org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/xxx/part-r-00002 could only be replicated to 0 nodes instead of minReplication (=1). There are 11 datanode(s) running and no node(s) are excluded in this operation. at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget(BlockManager.java:1327) at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2278) at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:480) at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:297) at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java:44080) at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:453) at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1002) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1695) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1691) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:396) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408) at org.apache.hadoop.ipc.Server$Handler.run(Server.java:1689) 阅读一下代码了</description>
+    </item>
+    
+    <item>
+      <title>apache php 不缓存配置</title>
+      <link>https://fatkun.github.io/2015/01/apache-php-no-cache.html</link>
+      <pubDate>Sun, 25 Jan 2015 04:08:04 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/01/apache-php-no-cache.html</guid>
+      <description>ExpiresDefault可以设置所有文件的缓存时间 针对php设置 header, “private, must-revalidate” 设成这个还能够后退，</description>
+    </item>
+    
+    <item>
+      <title>phpstorm CodeIgniter 自动完成配置</title>
+      <link>https://fatkun.github.io/2014/09/phpstorm-codeigniter-%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90%E9%85%8D%E7%BD%AE.html</link>
+      <pubDate>Fri, 19 Sep 2014 09:09:17 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/09/phpstorm-codeigniter-%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90%E9%85%8D%E7%BD%AE.html</guid>
+      <description>https://github.com/topdown/phpStorm-CC-Helpers</description>
+    </item>
+    
+    <item>
+      <title>清理sendmail日志文件</title>
+      <link>https://fatkun.github.io/2014/08/%E6%B8%85%E7%90%86sendmail%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6.html</link>
+      <pubDate>Mon, 04 Aug 2014 11:05:26 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/08/%E6%B8%85%E7%90%86sendmail%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6.html</guid>
+      <description># 关闭sendmail service sendmail stop chkconfig --list sendmail chkconfig --level 2345 sendmail off # 删除mail文件夹 rm -rf /var/spool/mqueue &amp;&amp; mkdir /var/spool/mqueue rm -rf /var/spool/clientmqueue &amp;&amp; mkdir /var/spool/clientmqueue rm -rf /var/spool/mail &amp;&amp; mkdir /var/spool/mail # 删除logwatch mv /etc/cron.daily/0logwatch /etc rm -rf /var/cache/logwatch/* via: http://hi.baidu.com/chenhj_brenda/item/e46c6b3fdb8f03b9124b14f0</description>
+    </item>
+    
+    <item>
+      <title>python sax xml解析报错not well-formed error</title>
+      <link>https://fatkun.github.io/2014/06/python-sax-xml-not-well-formed-error.html</link>
+      <pubDate>Fri, 06 Jun 2014 08:51:43 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/06/python-sax-xml-not-well-formed-error.html</guid>
+      <description>可能的原因是有特殊的字符，或者xml编码不正确。 我用notepad++安装xml tool插件，检查xml格式发现错误 可能用命令 sed -i -e ‘s/[</description>
+    </item>
+    
+    <item>
+      <title>在windows部署nexus编译hadoop cdh4.3</title>
+      <link>https://fatkun.github.io/2013/10/maven-nexus.html</link>
+      <pubDate>Mon, 14 Oct 2013 18:02:45 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/10/maven-nexus.html</guid>
+      <description>部署nexus 死活启动不了nexus，下载了多个版本。最后下载tomcat7 + 2.5的war才可以。把war包丢到webapps目录下，启动</description>
+    </item>
+    
+    <item>
+      <title>《模拟城市5》破解版提示下载失败解决方法</title>
+      <link>https://fatkun.github.io/2013/06/simcity5-download-error.html</link>
+      <pubDate>Thu, 20 Jun 2013 17:22:04 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/06/simcity5-download-error.html</guid>
+      <description>前面的步骤都没有问题，提示Everything sounds good !! 但是点击图标安装游戏的时候，过一会儿就提示下载失败了。。 尼玛，搞了一晚上，自己解决了。。</description>
+    </item>
+    
+    <item>
+      <title>Hive的Lateral View</title>
+      <link>https://fatkun.github.io/2013/06/hive%E7%9A%84lateral-view.html</link>
+      <pubDate>Tue, 11 Jun 2013 18:10:14 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/06/hive%E7%9A%84lateral-view.html</guid>
+      <description>Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。 UDTF代码参</description>
+    </item>
+    
+    <item>
+      <title>[蛋疼向]cloudera文档最大化</title>
+      <link>https://fatkun.github.io/2013/06/cloudera-doc-max.html</link>
+      <pubDate>Tue, 04 Jun 2013 17:09:42 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/06/cloudera-doc-max.html</guid>
+      <description>cloudera的文档可视面积太小了。。。头部占了很大高度。。 点我到文档地址 解决方法 使用css改变一下样式。。 在浏览器加入一个书签 代码如下：</description>
+    </item>
+    
+    <item>
+      <title>关于参考和抄袭小乐图客</title>
+      <link>https://fatkun.github.io/2013/04/%E5%85%B3%E4%BA%8E%E5%8F%82%E8%80%83%E5%92%8C%E6%8A%84%E8%A2%AD%E5%B0%8F%E4%B9%90%E5%9B%BE%E5%AE%A2.html</link>
+      <pubDate>Sat, 13 Apr 2013 14:21:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/04/%E5%85%B3%E4%BA%8E%E5%8F%82%E8%80%83%E5%92%8C%E6%8A%84%E8%A2%AD%E5%B0%8F%E4%B9%90%E5%9B%BE%E5%AE%A2.html</guid>
+      <description>在开发fatkun图片批量下载时，遇到很多问题自己解决不了，之前保存都是靠浏览器的保存页面方式存储的。当时也在找HTML5是否有相关的资料可</description>
+    </item>
+    
+    <item>
+      <title>android接收长短信处理逻辑</title>
+      <link>https://fatkun.github.io/2013/03/android-recive-sms-logic.html</link>
+      <pubDate>Sun, 10 Mar 2013 13:14:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/03/android-recive-sms-logic.html</guid>
+      <description>长短信会分割成多条发送过来，每一条头部会带上总共有多少条，和这是第几条。（具体的细节我也没太深究） 手机收到其中一条短信时，如果辨别出是长短信</description>
+    </item>
+    
+    <item>
+      <title>解决M2Crypto报错ImportError: DLL load failed</title>
+      <link>https://fatkun.github.io/2012/12/m2crypto-install-error.html</link>
+      <pubDate>Mon, 17 Dec 2012 06:13:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/12/m2crypto-install-error.html</guid>
+      <description>提示这个错误 import M2Crypto Traceback (most recent call last): File ““, line 1, in File “C:\PYTHON26\lib\site-packages\M2Crypto__init__.p</description>
+    </item>
+    
+    <item>
+      <title>mysql kill process解决死锁</title>
+      <link>https://fatkun.github.io/2012/09/mysql-kill-process.html</link>
+      <pubDate>Thu, 06 Sep 2012 06:11:56 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/09/mysql-kill-process.html</guid>
+      <description>主要是两个命令： show processlist; 和 kill id,id...; 版权声明：转载时请以超链接形式标明文章原始出处和作者信息及本声明 来源：http://ri0day.blogbus.</description>
+    </item>
+    
+    <item>
+      <title>Fatkun批量下载图片扩展已经在chrome webstore上线</title>
+      <link>https://fatkun.github.io/2012/08/fatkun-batch-download-picture-on-chrome-webstore.html</link>
+      <pubDate>Tue, 14 Aug 2012 17:16:46 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/08/fatkun-batch-download-picture-on-chrome-webstore.html</guid>
+      <description>非常感谢(此处应要求匿名)的大力支持~！！帮忙支付了webstore的验证费用！！帮了大忙。。 暂时上线的还是当前版本。。。。之后再做一个更新</description>
+    </item>
+    
+    <item>
+      <title>鉴于有些人说图片下载扩展的图标太难看，求图标</title>
+      <link>https://fatkun.github.io/2012/07/ask-for-icon.html</link>
+      <pubDate>Mon, 30 Jul 2012 15:41:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/ask-for-icon.html</guid>
+      <description>目前这个扩展是我用photoshop叠加了几个图片做出来的，自我感觉没那么难看啊。。 主要表达下载图片的意思。。你觉得呢？ 另外，喜欢这个扩展的</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载1.4版更新</title>
+      <link>https://fatkun.github.io/2012/07/fatkun%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD1-4%E7%89%88%E6%9B%B4%E6%96%B0.html</link>
+      <pubDate>Sun, 08 Jul 2012 14:31:29 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/fatkun%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD1-4%E7%89%88%E6%9B%B4%E6%96%B0.html</guid>
+      <description>图片批量下载，可以找出当前页面的所有图片,提供按分辨率筛选图片，用另存为页面就可以把所有图片下载下来。 只为做一个简单好用的批量下图扩展。 1.</description>
+    </item>
+    
+    <item>
+      <title>hue runcpserver has restarted more than 3 times</title>
+      <link>https://fatkun.github.io/2012/03/hue-runcpserver-has-restarted-more-than-3-times.html</link>
+      <pubDate>Tue, 06 Mar 2012 17:07:38 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/hue-runcpserver-has-restarted-more-than-3-times.html</guid>
+      <description>运行hue时，~/hue/build/env/bin$ ./supervisor 遇到这个错误，查看logs可以看到这句： runcpserver has restarted more than 3 times 解决方法 更改hue/deskt</description>
+    </item>
+    
+    <item>
+      <title>gcc: error trying to exec ‘cc1plus’: execvp: 没有那个文件或目录</title>
+      <link>https://fatkun.github.io/2012/03/cc1plus.html</link>
+      <pubDate>Tue, 06 Mar 2012 15:47:25 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/cc1plus.html</guid>
+      <description>参考http://archive.cloudera.com/cdh/3/hue/manual.html安装hue，首先把那些lib都安装先。</description>
+    </item>
+    
+    <item>
+      <title>图片批量下载扩展捐赠名单(6月10日更新)</title>
+      <link>https://fatkun.github.io/2012/03/batch-download-image-donate.html</link>
+      <pubDate>Sun, 04 Mar 2012 15:21:01 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/batch-download-image-donate.html</guid>
+      <description>捐赠名单好久不更新了。。是因为我懒（也是因为懒才有了这个扩展）。。。但支付成功的我都收的到，谢谢。 不说什么了，感谢你们的支持！ 如果你不想出现</description>
+    </item>
+    
+    <item>
+      <title>Outlook自定义窗体自动发布</title>
+      <link>https://fatkun.github.io/2011/03/outlook-forms-publish.html</link>
+      <pubDate>Wed, 16 Mar 2011 01:20:42 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/outlook-forms-publish.html</guid>
+      <description>一般来说，我们都是把窗体“另存为”一个.oft的文件，然后如果要发布给很多人，一个是发布到exchange server上大家共用，一个是只发</description>
+    </item>
+    
+    <item>
+      <title>安装.net framework 3.5错误</title>
+      <link>https://fatkun.github.io/2011/03/this-application-has-requested-the-runtime-to-terminate-it-in-an-unusual-way.html</link>
+      <pubDate>Wed, 09 Mar 2011 05:20:13 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/this-application-has-requested-the-runtime-to-terminate-it-in-an-unusual-way.html</guid>
+      <description>问题 我在官方下了一个.net framework 3.5,可是安装的时候说 Visual C++ Runtime Library runtime error. This application has requested the runtime to terminate it in an unusual way.Please contact the application’s support team for more information. 后面来弹</description>
+    </item>
+    
+    <item>
+      <title>谷歌浏览器扩展:Fatkun图片批量下载0.4版出来了</title>
+      <link>https://fatkun.github.io/2011/03/batch-image-download-0-4.html</link>
+      <pubDate>Sat, 05 Mar 2011 16:31:30 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/batch-image-download-0-4.html</guid>
+      <description>这次改动很少。。 0.4版update:2011-03-06 添加选项选择使用标题保存还是固定名字目录 下载地址：0.4版插件地址：http://</description>
+    </item>
+    
+    <item>
+      <title>Java的重载(Overload)与重写(Override)</title>
+      <link>https://fatkun.github.io/2010/07/java-overload-and-overrid.html</link>
+      <pubDate>Wed, 28 Jul 2010 14:10:25 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/07/java-overload-and-overrid.html</guid>
+      <description>重载与重写之间的差别 区别点 重载方法 重写方法 参数列表 必须修改 一定不能修改 返回类型 可以修改 一定不能修改 异常 可以修改 可以减少或删除，一定不能抛出新</description>
+    </item>
+    
+    <item>
+      <title>木马之歌等-令人抓狂的MM思语全集</title>
+      <link>https://fatkun.github.io/2010/06/mu-ma-zhi-ge.html</link>
+      <pubDate>Thu, 24 Jun 2010 15:41:09 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/06/mu-ma-zhi-ge.html</guid>
+      <description>&lt;p&gt;受不了，这么强大。。。歌唱得挺糟糕的。。哇咔咔&lt;br&gt;
+**甩葱歌（轻度抽风版）&lt;br&gt;
+**
+**还有很多，如果在首页记得点“阅读全文”观看下面的视频~~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

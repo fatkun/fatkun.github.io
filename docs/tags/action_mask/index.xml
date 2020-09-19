@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ACTION_MASK on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/action_mask/</link>
+    <description>Recent content in ACTION_MASK on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Jan 2012 17:36:45 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/action_mask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>event.getAction()&amp;MotionEvent.ACTION_MASK的原因</title>
+      <link>https://fatkun.github.io/2012/01/motionevent-action_mask.html</link>
+      <pubDate>Tue, 10 Jan 2012 17:36:45 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/01/motionevent-action_mask.html</guid>
+      <description>看到下面代码中用了AND位运算是为了什么呢？ public boolean onTouchEvent(MotionEvent event) { int action = event.getAction(); switch (action &amp; MotionEvent.ACTION_MASK) { case MotionEvent.ACTION_DOWN: showMsg(&#34;ACTION_DOWN&#34; + action); break; case MotionEvent.ACTION_UP: showMsg(&#34;ACTION_UP&#34; + action); break; case MotionEvent.ACTION_POINTER_UP: showMsg(&#34;ACTION_POINTER_UP&#34; + action); break; case MotionEvent.ACTION_POINTER_DOWN: showMsg(&#34;ACTION_POINTER_DOWN&#34; + action); break; } return super.onTouchEvent(event); } 首先来看看这</description>
+    </item>
+    
+  </channel>
+</rss>

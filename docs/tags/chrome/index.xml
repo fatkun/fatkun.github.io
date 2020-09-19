@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>chrome on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/chrome/</link>
+    <description>Recent content in chrome on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Aug 2012 17:16:46 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fatkun批量下载图片扩展已经在chrome webstore上线</title>
+      <link>https://fatkun.github.io/2012/08/fatkun-batch-download-picture-on-chrome-webstore.html</link>
+      <pubDate>Tue, 14 Aug 2012 17:16:46 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/08/fatkun-batch-download-picture-on-chrome-webstore.html</guid>
+      <description>非常感谢(此处应要求匿名)的大力支持~！！帮忙支付了webstore的验证费用！！帮了大忙。。 暂时上线的还是当前版本。。。。之后再做一个更新</description>
+    </item>
+    
+    <item>
+      <title>chrome扩展让指定标签作为当前浏览标签</title>
+      <link>https://fatkun.github.io/2012/07/chrome-highlight-tab.html</link>
+      <pubDate>Sat, 21 Jul 2012 15:34:15 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/chrome-highlight-tab.html</guid>
+      <description>Tab有一个active表示这个标签是否是激活的，但想要把某个tab变成激活怎么办呢？ 可以使用chrome.tabs.highlight，可</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展1.2版更新</title>
+      <link>https://fatkun.github.io/2012/03/fatkun-batch-image-download-1-2.html</link>
+      <pubDate>Sun, 04 Mar 2012 14:55:44 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/fatkun-batch-image-download-1-2.html</guid>
+      <description>Fatkun图片批量下载1.2版更新了！ 首先，特别感谢三位朋友的捐赠，谢谢你们的鼓励！这是我人生中第一次收到的捐赠，非常感谢你们！ 欢迎使用F</description>
+    </item>
+    
+    <item>
+      <title>Fatkun图片批量下载谷歌浏览器扩展0.5版更新了</title>
+      <link>https://fatkun.github.io/2011/12/batch-image-download-0-5.html</link>
+      <pubDate>Thu, 15 Dec 2011 15:45:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/12/batch-image-download-0-5.html</guid>
+      <description>0.5版插件地址：https://bath-image-download.googlecode.com/files/batch0_5.crx</description>
+    </item>
+    
+    <item>
+      <title>谷歌浏览器扩展:Fatkun图片批量下载0.4版出来了</title>
+      <link>https://fatkun.github.io/2011/03/batch-image-download-0-4.html</link>
+      <pubDate>Sat, 05 Mar 2011 16:31:30 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/batch-image-download-0-4.html</guid>
+      <description>这次改动很少。。 0.4版update:2011-03-06 添加选项选择使用标题保存还是固定名字目录 下载地址：0.4版插件地址：http://</description>
+    </item>
+    
+  </channel>
+</rss>

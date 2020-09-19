@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hadoop参数 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="YARN 参数 默认值 值 备注 yarn.nodemanager.container-metrics.enable false 关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993 yarn.resourcemanager.recovery.enabled true 启用 ResourceManager Recovery yarn.scheduler.fair.continuous-scheduling-enabled true 启" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2017/07/hadoop-config.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hadoop参数" />
+<meta property="og:description" content="YARN 参数 默认值 值 备注 yarn.nodemanager.container-metrics.enable false 关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993 yarn.resourcemanager.recovery.enabled true 启用 ResourceManager Recovery yarn.scheduler.fair.continuous-scheduling-enabled true 启" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2017/07/hadoop-config.html" />
+<meta property="article:published_time" content="2017-07-28T03:06:10+00:00" />
+<meta property="article:modified_time" content="2017-07-28T03:06:10+00:00" />
+<meta itemprop="name" content="hadoop参数">
+<meta itemprop="description" content="YARN 参数 默认值 值 备注 yarn.nodemanager.container-metrics.enable false 关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993 yarn.resourcemanager.recovery.enabled true 启用 ResourceManager Recovery yarn.scheduler.fair.continuous-scheduling-enabled true 启">
+<meta itemprop="datePublished" content="2017-07-28T03:06:10&#43;00:00" />
+<meta itemprop="dateModified" content="2017-07-28T03:06:10&#43;00:00" />
+<meta itemprop="wordCount" content="1181">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hadoop参数"/>
+<meta name="twitter:description" content="YARN 参数 默认值 值 备注 yarn.nodemanager.container-metrics.enable false 关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993 yarn.resourcemanager.recovery.enabled true 启用 ResourceManager Recovery yarn.scheduler.fair.continuous-scheduling-enabled true 启"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hadoop参数</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-07-28 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#yarn">YARN</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="yarn">YARN</h2>
+<table>  <tr>    <td style="width: 575px;">      参数    </td>
+    <td style="width: 72px;">      默认值    </td>
+    <td style="width: 10px;">      值    </td>
+    <td style="width: 477px;">      备注    </td>  </tr>
+  <tr>    <td style="width: 575px;">      yarn.nodemanager.container-metrics.enable    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      false    </td>
+    <td style="width: 477px;">      关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993    </td>  </tr>
+  <tr>    <td style="width: 575px;">      yarn.resourcemanager.recovery.enabled    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      true    </td>
+    <td style="width: 477px;">      启用 ResourceManager Recovery    </td>  </tr>
+  <tr>    <td style="width: 575px;">      yarn.scheduler.fair.continuous-scheduling-enabled    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      true    </td>
+    <td style="width: 477px;">      启用 Fair Scheduler 持续调度    </td>  </tr>
+  <tr>    <td style="width: 575px;">      mapreduce.reduce.shuffle.memory.limit.percent    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      0.5    </td>
+    <td style="width: 477px;">    </td>  </tr>
+  <tr>    <td style="width: 575px;">      yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      0.95    </td>
+    <td style="width: 477px;">    </td>  </tr>
+  <tr>    <td style="width: 575px;">      mapreduce.task.userlog.limit.kb    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">      102400    </td>
+    <td style="width: 477px;">       限制container输出的日志不要太大，设置为100MB，注意要设置log.backups，不然会使用内存    </td>  </tr>
+  <tr>    <td style="width: 575px;">      yarn.app.mapreduce.task.container.log.backups    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">       1    </td>
+    <td style="width: 477px;">       备份文件个数    </td>  </tr>
+  <tr>    <td style="width: 575px;">       yarn.scheduler.fair.max.assign    </td>
+    <td style="width: 72px;">       -1    </td>
+    <td style="width: 10px;">      10    </td>
+    <td style="width: 477px;">       在rm配置，一次分配中，每台机器最大分配任务数    </td>  </tr>
+  <tr>    <td style="width: 575px;">    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">    </td>
+    <td style="width: 477px;">    </td>  </tr>
+  <tr>    <td style="width: 575px;">    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">    </td>
+    <td style="width: 477px;">    </td>  </tr>
+  <tr>    <td style="width: 575px;">    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">    </td>
+    <td style="width: 477px;">    </td>  </tr>
+  <tr>    <td style="width: 575px;">    </td>
+    <td style="width: 72px;">    </td>
+    <td style="width: 10px;">    </td>
+    <td style="width: 477px;">    </td>  </tr></table>
+<div class="property-name" data-bind="visible: propertyName, text: propertyName"></div>
+<h2 class="property-name" data-bind="visible: propertyName, text: propertyName">  HDFS</h2>
+<table>  <tr>    <td style="width: 104px;">      参数    </td>
+    <td style="width: 104px;">      默认值    </td>
+    <td style="width: 58px;">      值    </td>
+    <td style="width: 611px;">      配置位置    </td>
+    <td style="width: 611px;">      备注    </td>  </tr>
+  <tr>    <td style="width: 104px;">      fs.du.interval    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">      1200000    </td>
+    <td style="width: 611px;">    </td>
+    <td style="width: 611px;">      磁盘du间隔，du对磁盘IO影响比较大    </td>  </tr>
+  <tr>    <td style="width: 104px;">      dfs.blockreport.initialDelay    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">      180    </td>
+    <td style="width: 611px;">    </td>
+    <td style="width: 611px;">      延迟blockreport，避免重启时集中汇报    </td>  </tr>
+  <tr>    <td style="width: 104px;">      dfs.block.scanner.cursor.save.interval.ms    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">       默认10分钟    </td>
+    <td style="width: 611px;">    </td>
+    <td style="width: 611px;">       10分钟保存一次scan cursor    </td>  </tr>
+  <tr>    <td style="width: 104px;">      dfs.block.scanner.volume.bytes.per.second    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">       4194304    </td>
+    <td style="width: 611px;">    </td>
+    <td style="width: 611px;">       默认值1MB，磁盘扫描的限速，要注意看看扫描一个磁盘会不会太慢，但设的太高也会影响IO    </td>  </tr>
+  <tr>    <td style="width: 104px;">      dfs.datanode.scan.period.hours    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">       3weeks    </td>
+    <td style="width: 611px;">    </td>
+    <td style="width: 611px;">      常规 磁盘扫描间隔    </td>  </tr>
+  <tr>    <td style="width: 104px;">      dfs.namenode.checkpoint.txns    </td>
+    <td style="width: 104px;">    </td>
+    <td style="width: 58px;">       10000000    </td>
+    <td style="width: 611px;">       namenode hdfs-site.xml    </td>
+    <td style="width: 611px;">       设置大一些，避免频繁的checkpoint传输    </td>  </tr>
+  <tr>    <td style="width: 104px;">      <del>hadoop.user.group.static.mapping.overrides</del>    </td>
+    <td style="width: 104px;">      <del>dr.who=;</del>    </td>
+    <td style="width: 58px;">      <del>dr.who=;yarn=yarn,hadoop,supergroup;</del></p> 
+<pre><code>  &lt;p&gt;        &lt;del&gt;mapred:mapred,hadoop,supergroup&lt;/del&gt;&lt;/td&gt; 
+    
+    &lt;td style=&quot;width: 611px;&quot;&gt;        &lt;/td&gt;
+    &lt;td style=&quot;width: 611px;&quot;&gt;          &lt;del&gt;覆盖组权限，需要配置在core-site.xml里面，需要重启namenode&lt;/del&gt;        &lt;/td&gt;&lt;/tr&gt; 
+    
+    &lt;tr&gt;          &lt;td style=&quot;width: 104px;&quot;&gt;            dfs.namenode.posix.acl.inheritance.enabled          &lt;/td&gt;
+      &lt;td style=&quot;width: 104px;&quot;&gt;             false          &lt;/td&gt;
+      &lt;td style=&quot;width: 58px;&quot;&gt;            true          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;             在namenode hdfs-site.xml配置，在打上HDFS-6962补丁后，ACL mask权限能够继承          &lt;/td&gt;        &lt;/tr&gt;
+    &lt;tr&gt;          &lt;td style=&quot;width: 104px;&quot;&gt;            dfs.datanode.balance.max.concurrent.moves          &lt;/td&gt;
+      &lt;td style=&quot;width: 104px;&quot;&gt;            5          &lt;/td&gt;
+      &lt;td style=&quot;width: 58px;&quot;&gt;            50          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            平衡的线程数，用于提高平衡效率（需要在DataNode和Balance的hdfs-site配置，需要重启DataNode）          &lt;/td&gt;        &lt;/tr&gt;
+    &lt;tr&gt;          &lt;td style=&quot;width: 104px;&quot;&gt;            dfs.datanode.balance.bandwidthPerSec          &lt;/td&gt;
+      &lt;td style=&quot;width: 104px;&quot;&gt;            10MB          &lt;/td&gt;
+      &lt;td style=&quot;width: 58px;&quot;&gt;            30MB          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            平衡的速度          &lt;/td&gt;        &lt;/tr&gt;
+    &lt;tr&gt;          &lt;td style=&quot;width: 104px;&quot;&gt;            ha.failover-controller.new-active.rpc-timeout.ms          &lt;/td&gt;
+      &lt;td style=&quot;width: 104px;&quot;&gt;            60000          &lt;/td&gt;
+      &lt;td style=&quot;width: 58px;&quot;&gt;            300000          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            全局的core-site.xml里面配置（客户端和failover controller都会用到）          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            failover controller在转换active等待的时间，在hdfs failover controller里面配置，如果时间不够会在failover controller里面看到超时错误日志。&lt;a href=&quot;https://issues.apache.org/jira/browse/HDFS-11254&quot;&gt;HDFS-11254&lt;/a&gt; 在replay editlog的时候也会很慢。&lt;br /&gt; 注意要先重启备机的controller，否则重启active controller，namenode会切换。          &lt;/td&gt;        &lt;/tr&gt;
+    &lt;tr&gt;          &lt;td style=&quot;width: 104px;&quot;&gt;            dfs.image.transfer.bandwidthPerSec          &lt;/td&gt;
+      &lt;td style=&quot;width: 104px;&quot;&gt;          &lt;/td&gt;
+      &lt;td style=&quot;width: 58px;&quot;&gt;            41943040          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            namenode hdfs-site.xml          &lt;/td&gt;
+      &lt;td style=&quot;width: 611px;&quot;&gt;            image传输限速，占用所有带宽会影响namenode rpc请求，重启active namenode才生效          &lt;/td&gt;        &lt;/tr&gt;&lt;/tbody&gt; &lt;/table&gt; 
+    
+    &lt;p&gt;          &amp;nbsp;        &lt;/p&gt;
+    &lt;h2&gt;          HIVE        &lt;/h2&gt;
+    &lt;table style=&quot;width: 1113px;&quot;&gt;          &lt;tr&gt;            &lt;td style=&quot;width: 105px;&quot;&gt;              参数            &lt;/td&gt;
+        &lt;td style=&quot;width: 101px;&quot;&gt;              默认值            &lt;/td&gt;
+        &lt;td style=&quot;width: 159px;&quot;&gt;              建议值            &lt;/td&gt;
+        &lt;td style=&quot;width: 921px;&quot;&gt;              备注            &lt;/td&gt;          &lt;/tr&gt;
+      &lt;tr&gt;            &lt;td style=&quot;width: 105px;&quot;&gt;              hive.metastore.failure.retries            &lt;/td&gt;
+        &lt;td style=&quot;width: 101px;&quot;&gt;              1            &lt;/td&gt;
+        &lt;td style=&quot;width: 159px;&quot;&gt;              3            &lt;/td&gt;
+        &lt;td style=&quot;width: 921px;&quot;&gt;              metastore中途失败重试的次数，某个版本之前默认值是1，后面变为3            &lt;/td&gt;          &lt;/tr&gt;
+      &lt;tr&gt;            &lt;td style=&quot;width: 105px;&quot;&gt;              hive.metastore.try.direct.sql            &lt;/td&gt;
+        &lt;td style=&quot;width: 101px;&quot;&gt;              false            &lt;/td&gt;
+        &lt;td style=&quot;width: 159px;&quot;&gt;            &lt;/td&gt;
+        &lt;td style=&quot;width: 921px;&quot;&gt;              Hive Metastore 是否应尝试使用直接 SQL 查询，而不是针对一定读取路径使用 DataNucleus。这样在获取许多分区时可以使 Metastore 性能得到数量级的提升。打开这个开关要确保打了补丁HIVE-15551，否则有内存泄露            &lt;/td&gt;          &lt;/tr&gt;
+      &lt;tr&gt;            &lt;td style=&quot;width: 105px;&quot;&gt;            &lt;/td&gt;
+        &lt;td style=&quot;width: 101px;&quot;&gt;            &lt;/td&gt;
+        &lt;td style=&quot;width: 159px;&quot;&gt;            &lt;/td&gt;
+        &lt;td style=&quot;width: 921px;&quot;&gt;            &lt;/td&gt;          &lt;/tr&gt;        &lt;/table&gt;
+    &lt;h2&gt;          HBASE        &lt;/h2&gt;
+    &lt;p&gt;          https://github.com/mattshma/bigdata/blob/master/hbase/docs/hbase_rpc.md        &lt;/p&gt;
+    &lt;p&gt;          hbase.ipc.server.listen.queue.size   默认值 128        &lt;/p&gt;
+    &lt;p&gt;          hbase.ipc.server.read.threadpool.size 默认值 10        &lt;/p&gt;
+    &lt;p&gt;          hbase.regionserver.handler.count        &lt;/p&gt;
+    &lt;p&gt;          hbase.regionserver.metahandler.count        &lt;/p&gt;</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-07-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/2017/08/%E5%AE%89%E8%A3%85ubuntu%E6%8F%90%E7%A4%BAcant-open-devsr0no-medium-found.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">安装Ubuntu提示can’t open /dev/sr0:No medium found</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2017/07/hdfs-health-check.html">
+            <span class="next-text nav-default">HDFS文件的健康检查</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

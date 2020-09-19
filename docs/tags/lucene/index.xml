@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lucene on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/lucene/</link>
+    <description>Recent content in Lucene on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 09 Oct 2010 08:35:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>删除Lucene索引</title>
+      <link>https://fatkun.github.io/2010/10/delete-lucene-index.html</link>
+      <pubDate>Sat, 09 Oct 2010 08:35:19 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/10/delete-lucene-index.html</guid>
+      <description>若需要从索引中删除某一个或者某一类文档，IndexReader提供了两种方法： reader.DeleteDocument(int docNum) reader.DeleteDocuments(Term term)。 前者是根据文档的编号来删除该文档，docNu</description>
+    </item>
+    
+  </channel>
+</rss>

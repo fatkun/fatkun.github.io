@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>codeigniter on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/codeigniter/</link>
+    <description>Recent content in codeigniter on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Mar 2013 07:37:35 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/codeigniter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>codeigniter数据库错误信息获取</title>
+      <link>https://fatkun.github.io/2013/03/codeigniter-db-error-message.html</link>
+      <pubDate>Fri, 01 Mar 2013 07:37:35 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/03/codeigniter-db-error-message.html</guid>
+      <description>db_debug – TRUE/FALSE (boolean) – Whether database errors should be displayed. 需要设置db_debug = false Yes, this is the mysql_error() wrapper. $this-&amp;gt;db-&amp;gt;_error_message(); And the mysql_errno wrapper is: $this-&amp;gt;db-&amp;gt;_error_number(); via: http://stackoverflow.com/questions/3234564/under-codeigniter-is-it-possible-to-see-mysql-error</description>
+    </item>
+    
+  </channel>
+</rss>

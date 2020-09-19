@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>冒泡排序 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</link>
+    <description>Recent content in 冒泡排序 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Dec 2010 16:00:18 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>冒泡排序算法(JAVA)</title>
+      <link>https://fatkun.github.io/2010/12/bubble-sort.html</link>
+      <pubDate>Fri, 03 Dec 2010 16:00:18 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/12/bubble-sort.html</guid>
+      <description>冒泡排序：和每一个比较，如果比后面大则交换，最终每一趟结果是最大值会沉到后面。 时间复杂度O(n2)，最佳情况是已排好序只比较n-1次，不用交</description>
+    </item>
+    
+  </channel>
+</rss>

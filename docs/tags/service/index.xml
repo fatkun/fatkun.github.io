@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>service on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/service/</link>
+    <description>Recent content in service on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 26 Aug 2019 02:57:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/service/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>K8s Endpoint无IP定位错误方法</title>
+      <link>https://fatkun.github.io/2019/08/k8s-endpoint-not-contain-ip.html</link>
+      <pubDate>Mon, 26 Aug 2019 02:57:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2019/08/k8s-endpoint-not-contain-ip.html</guid>
+      <description>确认selector是否正确 确认pod里面配置的containerPort以及service里面的配置的port能对应上 确认pod是否rea</description>
+    </item>
+    
+  </channel>
+</rss>

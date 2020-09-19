@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>win7 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/win7/</link>
+    <description>Recent content in win7 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 29 Jun 2010 07:10:59 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/win7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WIN7的菜单栏无法隐藏解决方法（QtTabBar）</title>
+      <link>https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html</link>
+      <pubDate>Tue, 29 Jun 2010 07:10:59 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html</guid>
+      <description>问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，</description>
+    </item>
+    
+    <item>
+      <title>win7“我的电脑”右键”管理”菜单失效的解决办法</title>
+      <link>https://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</link>
+      <pubDate>Mon, 22 Mar 2010 08:41:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</guid>
+      <description>&lt;p&gt;不知道装了什么WIN7右键的管理菜单不能用了，提示Explorer.exe出错。上网搜索下，测试可用。记录下来。&lt;br&gt;
+————–&lt;br&gt;
+本文来源：&lt;a href=&#34;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&#34;&gt;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关闭“打开文件-安全警告”的方法（每次打开程序都弹出安全警告很烦）</title>
+      <link>https://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</link>
+      <pubDate>Sat, 12 Sep 2009 11:59:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</guid>
+      <description>有的优化软件再优化后，为了提高安全性，都打开了文件打开安全警告提示，可能有的不想用这个功能，可以按如下方法解决． 方法一 把下面的内容保存为ba</description>
+    </item>
+    
+  </channel>
+</rss>

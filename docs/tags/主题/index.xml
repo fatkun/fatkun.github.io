@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>主题 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E4%B8%BB%E9%A2%98/</link>
+    <description>Recent content in 主题 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 20 Aug 2011 18:39:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>更换新主题</title>
+      <link>https://fatkun.github.io/2011/08/change-theme.html</link>
+      <pubDate>Sat, 20 Aug 2011 18:39:25 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/08/change-theme.html</guid>
+      <description>把Zindi主题改了一下，主要是改了页面宽度，文字大小。。我还是喜欢14px的文字，看起来容易阅读。 悲剧的是发现评论不是嵌套的···o(╯□</description>
+    </item>
+    
+    <item>
+      <title>2009年最好的WordPress免费主题</title>
+      <link>https://fatkun.github.io/2009/12/the-best-free-wordpress-theme-of-2009.html</link>
+      <pubDate>Mon, 14 Dec 2009 07:55:45 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/12/the-best-free-wordpress-theme-of-2009.html</guid>
+      <description>&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  这是webdesignledger.com评出的2009年最好的WordPress免费主题~感觉还可以吧~~第一个我喜欢~~&lt;/p&gt;
+&lt;h3 style=&#34;margin-top: 35px; margin-right: 30px; margin-bottom: 15px; margin-left: 0px; font-family: Georgia, &#39;Nimbus Roman No9 L&#39;, serif; font-style: normal; font-weight: normal; line-height: 1.1em; font-size: 30px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://www.smashingmagazine.com/2009/02/23/magazeen-free-magazine-look-wordpress-theme/&#34; target=&#34;_blank&#34;&gt;Magazeen&lt;/a&gt;&lt;/h3&gt;
+&lt;p style=&#34;line-height: 1.6em; margin-top: 0px; margin-right: 10px; margin-bottom: 20px; margin-left: 0px; font-size: 14px;&#34;&gt;  &lt;a style=&#34;text-decoration: none; color: #2b8dc0;&#34; href=&#34;http://www.smashingmagazine.com/2009/02/23/magazeen-free-magazine-look-wordpress-theme/&#34; target=&#34;_blank&#34;&gt;&lt;img style=&#34;margin: 0px; border: 5px solid #e3e3e3;&#34; src=&#34;http://webdesignledger.com/wp-content/uploads/2009/11/themes_2009_1.jpg&#34; alt=&#34;wordpress theme&#34; /&gt;&lt;/a&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

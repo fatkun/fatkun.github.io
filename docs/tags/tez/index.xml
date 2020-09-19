@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tez on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/tez/</link>
+    <description>Recent content in tez on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 May 2017 10:52:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/tez/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive On Tez cloudera5.4</title>
+      <link>https://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html</link>
+      <pubDate>Mon, 01 May 2017 10:52:17 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html</guid>
+      <description>配置 tez-site.xml &amp;lt;configuration&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.lib.uris&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.use.cluster.hadoop-libs&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress.codec&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;org.apache.hadoop.io.compress.SnappyCodec&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;/configuration&amp;gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>从日志分析impala查询慢的原因（2） - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2015/01/analyze-slow-impala-2.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="从日志分析impala查询慢的原因（2）" />
+<meta property="og:description" content="上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2015/01/analyze-slow-impala-2.html" />
+<meta property="article:published_time" content="2015-01-03T08:51:57+00:00" />
+<meta property="article:modified_time" content="2015-01-03T08:51:57+00:00" />
+<meta itemprop="name" content="从日志分析impala查询慢的原因（2）">
+<meta itemprop="description" content="上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103">
+<meta itemprop="datePublished" content="2015-01-03T08:51:57&#43;00:00" />
+<meta itemprop="dateModified" content="2015-01-03T08:51:57&#43;00:00" />
+<meta itemprop="wordCount" content="1955">
+
+
+
+<meta itemprop="keywords" content="hadoop,impala," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从日志分析impala查询慢的原因（2）"/>
+<meta name="twitter:description" content="上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">从日志分析impala查询慢的原因（2）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-01-03 </span>
+        <div class="post-category">
+            <a href="/categories/hadoop/"> hadoop </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志</p>
+<pre lang="other" escaped="true"># impalad日志
+I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt='2014-04-08'
+I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried.
+I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb
+I0103 15:11:50.778054 27319 Frontend.java:833] create plan
+I0103 15:11:50.806649 27319 HdfsScanNode.java:571] collecting partitions for table kpi_disp_user_info_stat_tb
+I0103 15:11:51.070816 27319 impala-server.cc:590] Execution request: TExecRequest {
+
+
+
+# catalog日志
+I0103 15:09:35.892182 29165 rpc-trace.cc:133] RPC call: CatalogService.PrioritizeLoad(from ::ffff:127.0.0.1:44323)
+I0103 15:09:39.563268 29185 HdfsTable.java:916] load table: default_impala.kpi_disp_user_info_stat_tb
+I0103 15:10:48.357046 29185 HdfsTable.java:234] load block md for kpi_disp_user_info_stat_tb
+I0103 15:11:36.110947 29165 rpc-trace.cc:133] RPC call: CatalogService.PrioritizeLoad(from ::ffff:127.0.0.1:44323)
+I0103 15:11:48.948714 29185 HdfsTable.java:1056] table #rows=-1
+
+
+# hive metastore日志
+2015-01-03 15:09:38,991 INFO org.apache.hadoop.hive.metastore.HiveMetaStore: 54032: source:/IP地址 get_table : db=default_impala tbl=kpi_disp_user_info_stat_tb
+2015-01-03 15:09:39,848 INFO org.apache.hadoop.hive.metastore.HiveMetaStore: 54032: source:/IP地址 get_partition_names : db=default_impala tbl=kpi_disp_user_info_stat_tb
+2015-01-03 15:09:39,902 INFO org.apache.hadoop.hive.metastore.HiveMetaStore: 54032: source:/IP地址 get_partitions_by_names : db=default_impala tbl=kpi_disp_user_info_stat_tb
+2015-01-03 15:09:52,839 INFO org.apache.hadoop.hive.metastore.HiveMetaStore: 54032: source:/IP地址 get_partitions_by_names : db=default_impala tbl=kpi_disp_user_info_stat_tb
+2015-01-03 15:10:05,383 INFO org.apache.hadoop.hive.metastore.HiveMetaStore: 54032: source:/IP地址 get_partitions_by_names : db=default_impala tbl=kpi_disp_user_info_stat_tb</pre>
+<p>这次加多了metastore的日志进来
+在15:09:35提交了查询语句，可以看到impalad和catalog都有一条日志，metastore在3秒后有一条日志（3秒的原因是hive metastore一个bug，我在测试时没修复，但不影响分析）。
+catalogd开始获取这个表的元素据以及文件block信息，15:09:39至15:10:48从metastore获取完元素据，15:10:48开始获取文件block信息。直到15:11:48完成，期间因为impalad获取元素据超过120秒，15:11:36重新获取了一次。</p>
+<pre lang="java" escaped="true">// Frontend.java
+  private boolean requestTblLoadAndWait(Set&lt;TableName&gt; requestedTbls, long timeoutMs)
+      throws InternalException {
+// impala本地缓存了元素据，每个表有一个版本号。本地的缓存一开始只缓存表名，分区信息等都没有缓存
+    Set&lt;TableName&gt; missingTbls = getMissingTbls(requestedTbls);
+    // There are no missing tables, return and avoid making an RPC to the CatalogServer.
+    if (missingTbls.isEmpty()) return true;
+
+    // Call into the CatalogServer and request the required tables be loaded.
+    LOG.info(String.format("Requesting prioritized load of table(s): %s",
+        Joiner.on(", ").join(missingTbls)));
+// 这里通过jni的方式调用c++写的代码，与catalogd通信获取元素据
+    TStatus status = FeSupport.PrioritizeLoad(missingTbls);
+    if (status.getStatus_code() != TStatusCode.OK) {
+      throw new InternalException("Error requesting prioritized load: " +
+          Joiner.on("\n").join(status.getError_msgs()));
+    }
+
+    long startTimeMs = System.currentTimeMillis();
+    // Wait until all the required tables are loaded in the Impalad's catalog cache.
+    // 检查是不是在本地缓存里了
+    while (!missingTbls.isEmpty()) {
+      // Check if the timeout has been reached.
+      if (timeoutMs &gt; 0 && System.currentTimeMillis() - startTimeMs &gt; timeoutMs) {
+        return false;
+      }
+
+      LOG.trace(String.format("Waiting for table(s) to complete loading: %s",
+          Joiner.on(", ").join(missingTbls)));
+      getCatalog().waitForCatalogUpdate(MAX_CATALOG_UPDATE_WAIT_TIME_MS);
+      missingTbls = getMissingTbls(missingTbls);
+      // TODO: Check for query cancellation here.
+    }
+    return true;
+  }</pre>
+<p>继续看FeSupport.PrioritizeLoad的代码，这里实际是调用c++的代码，在fe-support.cc里，直接看</p>
+<pre lang="csharp" escaped="true">extern "C"
+JNIEXPORT jbyteArray JNICALL
+Java_com_cloudera_impala_service_FeSupport_NativePrioritizeLoad(
+    JNIEnv* env, jclass caller_class, jbyteArray thrift_struct) {
+  TPrioritizeLoadRequest request;
+  DeserializeThriftMsg(env, thrift_struct, &request);
+
+  CatalogOpExecutor catalog_op_executor(ExecEnv::GetInstance(), NULL);
+  TPrioritizeLoadResponse result;
+  Status status = catalog_op_executor.PrioritizeLoad(request, &result);
+  if (!status.ok()) {
+    LOG(ERROR) &lt;&lt; status.GetErrorMsg();
+    // Create a new Status, copy in this error, then update the result.
+    Status catalog_service_status(result.status);
+    catalog_service_status.AddError(status);
+    status.ToThrift(&result.status);
+  }
+
+  jbyteArray result_bytes = NULL;
+  THROW_IF_ERROR_RET(SerializeThriftMsg(env, &result, &result_bytes), env,
+                     JniUtil::internal_exc_class(), result_bytes);
+  return result_bytes;
+}</pre>
+<p>c++代码没看懂，不知道怎么调用到了catalogd的代码，不管了，从日志看执行了这行代码HdfsTable.java:916</p>
+<pre lang="java" escaped="true">public void load(Table cachedEntry, HiveMetaStoreClient client,
+      org.apache.hadoop.hive.metastore.api.Table msTbl) throws TableLoadingException {
+    numHdfsFiles_ = 0;
+    totalHdfsBytes_ = 0;
+    LOG.debug("load table: " + db_.getName() + "." + name_);
+...
+loadColumns(fieldSchemas, client);
+//这里有一些判断是否使用缓存的代码，如果是完全没有缓存，会通过以下方法获取
+        msPartitions.addAll(MetaStoreUtil.fetchAllPartitions(
+            client, db_.getName(), name_, NUM_PARTITION_FETCH_RETRIES));
+//如果部分分区已经获取过了，会只获取未知分区的元素据
+        LOG.info(String.format("Incrementally refreshing %d/%d partitions.",
+            modifiedPartitionNames.size(), totalPartitions));
+        // No need to make the metastore call if no partitions are to be updated.
+        if (modifiedPartitionNames.size() &gt; 0) {
+          // Now reload the the remaining partitions.
+          msPartitions.addAll(MetaStoreUtil.fetchPartitionsByName(client,
+              Lists.newArrayList(modifiedPartitionNames), db_.getName(), name_));
+        }
+...
+// 加载元素据和获取block信息
+      loadPartitions(msPartitions, msTbl, oldFileDescMap);
+      // load table stats
+      numRows_ = getRowCount(msTbl.getParameters());
+      LOG.debug("table #rows=" + Long.toString(numRows_));
+}</pre>
+<p>在MetaStoreUtil.fetchAllPartitions方法里会先get_partition_names获取全部的分区名，然后再分批get_partitions_by_names来获取分区的全部信息。每次RPC获取的分区数量由参数HiveConf.ConfVars.METASTORE_BATCH_RETRIEVE_TABLE_PARTITION_MAX指定，默认1000个分区一次。
+在loadPartitions方法中，会创建一些分区对象和搜集分区的行数（这个应该是要用comput stat才有值，默认搜集不到），然后再调用loadBlockMd(fileDescsToLoad);方法</p>
+<pre lang="java" escaped="true">/**
+   * Loads the file block metadata for the given collection of FileDescriptors.
+   * The FileDescriptors are passed as a Map of partition location to list of
+   * files that exist under that directory.
+   */
+  private void loadBlockMd(Map&lt;String, List&lt;FileDescriptor&gt;&gt; fileDescriptors)
+      throws RuntimeException {
+    Preconditions.checkNotNull(fileDescriptors);
+    LOG.debug("load block md for " + name_);
+
+    // Store all BlockLocations so they can be reused when loading the disk IDs.
+    List&lt;BlockLocation&gt; blockLocations = Lists.newArrayList();
+
+    // loop over all files and record their block metadata, minus volume ids
+    for (String parentPath: fileDescriptors.keySet()) {
+      for (FileDescriptor fileDescriptor: fileDescriptors.get(parentPath)) {
+        Path p = new Path(parentPath, fileDescriptor.getFileName());
+        BlockLocation[] locations = null;
+        try {
+          // 这里可能耗时，每个分区都获取文件信息（已缓存的不获取，但没看懂缓存的机制）
+          FileStatus fileStatus = DFS.getFileStatus(p);
+          // fileDescriptors should not contain directories.
+          Preconditions.checkArgument(!fileStatus.isDirectory());
+          // RPC操作
+          locations = DFS.getFileBlockLocations(fileStatus, 0, fileStatus.getLen());
+          Preconditions.checkNotNull(locations);
+          blockLocations.addAll(Arrays.asList(locations));
+
+          // Loop over all blocks in the file.
+          for (BlockLocation block: locations) {
+            String[] blockHostPorts = block.getNames();
+            try {
+              blockHostPorts = block.getNames();
+            } catch (IOException e) {
+              // this shouldn't happen, getNames() doesn't throw anything
+              String errorMsg = "BlockLocation.getNames() failed:\n" + e.getMessage();
+              LOG.error(errorMsg);
+              throw new IllegalStateException(errorMsg);
+            }
+            // Now enumerate all replicas of the block, adding any unknown hosts
+            // to hostIndex_ and the index for that host to replicaHostIdxs.
+            List&lt;Integer&gt; replicaHostIdxs = new ArrayList&lt;Integer&gt;(blockHostPorts.length);
+            for (int i = 0; i &lt; blockHostPorts.length; ++i) {
+              String[] ip_port = blockHostPorts[i].split(":");
+              Preconditions.checkState(ip_port.length == 2);
+              TNetworkAddress network_address = new TNetworkAddress(ip_port[0],
+                  Integer.parseInt(ip_port[1]));
+              replicaHostIdxs.add(hostIndex_.getIndex(network_address));
+            }
+            fileDescriptor.addFileBlock(
+                new FileBlock(block.getOffset(), block.getLength(), replicaHostIdxs));
+          }
+        } catch (IOException e) {
+          throw new RuntimeException("couldn't determine block locations for path '"
+              + p + "':\n" + e.getMessage(), e);
+        }
+      }
+    }
+
+    if (SUPPORTS_VOLUME_ID) {
+      LOG.trace("loading disk ids for: " + getFullName() +
+          ". nodes: " + getNumNodes());
+      loadDiskIds(blockLocations, fileDescriptors);
+      LOG.trace("completed load of disk ids for: " + getFullName());
+    }
+  }</pre>
+<p> 
+另外找到一个有一点关系的issue， IMPALA-1480 <a href="https://issues.cloudera.org/browse/IMPALA-1480">Slow DDL statements for tables with large number of partitions</a>
+google group上的讨论 https://groups.google.com/a/cloudera.org/forum/#!topic/impala-user/Xv8d2jndzZ0</p>
+<div style="color: #222222;">  Dimitris：</div>
+<div style="color: #222222;">  It looks like an issue I am currently working on (<a style="color: #6611cc;" href="https://issues.cloudera.org/browse/IMPALA-1480" target="_blank">https://issues.cloudera.org/<wbr />browse/IMPALA-1480</a>). I have a patch in flight that significantly improves DDL and INSERT statements for partitioned tables. Currently, the issue is that we force-reload the entire table metadata even though only few partitions have been modified.</div>
+<div style="color: #222222;">  不过他说的是DDL语句，会强制加载整个元数据，尽管只改几个分区，和这里的查询类似。</div>
+## 结论
+<p>对于很多分区的表，获取全部元素据以及block信息花费很多时间导致查询变慢。如果impala能够针对查询只获取需要用到的分区信息将会加快很多。
+ </p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-01-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hadoop/">hadoop</a>
+          <a href="/tags/impala/">impala</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2015/01/apache-php-no-cache.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">apache php 不缓存配置</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2014/12/analyze-slow-impala.html">
+            <span class="next-text nav-default">从日志分析impala查询慢的原因（1）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

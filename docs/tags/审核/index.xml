@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>审核 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E5%AE%A1%E6%A0%B8/</link>
+    <description>Recent content in 审核 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Oct 2009 08:19:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E5%AE%A1%E6%A0%B8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>今天才发现有几条评论要审核，各位抱歉了。</title>
+      <link>https://fatkun.github.io/2009/10/%E4%BB%8A%E5%A4%A9%E6%89%8D%E5%8F%91%E7%8E%B0%E6%9C%89%E5%87%A0%E6%9D%A1%E8%AF%84%E8%AE%BA%E8%A6%81%E5%AE%A1%E6%A0%B8%E5%90%84%E4%BD%8D%E6%8A%B1%E6%AD%89%E4%BA%86.html</link>
+      <pubDate>Sat, 17 Oct 2009 08:19:15 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/10/%E4%BB%8A%E5%A4%A9%E6%89%8D%E5%8F%91%E7%8E%B0%E6%9C%89%E5%87%A0%E6%9D%A1%E8%AF%84%E8%AE%BA%E8%A6%81%E5%AE%A1%E6%A0%B8%E5%90%84%E4%BD%8D%E6%8A%B1%E6%AD%89%E4%BA%86.html</guid>
+      <description>&lt;p&gt;TotoroⅡ（基于Totoro的Z-Blog的评论及引用管理审核系统增强版），这个是Z-BLOG的垃圾评论审核插件，里面有加分减分机制，达到某个分数就认为了垃圾评论了，Z-BLOG默认的阀值太低了，只有50.。。现在我把他设为200。对没有及时发现的评论表示抱歉。。。&lt;br&gt;
+说到这个问题，想到Wordpress有个防止英文评论的插件，一定要输入有中文字符~（用正则判断），下面一般还提示：“you must type some chinese word such as “你好”…”，呵呵，有点搞笑~&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

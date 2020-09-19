@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多列排序 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E5%A4%9A%E5%88%97%E6%8E%92%E5%BA%8F/</link>
+    <description>Recent content in 多列排序 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 09 May 2011 15:02:55 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E5%A4%9A%E5%88%97%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python list的多列排序</title>
+      <link>https://fatkun.github.io/2011/05/python-list-sort.html</link>
+      <pubDate>Mon, 09 May 2011 15:02:55 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/05/python-list-sort.html</guid>
+      <description>Python 中的排序真的很方便 你可以使用alist.sort()或者sorted(alist)进行排序。不同的是，前者会改变原来list的顺序。 在py</description>
+    </item>
+    
+  </channel>
+</rss>

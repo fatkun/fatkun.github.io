@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>遍历数组 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84/</link>
+    <description>Recent content in 遍历数组 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 18 Jul 2010 06:55:31 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用json-lib遍历数组与对象（JSONArray与JSONObject）</title>
+      <link>https://fatkun.github.io/2010/07/jsonarray-jsonobject-array.html</link>
+      <pubDate>Sun, 18 Jul 2010 06:55:31 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/07/jsonarray-jsonobject-array.html</guid>
+      <description>使用json-lib遍历数组与对象 //遍历json数组 String json1 = &#34;{data:[{name:&#39;Wallace&#39;},{name:&#39;Grommit&#39;}]}&#34;; jsonObjSplit = new JSONObject(json1); JSONArray ja = jsonObjSplit.getJSONArray(&#34;data&#34;); for (int i = 0; i &amp;lt; ja.length(); i++) { JSONObject jo = (JSONObject) ja.get(i); System.out.println(jo.get(&#34;name&#34;)); } //JSONObject遍历</description>
+    </item>
+    
+  </channel>
+</rss>

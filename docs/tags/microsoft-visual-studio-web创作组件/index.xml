@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft Visual Studio Web创作组件 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/microsoft-visual-studio-web%E5%88%9B%E4%BD%9C%E7%BB%84%E4%BB%B6/</link>
+    <description>Recent content in Microsoft Visual Studio Web创作组件 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 02 Apr 2011 06:45:05 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/microsoft-visual-studio-web%E5%88%9B%E4%BD%9C%E7%BB%84%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装VS2008失败，Microsoft Visual Studio Web创作组件安装失败</title>
+      <link>https://fatkun.github.io/2011/04/vs2008-microsoft-visual-studio-web.html</link>
+      <pubDate>Sat, 02 Apr 2011 06:45:05 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/04/vs2008-microsoft-visual-studio-web.html</guid>
+      <description>我的计算机系统是vista家庭版的，已经安装了Office 2007，在安装VS2008的过程中出现安装失败的窗口。 先把vs2008镜像文件下</description>
+    </item>
+    
+  </channel>
+</rss>

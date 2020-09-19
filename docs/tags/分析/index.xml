@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分析 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 分析 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Jan 2010 05:58:48 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>中国网民使用浏览器，分辨率，操作系统份额（09年12月）</title>
+      <link>https://fatkun.github.io/2010/01/analytics-of-china-in-2009.html</link>
+      <pubDate>Thu, 07 Jan 2010 05:58:48 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/01/analytics-of-china-in-2009.html</guid>
+      <description>&lt;p&gt;做网页前端的都会关注用户都在使用什么浏览器~因为不同的浏览器之间有些差异（大家都有各自的标准，特别是IE），不过近几年来好一些了，微软也意识到自己走抛开大众的路线是会被咒骂的~IE系列将向W3C标准靠拢，IE7,IE8对标准支持也好一点了~将要出来的IE9听说还会支持HTML5。希望以后看到各个浏览器都坚决维护标准~只要在任何一个浏览器测试，其他浏览器浏览的效果都一样~·这样就省了不少的时间。&lt;br&gt;
+以下数据来源&lt;a href=&#34;http://data.cnzz.com/main.php?s=resolve#&#34;&gt;CNZZ.COM&lt;/a&gt;，2009年12月数据&lt;/p&gt;
+&lt;h2 id=&#34;浏览器的份额&#34;&gt;浏览器的份额&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2791/4250314158_b7a5149552.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

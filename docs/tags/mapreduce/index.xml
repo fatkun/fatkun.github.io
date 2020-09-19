@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mapreduce on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/mapreduce/</link>
+    <description>Recent content in mapreduce on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Jan 2013 14:53:23 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/mapreduce/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive – Group By 的实现</title>
+      <link>https://fatkun.github.io/2013/01/hive-group-by.html</link>
+      <pubDate>Sun, 20 Jan 2013 14:53:23 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/01/hive-group-by.html</guid>
+      <description>准备数据 SELECT uid, sum(count) FROM logs group by uid; hive&amp;gt; select * from logs; a 苹果 5 a 橙子 3 a 苹果 2 b 烧鸡 1 hive&amp;gt; SELECT uid, sum(count) FROM logs group by uid; a 10 b 1 计算过程 默认设置了hive.map.aggr=t</description>
+    </item>
+    
+  </channel>
+</rss>

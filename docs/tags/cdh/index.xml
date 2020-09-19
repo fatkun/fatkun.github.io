@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cdh on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/cdh/</link>
+    <description>Recent content in cdh on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 May 2015 14:07:27 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/cdh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Windows上编译hadoop cdh5.4</title>
+      <link>https://fatkun.github.io/2015/05/compile-hadoop-cdh5-4-on-windows.html</link>
+      <pubDate>Sun, 17 May 2015 14:07:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/05/compile-hadoop-cdh5-4-on-windows.html</guid>
+      <description>我的环境 系统:win8.1 ， maven3.1, eclipse 4.4 hadoop cdh5.4对应apache的源码是hadoop 2.6 准备条件 安装以下软件，见源码src/BUILDING.</description>
+    </item>
+    
+  </channel>
+</rss>

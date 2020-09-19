@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>二叉树 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+    <description>Recent content in 二叉树 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 24 Nov 2010 11:31:08 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>二叉树遍历（先序，中序，后序）</title>
+      <link>https://fatkun.github.io/2010/11/binary-tree-traversal.html</link>
+      <pubDate>Wed, 24 Nov 2010 11:31:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/11/binary-tree-traversal.html</guid>
+      <description>先序遍历：根结点-》左节点-》右节点 中序遍历：左节点-》根结点-》右节点 后续遍历：左节点-》右节点-》根结点 上图的先序遍历为：ABDECF 中</description>
+    </item>
+    
+  </channel>
+</rss>

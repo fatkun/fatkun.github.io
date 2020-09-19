@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Mar 2012 13:24:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>js模拟限制图片同时下载个数(使用setTimeout)</title>
+      <link>https://fatkun.github.io/2012/03/limit-download-images-using-settimeout.html</link>
+      <pubDate>Sat, 03 Mar 2012 13:24:15 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/limit-download-images-using-settimeout.html</guid>
+      <description>浏览器默认会对同一域名的图片有一个限制同时最多下载X个图片，但是如果图片是多域名的，有时候就会同时下载了很多图片，导致有些图片下载失败！ 先来</description>
+    </item>
+    
+  </channel>
+</rss>

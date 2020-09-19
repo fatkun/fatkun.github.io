@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cp on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/cp/</link>
+    <description>Recent content in cp on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Dec 2013 09:08:34 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/cp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>改用rsync来覆盖正在运行的程序</title>
+      <link>https://fatkun.github.io/2013/12/rsync.html</link>
+      <pubDate>Thu, 12 Dec 2013 09:08:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/12/rsync.html</guid>
+      <description>cp会保持inode，如果程序正在执行，会导致不能覆盖。改用rsync来覆盖 rsync -r src_dir target_dir http://unix.stackexchange.com/questions/9899/how-to-overwrite-target-files-with-mv</description>
+    </item>
+    
+  </channel>
+</rss>

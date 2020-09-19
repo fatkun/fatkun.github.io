@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>WIN7的菜单栏无法隐藏解决方法（QtTabBar） - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="WIN7的菜单栏无法隐藏解决方法（QtTabBar）" />
+<meta property="og:description" content="问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html" />
+<meta property="article:published_time" content="2010-06-29T07:10:59+00:00" />
+<meta property="article:modified_time" content="2010-06-29T07:10:59+00:00" />
+<meta itemprop="name" content="WIN7的菜单栏无法隐藏解决方法（QtTabBar）">
+<meta itemprop="description" content="问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，">
+<meta itemprop="datePublished" content="2010-06-29T07:10:59&#43;00:00" />
+<meta itemprop="dateModified" content="2010-06-29T07:10:59&#43;00:00" />
+<meta itemprop="wordCount" content="382">
+
+
+
+<meta itemprop="keywords" content="QTTabBar,win7,无法隐藏,菜单栏," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WIN7的菜单栏无法隐藏解决方法（QtTabBar）"/>
+<meta name="twitter:description" content="问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">WIN7的菜单栏无法隐藏解决方法（QtTabBar）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-06-29 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#问题">问题</a></li>
+        <li><a href="#解决方法">解决方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="问题">问题</h2>
+<ol>
+<li>不能隐藏菜单栏</li>
+<li>已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，就一直这样菜单栏隐藏不了了，把QTTabBar卸了也还是这样。</li>
+<li>按照网上说的修改组策略的方法依然不可以隐藏</li>
+</ol>
+<h2 id="解决方法">解决方法</h2>
+<p>按“WIN+R”（也就是键盘左下角的徽标键+R），输入gpedit.msg 打开组策略编辑器（也可以在控制面板中搜索“策略”找到），依次展开“用户配置→管理模版→Windows组件→Windows资源管理器”，然后在右侧窗口中双击“在Windows资源管理器中显示菜单栏”，设置为“已禁用”。
+<a href="http://www.flickr.com/photos/fatkun/4744639019/" title="组策略"><img src="http://farm5.static.flickr.com/4117/4744639019_573812d9b9_b.jpg" alt="组策略"></a>{.flickr-image.alignnone}
+<a href="http://www.flickr.com/photos/fatkun/4744639019/" title="组策略"></a>{.flickr-image.alignnone}然后现在试试能不能把菜单隐藏掉？如果不行，再看下面。
+<a href="http://www.flickr.com/photos/fatkun/4744647861/" title="phpvnSF2r"><img src="http://farm5.static.flickr.com/4073/4744647861_4cf606668c.jpg" alt="phpvnSF2r"></a>{.flickr-image.alignnone}
+如果依然不行，把下面的内容保存为1.bat，然后双击它运行。</p>
+<pre>reg delete "HKCU\Software\Microsoft\Internet Explorer\Toolbar\WebBrowser" /v ITBar7Layout /f
+reg delete "HKCU\Software\Microsoft\Internet Explorer\Toolbar\WebBrowser" /v ITBar7Height /f
+reg delete "HKCU\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser" /v ITBar7Layout /f
+reg delete "HKCU\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser" /v ITBar7Height /f</pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-06-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/qttabbar/">QTTabBar</a>
+          <a href="/tags/win7/">win7</a>
+          <a href="/tags/%E6%97%A0%E6%B3%95%E9%9A%90%E8%97%8F/">无法隐藏</a>
+          <a href="/tags/%E8%8F%9C%E5%8D%95%E6%A0%8F/">菜单栏</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/07/sell-match-girl.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">卖火柴的小女孩1-16【超扯童話血多】</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/06/xiao-pan-niu.html">
+            <span class="next-text nav-default">《小胖妞》- 广美学生何伟锋毕业作品</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

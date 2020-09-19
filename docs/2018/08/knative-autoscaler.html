@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>knative分析 – autoscaler - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="文档说目前的实现只是为了快速实现，后期还会修改。 knative是如何做伸缩容的？ 处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？c" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2018/08/knative-autoscaler.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="knative分析 – autoscaler" />
+<meta property="og:description" content="文档说目前的实现只是为了快速实现，后期还会修改。 knative是如何做伸缩容的？ 处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2018/08/knative-autoscaler.html" />
+<meta property="article:published_time" content="2018-08-06T12:00:42+00:00" />
+<meta property="article:modified_time" content="2018-08-06T12:00:42+00:00" />
+<meta itemprop="name" content="knative分析 – autoscaler">
+<meta itemprop="description" content="文档说目前的实现只是为了快速实现，后期还会修改。 knative是如何做伸缩容的？ 处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？c">
+<meta itemprop="datePublished" content="2018-08-06T12:00:42&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-06T12:00:42&#43;00:00" />
+<meta itemprop="wordCount" content="1528">
+
+
+
+<meta itemprop="keywords" content="k8s,knative," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="knative分析 – autoscaler"/>
+<meta name="twitter:description" content="文档说目前的实现只是为了快速实现，后期还会修改。 knative是如何做伸缩容的？ 处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？c"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">knative分析 – autoscaler</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-06 </span>
+        <div class="post-category">
+            <a href="/categories/docker/"> docker </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#期望每个pod并发请求数">期望每个pod并发请求数</a></li>
+    <li><a href="#如果是单个并发值要接近10">如果是单个并发，值要接近1.0</a></li>
+    <li><a href="#stable窗口时间计算平均并发会用到如果进入panic模式后经过stable窗口时间也会恢复stable">stable窗口时间，计算平均并发会用到。如果进入panic模式后，经过stable窗口时间也会恢复stable</a></li>
+    <li><a href="#如果平均并发在panic窗口时间内达到2倍目标并发autoscaler进入panic模式">如果平均并发在panic窗口时间内达到2倍目标并发，autoscaler进入panic模式。</a></li>
+    <li><a href="#在panic模式下自动伸缩按在panic窗口时间的平均并发来操作">在panic模式下，自动伸缩按在panic窗口时间的平均并发来操作。</a></li>
+    <li><a href="#最大增长比例每次调整会根据并发计算增长比例最大增长不超过这个值">最大增长比例，每次调整会根据并发计算增长比例，最大增长不超过这个值</a></li>
+    <li><a href="#计算并发值的参数每一段时间得到最大并发作为一个bucket最后汇报的时候">计算并发值的参数，每一段时间得到最大并发，作为一个bucket，最后汇报的时候，</a></li>
+    <li><a href="#平均并发--各个bucket最大并发之和--总bucket数汇报间隔是1秒hard-coded">平均并发 = 各个bucket最大并发之和 / 总bucket数，汇报间隔是1秒（hard coded）</a></li>
+    <li><a href="#是否开启缩容到0">是否开启缩容到0</a></li>
+    <li><a href="#实验性开启垂直扩容">实验性：开启垂直扩容</a></li>
+    <li><a href="#requires-a-vpa-installation-eg-third_partyvpainstall-vpash">Requires a VPA installation (e.g. ./third_party/vpa/install-vpa.sh)</a></li>
+    <li><a href="#如果开启了enable-vertical-pod-autoscaling这个值就会替代multi-concurrency-target">如果开启了enable-vertical-pod-autoscaling，这个值就会替代multi-concurrency-target，</a></li>
+    <li><a href="#如果成熟了后期会变成默认值">如果成熟了后期会变成默认值</a></li>
+    <li><a href="#多长时间调整一次">多长时间调整一次</a></li>
+    <li><a href="#dynamic-parameters-take-effect-when-config-map-is-updated">Dynamic parameters (take effect when config map is updated):</a></li>
+    <li><a href="#空闲多长时间缩容到0">空闲多长时间缩容到0</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div data-type="p">  文档说目前的实现只是为了快速实现，后期还会修改。</div>
+<div data-type="p"></div>
+<h2 id="pistun" data-type="h">  knative是如何做伸缩容的？</h2>
+<p data-type="p">  处理伸缩容问题，首先要解决的问题是根据什么指标判断伸缩容？cpu、内存、请求数？这里knative使用的是请求数。</p>
+<p data-type="p">  其次是伸缩多少的问题。</p>
+<p data-type="p">  knative的伸缩是依赖修改deployment的replicate数实现的。</p>
+<div data-type="p"></div>
+## 如何采集请求数？
+<p data-type="p">  启动revision的pod时，也会启动一个autoscaler（一个knative revision只启动一个autoscaler），autoscaler自己本身也会scale到0，用于接收请求数统计和处理伸缩容。</p>
+<p data-type="p">  业务pod中，会注入queue-proxy sidecard，用于接收请求，在这里会统计并发数，每秒向autoscaler汇报，接收到的请求会转发给业务container。</p>
+<p data-type="p">  注：单租户模式下一个revision启动一个autoscaler，多租户共用一个autoscaler</p>
+<div data-type="p"></div>
+<h2 id="5nvoev" data-type="h">  计算需要pod的个数？</h2>
+<p data-type="p">  autoscaler接收到并发统计的时候，会根据算法计算需要的pod个数。</p>
+<p data-type="p">  算法中有两种模式，分别是panic和stable模式，一个是短时间，一个是长时间，为了解决短时间内请求突增的场景，需要快速扩容。</p>
+<p data-type="p">  <a class="bi-link" href="https://github.com/knative/docs/blob/master/serving/samples/autoscale-go/README.md#algorithm" target="_blank" rel="noopener">文档中描述</a><span data-type="ranges">的算法是，默认的target concurency是1，如果一个revision 35QPS，每个请求花费0.25秒，Knative Serving 觉得需要 9 个 pod。 </span></p>
+    ceil(35 * .25) = ceil(8.75) = 9
+<div data-type="p"></div>
+<h4 id="xsewfu" data-type="h">  Stable Mode（稳定模式）</h4>
+<p data-type="p">  <span data-type="ranges">在稳定模式下，Autoscaler 根据每个pod期望的并发来调整Deployment的副本个数。根据每个pod在60秒窗口内的平均并发来计算，而不是根据现有副本个数计算，因为pod的数量增加和pod变为可服务和提供指标数据有一定时间间隔。</span></p>
+<div data-type="p"></div>
+<h4 id="gysqiy" data-type="h">  Panic Mode （恐慌模式）</h4>
+<p data-type="p">  <span data-type="ranges">Panic时间窗口默认是6秒，如果在6秒内达到2倍期望的并发，则转换到恐慌模式下。在恐慌模式下，Autoscaler根据这6秒的时间窗口计算，这样更能及时的响应突发的流量请求。每2秒调整Deployment的副本数达到想要的pod个数（或者最大10倍当前pod的数量），为了避免pod数量频繁变动，在恐慌模式下只能增加，不会减少。60秒后会恢复回稳定模式。</span></p>
+<div data-type="p"></div>
+<h1 id="6dz5gx" data-type="h">  <span data-type="ranges">autoscaler 单租户图</span></h1>
+<pre lang="other" escaped="true">+---------------------+
+   | ROUTE               |
+   |                     |
+   |   +-------------+   |
+   |   | Istio Route |---------------+
+   |   +-------------+   |           |
+   |         |           |           |
+   +---------|-----------+           |
+             |                       |
+             |                       |
+             | inactive              | active
+             |  route                | route
+             |                       |
+             |                       |
+             |                +------|------------------------------------+
+             V         watch  |      V                                    |
+       +-----------+   first  |   +- ----+  create   +------------+       |
+       | Activator |-------------&gt;| Pods |&lt;----------| Deployment |       |
+       +-----------+          |   +------+           +------------+       |
+             |                |       |                     ^             |
+             |   activate     |       |                     | resize      |
+             +---------------&gt;|       |                     |             |
+                              |       |    metrics    +---------------+   |
+                              |       +--------------&gt;| Single-tenant |   |
+                              |                       |  Autoscaler   |   |
+                              |                       +---------------+   |
+                              | REVISION                                  |
+                              +-------------------------------------------+</pre>
+<h1 id="dq5srw" data-type="h">  模式</h1>
+<pre lang="other" escaped="true">const (
+   // 每个pod实例同时只处理一个请求
+   RevisionRequestConcurrencyModelSingle RevisionRequestConcurrencyModelType = "Single"
+   // 每个pod实例同时处理多个请求
+   RevisionRequestConcurrencyModelMulti RevisionRequestConcurrencyModelType = "Multi"
+)</pre>
+<h1 id="grc3yo" data-type="h">  配置</h1>
+<div data-type="p">  <pre lang="other" escaped="true">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-autoscaler
+  namespace: knative-serving
+data:
+  # Static parameters:
+<h1 id="期望每个pod并发请求数">期望每个pod并发请求数</h1>
+<p>multi-concurrency-target: &ldquo;1.0&rdquo;</p>
+<h1 id="如果是单个并发值要接近10">如果是单个并发，值要接近1.0</h1>
+<p>single-concurrency-target: &ldquo;0.9&rdquo;</p>
+<h1 id="stable窗口时间计算平均并发会用到如果进入panic模式后经过stable窗口时间也会恢复stable">stable窗口时间，计算平均并发会用到。如果进入panic模式后，经过stable窗口时间也会恢复stable</h1>
+<p>stable-window: &ldquo;60s&rdquo;</p>
+<h1 id="如果平均并发在panic窗口时间内达到2倍目标并发autoscaler进入panic模式">如果平均并发在panic窗口时间内达到2倍目标并发，autoscaler进入panic模式。</h1>
+<h1 id="在panic模式下自动伸缩按在panic窗口时间的平均并发来操作">在panic模式下，自动伸缩按在panic窗口时间的平均并发来操作。</h1>
+<p>panic-window: &ldquo;6s&rdquo;</p>
+<h1 id="最大增长比例每次调整会根据并发计算增长比例最大增长不超过这个值">最大增长比例，每次调整会根据并发计算增长比例，最大增长不超过这个值</h1>
+<p>max-scale-up-rate: &ldquo;10&rdquo;</p>
+<h1 id="计算并发值的参数每一段时间得到最大并发作为一个bucket最后汇报的时候">计算并发值的参数，每一段时间得到最大并发，作为一个bucket，最后汇报的时候，</h1>
+<h1 id="平均并发--各个bucket最大并发之和--总bucket数汇报间隔是1秒hard-coded">平均并发 = 各个bucket最大并发之和 / 总bucket数，汇报间隔是1秒（hard coded）</h1>
+<p>concurrency-quantum-of-time: &ldquo;100ms&rdquo;</p>
+<h1 id="是否开启缩容到0">是否开启缩容到0</h1>
+<p>enable-scale-to-zero: &ldquo;true&rdquo;</p>
+<h1 id="实验性开启垂直扩容">实验性：开启垂直扩容</h1>
+<h1 id="requires-a-vpa-installation-eg-third_partyvpainstall-vpash">Requires a VPA installation (e.g. ./third_party/vpa/install-vpa.sh)</h1>
+<p>enable-vertical-pod-autoscaling: &ldquo;false&rdquo;</p>
+<h1 id="如果开启了enable-vertical-pod-autoscaling这个值就会替代multi-concurrency-target">如果开启了enable-vertical-pod-autoscaling，这个值就会替代multi-concurrency-target，</h1>
+<h1 id="如果成熟了后期会变成默认值">如果成熟了后期会变成默认值</h1>
+<p>vpa-multi-concurrency-target: &ldquo;10.0&rdquo;</p>
+<h1 id="多长时间调整一次">多长时间调整一次</h1>
+<p>tick-interval: &ldquo;2s&rdquo;</p>
+<h1 id="dynamic-parameters-take-effect-when-config-map-is-updated">Dynamic parameters (take effect when config map is updated):</h1>
+<h1 id="空闲多长时间缩容到0">空闲多长时间缩容到0</h1>
+<p>scale-to-zero-threshold: &ldquo;5m&quot;</pre></div></p>
+<h1 id="nbe3dr" data-type="h">  参考</h1>
+<div data-type="p">  <a class="bi-link" href="https://github.com/knative/serving/blob/master/docs/scaling/DEVELOPMENT.md" target="_blank" rel="noopener">https://github.com/knative/serving/blob/master/docs/scaling/DEVELOPMENT.md</a> Autoscaling</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-08-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/k8s/">k8s</a>
+          <a href="/tags/knative/">knative</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2018/08/knative-activator.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">knative分析 – activator</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2018/08/use-multipleoutputs-file-already-exists.html">
+            <span class="next-text nav-default">使用MultipleOutputs报File already exists错误</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

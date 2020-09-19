@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>数据库存储过程的优缺点 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/11/database-procedure.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="数据库存储过程的优缺点" />
+<meta property="og:description" content="优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/11/database-procedure.html" />
+<meta property="article:published_time" content="2010-11-22T05:37:54+00:00" />
+<meta property="article:modified_time" content="2010-11-22T05:37:54+00:00" />
+<meta itemprop="name" content="数据库存储过程的优缺点">
+<meta itemprop="description" content="优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随">
+<meta itemprop="datePublished" content="2010-11-22T05:37:54&#43;00:00" />
+<meta itemprop="dateModified" content="2010-11-22T05:37:54&#43;00:00" />
+<meta itemprop="wordCount" content="683">
+
+
+
+<meta itemprop="keywords" content="优点与缺点,存储过程," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数据库存储过程的优缺点"/>
+<meta name="twitter:description" content="优点 （1） 存储过程允许标准组件式编程 存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">数据库存储过程的优缺点</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-11-22 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="优点">优点</h2>
+<p>（1） 存储过程允许标准组件式编程<br>
+存储过程在被创建以后可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。而且数据库专业人员可随时对存储过程进行修改，但对应用程序源代码毫无影响（因为应用程序源代码只包含存储过程的调用语句），从而极大地提高了程序的可移植性。<br>
+（2） 存储过程能够实现较快的执行速度<br>
+如果某一操作包含大量的Transaction-SQL 代码或分别被多次执行，那么存储过程要比批处理的执行速度快很多。因为存储过程是预编译的，在首次运行一个存储过程时，查询优化器对其进行分析、优化，并给出最终被存在系统表中的执行计划。而批处理的Transaction-SQL 语句在每次运行时都要进行编译和优化，因此速度相对要慢一些。
+（3） 存储过程能够减少网络流量<br>
+对于同一个针对数据数据库对象的操作（如查询、修改），如果这一操作所涉及到的Transaction-SQL 语句被组织成一存储过程，那么当在客户计算机上调用该存储过程时，网络中传送的只是该调用语句，否则将是多条SQL 语句，从而大大增加了网络流量，降低网络负载。
+（4） 存储过程可被作为一种安全机制来充分利用<br>
+系统管理员通过对执行某一存储过程的权限进行限制，从而能够实现对相应的数据访问权限的限制，避免非授权用户对数据的访问，保证数据的安全</p>
+<h2 id="缺点">缺点:</h2>
+<p>1,依赖于数据库厂商,难以移植(当一个小系统发展到大系统时,对数据库的要求也会发生改变)<br>
+2,业务逻辑大的时候,封装性不够,难调试难以维护<br>
+3,复杂的应用用存储过程来实现，就把业务处理的负担压在数据库服务器上了。没有办法通过中间层来灵活分担负载和压力.均衡负载等
+参考：
+<a href="http://www.javaeye.com/topic/734702">http://www.javaeye.com/topic/734702</a>
+<a href="http://blog.csdn.net/fsclc/archive/2007/01/16/1484264.aspx">http://blog.csdn.net/fsclc/archive/2007/01/16/1484264.aspx</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-11-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BC%98%E7%82%B9%E4%B8%8E%E7%BC%BA%E7%82%B9/">优点与缺点</a>
+          <a href="/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/11/sql-join.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">SQL的连接（JOIN，左连接，右连接，全连接，内连接）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/11/union-and-union-all.html">
+            <span class="next-text nav-default">数据库UNION和UNION ALL比较</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>XP下系统服务workstation启动很慢解决方法 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="症状 系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/10/workstation-service.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="XP下系统服务workstation启动很慢解决方法" />
+<meta property="og:description" content="症状 系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/10/workstation-service.html" />
+<meta property="article:published_time" content="2010-10-02T02:51:18+00:00" />
+<meta property="article:modified_time" content="2010-10-02T02:51:18+00:00" />
+<meta itemprop="name" content="XP下系统服务workstation启动很慢解决方法">
+<meta itemprop="description" content="症状 系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁">
+<meta itemprop="datePublished" content="2010-10-02T02:51:18&#43;00:00" />
+<meta itemprop="dateModified" content="2010-10-02T02:51:18&#43;00:00" />
+<meta itemprop="wordCount" content="807">
+
+
+
+<meta itemprop="keywords" content="vmware,workstation,xp,启动慢,服务,系统," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="XP下系统服务workstation启动很慢解决方法"/>
+<meta name="twitter:description" content="症状 系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">XP下系统服务workstation启动很慢解决方法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-10-02 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#症状">症状</a></li>
+        <li><a href="#解决方法">解决方法</a></li>
+        <li><a href="#其他解决方法">其他解决方法</a></li>
+        <li><a href="#额外知识">额外知识</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="症状">症状</h2>
+<p>系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁止则开机正常。</p>
+<h2 id="解决方法">解决方法</h2>
+<ol>
+<li>设置workstation服务为手动或禁止运行。（不过有个后遗症是关机时会提示“正在关闭网络连接”）</li>
+<li>检查网卡自动获取IP是不是很慢，把网卡的IP设置为固定IP（我的电脑是因为这个原因，通过宽带拨号，本地连接可以设置为任何一个ip：如192.168.1.33，没影响的）</li>
+</ol>
+<h2 id="其他解决方法">其他解决方法</h2>
+<ol>
+<li> 由于安装各种插件(雅虎助手等)导致网络服务出问题或EXPLORER负载过大,同时还会引起WORKSTATION服务启动慢,有时候要20分钟左右才能启动机器.建议使用360安全卫士处理下流氓软件.这样情况会有好转</li>
+<li>在本地连接的网络组件里,多余的组件会给WORKSTATION很大负荷,XP专业版的情况下基本只有4个是必需的,那就是MICROSOFT网络客户端,MICROSOFT网络文件和打印机的共享,QOS数据包计划程序和TIP/IP,其他的一律删掉.</li>
+<li>因为安装VMware变慢，可以把VMware的三个服务(VMware Authorization Service,VMware NAT Service,VMware DHCP Service)设为手动，有需要再开启</li>
+</ol>
+<h2 id="额外知识">额外知识</h2>
+<p>Workstation(即lanmanworkstation)服务，如果启动慢，将导致：<br>
+在该服务启动后启动的各类服务组的服务延迟启动，包括<br>
+RemoteValidation（包含NetLogon服务）<br>
+NetDDEGroup（包含NetDDE服务）<br>
+Parallel arbitrator（包含Parport并口服务）<br>
+Extended Base（各类硬件管理服务如USB、串口等，音视频解码等）<br>
+PCI Configuration（包含PCIDump服务）<br>
+MS Transactions（包含MSDTC服务）<br>
+　　而这些启动延迟，将导致网络登录延迟、网络管理功能延迟加载、音频启动延迟（开机声音延迟播出）、USB设备延迟加载等问题，直接导致系统的可用性。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-10-02
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vmware/">vmware</a>
+          <a href="/tags/workstation/">workstation</a>
+          <a href="/tags/xp/">xp</a>
+          <a href="/tags/%E5%90%AF%E5%8A%A8%E6%85%A2/">启动慢</a>
+          <a href="/tags/%E6%9C%8D%E5%8A%A1/">服务</a>
+          <a href="/tags/%E7%B3%BB%E7%BB%9F/">系统</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/10/network-is-closing.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">关机时提示“正在关闭网络连接”解决方法</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/09/psd-nav.html">
+            <span class="next-text nav-default">PSD:折角橙色标题栏</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

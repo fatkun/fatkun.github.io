@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hibernate事务管理 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/12/hibernate-transaction.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hibernate事务管理" />
+<meta property="og:description" content="1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/12/hibernate-transaction.html" />
+<meta property="article:published_time" content="2010-12-25T10:16:03+00:00" />
+<meta property="article:modified_time" content="2010-12-25T10:16:03+00:00" />
+<meta itemprop="name" content="hibernate事务管理">
+<meta itemprop="description" content="1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。">
+<meta itemprop="datePublished" content="2010-12-25T10:16:03&#43;00:00" />
+<meta itemprop="dateModified" content="2010-12-25T10:16:03&#43;00:00" />
+<meta itemprop="wordCount" content="1759">
+
+
+
+<meta itemprop="keywords" content="数据库,数据库事务,隔离级别," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hibernate事务管理"/>
+<meta name="twitter:description" content="1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。 2.数据库ACID特征： Atomic（原子性）：指整个数据库事务是不可分割的工作单元。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hibernate事务管理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-12-25 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1介绍数据库事务事务隔离级别悲观锁乐观锁等概念">1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。</a></li>
+        <li><a href="#2数据库acid特征">2.数据库ACID特征：</a></li>
+        <li><a href="#3数据库系统支持两种事务模式">3.数据库系统支持两种事务模式：</a></li>
+        <li><a href="#6数据库系统四种事务隔离级别">6.数据库系统四种事务隔离级别</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1介绍数据库事务事务隔离级别悲观锁乐观锁等概念">1. 介绍数据库事务、事务隔离级别、悲观锁、乐观锁等概念。</h2>
+<h2 id="2数据库acid特征">2.数据库ACID特征：</h2>
+<blockquote>
+<p>Atomic（原子性）：指整个数据库事务是不可分割的工作单元。
+Consistency（一致性）：指数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性。
+Isolation（隔离性）：指的是在并发环境中，当不同的事务同时操纵相同的数据时，每个事务都有各自的完整数据空间。
+Durability（持久性）：指的是只要事务成功结束，它对数据库所作的更新就必须永久保存下来。</p>
+</blockquote>
+<h2 id="3数据库系统支持两种事务模式">3.数据库系统支持两种事务模式：</h2>
+<p style="padding-left: 30px;">  自动提交模式：每个SQL语句都是一个独立的事务，当数据库系统执行完一个SQL语句后，会自动提交事务。</p>
+<p style="padding-left: 30px;">  手动提交模式：必须由数据库客户程序显示指定事务开始边界和结束边界。</p>
+## 4.MySQL中数据库表分为3种类型：
+<p style="padding-left: 30px;">  INNODB、BDB和MyISAM，其中MyISAM不支持数据库事务。MySQL中create table 语句默认为MyISAM类型。</p>
+## 5.并发问题
+<p>对于同时运行的多个事务，当这些事务访问数据库中相同的数据时，如果没有采取必要的隔离机制，就会导致各种并发问题，这些并发问题可归纳为以下几类：</p>
+<blockquote>
+<p>A.第一类丢失更新：撤销一个事务时，把其他事务已提交的更新数据覆盖。
+B.脏读：一个事务读到另一个事务为提交的更新数据。
+C.幻读：一个事务读到另一个事务已提交的新插入的数据。
+D.不可重复读：一个事务读到另一个事务已提交的更新数据。
+E.第二类丢失更新：这是不可重复读中的特例，一个事务覆盖另一个事务已提交的更新数据。</p>
+</blockquote>
+<h2 id="6数据库系统四种事务隔离级别">6.数据库系统四种事务隔离级别</h2>
+<p style="padding-left: 30px;">  A.Serializable（串行化）：一个事务在执行过程中完全看不到其他事务对数据库所做的更新。</p>
+<p style="padding-left: 30px;">  B.Repeatable Read（可重复读）：一个事务在执行过程中可以看到其他事务已经提交的新插入的记录，但是不能看到其他其他事务对已有记录的更新。</p>
+<p style="padding-left: 30px;">  C.Read Commited（读已提交数据）：一个事务在执行过程中可以看到其他事务已经提交的新插入的记录，而且能看到其他事务已经提交的对已有记录的更新。</p>
+<p style="padding-left: 30px;">  D.Read Uncommitted（读未提交数据）：一个事务在执行过程中可以拷打其他事务没有提交的新插入的记录，而且能看到其他事务没有提交的对已有记录的更新。</p>
+<table border="1" cellspacing="0" cellpadding="0" width="576">  <tr>    <td width="164">      <div>        隔离级别      </div>    </td>
+    <td width="82">      <div>        脏读      </div>    </td>
+    <td width="82">      <div>        不可      </div>
+      <div>        重复读      </div>    </td>
+    <td width="82">      <div>        幻象读      </div>    </td>
+    <td width="82">      <div>        第一类丢失更新      </div>    </td>
+    <td width="82">      <div>        第二类丢失更新      </div>    </td>  </tr>
+  <tr>    <td width="164" valign="top">      <div>        READ UNCOMMITED      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>  </tr>
+  <tr>    <td width="164" valign="top">      <div>        READ COMMITTED      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>  </tr>
+  <tr>    <td width="164" valign="top">      <div>        REPEATABLE READ      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>  </tr>
+  <tr>    <td width="164" valign="top">      <div>        SERIALIZABLE      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>
+    <td width="82">      <div>        不允许      </div>    </td>  </tr></table>
+<p style="padding-left: 30px;">  隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能的影响也越大。对于多数应用程序，可以有优先考虑把数据库系统的隔离级别设为Read Commited，它能够避免脏读，而且具有较好的并发性能。尽管它会导致不可重复读、幻读和第二类丢失更新这些并发问题，在可能出现这类问题的个别场合，可以由应用程序采用悲观锁或乐观锁来控制。</p>
+## 7.当数据库系统采用read Commited隔离级别时
+<p>会导致不可重复读喝第二类丢失更新的并发问题，可以在应用程序中采用悲观锁或乐观锁来避免这类问题。从应用程序的角度，锁可以分为以下几类：</p>
+<p style="padding-left: 30px;">  A.悲观锁：指在应用程序中显示的为数据资源加锁。尽管能防止丢失更新和不可重复读这类并发问题，但是它会影响并发性能，因此应该谨慎地使用。</p>
+<p style="padding-left: 30px;">  B.乐观锁：乐观锁假定当前事务操作数据资源时，不回有其他事务同时访问该数据资源，因此完全依靠数据库的隔离级别来自动管理锁的工作。应用程序采用版本控制手段来避免可能出现的并发问题。</p>
+## 8.悲观锁有两种实现方式：
+<p style="padding-left: 30px;">  A.在应用程序中显示指定采用数据库系统的独占所来锁定数据资源。SQL语句：select &#8230; for update，在Hibernate中使用get，load时如session.get(Account.class,new Long(1),LockMode,UPGRADE)</p>
+<p style="padding-left: 30px;">  B.在数据库表中增加一个表明记录状态的LOCK字段，当它取值为“Y”时，表示该记录已经被某个事务锁定，如果为“N”，表明该记录处于空闲状态，事务可以访问它。增加锁标记字段就可以实现。</p>
+## 9.利用Hibernate的版本控制来实现乐观锁
+<p style="padding-left: 30px;">  乐观锁是由程序提供的一种机制，这种机制既能保证多个事务并发访问数据，又能防止第二类丢失更新问题。</p>
+<p style="padding-left: 30px;">  在应用程序中可以利用Hibernate提供的版本控制功能来视线乐观锁，OR映射文件中的<version>元素和<timestamp>都具有版本控制的功能，一般推荐采用<version></p>
+本文来源：<http://blog.csdn.net/yueguangyuan/archive/2006/09/20/1253229.aspx>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-12-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/">数据库事务</a>
+          <a href="/tags/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">隔离级别</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/12/database-transaction-concurrency-problem.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">数据库并发问题</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/12/list-remove.html">
+            <span class="next-text nav-default">List中的remove使用注意</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

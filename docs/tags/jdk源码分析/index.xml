@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JDK源码分析 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/jdk%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in JDK源码分析 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Mar 2011 15:24:57 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/jdk%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JDK源码分析：java.lang.String</title>
+      <link>https://fatkun.github.io/2011/03/jdk-source-java-lang-string.html</link>
+      <pubDate>Thu, 10 Mar 2011 15:24:57 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/jdk-source-java-lang-string.html</guid>
+      <description>最近开始看JDK源码，不能太懒了注释非常详细（虽然是英文），而且部分代码也不算很复杂。先挑的简单的看看。。为了坚持下去，所以在博客写些记录，</description>
+    </item>
+    
+  </channel>
+</rss>

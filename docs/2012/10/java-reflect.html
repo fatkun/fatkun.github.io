@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JAVA反射(Reflect)的使用 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2012/10/java-reflect.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JAVA反射(Reflect)的使用" />
+<meta property="og:description" content="反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2012/10/java-reflect.html" />
+<meta property="article:published_time" content="2012-10-07T15:59:52+00:00" />
+<meta property="article:modified_time" content="2012-10-07T15:59:52+00:00" />
+<meta itemprop="name" content="JAVA反射(Reflect)的使用">
+<meta itemprop="description" content="反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class">
+<meta itemprop="datePublished" content="2012-10-07T15:59:52&#43;00:00" />
+<meta itemprop="dateModified" content="2012-10-07T15:59:52&#43;00:00" />
+<meta itemprop="wordCount" content="794">
+
+
+
+<meta itemprop="keywords" content="JAVA,reflect,ThreadLocal," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JAVA反射(Reflect)的使用"/>
+<meta name="twitter:description" content="反射方法Method getDeclaredMethod是获取该类声明的方法，不包括继承的。 Method getDeclaredMethod(String name, Class… parameterTypes) 返回一个 Method 对象，该对象反映此 Class"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JAVA反射(Reflect)的使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-10-07 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#反射方法method">反射方法Method</a></li>
+        <li><a href="#反射属性field">反射属性Field</a></li>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="反射方法method">反射方法Method</h2>
+<p>getDeclaredMethod是获取该类声明的方法，不包括继承的。</p>
+<blockquote>
+<p>Method getDeclaredMethod(String name, Class… parameterTypes)<br>
+返回一个 Method 对象，该对象反映此 Class 对象所表示的类或接口的指定已声明方法。
+还有一个getMethod是只能获取public的方法
+getMethod(String name, Class… parameterTypes)<br>
+返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。
+name参数是方法名；parameterTypes 参数是按声明顺序标识该方法形参类型的 Class 对象的一个数组<br>
+如：</p>
+</blockquote>
+<pre lang="html" escaped="true">LogFactory.class.getDeclaredMethod("functionName",new Class[]{String.class,int.class})</pre>
+<p>如果方法没有参数，提供null或者省略都可以。<br>
+method.invoke中，invoke(Object obj, Object… args) ，obj是对象，如果是静态方法，填入null；args参数是一个Object对象数组，如 new Object[] {“test”, new Integer(10)}
+下面的例子是想要反射common logging 包里的LogFactory getContextClassLoader方法。这是一个private static方法</p>
+<pre lang="java" escaped="true">Method method = LogFactory.class.getDeclaredMethod("getContextClassLoader");
+method.setAccessible(true); // 如果是private的方法，要把它设为可访问
+ClassLoader classLoader = (ClassLoader)method.invoke(null);</pre>
+<h2 id="反射属性field">反射属性Field</h2>
+<p>和method差不多，也有getDeclaredField和getField方法。<br>
+可以通过field.get来获取值，参数是你要获取的是哪个对象的属性。如果是静态变量，填入null<br>
+另外可以通过field.set来赋值。</p>
+<pre lang="java" escaped="true">Field field = LogFactory.class.getDeclaredField("factories");
+field.setAccessible(true);
+Hashtable obj = (Hashtable)field.get(null);</pre>
+<h2 id="例子">例子</h2>
+<p>在SesstionState里有一个ThreadLocal的pravate tss变量，我们要取到这个变量，并且调用它的remove方法。注意：ThreadLocal的对象是在每个线程都存有一个map，把值存在那里，所以，必须和原线程一致才能取到他的值。</p>
+<pre lang="java" escaped="true">// SessionState里有一个private static的tss局部变量
+Class clazz = SessionState.class;
+Field field = clazz.getDeclaredField("tss"); // 由于是private的，不能通过getField获取
+field.setAccessible(true); // 设为可访问
+ThreadLocal threadLocal = (ThreadLocal)field.get(sessionState);// 通过field.get(对象) 获取它的值
+threadLocal.remove();</pre><blockquote>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2012-10-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">JAVA</a>
+          <a href="/tags/reflect/">reflect</a>
+          <a href="/tags/threadlocal/">ThreadLocal</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2012/10/debug-hive-mapreduce-with-eclipse.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用eclipse调试hive mapreduce</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2012/09/python-pywin32-dll-load-failed.html">
+            <span class="next-text nav-default">python安装pywin32出现DLL load failed的解决办法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

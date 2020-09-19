@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>000webhost开启gzip压缩(使用htaccess开启gzip) - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/07/000webhost-htaccess-gzip.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="000webhost开启gzip压缩(使用htaccess开启gzip)" />
+<meta property="og:description" content="对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/07/000webhost-htaccess-gzip.html" />
+<meta property="article:published_time" content="2010-07-06T04:35:17+00:00" />
+<meta property="article:modified_time" content="2010-07-06T04:35:17+00:00" />
+<meta itemprop="name" content="000webhost开启gzip压缩(使用htaccess开启gzip)">
+<meta itemprop="description" content="对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题">
+<meta itemprop="datePublished" content="2010-07-06T04:35:17&#43;00:00" />
+<meta itemprop="dateModified" content="2010-07-06T04:35:17&#43;00:00" />
+<meta itemprop="wordCount" content="539">
+
+
+
+<meta itemprop="keywords" content="gzip,htaccess," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="000webhost开启gzip压缩(使用htaccess开启gzip)"/>
+<meta name="twitter:description" content="对于000webhost空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">000webhost开启gzip压缩(使用htaccess开启gzip)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-07-06 </span>
+        <div class="post-category">
+            <a href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"> 胡言乱语 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>对于<a style="text-decoration: none; color: #3d1466;" href="http://www.000webhost.com/">000webhost</a>空间，开启Gzip压缩功能会有网页打不开的现象，不管是通过插件开启还是其他方法，网页打不开，后台打不开始终是个大问题。</p>
+<p style="margin-top: 0px; margin-bottom: 15px;">  首先，看看你的根目录下有没有.htaccess文件，如果没有请在本地建立x.htaccess然后上传到你的根目录下，重命名为.htaccess。请注意，.htaccess文件的位置是在根目录下，比如我的是public_html/.htaccess。</p>
+<p style="margin-top: 0px; margin-bottom: 15px;">  其次，打开.htaccess文件，添加以下语句</p>
+<pre escaped="true" lang="html">php_flag zlib.output_compression On
+php_value zlib.output_compression_level 8</pre>
+检测你的博客，看看是否开启了Gzip压缩功能。  
+<a href="http://tool.chinaz.com/Gzips/" target="_blank">http://tool.chinaz.com/Gzips/</a>  
+<a href="http://gzip.zzbaike.com/" target="_blank">http://gzip.zzbaike.com/</a>  
+上文来源：<http://www.indear.net/274.html>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+我的首页压缩后的大小
+<table style="border-collapse: collapse; font-size: 14px; line-height: 25px; color: #666666; width: 430px; font-family: Simsun; padding: 0px; margin: 0px;" border="0">  <tr style="background-color: #6fbee7; padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;" colspan="2">      <h2 style="font-size: 16px; font-weight: bold; color: #ffffff; padding: 0px; margin: 0px;">        检测结果      </h2>    </td>  </tr>
+  <tr style="padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      是否压缩？    </td>
+    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      <span style="font-weight: bold; color: #009900; padding: 0px; margin: 0px;">是</span>    </td>  </tr>
+  <tr style="padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      压缩类型：    </td>
+    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      <span style="font-weight: bold; color: #0000ff; padding: 0px; margin: 0px;">gzip</span>    </td>  </tr>
+  <tr style="padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      源文件大小：    </td>
+    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      <span style="font-weight: bold; padding: 0px; margin: 0px;">40.64KB</span>    </td>  </tr>
+  <tr style="padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      压缩后大小：    </td>
+    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      <span style="font-weight: bold; padding: 0px; margin: 0px;">9.98KB</span>    </td>  </tr>
+  <tr style="padding: 0px; margin: 0px;">    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      压缩率：    </td>
+    <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; height: 25px; margin: 0px; border: 1px solid #6fbee7;">      <span style="font-weight: bold; padding: 0px; margin: 0px;">75.4%</span>    </td>  </tr></table>
+压缩得还不小吧，以前一直以为装了<span style="margin-top: 0px; margin-right: 0px; margin-bottom: 0.2em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; word-wrap: break-word; display: block; background-position: initial initial; background-repeat: initial initial; padding: 0px; border: 0px initial initial;"><strong>WP Super Cache</strong>，并且启用了gzip就可以了，发现根本没有启用到，可能是000webhost本身的缘故吧，使用上文所写的方法就可以启用了。</span>
+<span style="margin-top: 0px; margin-right: 0px; margin-bottom: 0.2em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; word-wrap: break-word; display: block; background-position: initial initial; background-repeat: initial initial; padding: 0px; border: 0px initial initial;">开启后super cache会提示</span>
+> <span style="margin-top: 0px; margin-right: 0px; margin-bottom: 0.2em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; word-wrap: break-word; display: block; background-position: initial initial; background-repeat: initial initial; padding: 0px; border: 0px initial initial;">PHP 正在压缩发送给您网站访客的数据。建议停用此功能，因为插件会压缩一遍页面，而不是一遍又一遍压缩相同的页面。</span>
+应该是说它已经一次性帮你压缩缓存成文件了，不需要每次都压缩页面（在htaccess改每访问一次都会压缩），可是插件根本没压缩啊。。没办法，只能这样了，反正效率差不了多少。
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-07-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gzip/">gzip</a>
+          <a href="/tags/htaccess/">htaccess</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/07/fchg.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">卑鄙作品《非诚互搞》正式版，恶搞《非诚勿扰》</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/07/super-mario.html">
+            <span class="next-text nav-default">最难的《超级马里奥》关卡</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

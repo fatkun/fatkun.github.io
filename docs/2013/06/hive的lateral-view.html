@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hive的Lateral View - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。 UDTF代码参" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2013/06/hive%E7%9A%84lateral-view.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hive的Lateral View" />
+<meta property="og:description" content="Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。 UDTF代码参" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2013/06/hive%E7%9A%84lateral-view.html" />
+<meta property="article:published_time" content="2013-06-11T18:10:14+00:00" />
+<meta property="article:modified_time" content="2013-06-11T18:10:14+00:00" />
+<meta itemprop="name" content="Hive的Lateral View">
+<meta itemprop="description" content="Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。 UDTF代码参">
+<meta itemprop="datePublished" content="2013-06-11T18:10:14&#43;00:00" />
+<meta itemprop="dateModified" content="2013-06-11T18:10:14&#43;00:00" />
+<meta itemprop="wordCount" content="348">
+
+
+
+<meta itemprop="keywords" content="hive,Lateral View," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hive的Lateral View"/>
+<meta name="twitter:description" content="Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。 UDTF代码参"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hive的Lateral View</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-06-11 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#准备数据">准备数据</a></li>
+        <li><a href="#测试">测试</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Lateral View用于把UDTF的行转列结果集合在一起提供服务。Lateral View可以返回多列数据，前提是UDTF注册的输出个数。
+UDTF代码参考：hive/src/ql/src/java/org/apache/hadoop/hive/ql/udf/generic/GenericUDTFExplode.java</p>
+<h2 id="准备数据">准备数据</h2>
+<pre escaped="true" lang="sql">create table test_array (a array&lt;int>, b array&lt;string>)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '`'
+COLLECTION ITEMS TERMINATED BY ',';</pre>
+<p>测试数据，保存文件为/tmp/test</p>
+<pre escaped="true" lang="sql">10,11`tom,mary
+20,21`kate,tim
+</pre>
+<p>导入数据</p>
+<pre escaped="true" lang="sql">load data local inpath '/tmp/test' overwrite into table test_array;</pre>
+<h2 id="测试">测试</h2>
+<pre escaped="true" lang="sql">hive&gt; select explode(b) as name, a from test_array;
+FAILED: SemanticException 1:27 Only a single expression in the SELECT clause is supported with UDTF's. Error encountered near token 'a'
+</pre>
+<p>UDTF只能select单列
+使用LATERAL VIEW</p>
+<pre escaped="true" lang="sql">hive&gt; SELECT a, name FROM test_array LATERAL VIEW explode(b) r1 AS name;
+[10,11]	tom
+[10,11]	mary
+[20,21]	kate
+[20,21]	tim
+</pre>
+<p>可以有多个lateral view</p>
+<pre escaped="true" lang="sql">hive&gt; SELECT id, name FROM test_array LATERAL VIEW explode(b) r1 AS name LATERAL VIEW explode(A) r2 AS id;
+10	tom
+11	tom
+10	mary
+11	mary
+20	kate
+21	kate
+20	tim
+21	tim
+</pre>
+<h2 id="参考">参考</h2>
+<p><a href="http://www.oratea.net/?p=650" target="_blank">hive中的Lateral View</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2013-06-11
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hive/">hive</a>
+          <a href="/tags/lateral-view/">Lateral View</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2013/06/python-and-php-base64-urlencode.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用base64加密在URL传递(python和php版本)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2013/06/filenotfoundexception-hive-builtins.html">
+            <span class="next-text nav-default">hive-builtins文件找不到</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

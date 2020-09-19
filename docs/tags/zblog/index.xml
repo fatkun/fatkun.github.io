@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zblog on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/zblog/</link>
+    <description>Recent content in zblog on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 09 Dec 2009 00:34:34 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/zblog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>折腾，继续折腾，Z-blog转WordPress</title>
+      <link>https://fatkun.github.io/2009/12/zblog-to-wordpress.html</link>
+      <pubDate>Wed, 09 Dec 2009 00:34:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/12/zblog-to-wordpress.html</guid>
+      <description>很久之前就想把以前用的zblog 换为wordpress了~但是WP在Godaddy免费空间上不太能正常使用，（Godaddy免费空间会自动插</description>
+    </item>
+    
+  </channel>
+</rss>

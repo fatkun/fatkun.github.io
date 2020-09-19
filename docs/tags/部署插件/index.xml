@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>部署插件 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6/</link>
+    <description>Recent content in 部署插件 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 Apr 2011 03:53:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>部署outlook2003插件</title>
+      <link>https://fatkun.github.io/2011/04/deploy-outlook-addin.html</link>
+      <pubDate>Thu, 21 Apr 2011 03:53:29 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/04/deploy-outlook-addin.html</guid>
+      <description>如果你的插件部署失败，很可能是没有信任的原因，请参考下面的文章吧。 问题 outlook addin 部署成功了，但打死不能切换语言，无论切换哪个都是英文。（多语言是通</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GAE-Google App Engine网址抓取(java.net.UrlConnection) - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Google App Engine 的网址抓取挺方便的，可以使用java.net.UrlConnection这个类。有了这个我们可以干什么？例如可以从某处获取天气信息等等~
+(提醒一下，上面的是图片。。不要误点了啊。。。)
+看看例子：http://2.latest.fatkuns.appspot.com/
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2010/01/get-website-source-using-google-app-engine.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="GAE-Google App Engine网址抓取(java.net.UrlConnection)" />
+<meta property="og:description" content="Google App Engine 的网址抓取挺方便的，可以使用java.net.UrlConnection这个类。有了这个我们可以干什么？例如可以从某处获取天气信息等等~
+
+(提醒一下，上面的是图片。。不要误点了啊。。。)
+看看例子：http://2.latest.fatkuns.appspot.com/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2010/01/get-website-source-using-google-app-engine.html" />
+<meta property="article:published_time" content="2010-01-23T08:17:12+00:00" />
+<meta property="article:modified_time" content="2010-01-23T08:17:12+00:00" />
+<meta itemprop="name" content="GAE-Google App Engine网址抓取(java.net.UrlConnection)">
+<meta itemprop="description" content="Google App Engine 的网址抓取挺方便的，可以使用java.net.UrlConnection这个类。有了这个我们可以干什么？例如可以从某处获取天气信息等等~
+
+(提醒一下，上面的是图片。。不要误点了啊。。。)
+看看例子：http://2.latest.fatkuns.appspot.com/">
+<meta itemprop="datePublished" content="2010-01-23T08:17:12&#43;00:00" />
+<meta itemprop="dateModified" content="2010-01-23T08:17:12&#43;00:00" />
+<meta itemprop="wordCount" content="1024">
+
+
+
+<meta itemprop="keywords" content="GAE,google app engine,中文乱码,网址抓取," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GAE-Google App Engine网址抓取(java.net.UrlConnection)"/>
+<meta name="twitter:description" content="Google App Engine 的网址抓取挺方便的，可以使用java.net.UrlConnection这个类。有了这个我们可以干什么？例如可以从某处获取天气信息等等~
+
+(提醒一下，上面的是图片。。不要误点了啊。。。)
+看看例子：http://2.latest.fatkuns.appspot.com/"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">GAE-Google App Engine网址抓取(java.net.UrlConnection)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-01-23 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gae网址抓取是什么">GAE网址抓取是什么？</a></li>
+        <li><a href="#使用url获取源码">使用URL获取源码</a></li>
+        <li><a href="#使用httpurlconnection-来post内容">使用HttpURLConnection 来POST内容</a></li>
+        <li><a href="#google-app-engine中文乱码问题">Google App Engine中文乱码问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Google App Engine 的网址抓取挺方便的，可以使用java.net.UrlConnection这个类。有了这个我们可以干什么？例如可以从某处获取天气信息等等~<br>
+<img src="http://farm3.static.flickr.com/2724/4297317270_500f2c34b3.jpg" alt=""><br>
+(提醒一下，上面的是图片。。不要误点了啊。。。)<br>
+看看例子：<a href="http://2.latest.fatkuns.appspot.com/">http://2.latest.fatkuns.appspot.com/</a></p>
+<h2 id="gae网址抓取是什么">GAE网址抓取是什么？</h2>
+<blockquote>
+<p>App Engine 应用程序可以抓取资源，并通过互联网使用 HTTP 和 HTTPS 请求与其他主机通信。应用程序使用网址抓取服务来进行请求。
+我觉得其实就是可以通过它抓取别人网页的源代码。</p>
+</blockquote>
+<h2 id="使用url获取源码">使用URL获取源码</h2>
+<pre escaped="true" lang="java">package com.fatkun;
+/**
+ * 在GAE上抓取网址
+ * @author Fatkun
+ * @site http://fatkun.com
+ */
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.servlet.http.*;
+
+@SuppressWarnings("serial")
+public class URL2Servlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/plain; charset=utf-8");//显示编码
+
+		URL url = new URL("http://fatkun.com");
+		// 读取源码
+		//读取中文时，使用Reader类是每次读出两个字节的，不会出现中文乱码
+		InputStreamReader in = new InputStreamReader(url.openStream(), "UTF-8");
+		char[] buf = new char[2048];//缓存
+		StringBuffer sb = new StringBuffer();
+		int len = 0;
+		while ((len = in.read(buf)) != -1) {//当没到文档尽头继续读取
+			sb.append(buf, 0, len);
+		}
+
+		// 输出在网页上
+		resp.getWriter().println(sb.toString());
+	}
+}</pre>
+<h2 id="使用httpurlconnection-来post内容">使用HttpURLConnection 来POST内容</h2>
+<pre escaped="true" lang="java">// 此处的地址请换成你的，在本地测试时可以填入http://localhost:8888/request.jsp
+URL url = new URL("http://2.latest.fatkuns.appspot.com/request.jsp");
+HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+connection.setDoOutput(true);// 使用 URL 连接进行输出
+connection.setRequestMethod("POST");
+// 取得输出流
+OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+// 用UTF-8编码，保证中文传递正常
+String message = URLEncoder.encode("你好，I'm Fatkun!", "UTF-8");
+// 写入发送的内容
+writer.write("msg=" + message);
+writer.close();
+</pre>
+<p>上面是主要的代码，看注释好了，都很清楚。</p>
+<h2 id="google-app-engine中文乱码问题">Google App Engine中文乱码问题</h2>
+<p>注意在读取中文的网页时，由于编码是使用UTF或者GBK,GB2312等编码，使用InputStream类不太方便，另外有可以出现错误。<br>
+试过使用InputStream类，然后用new String(bytes[],”utf-8″)来转换编码，不过出现一点问题，不知道是我不会用还是怎么的。<br>
+不过使用这样的写法就方便多了。<br>
+InputStreamReader in = new InputStreamReader(url.openStream(), “UTF-8”);<br>
+编码都不用转换了~指定它的编码就行。<br>
+注意这里要加上“UTF-8”，虽然不加在本地测试时没问题，不过上传到GAE上就不能显示中文了。<br>
+PS2:这里的UTF-8是代表你抓取网页的编码。如果你抓取的网页是gb2312的需要根据实质需求改变。
+附上我做的例子：<a href="http://2.latest.fatkuns.appspot.com/">http://2.latest.fatkuns.appspot.com/</a><br>
+源码在这里：<a href="http://2.latest.fatkuns.appspot.com/source.rar">http://2.latest.fatkuns.appspot.com/source.rar</a>,里面的lib目录下的我删除了，请自行添加。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2010-01-23
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gae/">GAE</a>
+          <a href="/tags/google-app-engine/">google app engine</a>
+          <a href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">中文乱码</a>
+          <a href="/tags/%E7%BD%91%E5%9D%80%E6%8A%93%E5%8F%96/">网址抓取</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2010/01/%E6%B5%8B%E8%AF%95%E7%94%A8%E6%89%8B%E6%9C%BA%E5%86%99%E5%8D%9A%E5%AE%A2.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">测试用手机写博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2010/01/google-of-china.html">
+            <span class="next-text nav-default">谷歌宣布谷歌中国业务恢复正常</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

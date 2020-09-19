@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>字符集 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/</link>
+    <description>Recent content in 字符集 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 02 May 2011 08:20:27 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql修改表、字段、库的字符集</title>
+      <link>https://fatkun.github.io/2011/05/mysql-alter-charset.html</link>
+      <pubDate>Mon, 02 May 2011 08:20:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/05/mysql-alter-charset.html</guid>
+      <description>修改数据库字符集： ALTER DATABASE db_name DEFAULT CHARACTER SET character_name [COLLATE ...]; 把表默认的字符集和所有字符列（CHAR,VARCHAR,TEXT）改为新的字符集： ALTER TABLE tbl_name CONVERT TO CHARACTER SET character_name [COLLATE ...] 如</description>
+    </item>
+    
+  </channel>
+</rss>

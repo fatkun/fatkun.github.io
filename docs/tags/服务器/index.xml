@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务器 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <description>Recent content in 服务器 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 29 Aug 2010 07:40:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Windows使用apache搭建Mercurial版本控制服务</title>
+      <link>https://fatkun.github.io/2010/08/mercurial-server-with-apache.html</link>
+      <pubDate>Sun, 29 Aug 2010 07:40:28 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/08/mercurial-server-with-apache.html</guid>
+      <description>最近工作需要，建立一个本地版本控制服务，用来共享代码。搭建简单的SVN服务可以使用VisualSVN，但Mercurial有没有类似的工具呢</description>
+    </item>
+    
+    <item>
+      <title>【基础教程】JBOSS4的安装与测试</title>
+      <link>https://fatkun.github.io/2009/09/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8Bjboss4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B5%8B%E8%AF%95.html</link>
+      <pubDate>Mon, 21 Sep 2009 17:19:56 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8Bjboss4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B5%8B%E8%AF%95.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/200909211001011467.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+准备软件：&lt;br&gt;
+JBoss-4.2.3.GA：http://sourceforge.net/projects/jboss/&lt;br&gt;
+&lt;a href=&#34;http://sourceforge.net/projects/jboss/files/JBoss/JBoss-4.2.3.GA/jboss-4.2.3.GA.zip/download&#34; target=&#34;_blank&#34;&gt;点我下载吧&lt;/a&gt;&lt;br&gt;
+JDK1.6：http://java.sun.com/javase/downloads/找到JDK6下载&lt;br&gt;
+如果本来已经安装JDK1.6了就不用再下载安装了。（注意：JBoss-4.2.3与JDK依赖，&lt;font color=&#34;Red&#34;&gt;请尽量使用JDK1.6版&lt;/font&gt;，其他版本JDK我没测试过）&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

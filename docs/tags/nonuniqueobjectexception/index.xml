@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NonUniqueObjectException on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/nonuniqueobjectexception/</link>
+    <description>Recent content in NonUniqueObjectException on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Apr 2011 09:42:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/nonuniqueobjectexception/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>org.hibernate.NonUniqueObjectException的原因与解决方法</title>
+      <link>https://fatkun.github.io/2011/04/org-hibernate-nonuniqueobjectexception.html</link>
+      <pubDate>Fri, 01 Apr 2011 09:42:12 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/04/org-hibernate-nonuniqueobjectexception.html</guid>
+      <description>使用hibernate更新对象时，出现如下错误： org.hibernate.NonUniqueObjectException: a different object with the same identifier value was already associated with the session:[com.fatkun.dao.hibernate.User#12] 原因 在同一个session内，如果已经有一个对象已经是持久化状</description>
+    </item>
+    
+  </channel>
+</rss>

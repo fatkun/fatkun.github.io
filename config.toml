@@ -1,4 +1,5 @@
-baseURL = "http://fatkun.github.io"
+publishDir = "docs"
+baseURL = "https://fatkun.github.io"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Fatkun's Blog"

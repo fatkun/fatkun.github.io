@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>渐变 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/%E6%B8%90%E5%8F%98/</link>
+    <description>Recent content in 渐变 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Jan 2010 16:31:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/%E6%B8%90%E5%8F%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JQUERY实现背景图渐显（淡入淡出）</title>
+      <link>https://fatkun.github.io/2010/01/jquery-animate-background.html</link>
+      <pubDate>Fri, 01 Jan 2010 16:31:29 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/01/jquery-animate-background.html</guid>
+      <description>&lt;p&gt;普通的CSS Hover最多就换一下背景图，不是很好看~我们利用jquery给它加上一些淡入的效果~
+在&lt;a href=&#34;http://leotheme.cn/javascript/jquery-dragoninteractive-navi.html&#34; target=&#34;_blank&#34;&gt;这里&lt;/a&gt;看到这个例子，我想我还是自己练习一下吧·~效果可以看&lt;a href=&#34;http://dragoninteractive.com/&#34;&gt;http://dragoninteractive.com/&lt;/a&gt;网站~，挺帅的~&lt;br&gt;
+&lt;img src=&#34;http://farm3.static.flickr.com/2741/4232344401_a6bb0be121.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

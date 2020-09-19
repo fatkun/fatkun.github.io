@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CURSOR on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/cursor/</link>
+    <description>Recent content in CURSOR on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 23 Nov 2009 21:14:07 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/cursor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MSSQL触发器基础（在触发器遍历所有数据）</title>
+      <link>https://fatkun.github.io/2009/11/mssql%E8%A7%A6%E5%8F%91%E5%99%A8%E5%9F%BA%E7%A1%80%E5%9C%A8%E8%A7%A6%E5%8F%91%E5%99%A8%E9%81%8D%E5%8E%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE.html</link>
+      <pubDate>Mon, 23 Nov 2009 21:14:07 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/11/mssql%E8%A7%A6%E5%8F%91%E5%99%A8%E5%9F%BA%E7%A1%80%E5%9C%A8%E8%A7%A6%E5%8F%91%E5%99%A8%E9%81%8D%E5%8E%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE.html</guid>
+      <description>最近很懒，也有忙的原因一些东西懒得发上来了·还是要写上来才可以，不然学到的东西以后我就忘记了 以下只保证在MSSQL下顺利执行可能在MySql</description>
+    </item>
+    
+  </channel>
+</rss>

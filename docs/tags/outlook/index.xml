@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>outlook on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/outlook/</link>
+    <description>Recent content in outlook on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 Apr 2011 03:53:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/tags/outlook/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>部署outlook2003插件</title>
+      <link>https://fatkun.github.io/2011/04/deploy-outlook-addin.html</link>
+      <pubDate>Thu, 21 Apr 2011 03:53:29 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/04/deploy-outlook-addin.html</guid>
+      <description>如果你的插件部署失败，很可能是没有信任的原因，请参考下面的文章吧。 问题 outlook addin 部署成功了，但打死不能切换语言，无论切换哪个都是英文。（多语言是通</description>
+    </item>
+    
+    <item>
+      <title>Outlook自定义窗体自动发布</title>
+      <link>https://fatkun.github.io/2011/03/outlook-forms-publish.html</link>
+      <pubDate>Wed, 16 Mar 2011 01:20:42 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/03/outlook-forms-publish.html</guid>
+      <description>一般来说，我们都是把窗体“另存为”一个.oft的文件，然后如果要发布给很多人，一个是发布到exchange server上大家共用，一个是只发</description>
+    </item>
+    
+  </channel>
+</rss>

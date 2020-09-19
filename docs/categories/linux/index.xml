@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/categories/linux/</link>
+    <description>Recent content in Linux on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Aug 2016 03:02:55 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>获取linux用户和组映射脚本</title>
+      <link>https://fatkun.github.io/2016/08/get-user-group-mapping.html</link>
+      <pubDate>Mon, 08 Aug 2016 03:02:55 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/08/get-user-group-mapping.html</guid>
+      <description>记录一下 python代码 #!/usr/bin/env python # -*- coding: utf-8 -*- import re import os import sys p = os.popen(&#39;id %s&#39; % sys.argv[1]) s = p.read() # s = &#39;uid=486(yarn) gid=484(yarn) groups=484(yarn),493(hadoop),513(supergroup)&#39; user = re.findall(&#34;uid=\d+\((.*?)\)&#34;, s)[0] s = s.split(&#34;groups=&#34;)[1] match = re.findall(&#34;\((.*?)\)&#34;, s) groups = [] for group in match: groups.append(group) print user + &#34;=&#34; + &#34;,&#34;.join(sorted(groups)) shell</description>
+    </item>
+    
+    <item>
+      <title>关闭linux sendmail</title>
+      <link>https://fatkun.github.io/2014/07/close-sendmail.html</link>
+      <pubDate>Wed, 23 Jul 2014 02:32:54 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/07/close-sendmail.html</guid>
+      <description>service sendmail stop chkconfig --level 2345 sendmail off chkconfig --list sendmail via: http://hi.baidu.com/chenhj_brenda/item/e46c6b3fdb8f03b9124b14f0</description>
+    </item>
+    
+    <item>
+      <title>vim格式化json</title>
+      <link>https://fatkun.github.io/2014/01/1597.html</link>
+      <pubDate>Wed, 08 Jan 2014 02:36:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/01/1597.html</guid>
+      <description>在vim输入以下命令就可以格式化 :%!python -m json.tool 可以在~/.vimrc增加快捷键 map &amp;lt;F4&amp;gt; &amp;lt;Esc&amp;gt;:%!python -m json.tool&amp;lt;CR&amp;gt; 来源: http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/ vim快捷键： http://uniquejava.iteye.com/blog/1485884</description>
+    </item>
+    
+    <item>
+      <title>linux expect自动登录ssh</title>
+      <link>https://fatkun.github.io/2013/12/linux-expect-login-ssh.html</link>
+      <pubDate>Thu, 12 Dec 2013 12:00:40 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/12/linux-expect-login-ssh.html</guid>
+      <description>#!/usr/bin/expect # 传送文件并且执行 set timeout 30 set host [lindex $argv 0] set username [lindex $argv 1] set password [lindex $argv 2] set file [lindex $argv 3] set center_password [lindex $argv 4] spawn scp -P22 $file $username@$host:/tmp/tmp.sh sleep 1 expect { &#34;*yes/no*&#34; {send &#34;yes\n&#34;; exp_continue} &#34;*password:*&#34; {send &#34;$password\n&#34; } } interact spawn ssh -p22 $username@$host sleep 1 expect { &#34;*yes/no*&#34; {send &#34;yes\n&#34;; exp_continue} &#34;*password:*&#34;</description>
+    </item>
+    
+    <item>
+      <title>改用rsync来覆盖正在运行的程序</title>
+      <link>https://fatkun.github.io/2013/12/rsync.html</link>
+      <pubDate>Thu, 12 Dec 2013 09:08:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/12/rsync.html</guid>
+      <description>cp会保持inode，如果程序正在执行，会导致不能覆盖。改用rsync来覆盖 rsync -r src_dir target_dir http://unix.stackexchange.com/questions/9899/how-to-overwrite-target-files-with-mv</description>
+    </item>
+    
+    <item>
+      <title>免密码ssh登陆</title>
+      <link>https://fatkun.github.io/2013/12/auto-ssh.html</link>
+      <pubDate>Tue, 10 Dec 2013 03:49:03 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/12/auto-ssh.html</guid>
+      <description>场景：机器A想要无密码访问机器B 方法一：手工操作 在机器A执行，ssh-keygen 按几次回车 把生成的id_rsa.pub传输到机器B /tmp/ 目录下</description>
+    </item>
+    
+    <item>
+      <title>[转]解决ubuntu下mysql不能远程连接数据库的问题</title>
+      <link>https://fatkun.github.io/2012/05/ubuntu-mysql.html</link>
+      <pubDate>Thu, 03 May 2012 18:00:09 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/05/ubuntu-mysql.html</guid>
+      <description>来源：http://www.php100.com/html/webkaifa/database/Mysql/2010/1115/6818.h</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 11.04 下安装配置 JDK 7</title>
+      <link>https://fatkun.github.io/2012/04/ubuntu-11-04-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-jdk-7.html</link>
+      <pubDate>Sun, 29 Apr 2012 17:44:19 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/04/ubuntu-11-04-%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-jdk-7.html</guid>
+      <description>文章来源：Ubuntu 11.04 下安装配置 JDK 7 这篇文章说得很清晰。。复制过来。。以作备用。。 ——————— 第一步：下载jdk-7-linux-i58</description>
+    </item>
+    
+    <item>
+      <title>记录一些常用的linux shell命令</title>
+      <link>https://fatkun.github.io/2012/03/linux-shell.html</link>
+      <pubDate>Sun, 25 Mar 2012 13:31:35 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/03/linux-shell.html</guid>
+      <description>日期 取前一天 date -d ‘1 days ago’ +%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu中配置Mysql编码</title>
+      <link>https://fatkun.github.io/2011/05/ubuntu-mysql-charset.html</link>
+      <pubDate>Tue, 03 May 2011 08:42:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/05/ubuntu-mysql-charset.html</guid>
+      <description>找到配置文件 我是通过sudo apt-get install mysql来安装的。mysql的配置文件在/etc/mysql/my.cnf 如果找不到这个文件，可以运行su</description>
+    </item>
+    
+    <item>
+      <title>在VIM加入Ctrl&#43;S快捷键保存当前文件</title>
+      <link>https://fatkun.github.io/2011/05/vim-ctrl-s.html</link>
+      <pubDate>Sun, 01 May 2011 03:56:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/05/vim-ctrl-s.html</guid>
+      <description>由于Ctrl+S被其他使用，首先要修改~/.bashrc文件，在最后加上 stty stop &#39;&#39; 然后在~/.vimrc文件中加入 map &amp;lt;C-s&amp;gt; :w&amp;lt;CR&amp;gt; imap &amp;lt;C-s&amp;gt; &amp;lt;C-o&amp;gt;:w&amp;lt;CR&amp;gt; 参考来源，有修改：</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 9.10全新图标，主题和壁纸已经就绪</title>
+      <link>https://fatkun.github.io/2009/09/ubuntu-9-10%E5%85%A8%E6%96%B0%E5%9B%BE%E6%A0%87%E4%B8%BB%E9%A2%98%E5%92%8C%E5%A3%81%E7%BA%B8%E5%B7%B2%E7%BB%8F%E5%B0%B1%E7%BB%AA.html</link>
+      <pubDate>Sat, 26 Sep 2009 02:01:59 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/ubuntu-9-10%E5%85%A8%E6%96%B0%E5%9B%BE%E6%A0%87%E4%B8%BB%E9%A2%98%E5%92%8C%E5%A3%81%E7%BA%B8%E5%B7%B2%E7%BB%8F%E5%B0%B1%E7%BB%AA.html</guid>
+      <description>&lt;p&gt; &lt;span class=&#34;Apple-style-span&#34; style=&#34;background-color: rgb(255, 255, 255); &#34;&gt;&lt;img alt=&#34;&#34; src=&#34;http://fatkun.com/upload/2009/9/200909251807272055.png&#34; /&gt;Ubuntu 9.10 Karmic Koala将于2009年10月1日发布Beta版，届时无论是功能还是外表都将进入冻结状态，不会做較大的变动。&lt;strong style=&#34;margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; &#34;&gt;最近Ubuntu 9.10的已经更新上了全新的图标、主题和壁纸，这应该是Ubuntu近几个发行版来以来，最大的一次UI上的变动了。一起来看看吧！&lt;/strong&gt;…&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unix/Linux 命令速查表</title>
+      <link>https://fatkun.github.io/2009/09/unixlinux-%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.html</link>
+      <pubDate>Mon, 21 Sep 2009 09:21:34 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/unixlinux-%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.html</guid>
+      <description>&lt;p&gt;这份 Unix/Linux 命令速查表来自 &lt;a href=&#34;http://fosswire.com/2007/08/02/unixlinux-command-cheat-sheet/&#34; target=&#34;_blank&#34;&gt;FOSSwire&lt;/a&gt;，其中涵盖了包括文件、进程管理、文件权限、SSH、搜索、系统信息、压缩、网络、安装等方面的常用命令。已经将其翻译成了中文，希望对中文 Unix/Linux 使用者能够带来一些帮助。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

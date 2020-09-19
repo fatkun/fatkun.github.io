@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>电脑知识 on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/</link>
+    <description>Recent content in 电脑知识 on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2013 15:55:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>设计模式理解</title>
+      <link>https://fatkun.github.io/2013/09/design-pattern.html</link>
+      <pubDate>Tue, 24 Sep 2013 15:55:14 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/09/design-pattern.html</guid>
+      <description>&lt;h2 id=&#34;设计模式学习&#34;&gt;设计模式学习&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>找不到管理网页和文件夹对处理方法</title>
+      <link>https://fatkun.github.io/2012/01/manager-web-page.html</link>
+      <pubDate>Wed, 04 Jan 2012 14:33:23 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/01/manager-web-page.html</guid>
+      <description>把下面内容保存为aa.reg文件，双击运行导入 （未测试是否成功，注册表从我电脑导出的,WIN7和XP应该是一样可以用的） Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Thickets] &#34;Tex</description>
+    </item>
+    
+    <item>
+      <title>误删contacts.apk解决方法（不用刷机）</title>
+      <link>https://fatkun.github.io/2011/10/recovery-contacts-apk.html</link>
+      <pubDate>Mon, 03 Oct 2011 15:21:11 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/10/recovery-contacts-apk.html</guid>
+      <description>从完整的刷机包内，注意，版本最好是和你手机一致的。如果找不到，可以上网问别人要。 在压缩包目录下android2.3.6.zip\system</description>
+    </item>
+    
+    <item>
+      <title>安装VS2008失败，Microsoft Visual Studio Web创作组件安装失败</title>
+      <link>https://fatkun.github.io/2011/04/vs2008-microsoft-visual-studio-web.html</link>
+      <pubDate>Sat, 02 Apr 2011 06:45:05 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2011/04/vs2008-microsoft-visual-studio-web.html</guid>
+      <description>我的计算机系统是vista家庭版的，已经安装了Office 2007，在安装VS2008的过程中出现安装失败的窗口。 先把vs2008镜像文件下</description>
+    </item>
+    
+    <item>
+      <title>关机时提示“正在关闭网络连接”解决方法</title>
+      <link>https://fatkun.github.io/2010/10/network-is-closing.html</link>
+      <pubDate>Sun, 03 Oct 2010 02:53:19 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/10/network-is-closing.html</guid>
+      <description>症状 关机时提示“正在关闭网络连接”，有点慢 解决方法 设置workstation服务为“自动”运行并启用该服务。如果你是因为workstatio</description>
+    </item>
+    
+    <item>
+      <title>XP下系统服务workstation启动很慢解决方法</title>
+      <link>https://fatkun.github.io/2010/10/workstation-service.html</link>
+      <pubDate>Sat, 02 Oct 2010 02:51:18 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/10/workstation-service.html</guid>
+      <description>症状 系统进入桌面之后，要等上1-2分钟才能完全操作，在这期间，发现很多自动运行的服务依然没有启动。设置workstation服务为手动或者禁</description>
+    </item>
+    
+    <item>
+      <title>在Windows使用apache搭建Mercurial版本控制服务</title>
+      <link>https://fatkun.github.io/2010/08/mercurial-server-with-apache.html</link>
+      <pubDate>Sun, 29 Aug 2010 07:40:28 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/08/mercurial-server-with-apache.html</guid>
+      <description>最近工作需要，建立一个本地版本控制服务，用来共享代码。搭建简单的SVN服务可以使用VisualSVN，但Mercurial有没有类似的工具呢</description>
+    </item>
+    
+    <item>
+      <title>Windows平台Apache2.x配置SSL</title>
+      <link>https://fatkun.github.io/2010/08/win32-apache-ssl.html</link>
+      <pubDate>Sat, 28 Aug 2010 06:32:39 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/08/win32-apache-ssl.html</guid>
+      <description>需要在apache配置SSL，所以找了几篇文章，摘录如下： 参考网址： Windows平台下Apache2.2.4的SSL配置过程(及错误整理)</description>
+    </item>
+    
+    <item>
+      <title>win7放着音乐，QQ来消息声音变小解决方法</title>
+      <link>https://fatkun.github.io/2010/07/qq-sound.html</link>
+      <pubDate>Tue, 06 Jul 2010 11:33:37 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/07/qq-sound.html</guid>
+      <description>QQ来消息声音就减低了，很不爽，一首歌都被打扰。。按图中的方法设置即可。 在控制面板或鼠标右键单击系统托盘上的喇叭图标 ，弹出菜单中选择“ 声音(</description>
+    </item>
+    
+    <item>
+      <title>WIN7的菜单栏无法隐藏解决方法（QtTabBar）</title>
+      <link>https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html</link>
+      <pubDate>Tue, 29 Jun 2010 07:10:59 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/06/win7-menu-can-not-hide.html</guid>
+      <description>问题 不能隐藏菜单栏 已经不选菜单栏了，可它还是显示“File，Edit….”这一列，在文件夹选项里设置也无效。今天装了个QTTabBar之后，</description>
+    </item>
+    
+    <item>
+      <title>win7“我的电脑”右键”管理”菜单失效的解决办法</title>
+      <link>https://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</link>
+      <pubDate>Mon, 22 Mar 2010 08:41:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/03/win7%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86%E8%8F%9C%E5%8D%95%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</guid>
+      <description>&lt;p&gt;不知道装了什么WIN7右键的管理菜单不能用了，提示Explorer.exe出错。上网搜索下，测试可用。记录下来。&lt;br&gt;
+————–&lt;br&gt;
+本文来源：&lt;a href=&#34;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&#34;&gt;http://hi.baidu.com/xlshuang/blog/item/6d1ca7cdfad74a590eb34529.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rational Rose 2003 下载及破解方法</title>
+      <link>https://fatkun.github.io/2010/03/rational-rose-2003-download-and-crack.html</link>
+      <pubDate>Sun, 14 Mar 2010 06:18:52 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2010/03/rational-rose-2003-download-and-crack.html</guid>
+      <description>&lt;p&gt;这学期要学UML，做实验要用到这个软件。所以找到了这个破解版的破解方法。。还挺烦的。。不过测试破解成功。。
+本文来源：&lt;a href=&#34;http://blog.csdn.net/fenglibing/archive/2007/08/17/1747693.aspx&#34;&gt;http://blog.csdn.net/fenglibing/archive/2007/08/17/1747693.aspx&lt;/a&gt;
+————————-
+下载地址（没测试过是否可用）
+Flashget://W0ZMQVNIR0VUXWZsYXNoZ2V0eDovL3xtaHRzfGNtRjBhVzl1WVd3Z2NtOXpaVEl3TURNdWNtRnl8MzYxMDMxMTIxfDJBOTdFNkVBN0Q4QTQ5ODhBODBDQTVGMjFCRjQ5NkRDfC9bRkxBU0hHRVRd&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>去掉000webhost自身的统计代码</title>
+      <link>https://fatkun.github.io/2009/12/remove-000webhost-analytics-code.html</link>
+      <pubDate>Sun, 13 Dec 2009 05:18:15 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/12/remove-000webhost-analytics-code.html</guid>
+      <description>000webhost被称为比收费空间还好的免费空间，的确是不错的。 不过有个很麻烦的事，就是它要在每个页面下加了一段自己的统计代码，发现加载这</description>
+    </item>
+    
+    <item>
+      <title>电脑时间不准确怎么办？WinXP的时间同步</title>
+      <link>https://fatkun.github.io/2009/09/%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4%E4%B8%8D%E5%87%86%E7%A1%AE%E6%80%8E%E4%B9%88%E5%8A%9Ewinxp%E7%9A%84%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5.html</link>
+      <pubDate>Tue, 29 Sep 2009 11:46:53 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4%E4%B8%8D%E5%87%86%E7%A1%AE%E6%80%8E%E4%B9%88%E5%8A%9Ewinxp%E7%9A%84%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/200909290352597531.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+首先确认Windows Time服务是开启的，可以在cmd下输入net start查看，如果没找到，就用net start w32time启动服务。&lt;br&gt;
+在右下角的显示时间的地方双击，在“internet 时间”选项中更新就可以啦。。。这样你就可以炫耀你的时间是和宇宙同步的（哇咔咔）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>XP的“英文-美式键盘”总是删除不掉解决方法</title>
+      <link>https://fatkun.github.io/2009/09/xp%E7%9A%84%E8%8B%B1%E6%96%87-%E7%BE%8E%E5%BC%8F%E9%94%AE%E7%9B%98%E6%80%BB%E6%98%AF%E5%88%A0%E9%99%A4%E4%B8%8D%E6%8E%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html</link>
+      <pubDate>Tue, 22 Sep 2009 04:46:50 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/xp%E7%9A%84%E8%8B%B1%E6%96%87-%E7%BE%8E%E5%BC%8F%E9%94%AE%E7%9B%98%E6%80%BB%E6%98%AF%E5%88%A0%E9%99%A4%E4%B8%8D%E6%8E%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html</guid>
+      <description>&lt;p&gt;&lt;img onload=&#34;ResizeImage(this,620)&#34; src=&#34;http://fatkun.com/upload/2009/9/200909212108402182.jpg&#34; alt=&#34;&#34; title=&#34;&#34; /&gt;&lt;br&gt;
+类似这样的情况&lt;br&gt;
+英文&lt;br&gt;
+——美式键盘&lt;br&gt;
+中文&lt;br&gt;
+——简体中文（美式键盘）&lt;br&gt;
+——紫光拼音输入法&lt;br&gt;
+每次把 英文——美式键盘 删除掉，电脑重启后又会出现。&lt;br&gt;
+出现这样的原因是有一次我修改了区域语言，所以造成这样的效果。怎么删除呢？这里我们可以选择一个国产的软件IMETool（http://www.mympc.org）就可以选择需要删除的输入法，重启后不会再出现“英文-美式键盘”啦。&lt;br&gt;
+&lt;a href=&#34;http://www.mympc.org/down/1/2005-7-13_17130159234.html&#34; target=&#34;_blank&#34;&gt;点我啦点我下载IMETool&lt;/a&gt;&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SEO菜鸟需要掌握哪些基本SEO技巧？</title>
+      <link>https://fatkun.github.io/2009/09/seo%E8%8F%9C%E9%B8%9F%E9%9C%80%E8%A6%81%E6%8E%8C%E6%8F%A1%E5%93%AA%E4%BA%9B%E5%9F%BA%E6%9C%ACseo%E6%8A%80%E5%B7%A7.html</link>
+      <pubDate>Sat, 19 Sep 2009 02:47:06 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/seo%E8%8F%9C%E9%B8%9F%E9%9C%80%E8%A6%81%E6%8E%8C%E6%8F%A1%E5%93%AA%E4%BA%9B%E5%9F%BA%E6%9C%ACseo%E6%8A%80%E5%B7%A7.html</guid>
+      <description>&lt;p&gt;SEO菜鸟需要掌握的基本SEO技巧如下：&lt;br&gt;
+&lt;strong&gt;导航&lt;/strong&gt;&lt;br&gt;
+请确保你的网站导航都是以html的形式链接。所有页面之间应该有广泛的互联，如果无法实现这一点，可以考虑建立一个网站地图。&lt;br&gt;
+&lt;strong&gt;首页&lt;/strong&gt;&lt;br&gt;
+网站的首页（home或index页等）应该采用文本的形式，而不是flash等。这个文本里面要包含你的目标关键字或目标短语。&lt;br&gt;
+&lt;strong&gt;标签&lt;/strong&gt;&lt;/p&gt;
+&lt;title&gt;  &lt; /title&gt;这是标题标签，这里面应当包含你最重要的目标关键词。&lt;br /&gt; &lt;b&gt;Meta Tags&lt;/b&gt;&lt;br /&gt; &amp;#8216;description tag&amp;#8217;（描述标签） 和 &amp;#8216;keyword tag&amp;#8217; （关键词标签）应包含你的目标关键字或目标短语，但不要重复。&lt;br /&gt; &amp;#8230;&lt;/p&gt; 
+  &lt;p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机无法访问,您可能没有权限使用网络资源(windows 共享文件出错解决方法)</title>
+      <link>https://fatkun.github.io/2009/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%82%A8%E5%8F%AF%E8%83%BD%E6%B2%A1%E6%9C%89%E6%9D%83%E9%99%90%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90windows-%E5%85%B1.html</link>
+      <pubDate>Thu, 17 Sep 2009 08:04:03 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%82%A8%E5%8F%AF%E8%83%BD%E6%B2%A1%E6%9C%89%E6%9D%83%E9%99%90%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90windows-%E5%85%B1.html</guid>
+      <description>&lt;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;720&#34; align=&#34;center&#34;&gt;  &lt;tr&gt;    &lt;td class=&#34;txt_28&#34; valign=&#34;top&#34; width=&#34;720&#34; height=&#34;200&#34;&gt;      &lt;p&gt;        &lt;font color=&#34;#0000ff&#34; size=&#34;2&#34;&gt;计算机无法访问,您可能没有权限使用网络资源.请与这台服务器的管理员联系以查明您&lt;/font&gt;      &lt;/p&gt;
+      &lt;p&gt;        &amp;#8230;      &lt;/p&gt;&lt;/table&gt; 
+&lt;pre&gt;&lt;code&gt;  &amp;lt;p&amp;gt;        
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>用js&#43;flash复制文本（支持flash10） – Zero Clipboard项目</title>
+      <link>https://fatkun.github.io/2009/09/%E7%94%A8jsflash%E5%A4%8D%E5%88%B6%E6%96%87%E6%9C%AC%E6%94%AF%E6%8C%81flash10-zero-clipboard%E9%A1%B9%E7%9B%AE.html</link>
+      <pubDate>Thu, 17 Sep 2009 06:56:03 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E7%94%A8jsflash%E5%A4%8D%E5%88%B6%E6%96%87%E6%9C%AC%E6%94%AF%E6%8C%81flash10-zero-clipboard%E9%A1%B9%E7%9B%AE.html</guid>
+      <description>&lt;p&gt;web开发中常常要实现“复制到剪切板”功能。这个功能很实用，但是由于安全问题，浏览器的限制越来越严，实现的方法也越来越有限了。 Firefox 默认下不能直接通过Javascript操作剪切板，必须开启相关的设置才行。想只通过Javascript技术实现跨浏览器的剪切板是行不通的。现在常用的方法是利用JavaScript+Flash实现，普遍流传的办法是_clipboard.swf，这是国外最早实现的（著名的Clipboard Copy解决方案:　http://www.jeffothy.com/weblog/clipboard-copy/）。但是很可惜，_clipboard.swf在新出来的flash10中无效，因为flash10中规定了只有在swf上进行了实际的操作（比如鼠标点击）才能启动剪切板。而_clipboard.swf方法的swf是隐藏的，通过JavaScript来操作flash的剪切板，显然没有对swf进行实际的用户操作。&lt;br&gt;
+…&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关闭“打开文件-安全警告”的方法（每次打开程序都弹出安全警告很烦）</title>
+      <link>https://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</link>
+      <pubDate>Sat, 12 Sep 2009 11:59:08 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2009/09/%E5%85%B3%E9%97%AD%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E5%AE%89%E5%85%A8%E8%AD%A6%E5%91%8A%E7%9A%84%E6%96%B9%E6%B3%95%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F.html</guid>
+      <description>有的优化软件再优化后，为了提高安全性，都打开了文件打开安全警告提示，可能有的不想用这个功能，可以按如下方法解决． 方法一 把下面的内容保存为ba</description>
+    </item>
+    
+  </channel>
+</rss>

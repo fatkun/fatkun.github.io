@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>记录一些常用的linux shell命令 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="日期 取前一天 date -d ‘1 days ago’ &#43;%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2012/03/linux-shell.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.ba945ae0122ee547dc0bf1d963676d1287295001ab467bb817aa6e5e3c5782fb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="记录一些常用的linux shell命令" />
+<meta property="og:description" content="日期 取前一天 date -d ‘1 days ago’ &#43;%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2012/03/linux-shell.html" />
+<meta property="article:published_time" content="2012-03-25T13:31:35+00:00" />
+<meta property="article:modified_time" content="2012-03-25T13:31:35+00:00" />
+<meta itemprop="name" content="记录一些常用的linux shell命令">
+<meta itemprop="description" content="日期 取前一天 date -d ‘1 days ago’ &#43;%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n">
+<meta itemprop="datePublished" content="2012-03-25T13:31:35&#43;00:00" />
+<meta itemprop="dateModified" content="2012-03-25T13:31:35&#43;00:00" />
+<meta itemprop="wordCount" content="2304">
+
+
+
+<meta itemprop="keywords" content="Linux,linux shell,shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="记录一些常用的linux shell命令"/>
+<meta name="twitter:description" content="日期 取前一天 date -d ‘1 days ago’ &#43;%Y-%m-%d 命令別名設定功能： (alias) alias ll=’ls -al’ 一些特殊值 $$：(關於本 shell 的 PID) $!：得到子进程的进程PID,例如n"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">记录一些常用的linux shell命令</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-03-25 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> Linux </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#日期">日期</a></li>
+      </ul>
+    </li>
+    <li><a href="#取前一天">取前一天</a>
+      <ul>
+        <li><a href="#命令別名設定功能-alias">命令別名設定功能： (alias)</a></li>
+        <li><a href="#一些特殊值">一些特殊值</a></li>
+        <li><a href="#declare">declare</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#截取字符串">截取字符串</a></li>
+        <li><a href="#删除替换字符">删除/替换字符</a></li>
+        <li><a href="#和">&amp;&amp;和||</a></li>
+        <li><a href="#判断">判断</a></li>
+        <li><a href="#while语法">while语法</a></li>
+        <li><a href="#for8230do8230done语法">for…do…done语法</a></li>
+        <li><a href="#软链接替换">软链接替换</a></li>
+        <li><a href="#利用grep和gawkxargs来kill">利用grep和gawk，xargs来kill</a></li>
+        <li><a href="#sed命令替换文本">sed命令替换文本</a></li>
+        <li><a href="#tar">tar</a></li>
+        <li><a href="#获取机器ip">获取机器IP</a></li>
+        <li><a href="#grep-获取前几行后几行的内容">GREP 获取前几行后几行的内容</a></li>
+        <li><a href="#rsync-通过ssh传输">Rsync 通过ssh传输</a></li>
+        <li><a href="#kill进程树">kill进程树</a></li>
+        <li><a href="#gawk">gawk</a></li>
+        <li><a href="#输出一大段文本">输出一大段文本</a></li>
+        <li><a href="#简单的http服务">简单的http服务</a></li>
+        <li><a href="#find">Find</a></li>
+        <li><a href="#date">date</a></li>
+        <li><a href="#用户组管理命令">用户/组管理命令</a></li>
+        <li><a href="#sort">sort</a></li>
+        <li><a href="#截取kv文件">截取kv文件</a></li>
+        <li><a href="#只复制目录结构">只复制目录结构</a></li>
+        <li><a href="#shell重试方法">shell重试方法</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="日期">日期</h2>
+<h1 id="取前一天">取前一天</h1>
+<p>date -d ‘1 days ago’ +%Y-%m-%d</p>
+<h2 id="命令別名設定功能-alias">命令別名設定功能： (alias)</h2>
+<p>alias ll=’ls -al’</p>
+<h2 id="一些特殊值">一些特殊值</h2>
+<p>$$：(關於本 shell 的 PID)<br>
+$!：得到子进程的进程PID,例如nohup的命令可以通过这个获取PID<br>
+$?：(關於上個執行指令的回傳值)<br>
+$#: 参数个数
+$@ ：代表『 “$1” “$2” “$3” “$4” 』<br>
+$* ：代表『 “$1c$2c$3c$4” 』，其中 c 為分隔字元</p>
+<h2 id="declare">declare</h2>
+<p>数值计算要用 declare -i sum=100+12<br>
+也可以用sum=$((100+12))计算<br>
+[root@www ~]# declare [-aixr] variable<br>
+選項與參數：<br>
+-a ：將後面名為 variable 的變數定義成為陣列 (array) 類型<br>
+-i ：將後面名為 variable 的變數定義成為整數數字 (integer) 類型<br>
+-x ：用法與 export 一樣，就是將後面的 variable 變成環境變數；<br>
+-r ：將變數設定成為 readonly 類型，該變數不可被更改內容，也不能 unset</p>
+<h2 id="数组">数组</h2>
+<p>var<a href="http://unix.stackexchange.com/questions/186453/cut-for-key-value-pairs">1</a>=”small min”<br>
+echo $(var<a href="http://unix.stackexchange.com/questions/186453/cut-for-key-value-pairs">1</a>)</p>
+<h2 id="截取字符串">截取字符串</h2>
+<pre lang="bash" escaped="true"># 从第0位开始截取2个字符
+echo ${a:0:2}</pre>
+<h2 id="删除替换字符">删除/替换字符</h2>
+<p>echo ${PATH#/usr_:} #从前到后开始删除掉第一个符合条件的字符<br>
+echo ${PATH##/usr_:} #从前到后开始删除掉所有符合条件的字符<br>
+也可以从后面开始，就是把#号替换成%号<br>
+echo ${PATH/usr/USR} #替换<br>
+echo ${PATH//usr/USR} #替换所有</p>
+<h2 id="和">&amp;&amp;和||</h2>
+<p>可以把多条命令串起来，例如<br>
+ls ./test/||mkdir ./test/ #如果目录不存在，创建一个</p>
+<h2 id="判断">判断</h2>
+<p>使用中括号时注意空格必须要有[ -e “xxx” ]
+语法</p>
+<pre lang="bash">if [ "$name" == "Fatkun" ]; then
+    echo "Hi!Fatkun"
+elif [ ... ]; then
+    echo "..."
+else
+    echo "..."
+fi</pre>
+<p> </p>
+<table style="width: 85%;" border="1" cellspacing="0" cellpadding="3" bgcolor="lightyellow">  <tr align="center" bgcolor="lightblue">    <td width="100">      測試的標誌    </td>
+    <td>      代表意義    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      1. 關於某個檔名的『檔案類型』判斷，如 test -e filename 表示存在否    </td>  </tr>
+  <tr>    <td align="center">      -e    </td>
+    <td>      該『檔名』是否存在？(常用)    </td>  </tr>
+  <tr>    <td align="center">      -f    </td>
+    <td>      該『檔名』是否存在且為檔案(file)？(常用)    </td>  </tr>
+  <tr>    <td align="center">      -d    </td>
+    <td>      該『檔名』是否存在且為目錄(directory)？(常用)    </td>  </tr>
+  <tr>    <td align="center">      -b    </td>
+    <td>      該『檔名』是否存在且為一個 block device 裝置？    </td>  </tr>
+  <tr>    <td align="center">      -c    </td>
+    <td>      該『檔名』是否存在且為一個 character device 裝置？    </td>  </tr>
+  <tr>    <td align="center">      -S    </td>
+    <td>      該『檔名』是否存在且為一個 Socket 檔案？    </td>  </tr>
+  <tr>    <td align="center">      -p    </td>
+    <td>      該『檔名』是否存在且為一個 FIFO (pipe) 檔案？    </td>  </tr>
+  <tr>    <td align="center">      -L    </td>
+    <td>      該『檔名』是否存在且為一個連結檔？    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      2. 關於檔案的權限偵測，如 test -r filename 表示可讀否 (但 root 權限常有例外)    </td>  </tr>
+  <tr>    <td align="center">      -r    </td>
+    <td>      偵測該檔名是否存在且具有『可讀』的權限？    </td>  </tr>
+  <tr>    <td align="center">      -w    </td>
+    <td>      偵測該檔名是否存在且具有『可寫』的權限？    </td>  </tr>
+  <tr>    <td align="center">      -x    </td>
+    <td>      偵測該檔名是否存在且具有『可執行』的權限？    </td>  </tr>
+  <tr>    <td align="center">      -u    </td>
+    <td>      偵測該檔名是否存在且具有『SUID』的屬性？    </td>  </tr>
+  <tr>    <td align="center">      -g    </td>
+    <td>      偵測該檔名是否存在且具有『SGID』的屬性？    </td>  </tr>
+  <tr>    <td align="center">      -k    </td>
+    <td>      偵測該檔名是否存在且具有『Sticky bit』的屬性？    </td>  </tr>
+  <tr>    <td align="center">      -s    </td>
+    <td>      偵測該檔名是否存在且為『非空白檔案』？    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      3. 兩個檔案之間的比較，如： test file1 -nt file2    </td>  </tr>
+  <tr>    <td align="center">      -nt    </td>
+    <td>      (newer than)判斷 file1 是否比 file2 新    </td>  </tr>
+  <tr>    <td align="center">      -ot    </td>
+    <td>      (older than)判斷 file1 是否比 file2 舊    </td>  </tr>
+  <tr>    <td align="center">      -ef    </td>
+    <td>      判斷 file1 與 file2 是否為同一檔案，可用在判斷 hard link 的判定上。 主要意義在判定，兩個檔案是否均指向同一個 inode 哩！    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      4. 關於兩個整數之間的判定，例如 test n1 -eq n2    </td>  </tr>
+  <tr>    <td align="center">      -eq    </td>
+    <td>      兩數值相等 (equal)    </td>  </tr>
+  <tr>    <td align="center">      -ne    </td>
+    <td>      兩數值不等 (not equal)    </td>  </tr>
+  <tr>    <td align="center">      -gt    </td>
+    <td>      n1 大於 n2 (greater than)    </td>  </tr>
+  <tr>    <td align="center">      -lt    </td>
+    <td>      n1 小於 n2 (less than)    </td>  </tr>
+  <tr>    <td align="center">      -ge    </td>
+    <td>      n1 大於等於 n2 (greater than or equal)    </td>  </tr>
+  <tr>    <td align="center">      -le    </td>
+    <td>      n1 小於等於 n2 (less than or equal)    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      5. 判定字串的資料    </td>  </tr>
+  <tr>    <td align="center">      test -z string    </td>
+    <td>      判定字串是否為 0 ？若 string 為空字串，則為 true    </td>  </tr>
+  <tr>    <td align="center">      test -n string    </td>
+    <td>      判定字串是否非為 0 ？若 string 為空字串，則為 false。<br /> 註： -n 亦可省略    </td>  </tr>
+  <tr>    <td align="center">      test str1 = str2    </td>
+    <td>      判定 str1 是否等於 str2 ，若相等，則回傳 true    </td>  </tr>
+  <tr>    <td align="center">      test str1 != str2    </td>
+    <td>      判定 str1 是否不等於 str2 ，若相等，則回傳 false    </td>  </tr>
+  <tr bgcolor="lightblue">    <td colspan="2">      6. 多重條件判定，例如： test -r filename -a -x filename    </td>  </tr>
+  <tr>    <td align="center">      -a    </td>
+    <td>      (and)兩狀況同時成立！例如 test -r file -a -x file，則 file 同時具有 r 與 x 權限時，才回傳 true。    </td>  </tr>
+  <tr>    <td align="center">      -o    </td>
+    <td>      (or)兩狀況任何一個成立！例如 test -r file -o -x file，則 file 具有 r 或 x 權限時，就可回傳 true。    </td>  </tr>
+  <tr>    <td align="center">      !    </td>
+    <td>      反相狀態，如 test ! -x file ，當 file 不具有 x 時，回傳 true    </td>  </tr></table>
+## case语法
+<pre lang="bash" escaped="true">case  $變數名稱 in   &lt;==關鍵字為 case ，還有變數前有錢字號
+  "第一個變數內容")   &lt;==每個變數內容建議用雙引號括起來，關鍵字則為小括號 )
+    程式段
+    ;;            &lt;==每個類別結尾使用兩個連續的分號來處理！
+  "第二個變數內容")
+    程式段
+    ;;
+  *)                  &lt;==最後一個變數內容都會用 * 來代表所有其他值
+    不包含第一個變數內容與第二個變數內容的其他程式執行段
+    exit 1
+    ;;
+esac                  &lt;==最終的 case 結尾！『反過來寫』思考一下！</pre>
+<h2 id="while语法">while语法</h2>
+<pre lang="bash" escaped="true">while [ condition ]  &lt;==中括號內的狀態就是判斷式
+do            &lt;==do 是迴圈的開始！
+    程式段落
+done          &lt;==done 是迴圈的結束</pre>
+<h2 id="for8230do8230done语法">for…do…done语法</h2>
+<pre lang="bash" escaped="true">for var in con1 con2 con3 ...
+do
+    程式段
+done</pre>
+<pre escaped="true" lang="bash">CLUSTERS=(aaa bbb ccc)
+for cluster in ${CLUSTERS[@]};
+do
+    echo $cluster
+done</pre>
+<pre lang="bash" escaped="true">for((i=1;i&lt;100;i++));do
+echo $i
+done</pre>
+<h2 id="软链接替换">软链接替换</h2>
+<p>ln -snf ./hive-0.7.1/ hive</p>
+<h2 id="利用grep和gawkxargs来kill">利用grep和gawk，xargs来kill</h2>
+<p>xargs会把gawk的每一行变成kill的参数，如 kill 1 2 3
+grep -v 是排除
+ps -ef|grep scott|grep -v grep|gawk {‘print $1’}|xargs kill</p>
+<h2 id="sed命令替换文本">sed命令替换文本</h2>
+<pre lang="bash" escaped="true">sed -i "s/oldstring/newstring/g" file #在原文件修改
+sed "s/oldstring/newstring/g" file &gt;file.new # 输出到其他文件
+file="/tmp/crontab_`date +"%H%M%S"`.bak"; crontab -l &gt; $file; sed "s/\*\/5 \* \* \* \* run-parts/\* \* \* \* \* run-parts/g" $file &gt; "$file.new"; crontab "$file.new"; # 替换crontab文件
+sed -r 's/^\s+([0-9]+) /\1|/g'
+sed -i '$i\eeeeeeeee'  urfile # 在倒数一行插入内容</pre>
+<h2 id="tar">tar</h2>
+<pre lang="bash">tar --exclude=log -cvzf xxx_`date +"%Y-%m-%d_%H_%M"`.tar.gz ./xxx
+# 使用xz压缩，如果使用lzma压缩也是用XZ_OPT
+XZ_OPT=-1 tar -cf 1.tar.xz --xz xx.log
+</pre>
+<h2 id="获取机器ip">获取机器IP</h2>
+<p>via:http://www.cnblogs.com/starspace/archive/2009/02/13/1390062.html</p>
+<pre lang="bash" escaped="true">/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"</pre>
+<h2 id="grep-获取前几行后几行的内容">GREP 获取前几行后几行的内容</h2>
+<pre lang="html">grep -n -B1 -A1 "关键字" file  #匹配关键字的前一行与后一行.</pre>
+<h2 id="rsync-通过ssh传输">Rsync 通过ssh传输</h2>
+<pre lang="bash"># -e 参数指定用ssh传输
+rsync --exclude 'logs' --size-only --progress -rave "ssh -p2222" /home/xx/ 用户名@IP地址:/tmp/xx</pre>
+<h2 id="kill进程树">kill进程树</h2>
+<p><a href="http://stackoverflow.com/questions/392022/best-way-to-kill-all-child-processes">http://stackoverflow.com/questions/392022/best-way-to-kill-all-child-processes</a></p>
+<h2 id="gawk">gawk</h2>
+<pre lang="bash" escaped="true">gawk -F'|' 'BEGIN {OFS="|"}{print $1,$2,$3}'
+gawk '{a=index($0, " from ");if(a&gt;0){b=substr($0,a+6);print substr(b, 0, index(b, " "))}}'
+gawk 'BEGIN{sum=0}{sum+=$1}END{print sum}' data.txt
+</pre>
+<h2 id="输出一大段文本">输出一大段文本</h2>
+<pre lang="bash" escaped="true">cat &lt;&lt;'EOF' &gt;&gt; ./test.txt
+XXX
+EOF</pre>
+<h2 id="简单的http服务">简单的http服务</h2>
+<p lang="bash">  python -m SimpleHTTPServer 8080</p>
+## NC传文件
+<pre lang="bash" escaped="true">接收方 
+/sbin/ifconfig |grep 'inet addr:10'
+ nc -l 9999 | tar zxvf -
+发送方 tar czvf - ./xxx | nc server 9999
+
+如果nc -l执行失败，下载旧版本 http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm
+</pre>
+<h2 id="find">Find</h2>
+<pre lang="bash">find /tmp/ -mtime +1 -name 'xxx_*.log' -delete
+find /tmp/ -mmin +60 -name 'xxx_*.log' -delete
+</pre>
+<h2 id="date">date</h2>
+<pre lang="bash">dt=$(date +"%Y%m%d_%H%M%S")</pre>
+<h2 id="用户组管理命令">用户/组管理命令</h2>
+<p><a href="http://cnzhx.net/blog/linux-add-user-to-group/">http://cnzhx.net/blog/linux-add-user-to-group/</a></p>
+<pre lang="bash"># 把xxx加入apache组
+usermod -a -G apache xxx
+</pre>
+<h2 id="sort">sort</h2>
+<pre lang="bash" escaped="true"># 按human readable 方式排序（sort -h）
+hdfs dfs -du -h /user/|sed -r 's/([0-9.]*)[ ]/\1/'|sort -hr
+
+# -t是分隔符
+# 先按第一列排序，再按第二列数字排序
+cat 1.txt |sort -t',' -k1,1 -k2,2n
+</pre>
+<h2 id="截取kv文件">截取kv文件</h2>
+<p><a href="http://unix.stackexchange.com/questions/186453/cut-for-key-value-pairs">via</a></p>
+<pre lang="bash" escaped="true">head 000000_0 |awk -v RS='`' -F'=' '$1=="keyname"'
+head 000000_0 |grep -o '`keyname=[^`]*'</pre>
+<h2 id="只复制目录结构">只复制目录结构</h2>
+<pre lang="bash" escaped="true"># 把dir1的目录结构复制到dir2内 
+find ./dir1 -type d -exec mkdir -p dir2/\{\} \;</pre>
+<h2 id="shell重试方法">shell重试方法</h2>
+<pre lang="bash" escaped="true">retry() {
+    local -r -i max_attempts="$1"; shift
+    local -r cmd="$@"
+    local -i attempt_num=1
+
+    until $cmd
+    do
+        if (( attempt_num == max_attempts ))
+        then
+            echo "Attempt $attempt_num failed and there are no more attempts left!"
+            return 1
+        else
+            echo "Attempt $attempt_num failed! Trying again in 60 seconds..."
+            echo $(( attempt_num++ ))
+            sleep 60
+        fi
+    done
+}
+
+# 使用方式
+retry 6 echo "ok"</pre>
+<h2 id="参考">参考</h2>
+<p>大部分内容来自：http://linux.vbird.org/linux_basic/0320bash.php<br>
+<a href="http://man.linuxde.net/">linux命令行查询</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2012-03-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/linux-shell/">linux shell</a>
+          <a href="/tags/shell/">shell</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2012/04/hive-metastore-create-table-and-alter-table.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hive MetaStore建表与修改表分析</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2012/03/extjs3-pagingtoolbar-combbox.html">
+            <span class="next-text nav-default">Extjs3 PagingToolbar下拉框分页插件</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

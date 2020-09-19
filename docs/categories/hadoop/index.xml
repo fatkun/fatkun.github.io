@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hadoop on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/categories/hadoop/</link>
+    <description>Recent content in hadoop on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 04 Aug 2018 04:21:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://fatkun.github.io/categories/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用MultipleOutputs报File already exists错误</title>
+      <link>https://fatkun.github.io/2018/08/use-multipleoutputs-file-already-exists.html</link>
+      <pubDate>Sat, 04 Aug 2018 04:21:53 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2018/08/use-multipleoutputs-file-already-exists.html</guid>
+      <description>在reduce任务看到第一个任务因为某些原因失败了，但后续的任务都一起失败，后续的任务报File already exists错误。 原因是MultipleO</description>
+    </item>
+    
+    <item>
+      <title>hdfs acl 授权</title>
+      <link>https://fatkun.github.io/2018/06/hdfs-acl-%E6%8E%88%E6%9D%83.html</link>
+      <pubDate>Fri, 15 Jun 2018 03:35:54 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2018/06/hdfs-acl-%E6%8E%88%E6%9D%83.html</guid>
+      <description>hdfs dfs -setfacl -m default:user:user1111:rwx /tmp/xxx hdfs dfs -setfacl -m user:user1111:rwx /tmp/xxx</description>
+    </item>
+    
+    <item>
+      <title>cloudera manager在下载日志返回502 BAD_GATEWAY错误</title>
+      <link>https://fatkun.github.io/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Tue, 26 Dec 2017 10:00:52 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html</guid>
+      <description>下载日志是通过status_server.py的download_log方法进行的 /usr/lib64/cmf/agent/build/env/lib/python2.6/site-packages/cmf-5.13.1-py2.6.egg/cmf/status_server.py 如果日志目录包含以下开头就禁止下载 # Simple blacklist of path prefixes that are not reasonable for</description>
+    </item>
+    
+    <item>
+      <title>安装cloudera manger（中科大反向代理）</title>
+      <link>https://fatkun.github.io/2017/09/%E5%AE%89%E8%A3%85cloudera-manger.html</link>
+      <pubDate>Sun, 03 Sep 2017 07:02:09 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/09/%E5%AE%89%E8%A3%85cloudera-manger.html</guid>
+      <description>从文档Cloudera Manager Version and Download Information 找到下载地址，按系统版本下载 国外的下载地址很慢，使用中科大做的反向代理访问，下面是centos6的cm地址 wget</description>
+    </item>
+    
+    <item>
+      <title>构建cloudera自定义parcels</title>
+      <link>https://fatkun.github.io/2017/08/create-cloudera-local-parcels.html</link>
+      <pubDate>Mon, 28 Aug 2017 10:15:54 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/08/create-cloudera-local-parcels.html</guid>
+      <description>构建命令： tar zcvf GPLEXTRAS-5.0.0-gplextras5b2.p0.32-el6.parcel GPLEXTRAS-5.0.0-gplextras5b2.p0.32/ --owner=root --group=root 把文件都放到一个http可访问的目录下，然后在“Parcel 设置”里面配置URL 目录结构 -rw-r--r-- 1 kpi kpi 15509175 Jul 19 15:34 CUSTOM-5.4.0-1.cdh5.4.0.p2.5-el6.parcel -rw-rw-r-- 1 kpi kpi 41 Jul</description>
+    </item>
+    
+    <item>
+      <title>hue cdh5.4.0 编辑器补丁</title>
+      <link>https://fatkun.github.io/2017/08/hue-cdh5-4-0-%E7%BC%96%E8%BE%91%E5%99%A8%E8%A1%A5%E4%B8%81.html</link>
+      <pubDate>Tue, 15 Aug 2017 06:13:46 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/08/hue-cdh5-4-0-%E7%BC%96%E8%BE%91%E5%99%A8%E8%A1%A5%E4%B8%81.html</guid>
+      <description>更新文件 /opt/cloudera/parcels/CDH/lib/hue/build/static/oozie/js/workflow-editor.ko.js /opt/cloudera/parcels/CDH/lib/hue/build/static/oozie/js/workflow-editor.ko.xxxxxxxx.js HUE在CENTOS7使用 编译安装python2.6 可能要把旧版本的/usr/lib64/libpython2.6.so.1.0</description>
+    </item>
+    
+    <item>
+      <title>hadoop参数</title>
+      <link>https://fatkun.github.io/2017/07/hadoop-config.html</link>
+      <pubDate>Fri, 28 Jul 2017 03:06:10 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/07/hadoop-config.html</guid>
+      <description>YARN 参数 默认值 值 备注 yarn.nodemanager.container-metrics.enable false 关闭，避免nodemanager内存OOM，http://hackershell.cn/?p=993 yarn.resourcemanager.recovery.enabled true 启用 ResourceManager Recovery yarn.scheduler.fair.continuous-scheduling-enabled true 启</description>
+    </item>
+    
+    <item>
+      <title>HDFS文件的健康检查</title>
+      <link>https://fatkun.github.io/2017/07/hdfs-health-check.html</link>
+      <pubDate>Sun, 16 Jul 2017 13:35:45 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/07/hdfs-health-check.html</guid>
+      <description>文章来源：HDFS DataNode Scanners and Disk Checker Explained 以下只简单翻译部分文字，详情看英文原文。 简单的概念 一个文件包含多个block，一个block有一个或多个副本。</description>
+    </item>
+    
+    <item>
+      <title>hdfs磁盘检查相关文章</title>
+      <link>https://fatkun.github.io/2017/07/hdfs%E7%A3%81%E7%9B%98%E6%A3%80%E6%9F%A5%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0.html</link>
+      <pubDate>Sun, 16 Jul 2017 02:23:20 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/07/hdfs%E7%A3%81%E7%9B%98%E6%A3%80%E6%9F%A5%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0.html</guid>
+      <description>DataNode启动优化改进：磁盘检测并行化 https://issues.apache.org/jira/browse/HDFS-8845 检查时不遍历所有子目录 https://issues.apache.org/jira/browse/HDFS-8850 VolumeScanner可能会抛nullpoint exception https://issues.apache.org/jira/browse/HDFS-7916 汇报坏块给st</description>
+    </item>
+    
+    <item>
+      <title>Hive On Tez cloudera5.4</title>
+      <link>https://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html</link>
+      <pubDate>Mon, 01 May 2017 10:52:17 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/05/hive-on-tez-cloudera5-4.html</guid>
+      <description>配置 tez-site.xml &amp;lt;configuration&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.lib.uris&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;${fs.defaultFS}/apps/tez-0.8.5/,${fs.defaultFS}/apps/tez-0.8.5/lib/&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.use.cluster.hadoop-libs&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;tez.runtime.compress.codec&amp;lt;/name&amp;gt; &amp;lt;value&amp;gt;org.apache.hadoop.io.compress.SnappyCodec&amp;lt;/value&amp;gt; &amp;lt;/property&amp;gt; &amp;lt;/configuration&amp;gt; 调优参数 tez.grouping.min-size 分片最小限制 报错处理 找不到lzo Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018) at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128) ... 23 more LZO包没加载到，我是把lz</description>
+    </item>
+    
+    <item>
+      <title>jobhistory关注的issue</title>
+      <link>https://fatkun.github.io/2017/04/jobhistory%E5%85%B3%E6%B3%A8%E7%9A%84issue.html</link>
+      <pubDate>Mon, 10 Apr 2017 07:30:14 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/04/jobhistory%E5%85%B3%E6%B3%A8%E7%9A%84issue.html</guid>
+      <description>JobHistory cache issue https://issues.apache.org/jira/browse/MAPREDUCE-6436 可能导致打印的日志太多影响性能 Job history server scans can become blocked on a single, slow entry https://issues.apache.org/jira/browse/MAPREDUCE-6797 High contention on scanning of user directory under immediate_done in Job History Server https://issues.apache.org/jira/browse/MAPREDUCE-6684</description>
+    </item>
+    
+    <item>
+      <title>kafka关注的issue</title>
+      <link>https://fatkun.github.io/2017/03/kafka%E5%85%B3%E6%B3%A8%E7%9A%84issue.html</link>
+      <pubDate>Mon, 27 Mar 2017 10:17:36 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/03/kafka%E5%85%B3%E6%B3%A8%E7%9A%84issue.html</guid>
+      <description>BrokerChangeListener computes inconsistent live/dead broker list https://issues.apache.org/jira/browse/KAFKA-3085 BrokerChangeListener missed broker id path ephemeral node deletion event. https://issues.apache.org/jira/browse/KAFKA-2448 Controller could miss a broker state change https://issues.apache.org/jira/browse/KAFKA-1120</description>
+    </item>
+    
+    <item>
+      <title>在reduce InMemoryMapOutput OOM</title>
+      <link>https://fatkun.github.io/2017/03/reduce-inmemorymapoutput-oom.html</link>
+      <pubDate>Wed, 15 Mar 2017 07:54:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/03/reduce-inmemorymapoutput-oom.html</guid>
+      <description>2017-03-14 15:41:52,724 WARN [main] org.apache.hadoop.mapred.YarnChild: Exception running child : org.apache.hadoop.mapreduce.task.reduce.Shuffle$ShuffleError: error in shuffle in fetcher#1 at org.apache.hadoop.mapreduce.task.reduce.Shuffle.run(Shuffle.java:134) at org.apache.hadoop.mapred.ReduceTask.run(ReduceTask.java:376) at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:164) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:415) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1693) at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:158) Caused by: java.lang.OutOfMemoryError: Java heap space at org.apache.hadoop.io.BoundedByteArrayOutputStream.&amp;lt;init&amp;gt;(BoundedByteArrayOutputStream.java:56) at org.apache.hadoop.io.BoundedByteArrayOutputStream.&amp;lt;init&amp;gt;(BoundedByteArrayOutputStream.java:46) at org.apache.hadoop.mapreduce.task.reduce.InMemoryMapOutput.&amp;lt;init&amp;gt;(InMemoryMapOutput.java:63) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.unconditionalReserve(MergeManagerImpl.java:305) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.reserve(MergeManagerImpl.java:295) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyMapOutput(Fetcher.java:514) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyFromHost(Fetcher.java:336) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.run(Fetcher.java:193) 调整这个参数 ( mapreduce.reduce.shuffle.input.percent )，默认值为0.7，</description>
+    </item>
+    
+    <item>
+      <title>hadoop job -kill 和 yarn application -kill 区别</title>
+      <link>https://fatkun.github.io/2017/01/hadoop-job-kill-and-yarn-application-kill-diff.html</link>
+      <pubDate>Fri, 06 Jan 2017 10:49:51 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2017/01/hadoop-job-kill-and-yarn-application-kill-diff.html</guid>
+      <description>hadoop job -kill 调用的是CLI.java里面的job.killJob(); 这里会分几种情况，如果是能查询到状态是RUNNING的话，是直接向AppMa</description>
+    </item>
+    
+    <item>
+      <title>HDFS-6962 hdfs acl mask继承无效</title>
+      <link>https://fatkun.github.io/2016/11/hdfs-6962-hdfs-acl-mask%E7%BB%A7%E6%89%BF%E6%97%A0%E6%95%88.html</link>
+      <pubDate>Mon, 21 Nov 2016 10:50:03 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/11/hdfs-6962-hdfs-acl-mask%E7%BB%A7%E6%89%BF%E6%97%A0%E6%95%88.html</guid>
+      <description>ACL inheritance conflicts with umaskmode https://issues.apache.org/jira/browse/HDFS-6962</description>
+    </item>
+    
+    <item>
+      <title>parquet-hive列裁剪和谓词下推</title>
+      <link>https://fatkun.github.io/2016/11/parquet-hive-projection-and-push-down.html</link>
+      <pubDate>Sun, 20 Nov 2016 13:36:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/11/parquet-hive-projection-and-push-down.html</guid>
+      <description>一直好奇parquet和hive是怎样做列裁剪（跳过某些列）的，今天跟踪了一下代码。 parquet和hive交接的代码已经在合并在hive里</description>
+    </item>
+    
+    <item>
+      <title>parquet编码定义</title>
+      <link>https://fatkun.github.io/2016/11/parquet-encoding-definitions.html</link>
+      <pubDate>Sun, 13 Nov 2016 12:29:49 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/11/parquet-encoding-definitions.html</guid>
+      <description>主要是翻译https://github.com/Parquet/parquet-format/blob/master/Encodings.m</description>
+    </item>
+    
+    <item>
+      <title>impala断开连接后释放session</title>
+      <link>https://fatkun.github.io/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html</link>
+      <pubDate>Mon, 17 Oct 2016 02:38:58 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/10/impala%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E9%87%8A%E6%94%BEsession.html</guid>
+      <description>代码在这里 https://github.com/cloudera/Impala/blob/cdh5-2.2.0_5.4.0/be/src/service/impala-server.cc 如果不想断开清除session,直接return void ImpalaServer::ConnectionEnd( const ThriftServer::ConnectionContext&amp; connection_context) { return; unique_lock&amp;lt;mutex&amp;gt; l(connection_to_sessions_map_lock_); ConnectionToSessionMap::iterator it = connection_to_sessions_map_.find(connection_context.connection_id); // Not every connection must have an associated session if (it == connection_to_sessions_map_.end()) return; LOG(INFO) &amp;lt;&amp;lt; &#34;Connection from client &#34; &amp;lt;&amp;lt; connection_context.network_address &amp;lt;&amp;lt; &#34; closed, closing &#34;</description>
+    </item>
+    
+    <item>
+      <title>获取linux用户和组映射脚本</title>
+      <link>https://fatkun.github.io/2016/08/get-user-group-mapping.html</link>
+      <pubDate>Mon, 08 Aug 2016 03:02:55 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/08/get-user-group-mapping.html</guid>
+      <description>记录一下 python代码 #!/usr/bin/env python # -*- coding: utf-8 -*- import re import os import sys p = os.popen(&#39;id %s&#39; % sys.argv[1]) s = p.read() # s = &#39;uid=486(yarn) gid=484(yarn) groups=484(yarn),493(hadoop),513(supergroup)&#39; user = re.findall(&#34;uid=\d+\((.*?)\)&#34;, s)[0] s = s.split(&#34;groups=&#34;)[1] match = re.findall(&#34;\((.*?)\)&#34;, s) groups = [] for group in match: groups.append(group) print user + &#34;=&#34; + &#34;,&#34;.join(sorted(groups)) shell</description>
+    </item>
+    
+    <item>
+      <title>hadoop组映射从配置文件读取</title>
+      <link>https://fatkun.github.io/2016/07/hadoop-group-mapping-from-file.html</link>
+      <pubDate>Sun, 31 Jul 2016 10:41:41 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/07/hadoop-group-mapping-from-file.html</guid>
+      <description>hadoop实现类似linux系统的文件权限，需要知道某个用户是属于哪个组。系统默认是使用ShellBasedUnixGroupsMappi</description>
+    </item>
+    
+    <item>
+      <title>迁移Hadoop NameNode</title>
+      <link>https://fatkun.github.io/2016/07/migrate-hadoop-namenode.html</link>
+      <pubDate>Fri, 22 Jul 2016 09:55:06 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/07/migrate-hadoop-namenode.html</guid>
+      <description>版本：hadoop cdh5.4 传输文件 接收方 nc -l &amp;lt;span class=&#34;hljs-number&#34;19999&amp;lt;/span &amp;lt;span class=&#34;hljs-string&#34;| tar zxvf -&amp;lt;/span 发送方 tar czvf - ./current &amp;lt;span class=&#34;hljs-string&#34;| nc serverip 19999&amp;lt;/span 迁移方案 采用修改/etc/hosts的方式，把原hostname</description>
+    </item>
+    
+    <item>
+      <title>hadoop磁盘写入选择策略</title>
+      <link>https://fatkun.github.io/2016/07/hadoop-volume-choosing-policy.html</link>
+      <pubDate>Thu, 14 Jul 2016 10:27:36 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/07/hadoop-volume-choosing-policy.html</guid>
+      <description>hadoop写入时，默认磁盘选择是轮询的方式。可以改用按空间大小来分配，避免某个磁盘特别满。 参数 ：dfs.datanode.fsdatase</description>
+    </item>
+    
+    <item>
+      <title>hadoop更换namenode注意事项</title>
+      <link>https://fatkun.github.io/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html</link>
+      <pubDate>Wed, 25 May 2016 09:56:00 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html</guid>
+      <description>所有机器hosts都要加上新namenode 新namenode要建立好以前的用户和组 zookeeper中HA的信息可以删除，然后重建zook</description>
+    </item>
+    
+    <item>
+      <title>[HADOOP-11238]hdfs namenode getGroups延迟</title>
+      <link>https://fatkun.github.io/2016/05/hadoop-11238.html</link>
+      <pubDate>Sun, 15 May 2016 02:29:06 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/05/hadoop-11238.html</guid>
+      <description>在namenode日志看到如下错误 2016-05-11 01:00:26,360 WARN org.apache.hadoop.security.Groups: Potential performance problem: getGroups(user=xxx) took 5046 milliseconds 这个方法是hadoop为了获取某个用户是哪个组。 分析补丁 补丁：https://iss</description>
+    </item>
+    
+    <item>
+      <title>DataNode启动流程源码分析</title>
+      <link>https://fatkun.github.io/2016/05/datanode-start.html</link>
+      <pubDate>Mon, 02 May 2016 09:28:42 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/05/datanode-start.html</guid>
+      <description>背景 最近打算要重启DataNode，之前有试过重启过程中导致业务任务失败的情况。所以想了解DataNode什么时候才算启动完成，以及能否检测</description>
+    </item>
+    
+    <item>
+      <title>HDFS-8824 平衡数据的时候不移动小文件</title>
+      <link>https://fatkun.github.io/2016/05/hdfs-8824.html</link>
+      <pubDate>Sun, 01 May 2016 02:08:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/05/hdfs-8824.html</guid>
+      <description>Do not use small blocks for balancing the cluster https://issues.apache.org/jira/browse/HDFS-8824 Allow Balancer to run faster https://issues.apache.org/jira/browse/HDFS-8818 平衡设置的文章：https://community.hortonworks.com/articles/438</description>
+    </item>
+    
+    <item>
+      <title>hdfs complete file 超时</title>
+      <link>https://fatkun.github.io/2016/04/hdfs-complete-file-timeout.html</link>
+      <pubDate>Mon, 25 Apr 2016 02:48:00 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/04/hdfs-complete-file-timeout.html</guid>
+      <description>修改一下超时次数，具体代码在 DFSOutputStream.java private void completeFile(ExtendedBlock last) throws IOException { long localstart = Time.now(); long localTimeout = 400; boolean fileComplete = false; int retries = dfsClient.getConf().nBlockWriteLocateFollowingRetry; while (!fileComplete) { fileComplete = dfsClient.namenode.complete(src, dfsClient.clientName, last, fileId); if (!fileComplete) { final int hdfsTimeout = dfsClient.getHdfsTimeout(); if (!dfsClient.clientRunning &amp;brvbar;&amp;brvbar; (hdfsTimeout &amp;gt; 0 &amp;&amp; localstart + hdfsTimeout &amp;lt; Time.now())) { String msg</description>
+    </item>
+    
+    <item>
+      <title>hdfs启动相关文章</title>
+      <link>https://fatkun.github.io/2016/04/hdfs-start.html</link>
+      <pubDate>Sun, 24 Apr 2016 08:13:38 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/04/hdfs-start.html</guid>
+      <description>记一次DataNode慢启动问题 ：启动过程中，datanode为了获取used size，如果超过时间，可能会执行DU。</description>
+    </item>
+    
+    <item>
+      <title>hadoop检查目录健康状态</title>
+      <link>https://fatkun.github.io/2016/04/hadoop-check-disk-error.html</link>
+      <pubDate>Sun, 10 Apr 2016 08:38:39 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2016/04/hadoop-check-disk-error.html</guid>
+      <description>DiskChecker负责检查目录是否有建目录和判断权限。 datanode BlockPoolSlice.checkDirs() DataNode.checkDiskError() nodeManager LocalDirsHandlerService.checkDirs()</description>
+    </item>
+    
+    <item>
+      <title>Container killed by the ApplicationMaster, Exit code is 143</title>
+      <link>https://fatkun.github.io/2015/12/container-killed-by-the-applicationmaster.html</link>
+      <pubDate>Wed, 30 Dec 2015 13:14:03 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/12/container-killed-by-the-applicationmaster.html</guid>
+      <description>之前发现在map任务里面经常看到Container killed by the ApplicationMaster，挺奇怪，不过任务最终是成功的，就没怎么管。不过最</description>
+    </item>
+    
+    <item>
+      <title>hdfs exceeds the limit of concurrent xcievers</title>
+      <link>https://fatkun.github.io/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html</link>
+      <pubDate>Mon, 23 Nov 2015 11:53:49 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html</guid>
+      <description>版本: hadoop cdh5.4 datanode jstack，很多这样的线程 &#34;DataXceiver for client unix:/var/run/hdfs-sockets/dn [Waiting for operation #1]&#34; daemon prio=10 tid=0x00007ffc42de9000 nid=0x68f8 waiting on condition [0x00007ffacbd1d000] java.lang.Thread.State: WAITING (parking) at sun.misc.Unsafe.park(Native Method) - parking to wait for &amp;lt;0x00000007a5d3d568&amp;gt; (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject) at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186) at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043) at org.apache.hadoop.net.unix.DomainSocketWatcher.add(DomainSocketWatcher.java:316) at org.apache.hadoop.hdfs.server.datanode.ShortCircuitRegistry.createNewMemorySegment(ShortCircuitRegistry.java:322) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.requestShortCircuitShm(DataXceiver.java:418) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.opRequestShortCircuitShm(Receiver.java:214) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.processOp(Receiver.java:95) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.run(DataXceiver.java:241) at java.lang.Thread.run(Thread.java:745) 相关</description>
+    </item>
+    
+    <item>
+      <title>hadoop cdh5.4 windows 开发环境</title>
+      <link>https://fatkun.github.io/2015/11/hadoop-cdh5-4-windows-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.html</link>
+      <pubDate>Sun, 15 Nov 2015 03:45:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/11/hadoop-cdh5-4-windows-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.html</guid>
+      <description>下载hadoop编译好的包 安装cygwin 下载hadoop.dll和winutils.exe (我是自己编译的，在网上找了一个，不知道能否通用</description>
+    </item>
+    
+    <item>
+      <title>Mismatched address stored in ZK for NameNode</title>
+      <link>https://fatkun.github.io/2015/10/mismatched-address-stored-in-zk-for-namenode.html</link>
+      <pubDate>Wed, 28 Oct 2015 08:28:52 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/10/mismatched-address-stored-in-zk-for-namenode.html</guid>
+      <description>我在namenode配置dfs.namenode.servicerpc-address端口后，Failover Controller 报错 java.lang.RuntimeException: Mismatched address stored in ZK for NameNode at kpixxx/xx.xx.xx.xx:88 解决</description>
+    </item>
+    
+    <item>
+      <title>hive1.1.0查询和旧版本不一致问题分析</title>
+      <link>https://fatkun.github.io/2015/06/hive-join-failed.html</link>
+      <pubDate>Sun, 28 Jun 2015 07:08:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/06/hive-join-failed.html</guid>
+      <description>背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有</description>
+    </item>
+    
+    <item>
+      <title>在Windows上编译hadoop cdh5.4</title>
+      <link>https://fatkun.github.io/2015/05/compile-hadoop-cdh5-4-on-windows.html</link>
+      <pubDate>Sun, 17 May 2015 14:07:27 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/05/compile-hadoop-cdh5-4-on-windows.html</guid>
+      <description>我的环境 系统:win8.1 ， maven3.1, eclipse 4.4 hadoop cdh5.4对应apache的源码是hadoop 2.6 准备条件 安装以下软件，见源码src/BUILDING.</description>
+    </item>
+    
+    <item>
+      <title>cloudera manager添加hive时报错找不到jdbc driver</title>
+      <link>https://fatkun.github.io/2015/05/cloudera-manage-jdbc-driver-cannot-be-found.html</link>
+      <pubDate>Thu, 07 May 2015 03:19:57 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/05/cloudera-manage-jdbc-driver-cannot-be-found.html</guid>
+      <description>cm 4.7 报错 JDBC driver cannot be found. Unable to find the JDBC database jar on host 解决方法 把包放入这个目录，注意文件名要保持一致 /usr/share/java/mysql-connector-java.jar 来源 https://groups.google.com/a/cloudera.org/forum/#!topic/cdh-user/OpXSfmzsnuo</description>
+    </item>
+    
+    <item>
+      <title>namenode standby checkponit时间过长导致的问题</title>
+      <link>https://fatkun.github.io/2015/05/namenode-standby-checkponit.html</link>
+      <pubDate>Sun, 03 May 2015 13:30:28 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/05/namenode-standby-checkponit.html</guid>
+      <description>我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了</description>
+    </item>
+    
+    <item>
+      <title>hdfs选择datanode策略</title>
+      <link>https://fatkun.github.io/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html</link>
+      <pubDate>Thu, 23 Apr 2015 07:04:22 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html</guid>
+      <description>前几天报错如下： Error: org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/xxx/part-r-00002 could only be replicated to 0 nodes instead of minReplication (=1). There are 11 datanode(s) running and no node(s) are excluded in this operation. at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget(BlockManager.java:1327) at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2278) at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:480) at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:297) at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java:44080) at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:453) at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1002) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1695) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1691) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:396) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408) at org.apache.hadoop.ipc.Server$Handler.run(Server.java:1689) 阅读一下代码了</description>
+    </item>
+    
+    <item>
+      <title>impala因为invalidate语句导致执行DDL语句卡住</title>
+      <link>https://fatkun.github.io/2015/02/impala-invalidate-metadata.html</link>
+      <pubDate>Sun, 01 Feb 2015 16:06:11 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/02/impala-invalidate-metadata.html</guid>
+      <description>现象 impala突然无法执行DDL语句，一直卡住，累积的很多任务。初步怀疑impala并发有问题，采取了一些减少并发的方法，有一点作用，但故</description>
+    </item>
+    
+    <item>
+      <title>从日志分析impala查询慢的原因（2）</title>
+      <link>https://fatkun.github.io/2015/01/analyze-slow-impala-2.html</link>
+      <pubDate>Sat, 03 Jan 2015 08:51:57 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2015/01/analyze-slow-impala-2.html</guid>
+      <description>上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt=&#39;2014-04-08&#39; I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103</description>
+    </item>
+    
+    <item>
+      <title>从日志分析impala查询慢的原因（1）</title>
+      <link>https://fatkun.github.io/2014/12/analyze-slow-impala.html</link>
+      <pubDate>Sun, 28 Dec 2014 18:42:52 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/12/analyze-slow-impala.html</guid>
+      <description>本文只是分析和代码的关联，并没有解决慢的问题。 有些语句在impala查询很慢，尝试把日志和代码关联起来，便于之后的分析。由于impala涉及</description>
+    </item>
+    
+    <item>
+      <title>编译impala2.0.0</title>
+      <link>https://fatkun.github.io/2014/12/compile-impala.html</link>
+      <pubDate>Sun, 21 Dec 2014 08:50:16 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/12/compile-impala.html</guid>
+      <description>使用redhat5.8没编译成功，改用redhat6.4最终编译成功。 参考官方的文档https://github.com/cloudera/</description>
+    </item>
+    
+    <item>
+      <title>在Redhat6.4手动安装impala2.0</title>
+      <link>https://fatkun.github.io/2014/12/manual-install-impala2-0.html</link>
+      <pubDate>Sun, 21 Dec 2014 08:21:17 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/12/manual-install-impala2-0.html</guid>
+      <description>背景 已经通过cloudera manager装好了hadoop，但由于不敢升级cm，所以单独升级impala，采用yum的安装方式。原本已经安</description>
+    </item>
+    
+    <item>
+      <title>hdfs httpfs与webhdfs的简单使用</title>
+      <link>https://fatkun.github.io/2014/11/httpfs-and-webhdfs.html</link>
+      <pubDate>Sun, 02 Nov 2014 08:46:33 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/11/httpfs-and-webhdfs.html</guid>
+      <description>HttpFS和WebHDFS 通过http协议操作hdfs有两个组件，httpfs和webhdfs，我一开始还以为这两个是同一个东西，其实不是</description>
+    </item>
+    
+    <item>
+      <title>cdh4 spark配置LZO</title>
+      <link>https://fatkun.github.io/2014/09/spark-with-lzo.html</link>
+      <pubDate>Sat, 27 Sep 2014 05:36:21 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/09/spark-with-lzo.html</guid>
+      <description>使用的hadoop是cdh4.2.1版本 spark1.1，需要配置hadoop-native和lzo native 在spark-env.sh加入 HADOOP_CONF_DIR=/etc/hadoop/conf SPARK_SUBMIT_CLASSPATH=$SPARK_SUBMIT_CLASSPATH:/etc/hive/conf:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/hadoop-lzo.jar #SPARK_SUBMIT_LIBRARY_PATH=$SPARK_SUBMIT_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native</description>
+    </item>
+    
+    <item>
+      <title>hadoop本地目录相关代码分析</title>
+      <link>https://fatkun.github.io/2014/09/hadoop-local-dir.html</link>
+      <pubDate>Thu, 04 Sep 2014 10:23:12 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/09/hadoop-local-dir.html</guid>
+      <description>最近hadoop本地磁盘总是坏，伴随着有些hadoop job失败，阅读了一些相关的代码。 本地磁盘健康检查 NodeManager默认会每两分钟</description>
+    </item>
+    
+    <item>
+      <title>Linux 编译 hadoop-cdh4.2.1</title>
+      <link>https://fatkun.github.io/2014/08/linux-compile-hadoop-cdh4-2-1.html</link>
+      <pubDate>Sun, 10 Aug 2014 08:33:37 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/08/linux-compile-hadoop-cdh4-2-1.html</guid>
+      <description>配置 安装Maven, Ant, Findbugs, protobuf, cmake 参考:http://cn.soulmachine.me/blog/20140214/ 注意CDH4.2.1需要用p</description>
+    </item>
+    
+    <item>
+      <title>hadoop重启Namenode时，appTokens报FileNotFoundException</title>
+      <link>https://fatkun.github.io/2014/07/hadoop-apptokens-filenotfoundexception.html</link>
+      <pubDate>Sun, 27 Jul 2014 13:56:09 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/07/hadoop-apptokens-filenotfoundexception.html</guid>
+      <description>现象 报错如下 Application application_1405852606905_0014 failed 3 times due to AM Container for appattempt_1405852606905_0014_000003 exited with exitCode: -1000 due to: RemoteTrace: java.io.FileNotFoundException: File does not exist: hdfs://mycluster:8020/user/kpi/.staging/job_1405852606905_0014/appTokens at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:809) 同时注意到是因为每次重启nodemanager才发生。 首先用关键词“appt</description>
+    </item>
+    
+    <item>
+      <title>【转】HADOOP 2.0 YARN中的MR/RM/NM状态转换图</title>
+      <link>https://fatkun.github.io/2014/03/hadoop-2-0-yarn-state.html</link>
+      <pubDate>Sun, 23 Mar 2014 07:36:48 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/03/hadoop-2-0-yarn-state.html</guid>
+      <description>hadoop2 可以用GRAPHVIZ来生成状态图，点击下面的连接查看状态转换图。 http://www.rigongyizu.com/generate-hadoop-yarn-state-transit-graph/</description>
+    </item>
+    
+    <item>
+      <title>在eclipse远程调试mapreduce（hadoop2）</title>
+      <link>https://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html</link>
+      <pubDate>Sat, 22 Feb 2014 08:13:20 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/02/debug-mapreduce-with-eclipse.html</guid>
+      <description>背景 线上的服务器都是linux，直接在线上debug不需要准备太多测试数据。 实现 远程调试实际上实在服务端开启一个监听端口，通过eclipse</description>
+    </item>
+    
+    <item>
+      <title>impala文档的翻译</title>
+      <link>https://fatkun.github.io/2014/01/impala%E6%96%87%E6%A1%A3%E7%9A%84%E7%BF%BB%E8%AF%91.html</link>
+      <pubDate>Sun, 12 Jan 2014 06:55:41 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2014/01/impala%E6%96%87%E6%A1%A3%E7%9A%84%E7%BF%BB%E8%AF%91.html</guid>
+      <description>weiqingbin 翻译了很多，赞！ 电梯如下： http://my.oschina.net/weiqingbin/blog?catalog=423691</description>
+    </item>
+    
+    <item>
+      <title>使用jdbc连接impala例子</title>
+      <link>https://fatkun.github.io/2013/12/impala-jdbc-example.html</link>
+      <pubDate>Sun, 15 Dec 2013 12:51:02 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/12/impala-jdbc-example.html</guid>
+      <description>来源： https://github.com/onefoursix/Cloudera-Impala-JDBC-Example 需要依赖的lib见这篇文章。 http://www.cloudera.com/content/cloudera-content/cloudera-docs/Impala/latest/Installing-and-Using-Impala/ciiu_impala_jdbc.html import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; public class ClouderaImpalaJdbcExample { // here is an example query based on one of the Hue Beeswax sample tables private static final String SQL_STATEMENT = &#34;SELECT a FROM test limit 10&#34;; // set the impalad host private static final String IMPALAD_HOST</description>
+    </item>
+    
+    <item>
+      <title>hadoop wordcount新API例子</title>
+      <link>https://fatkun.github.io/2013/10/hadoop-wordcount-new-api.html</link>
+      <pubDate>Sun, 27 Oct 2013 16:26:48 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/10/hadoop-wordcount-new-api.html</guid>
+      <description>准备 准备一些输入文件，可以用hdfs dfs -put xxx/* /user/fatkun/input上传文件 代码 package com.fatkun; import java.io.IOException; import java.util.ArrayList; import java.util.List; import java.util.StringTokenizer; import org.apache.commons.logging.Log; import org.apache.commons.logging.LogFactory; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.conf.Configured; import org.apache.hadoop.fs.Path; import org.apache.hadoop.io.IntWritable; import org.apache.hadoop.io.LongWritable; import</description>
+    </item>
+    
+    <item>
+      <title>在hive中使用parquet (CDH4.3)</title>
+      <link>https://fatkun.github.io/2013/10/hive-use-parquet.html</link>
+      <pubDate>Mon, 21 Oct 2013 17:05:47 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/10/hive-use-parquet.html</guid>
+      <description>hadoop版本 cdh4.3 使用impala创建parquet表后，查询会出错。 [impala:21000] &amp;gt; select * from foo; Query: select * from foo ERROR: AnalysisException: Failed to load metadata for table: default.foo CAUSED BY: TableLoadingException: Failed to load metadata for table: foo CAUSED BY: MetaException: org.apache.hadoop.hive.serde2.SerDeException SerDe</description>
+    </item>
+    
+    <item>
+      <title>记录cloudera manager安装hadoop的步骤</title>
+      <link>https://fatkun.github.io/2013/10/cloudera-manager-install-hadoop.html</link>
+      <pubDate>Sat, 19 Oct 2013 17:24:36 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2013/10/cloudera-manager-install-hadoop.html</guid>
+      <description>安装cloudera-manager 在http://go.cloudera.com/cloudera-standard-download.h</description>
+    </item>
+    
+    <item>
+      <title>hive命令行抛NullPointerException</title>
+      <link>https://fatkun.github.io/2012/07/hive-cmd-nullpointerexception.html</link>
+      <pubDate>Wed, 18 Jul 2012 16:11:23 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/hive-cmd-nullpointerexception.html</guid>
+      <description>我只是执行了一下这个代码 create temporary function strip as &#39;com.fatkun.Strip&#39;; 就抛出异常 hive&amp;gt; create temporary function strip as &#39;com.fatkun.Strip&#39;; OK Exception in thread &#34;main&#34; java.lang.NullPointerException at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:221) at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:286) at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:516) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) at java.lang.reflect.Method.invoke(Method.java:597) at org.apache.hadoop.util.RunJar.main(RunJar.java:197) 从代码中看CliDriver.ja</description>
+    </item>
+    
+    <item>
+      <title>挂载fuse-dfs遇到的问题</title>
+      <link>https://fatkun.github.io/2012/07/mount-fuse-dfs.html</link>
+      <pubDate>Wed, 18 Jul 2012 15:27:01 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/mount-fuse-dfs.html</guid>
+      <description>以下是在ubuntu12.04 amd64， hadoop cdh3u3下安装 在${HADOOP_HOME}/contrib/fuse-dfs目录下已经帮我</description>
+    </item>
+    
+    <item>
+      <title>在Windows下编译hadoop eclipse-plugin</title>
+      <link>https://fatkun.github.io/2012/07/compile-hadoop-eclipse-plugin-on-windows.html</link>
+      <pubDate>Sat, 07 Jul 2012 09:06:01 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/2012/07/compile-hadoop-eclipse-plugin-on-windows.html</guid>
+      <description>1.首先准备好ant和maven，配置好ANT_HOME和MAVEN_HOME的环境变量，把%ANT_HOME%/bin和%MAVEN/HO</description>
+    </item>
+    
+  </channel>
+</rss>
