@@ -71,35 +71,55 @@ tags:
 首先看到要k8s 1.15以上的版本，我只有1.14，只好使用minikube重新装了1.16的版本，具体安装不细说了。  
 然后把CRD apply进集群里面，注意CRD得带有openAPIV3Schema的validation（我的是kubebuilder生成的）  
 执行这个命令生成swagger json文件
-<pre escaped="true" lang="bash">kubectl get --raw="/openapi/v2" &gt; /tmp/swagger</pre>
+
+```bash
+kubectl get --raw="/openapi/v2" > /tmp/swagger
+```
+
 然后执行这个命令生成代码
-<pre escaped="true" lang="bash">docker run -i --rm dockerhub.azk8s.cn/yue9944882/java-model-gen &lt; /tmp/swagger | tar -xzf - -C /tmp/</pre>
+
+```bash
+docker run -i --rm dockerhub.azk8s.cn/yue9944882/java-model-gen < /tmp/swagger | tar -xzf - -C /tmp/
+```
+
 这里我添加了dockerhub.azk8s.cn镜像加速，这个镜像应该是别人构建好的，如果想自己构建，要用首页介绍的项目kubernetes-client/gen ，里面还会用到maven下载也是比较慢的，可以加一下mirrors
 我写了个简单的Dockerfile
-<pre escaped="true" lang="other">FROM dockerhub.azk8s.cn/yue9944882/java-model-gen
 
-COPY ./settings.xml /usr/share/maven/conf/settings.xml</pre>
+```Dockerfile
+FROM dockerhub.azk8s.cn/yue9944882/java-model-gen
+COPY ./settings.xml /usr/share/maven/conf/settings.xml
+```
+
 把settings.xml放到同一个目录，内容大概这样，可以加更多一些mirror
-<pre escaped="true" lang="other">&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
-&lt;mirrors&gt;
-&lt;mirror&gt;
-    &lt;id&gt;aliyun-central&lt;/id&gt;
-    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
-    &lt;name&gt;aliyun central&lt;/name&gt;
-    &lt;url&gt;https://maven.aliyun.com/repository/central&lt;/url&gt;
-&lt;/mirror&gt;
-&lt;/mirrors&gt;
-&lt;/settings&gt;</pre>
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<mirrors>
+<mirror>
+    <id>aliyun-central</id>
+    <mirrorOf>*</mirrorOf>
+    <name>aliyun central</name>
+    <url>https://maven.aliyun.com/repository/central</url>
+</mirror>
+</mirrors>
+</settings>
+```
 执行完成后，生成的文件在/tmp/java里面，找一下自己要的文件在哪里。？？？文件呢？为什么只有个*List文件？？
 试了下文档给出的CRD文件，确实可以生成，但为什么我的不行？  
 试了执行一下explain, 发现字段没有显示出来。
-<pre escaped="true" lang="bash">kubectl explain my_crd_name --recursive</pre>
+
+```bash
+kubectl explain my_crd_name --recursive
+```
+
 最终使用排除法的方式，对比例子和我crd的差异，找出了这里的差异
-<pre escaped="true" lang="xml">spec:
+
+```yaml
+spec:
   preserveUnknownFields: false # 需要添加这个，这个值默认为true
   validation:
     openAPIV3Schema:
-      type: object # 这里也要</pre>
+      type: object # 这里也要
+```
 修改后使用 kubectl explain 可以正确识别字段

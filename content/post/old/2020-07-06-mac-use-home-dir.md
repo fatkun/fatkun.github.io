@@ -12,3 +12,4 @@ categories:
 重新挂载sudo automount -vc
   
 来源：<https://stackoverflow.com/questions/1362703/how-can-i-use-the-home-directory-on-mac-os-x/25558272#25558272>
+

@@ -12,6 +12,8 @@ tags:
   - service
 
 ---
-确认selector是否正确
-确认pod里面配置的containerPort以及service里面的配置的port能对应上
-确认pod是否ready了，不能只看get pod看到的1/1，还要看一下-o yaml的输出结果
+
+## 可能的原因
+- 确认selector是否正确
+- 确认pod里面配置的containerPort以及service里面的配置的port能对应上
+- 确认pod是否ready了，不能只看get pod看到的1/1，还要看一下-o yaml的输出结果

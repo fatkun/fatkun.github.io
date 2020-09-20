@@ -60,21 +60,24 @@ couldn&#8217;t get version/kind; json parse error: json: cannot unmarshal string
 ## 原因
 
 我在replaceClusterCustomObject最后一个参数里填了字符串（通过gson.toJson(obj)来返回），实际上不能传递字符串，直接传obj就好了，或者传bytes，就是不要传字符串。。
-<pre escaped="true" lang="html">public RequestBody serialize(Object obj, String contentType) throws ApiException {
-        if (obj instanceof byte[]) {
-            return RequestBody.create(MediaType.parse(contentType), (byte[])((byte[])obj));
-        } else if (obj instanceof File) {
-            return RequestBody.create(MediaType.parse(contentType), (File)obj);
-        } else if (this.isJsonMime(contentType)) {
-            String content;
-            if (obj != null) {
-                content = this.json.serialize(obj);
-            } else {
-                content = null;
-            }
 
-            return RequestBody.create(MediaType.parse(contentType), content);
+```java
+public RequestBody serialize(Object obj, String contentType) throws ApiException {
+    if (obj instanceof byte[]) {
+        return RequestBody.create(MediaType.parse(contentType), (byte[])((byte[])obj));
+    } else if (obj instanceof File) {
+        return RequestBody.create(MediaType.parse(contentType), (File)obj);
+    } else if (this.isJsonMime(contentType)) {
+        String content;
+        if (obj != null) {
+            content = this.json.serialize(obj);
         } else {
-            throw new ApiException("Content type \"" + contentType + "\" is not supported");
+            content = null;
         }
-    }</pre>
+
+        return RequestBody.create(MediaType.parse(contentType), content);
+    } else {
+        throw new ApiException("Content type \"" + contentType + "\" is not supported");
+    }
+}
+```
