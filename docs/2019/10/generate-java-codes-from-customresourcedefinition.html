@@ -49,7 +49,7 @@
 <meta itemprop="description" content="目标 已经有了go版本的模型定义，需要生成java版本 看了下官方介绍的文档 generate-model-from-third-party-resources.md 感觉不会太难，照着尝试一下。 开始干活 首先看到要k8s 1.15以上的">
 <meta itemprop="datePublished" content="2019-10-26T10:41:26&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-26T10:41:26&#43;00:00" />
-<meta itemprop="wordCount" content="622">
+<meta itemprop="wordCount" content="673">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/docker/"> docker </a>
             </div>
-          <span class="more-meta"> 约 622 字 </span>
+          <span class="more-meta"> 约 673 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -158,38 +158,95 @@
 <p>首先看到要k8s 1.15以上的版本，我只有1.14，只好使用minikube重新装了1.16的版本，具体安装不细说了。<br>
 然后把CRD apply进集群里面，注意CRD得带有openAPIV3Schema的validation（我的是kubebuilder生成的）<br>
 执行这个命令生成swagger json文件</p>
-<pre escaped="true" lang="bash">kubectl get --raw="/openapi/v2" &gt; /tmp/swagger</pre>
-<p>然后执行这个命令生成代码</p>
-<pre escaped="true" lang="bash">docker run -i --rm dockerhub.azk8s.cn/yue9944882/java-model-gen &lt; /tmp/swagger | tar -xzf - -C /tmp/</pre>
-<p>这里我添加了dockerhub.azk8s.cn镜像加速，这个镜像应该是别人构建好的，如果想自己构建，要用首页介绍的项目kubernetes-client/gen ，里面还会用到maven下载也是比较慢的，可以加一下mirrors
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kubectl get --raw<span class="o">=</span><span class="s2">&#34;/openapi/v2&#34;</span> &gt; /tmp/swagger
+</code></pre></td></tr></table>
+</div>
+</div><p>然后执行这个命令生成代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -i --rm dockerhub.azk8s.cn/yue9944882/java-model-gen &lt; /tmp/swagger <span class="p">|</span> tar -xzf - -C /tmp/
+</code></pre></td></tr></table>
+</div>
+</div><p>这里我添加了dockerhub.azk8s.cn镜像加速，这个镜像应该是别人构建好的，如果想自己构建，要用首页介绍的项目kubernetes-client/gen ，里面还会用到maven下载也是比较慢的，可以加一下mirrors
 我写了个简单的Dockerfile</p>
-<pre escaped="true" lang="other">FROM dockerhub.azk8s.cn/yue9944882/java-model-gen
-
-COPY ./settings.xml /usr/share/maven/conf/settings.xml</pre>
-<p>把settings.xml放到同一个目录，内容大概这样，可以加更多一些mirror</p>
-<pre escaped="true" lang="other">&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
-&lt;mirrors&gt;
-&lt;mirror&gt;
-    &lt;id&gt;aliyun-central&lt;/id&gt;
-    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
-    &lt;name&gt;aliyun central&lt;/name&gt;
-    &lt;url&gt;https://maven.aliyun.com/repository/central&lt;/url&gt;
-&lt;/mirror&gt;
-&lt;/mirrors&gt;
-&lt;/settings&gt;</pre>
-<p>执行完成后，生成的文件在/tmp/java里面，找一下自己要的文件在哪里。？？？文件呢？为什么只有个*List文件？？
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="k">FROM</span><span class="s"> dockerhub.azk8s.cn/yue9944882/java-model-gen</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> ./settings.xml /usr/share/maven/conf/settings.xml<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>把settings.xml放到同一个目录，内容大概这样，可以加更多一些mirror</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;mirrors&gt;</span>
+<span class="nt">&lt;mirror&gt;</span>
+    <span class="nt">&lt;id&gt;</span>aliyun-central<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;mirrorOf&gt;</span>*<span class="nt">&lt;/mirrorOf&gt;</span>
+    <span class="nt">&lt;name&gt;</span>aliyun central<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>https://maven.aliyun.com/repository/central<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/mirror&gt;</span>
+<span class="nt">&lt;/mirrors&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行完成后，生成的文件在/tmp/java里面，找一下自己要的文件在哪里。？？？文件呢？为什么只有个*List文件？？
 试了下文档给出的CRD文件，确实可以生成，但为什么我的不行？<br>
 试了执行一下explain, 发现字段没有显示出来。</p>
-<pre escaped="true" lang="bash">kubectl explain my_crd_name --recursive</pre>
-<p>最终使用排除法的方式，对比例子和我crd的差异，找出了这里的差异</p>
-<pre escaped="true" lang="xml">spec:
-  preserveUnknownFields: false # 需要添加这个，这个值默认为true
-  validation:
-    openAPIV3Schema:
-      type: object # 这里也要</pre>
-<p>修改后使用 kubectl explain 可以正确识别字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kubectl explain my_crd_name --recursive
+</code></pre></td></tr></table>
+</div>
+</div><p>最终使用排除法的方式，对比例子和我crd的差异，找出了这里的差异</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">preserveUnknownFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 需要添加这个，这个值默认为true</span><span class="w">
+</span><span class="w">  </span><span class="k">validation</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">openAPIV3Schema</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>object<span class="w"> </span><span class="c"># 这里也要</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>修改后使用 kubectl explain 可以正确识别字段</p>
 
     </div>
 

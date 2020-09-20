@@ -53,7 +53,7 @@
       <pubDate>Mon, 26 Aug 2019 02:57:21 +0000</pubDate>
       
       <guid>https://fatkun.github.io/2019/08/k8s-endpoint-not-contain-ip.html</guid>
-      <description>确认selector是否正确 确认pod里面配置的containerPort以及service里面的配置的port能对应上 确认pod是否rea</description>
+      <description>可能的原因 确认selector是否正确 确认pod里面配置的containerPort以及service里面的配置的port能对应上 确认pod</description>
     </item>
     
     <item>
