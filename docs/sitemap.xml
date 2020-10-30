@@ -2,28 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://fatkun.github.io/post/test/even-preview/</loc>
-    <lastmod>2018-07-10T00:00:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://fatkun.github.io/categories/</loc>
-    <lastmod>2020-07-05T16:29:21+00:00</lastmod>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://fatkun.github.io/2020/07/mac-use-home-dir.html</loc>
-    <lastmod>2020-07-05T16:29:21+00:00</lastmod>
+    <loc>https://fatkun.github.io/categories/go/</loc>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/tags/go-json/</loc>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/post/2020/go-json-marshal/</loc>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://fatkun.github.io/post/</loc>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/tags/</loc>
+    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/2020/07/mac-use-home-dir.html</loc>
     <lastmod>2020-07-05T16:29:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -79,22 +100,8 @@
   </url>
   
   <url>
-    <loc>https://fatkun.github.io/tags/</loc>
-    <lastmod>2019-10-26T10:41:26+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://fatkun.github.io/2019/10/generate-java-codes-from-customresourcedefinition.html</loc>
     <lastmod>2019-10-26T10:41:26+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/categories/go/</loc>
-    <lastmod>2019-09-18T02:18:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -311,6 +318,13 @@
   
   <url>
     <loc>https://fatkun.github.io/categories/theme-preview/</loc>
+    <lastmod>2018-07-10T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/post/test/even-preview/</loc>
     <lastmod>2018-07-10T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -564,34 +578,6 @@
   <url>
     <loc>https://fatkun.github.io/tags/%E9%95%9C%E5%83%8F/</loc>
     <lastmod>2017-09-03T07:02:09+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/post/test/english-preview/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/tags/english/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/categories/english/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/tags/tag-2/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

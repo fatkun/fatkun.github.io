@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Fatkun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 05 Jul 2020 16:29:21 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 14:15:06 +0800</lastBuildDate>
     
 	<atom:link href="https://fatkun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>https://fatkun.github.io/categories/go/</link>
+      <pubDate>Fri, 30 Oct 2020 14:15:06 +0800</pubDate>
+      
+      <guid>https://fatkun.github.io/categories/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>未分类</title>
@@ -26,15 +35,6 @@
       <pubDate>Sat, 26 Oct 2019 10:41:26 +0000</pubDate>
       
       <guid>https://fatkun.github.io/categories/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://fatkun.github.io/categories/go/</link>
-      <pubDate>Wed, 18 Sep 2019 02:18:15 +0000</pubDate>
-      
-      <guid>https://fatkun.github.io/categories/go/</guid>
       <description></description>
     </item>
     
@@ -98,15 +98,6 @@
       <pubDate>Sun, 10 Sep 2017 06:59:38 +0000</pubDate>
       
       <guid>https://fatkun.github.io/categories/j2ee/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>English</title>
-      <link>https://fatkun.github.io/categories/english/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://fatkun.github.io/categories/english/</guid>
       <description></description>
     </item>
     

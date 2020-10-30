@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Theme preview</title>
-      <link>https://fatkun.github.io/post/test/even-preview/</link>
-      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      <title>Go Json Marshal字段不输出</title>
+      <link>https://fatkun.github.io/post/2020/go-json-marshal/</link>
+      <pubDate>Fri, 30 Oct 2020 14:15:06 +0800</pubDate>
       
-      <guid>https://fatkun.github.io/post/test/even-preview/</guid>
-      <description>Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.</description>
+      <guid>https://fatkun.github.io/post/2020/go-json-marshal/</guid>
+      <description>问题 json.Marshal默认不输出非导出的字段 1 2 3 4 5 6 7 8 9 10 11 12 13 type Test struct { Total int `json:&amp;#34;total&amp;#34;` item string `json:&amp;#34;item&amp;#34;` } func main() { resp := Test{ Total: 1, item: &amp;#34;aa&amp;#34;, } body, err := json.Marshal(resp) fmt.Printf(&amp;#34;body=%v, err=%v \n&amp;#34;, string(body), err) //</description>
     </item>
     
     <item>
@@ -183,6 +183,15 @@
     </item>
     
     <item>
+      <title>Theme preview</title>
+      <link>https://fatkun.github.io/post/test/even-preview/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://fatkun.github.io/post/test/even-preview/</guid>
+      <description>Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.</description>
+    </item>
+    
+    <item>
       <title>hdfs acl 授权</title>
       <link>https://fatkun.github.io/2018/06/hdfs-acl-%E6%8E%88%E6%9D%83.html</link>
       <pubDate>Fri, 15 Jun 2018 03:35:54 +0000</pubDate>
@@ -342,16 +351,6 @@
       
       <guid>https://fatkun.github.io/2017/09/%E5%AE%89%E8%A3%85cloudera-manger.html</guid>
       <description>从文档Cloudera Manager Version and Download Information 找到下载地址，按系统版本下载 国外的下载地址很慢，使用中科大做的反向代理访问，下面是centos6的cm地址 wget</description>
-    </item>
-    
-    <item>
-      <title>[English] Creating a New Theme</title>
-      <link>https://fatkun.github.io/post/test/english-preview/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://fatkun.github.io/post/test/english-preview/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
