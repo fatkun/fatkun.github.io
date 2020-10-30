@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>mac使用/home目录 - Fatkun&#39;s Blog</title>
+  <title>Go Json Marshal字段不输出 - Fatkun&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fatkun" /><meta name="description" content="编辑/etc/auto_master文件，把/home那一行注释掉 重新挂载sudo automount -vc 来源：https://stackoverflow.co" /><meta name="keywords" content="Hugo, fatkun" />
+<meta name="author" content="fatkun" /><meta name="description" content="问题 json.Marshal默认不输出非导出的字段 1 2 3 4 5 6 7 8 9 10 11 12 13 type Test struct { Total int `json:&amp;#34;total&amp;#34;` item string `json:&amp;#34;item&amp;#34;` } func main() { resp := Test{ Total: 1, item: &amp;#34;aa&amp;#34;, } body, err := json.Marshal(resp) fmt.Printf(&amp;#34;body=%v, err=%v \n&amp;#34;, string(body), err) //" /><meta name="keywords" content="Hugo, fatkun" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.70.0 with theme even" />
 
 
-<link rel="canonical" href="https://fatkun.github.io/2020/07/mac-use-home-dir.html" />
+<link rel="canonical" href="https://fatkun.github.io/post/2020/go-json-marshal/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="mac使用/home目录" />
-<meta property="og:description" content="编辑/etc/auto_master文件，把/home那一行注释掉 重新挂载sudo automount -vc 来源：https://stackoverflow.co" />
+<meta property="og:title" content="Go Json Marshal字段不输出" />
+<meta property="og:description" content="问题 json.Marshal默认不输出非导出的字段 1 2 3 4 5 6 7 8 9 10 11 12 13 type Test struct { Total int `json:&#34;total&#34;` item string `json:&#34;item&#34;` } func main() { resp := Test{ Total: 1, item: &#34;aa&#34;, } body, err := json.Marshal(resp) fmt.Printf(&#34;body=%v, err=%v \n&#34;, string(body), err) //" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fatkun.github.io/2020/07/mac-use-home-dir.html" />
-<meta property="article:published_time" content="2020-07-05T16:29:21+00:00" />
-<meta property="article:modified_time" content="2020-07-05T16:29:21+00:00" />
-<meta itemprop="name" content="mac使用/home目录">
-<meta itemprop="description" content="编辑/etc/auto_master文件，把/home那一行注释掉 重新挂载sudo automount -vc 来源：https://stackoverflow.co">
-<meta itemprop="datePublished" content="2020-07-05T16:29:21&#43;00:00" />
-<meta itemprop="dateModified" content="2020-07-05T16:29:21&#43;00:00" />
-<meta itemprop="wordCount" content="152">
+<meta property="og:url" content="https://fatkun.github.io/post/2020/go-json-marshal/" />
+<meta property="article:published_time" content="2020-10-30T14:15:06+08:00" />
+<meta property="article:modified_time" content="2020-10-30T14:15:06+08:00" />
+<meta itemprop="name" content="Go Json Marshal字段不输出">
+<meta itemprop="description" content="问题 json.Marshal默认不输出非导出的字段 1 2 3 4 5 6 7 8 9 10 11 12 13 type Test struct { Total int `json:&#34;total&#34;` item string `json:&#34;item&#34;` } func main() { resp := Test{ Total: 1, item: &#34;aa&#34;, } body, err := json.Marshal(resp) fmt.Printf(&#34;body=%v, err=%v \n&#34;, string(body), err) //">
+<meta itemprop="datePublished" content="2020-10-30T14:15:06&#43;08:00" />
+<meta itemprop="dateModified" content="2020-10-30T14:15:06&#43;08:00" />
+<meta itemprop="wordCount" content="90">
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="mac使用/home目录"/>
-<meta name="twitter:description" content="编辑/etc/auto_master文件，把/home那一行注释掉 重新挂载sudo automount -vc 来源：https://stackoverflow.co"/>
+<meta itemprop="keywords" content="go json," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go Json Marshal字段不输出"/>
+<meta name="twitter:description" content="问题 json.Marshal默认不输出非导出的字段 1 2 3 4 5 6 7 8 9 10 11 12 13 type Test struct { Total int `json:&#34;total&#34;` item string `json:&#34;item&#34;` } func main() { resp := Test{ Total: 1, item: &#34;aa&#34;, } body, err := json.Marshal(resp) fmt.Printf(&#34;body=%v, err=%v \n&#34;, string(body), err) //"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">mac使用/home目录</h1>
+      <h1 class="post-title">Go Json Marshal字段不输出</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-07-05 </span>
+        <span class="post-time"> 2020-10-30 </span>
         <div class="post-category">
-            <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+            <a href="/categories/go/"> go </a>
             </div>
-          <span class="more-meta"> 约 152 字 </span>
+          <span class="more-meta"> 约 90 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -138,13 +138,55 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#问题">问题</a></li>
+        <li><a href="#解决方式">解决方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <p>编辑/etc/auto_master文件，把/home那一行注释掉<br>
-重新挂载sudo automount -vc</p>
-<p>来源：<a href="https://stackoverflow.com/questions/1362703/how-can-i-use-the-home-directory-on-mac-os-x/25558272#25558272">https://stackoverflow.com/questions/1362703/how-can-i-use-the-home-directory-on-mac-os-x/25558272#25558272</a></p>
+      <h2 id="问题">问题</h2>
+<p>json.Marshal默认不输出非导出的字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Test</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Total</span> <span class="kt">int</span>    <span class="s">`json:&#34;total&#34;`</span>
+	<span class="nx">item</span>  <span class="kt">string</span> <span class="s">`json:&#34;item&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">resp</span> <span class="o">:=</span> <span class="nx">Test</span><span class="p">{</span>
+		<span class="nx">Total</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+		<span class="nx">item</span><span class="p">:</span>  <span class="s">&#34;aa&#34;</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;body=%v, err=%v \n&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">),</span> <span class="nx">err</span><span class="p">)</span> <span class="c1">// 输出 body={&#34;total&#34;:1}, err=&lt;nil&gt;
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="解决方式">解决方式</h2>
+<p>把字段改成大写字母开头</p>
 
     </div>
 
@@ -156,7 +198,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-07-05
+        2020-10-30
         
     </span>
   </p>
@@ -164,15 +206,17 @@
   
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/go-json/">go json</a>
+          </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/2020/go-json-marshal/">
+        <a class="prev" href="/post/test/even-preview/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Go Json Marshal字段不输出</span>
+            <span class="prev-text nav-default">Theme preview</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/2019/10/generate-java-codes-from-customresourcedefinition.html">
-            <span class="next-text nav-default">从CustomResourceDefinition生成k8s java模型代码</span>
+        <a class="next" href="/2020/07/mac-use-home-dir.html">
+            <span class="next-text nav-default">mac使用/home目录</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
