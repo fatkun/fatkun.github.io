@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fatkun.github.io/post/2020/2020-12-27-istio-1.8-release/</loc>
+    <lastmod>2020-12-27T16:51:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatkun.github.io/post/</loc>
+    <lastmod>2020-12-27T16:51:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://fatkun.github.io/categories/</loc>
     <lastmod>2020-10-30T14:15:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -24,13 +38,6 @@
   
   <url>
     <loc>https://fatkun.github.io/post/2020/go-json-marshal/</loc>
-    <lastmod>2020-10-30T14:15:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://fatkun.github.io/post/</loc>
     <lastmod>2020-10-30T14:15:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

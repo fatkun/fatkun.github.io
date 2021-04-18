@@ -116,6 +116,29 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2018/01/docker-pull.html">docker pull 访问registry过程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-01-28 </span>
+      <div class="post-category">
+          <a href="/categories/docker/"> docker </a>
+          </div>
+        <span class="more-meta"> 约 702 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      执行 docker pull daocloud.io/busybox 之后 步骤 请求 返回 1 GET https://daocloud.io/v2/ HTTP/1.1 HTTP/1.1 401 Unauthorized Server: nginx/1.11.13 Date: Sun, 28 Jan 2018 02:35:17 GMT Content-Type: application/json; charset=utf-8 Content-Length: 87 Connection: close Docker-Distribution-Api-Version: registry/2.0 Www-Authenticate: Bearer realm=&#8221;https://daohub-auth.daocloud.io/auth&#8221;,service=&#8221;daocloud.io&#8221; X-Content-Type-Options: nosniff{&#8220;errors&#8221;:[{&#8220;code&#8221;:&#8221;UNAUTHORIZED&#8221;,&#8221;message&#8221;:&#8221;authentication required&#8221;,&#8221;detail&#8221;:null}]} 2 GET https://daohub-auth.daocloud.io/auth?scope=repository%3Abusybox%3Apull&service=daocloud.io HTTP/1.1 HTTP/1.1 200 OK Server: nginx/1.11.6 Date: Sun, 28 Jan 2018 02:35:17 GMT Content-Type: application/json Content-Length: 570 Connection: close X-Qequest-Time: 0.0
+    </div>
+    <div class="read-more">
+      <a href="/2018/01/docker-pull.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2018/01/%E5%9C%A8win10%E5%90%AF%E5%8A%A8minikube.html">在win10启动minikube</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2018-01-13 </span>
@@ -206,29 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/12/docker-command.html">docker常用命令</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-12-24 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 52 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      # 指定子网 docker network create --subnet=172.18.0.0/16 hadoop # attach进container里面，i参数表示交互，t参数表示tty docker exec -i -t &lt;CONTAINER_ID&gt; bash
-    </div>
-    <div class="read-more">
-      <a href="/2017/12/docker-command.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

@@ -116,6 +116,29 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2012/01/motionevent-action_mask.html">event.getAction()&amp;MotionEvent.ACTION_MASK的原因</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-01-10 </span>
+      <div class="post-category">
+          <a href="/categories/android/"> Android </a>
+          </div>
+        <span class="more-meta"> 约 439 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      看到下面代码中用了AND位运算是为了什么呢？ public boolean onTouchEvent(MotionEvent event) { int action = event.getAction(); switch (action & MotionEvent.ACTION_MASK) { case MotionEvent.ACTION_DOWN: showMsg("ACTION_DOWN" + action); break; case MotionEvent.ACTION_UP: showMsg("ACTION_UP" + action); break; case MotionEvent.ACTION_POINTER_UP: showMsg("ACTION_POINTER_UP" + action); break; case MotionEvent.ACTION_POINTER_DOWN: showMsg("ACTION_POINTER_DOWN" + action); break; } return super.onTouchEvent(event); } 首先来看看这
+    </div>
+    <div class="read-more">
+      <a href="/2012/01/motionevent-action_mask.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2012/01/android-viewholder.html">Android ViewHolder模式</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2012-01-07 </span>
@@ -206,29 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/01/wp-syntax-code-editor.html">WP-Syntax代码编辑器插件</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2012-01-01 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
-          </div>
-        <span class="more-meta"> 约 468 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      升级到WP3.3后，之前的那些插入代码按钮都没有用啦。。上去找插件没找到，自己改了一个syntanx-highlighter的。 感谢原作者l
-    </div>
-    <div class="read-more">
-      <a href="/2012/01/wp-syntax-code-editor.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 
