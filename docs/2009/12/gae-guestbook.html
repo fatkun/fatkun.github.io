@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GAE-简单的留言板(Simple Guestbook) - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="这个例子其实就是Google官方给出来的例子~你可以在文档中看到，我在原例子的基础上添加了修改与删除功能~（没判断权限~谁都可以删除~要判断也很简单…判断一下登陆的email） 我就不说那么详细了·官方例子说的已经很清楚了，需要源码在这里下载：http://115.com/file/bhqlcqtq 这个例子显示效果在此：http://1.latest.fatkuns.appspot.com/
+这个例子涉及了
+ 如何使用用户服务（也就是使用google账号登陆~我有点担心的是别人伪造一个假的登录页面怎么办？放心，我做的那个是真的…- -!） 如何存储数据（使用JDO） JSP Servlet " /><meta name="keywords" content="Hugo, fatkun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/2009/12/gae-guestbook.html" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="GAE-简单的留言板(Simple Guestbook)" />
+<meta property="og:description" content="这个例子其实就是Google官方给出来的例子~你可以在文档中看到，我在原例子的基础上添加了修改与删除功能~（没判断权限~谁都可以删除~要判断也很简单…判断一下登陆的email）
+我就不说那么详细了·官方例子说的已经很清楚了，需要源码在这里下载：http://115.com/file/bhqlcqtq
+这个例子显示效果在此：http://1.latest.fatkuns.appspot.com/
+
+这个例子涉及了
+
+如何使用用户服务（也就是使用google账号登陆~我有点担心的是别人伪造一个假的登录页面怎么办？放心，我做的那个是真的…- -!）
+如何存储数据（使用JDO）
+JSP
+Servlet
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/2009/12/gae-guestbook.html" />
+<meta property="article:published_time" content="2009-12-20T06:32:26+00:00" />
+<meta property="article:modified_time" content="2009-12-20T06:32:26+00:00" />
+<meta itemprop="name" content="GAE-简单的留言板(Simple Guestbook)">
+<meta itemprop="description" content="这个例子其实就是Google官方给出来的例子~你可以在文档中看到，我在原例子的基础上添加了修改与删除功能~（没判断权限~谁都可以删除~要判断也很简单…判断一下登陆的email）
+我就不说那么详细了·官方例子说的已经很清楚了，需要源码在这里下载：http://115.com/file/bhqlcqtq
+这个例子显示效果在此：http://1.latest.fatkuns.appspot.com/
+
+这个例子涉及了
+
+如何使用用户服务（也就是使用google账号登陆~我有点担心的是别人伪造一个假的登录页面怎么办？放心，我做的那个是真的…- -!）
+如何存储数据（使用JDO）
+JSP
+Servlet
+">
+<meta itemprop="datePublished" content="2009-12-20T06:32:26&#43;00:00" />
+<meta itemprop="dateModified" content="2009-12-20T06:32:26&#43;00:00" />
+<meta itemprop="wordCount" content="1986">
+
+
+
+<meta itemprop="keywords" content="GAE,Google,google app engine,留言本," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GAE-简单的留言板(Simple Guestbook)"/>
+<meta name="twitter:description" content="这个例子其实就是Google官方给出来的例子~你可以在文档中看到，我在原例子的基础上添加了修改与删除功能~（没判断权限~谁都可以删除~要判断也很简单…判断一下登陆的email）
+我就不说那么详细了·官方例子说的已经很清楚了，需要源码在这里下载：http://115.com/file/bhqlcqtq
+这个例子显示效果在此：http://1.latest.fatkuns.appspot.com/
+
+这个例子涉及了
+
+如何使用用户服务（也就是使用google账号登陆~我有点担心的是别人伪造一个假的登录页面怎么办？放心，我做的那个是真的…- -!）
+如何存储数据（使用JDO）
+JSP
+Servlet
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">GAE-简单的留言板(Simple Guestbook)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2009-12-20 </span>
+        <div class="post-category">
+            <a href="/categories/j2ee/"> J2EE </a>
+            </div>
+          <span class="more-meta"> 约 1986 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一要保存留言我们需要创建一个这样的文件greetingjava">一、要保存留言，我们需要创建一个这样的文件~Greeting.java</a></li>
+        <li><a href="#二我们还要创建pmfjava用来取得persistencemanager官方说取这个东西要花费很多资源所以只获得一个就好单例模式">二、我们还要创建PMF.java用来取得PersistenceManager。官方说取这个东西要花费很多资源，所以只获得一个就好，单例模式~</a></li>
+        <li><a href="#三我们在war目录下新建一个guestbookjsp用来显示所有留言">三、我们在war目录下新建一个guestbook.jsp用来显示所有留言</a></li>
+        <li><a href="#四没有内容怎么显示呢我们加一个添加到数据库的guestbookaddservletjava">四、没有内容怎么显示呢~我们加一个添加到数据库的GuestbookAddServlet.java</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>这个例子其实就是Google官方给出来的例子~你可以在<a href="http://code.google.com/intl/zh-CN/appengine/docs/java/gettingstarted/" target="_blank" rel="noopener noreferrer">文档</a>中看到，我在原例子的基础上添加了修改与删除功能~（没判断权限~谁都可以删除~要判断也很简单…判断一下登陆的email）
+我就不说那么详细了·官方例子说的已经很清楚了，需要源码在这里下载：<a href="http://115.com/file/bhqlcqtq" target="_blank" rel="noopener noreferrer"><a href="http://115.com/file/bhqlcqtq">http://115.com/file/bhqlcqtq</a></a>
+这个例子显示效果在此：<a href="http://1.latest.fatkuns.appspot.com/" target="_blank" rel="noopener noreferrer"><a href="http://1.latest.fatkuns.appspot.com/">http://1.latest.fatkuns.appspot.com/</a></a><br>
+<img src="http://farm3.static.flickr.com/2771/4199535918_3d3cf61b53_o.jpg" alt="">
+这个例子涉及了</p>
+<ol>
+<li>如何使用用户服务（也就是使用google账号登陆~我有点担心的是别人伪造一个假的登录页面怎么办？放心，我做的那个是真的…- -!）</li>
+<li>如何存储数据（使用JDO）</li>
+<li>JSP</li>
+<li>Servlet</li>
+</ol>
+<p>好~开始了~那些准备工作就不说了，创建项目，包名这些~</p>
+<h2 id="一要保存留言我们需要创建一个这样的文件greetingjava">一、要保存留言，我们需要创建一个这样的文件~Greeting.java</h2>
+<pre lang="java">package com.fatkun.guestbook;
+
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.users.User;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Greeting {
+	//主键的设置，自增的方式
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Long id;
+	//其他的值设置一个@Persistent在前面就会保存到数据库里了
+	@Persistent
+	private User author;
+	@Persistent
+	private String content;
+	@Persistent
+	private Date date;
+
+	//下面是一些Getter,Setter方法，对于JDO是不需要的，只是为了方便你写程序
+	public Greeting(User author, String content, Date date) {
+		super();
+		this.author = author;
+		this.content = content;
+		this.date = date;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+}</pre>
+<h2 id="二我们还要创建pmfjava用来取得persistencemanager官方说取这个东西要花费很多资源所以只获得一个就好单例模式">二、我们还要创建PMF.java用来取得PersistenceManager。官方说取这个东西要花费很多资源，所以只获得一个就好，单例模式~</h2>
+<pre lang="java">package com.fatkun.guestbook;
+
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManagerFactory;
+
+/**
+ * 用来取得PersistenceManager
+ * @author Administrator
+ *
+ */
+public final class PMF {
+	private static final PersistenceManagerFactory pmfInstance = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+
+	private PMF() {
+	}
+
+	public static PersistenceManagerFactory get() {
+		return pmfInstance;
+	}
+}</pre>
+<h2 id="三我们在war目录下新建一个guestbookjsp用来显示所有留言">三、我们在war目录下新建一个guestbook.jsp用来显示所有留言</h2>
+<pre escaped="true" lang="java">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;
+&lt;%@ page import="java.util.List"%&gt;
+&lt;%@ page import="javax.jdo.PersistenceManager"%&gt;
+&lt;%@ page import="com.google.appengine.api.users.User"%&gt;
+&lt;%@ page import="com.google.appengine.api.users.UserService"%&gt;
+&lt;%@ page import="com.google.appengine.api.users.UserServiceFactory"%&gt;
+&lt;%@ page import="com.fatkun.guestbook.Greeting"%&gt;
+&lt;%@ page import="com.fatkun.guestbook.PMF"%&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;title&gt;Google App Engine留言板 - fatkun.com&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;%
+	UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();
+	if (user != null) {
+%&gt;
+&lt;p&gt;你好, &lt;%=user.getNickname()%&gt;! (&lt;a href="&lt;%=userService.createLogoutURL(request.getRequestURI())%&gt;"&gt;退出&lt;/a&gt;.)&lt;/p&gt;
+&lt;%
+	} else {
+%&gt;
+&lt;p&gt;你好! 你可以使用google账号&lt;a href="&lt;%=userService.createLoginURL(request.getRequestURI())%&gt;"&gt;登陆&lt;/a&gt;&lt;/p&gt;
+&lt;%
+	}
+%&gt;
+
+&lt;%
+	PersistenceManager pm = PMF.get().getPersistenceManager();
+	//String query = "select from " + Greeting.class.getName()+" order by id desc";
+	//也可以写成下面的形式
+	String query = "select from com.fatkun.guestbook.Greeting order by id desc";
+	List&lt;Greeting&gt; greetings = (List&lt;Greeting&gt;) pm.newQuery(query).execute();
+	if (greetings.isEmpty()) {
+%&gt;
+&lt;p&gt;还没有留言。&lt;/p&gt;
+&lt;%
+	} else {
+		for (Greeting g : greetings) {
+			if (g.getAuthor() == null) {
+				out.print("&lt;p&gt;一位匿名人士说:&lt;/p&gt;");
+			} else {
+				out.print("&lt;p&gt;&lt;b&gt;"+g.getAuthor().getNickname()+"&lt;/b&gt; 说:&lt;/p&gt;");
+			}
+%&gt;
+&lt;a href="del?id=&lt;%=g.getId()%&gt;"&gt;删除&lt;/a&gt; - &lt;a href="guestbook-modify.jsp?id=&lt;%=g.getId()%&gt;"&gt;修改&lt;/a&gt;
+&lt;blockquote&gt;&lt;%=g.getContent()%&gt;&lt;/blockquote&gt;
+&lt;%
+	}
+	}
+	pm.close();
+%&gt;
+
+&lt;form action="/add" method="post"&gt;
+&lt;div&gt;&lt;textarea name="content" rows="3" cols="60"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;div&gt;&lt;input type="submit" value="我要留言" /&gt;&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>这里注意要引入自己使用的包<del>GQL是针对对象来写查询语句的</del>有点儿像Hibernate的HQL~</p>
+<h2 id="四没有内容怎么显示呢我们加一个添加到数据库的guestbookaddservletjava">四、没有内容怎么显示呢~我们加一个添加到数据库的GuestbookAddServlet.java</h2>
+<pre lang="java">package com.fatkun.guestbook;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.jdo.PersistenceManager;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
+@SuppressWarnings("serial")
+public class GuestbookAddServlet extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//取得用户Service，这里是Google的用户管理
+		UserService userService = UserServiceFactory.getUserService();
+		//取得当前登录的用户，当不存在的时候为null
+		User user = userService.getCurrentUser();
+
+		String content = req.getParameter("content");
+		Date date = new Date();
+		//创建一个Greeting对象
+		Greeting greeting = new Greeting(user, content, date);
+
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			//持久化~也就是把greeting添加进数据库
+			pm.makePersistent(greeting);
+		} finally {
+			pm.close();
+		}
+		resp.sendRedirect("guestbook.jsp");
+	}
+
+}</pre>
+<p>写完了上面这个文件，注意还得在web.xml加入下面的，要告诉服务器说，我在这里啊，你可以通过这个链接找我~~</p>
+<pre escaped="true" lang="xml">&lt;servlet&gt;
+		&lt;servlet-name&gt;add&lt;/servlet-name&gt;
+		&lt;servlet-class&gt;com.fatkun.guestbook.GuestbookAddServlet&lt;/servlet-class&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt;
+		&lt;servlet-name&gt;add&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;/add&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;</pre>
+<p>这时，你应该就可以留言啦<del>运行一下试试</del>可以先在本地测试，再上传到GAE服务器上。
+伍、我最后给出修改和删除的部分代码~其实就主要是数据库的问题~~
+GuestbookModifyServlet.java</p>
+<pre lang="java">protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Long id = Long.parseLong(req.getParameter("id"));
+		String content = req.getParameter("content");
+
+		//先获取PersistenceManager
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			//根据ID从数据库得到一条记录
+			Greeting greeting = pm.getObjectById(Greeting.class, id);
+			//修改记录
+			greeting.setContent(content);
+		} finally {
+			//当关闭pm的时候，会自动把已经修改的记录更新到数据库
+			pm.close();
+		}
+		resp.sendRedirect("guestbook.jsp");
+	}</pre>
+<p>GuestbookDeleteServlet.java</p>
+<pre lang="java">protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Long id = Long.parseLong(req.getParameter("id"));
+
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			//取得这条记录
+			Greeting greeting = pm.getObjectById(Greeting.class, id);
+			//删除
+			pm.deletePersistent(greeting);
+		} finally {
+			//关闭
+			pm.close();
+		}
+		resp.sendRedirect("guestbook.jsp");
+	}</pre>
+<p>好，一个简单的留言板就这样诞生了<del>如果想弄得更加漂亮，就自己弄吧</del>^_^<br>
+我做的例子：<a href="http://1.latest.fatkuns.appspot.com/">http://1.latest.fatkuns.appspot.com/</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2009-12-20
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gae/">GAE</a>
+          <a href="/tags/google/">Google</a>
+          <a href="/tags/google-app-engine/">google app engine</a>
+          <a href="/tags/%E7%95%99%E8%A8%80%E6%9C%AC/">留言本</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2009/12/bad-feedsky.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Feed又出问题了，可恶的FeedSky</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2009/12/11-useful-jquery-powered-wordpress-plugins.html">
+            <span class="next-text nav-default">11个使用JQuery的WordPress插件</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

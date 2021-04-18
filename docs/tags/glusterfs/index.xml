@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>glusterFs on Fatkun&#39;s Blog</title>
+    <link>https://fatkun.github.io/tags/glusterfs/</link>
+    <description>Recent content in glusterFs on Fatkun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://fatkun.github.io/tags/glusterfs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>glusterFs性能评测</title>
+      <link>https://fatkun.github.io/p2206/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fatkun.github.io/p2206/</guid>
+      <description>#./iozone -w -c -e -i 0 -+n -C -r 64k -s 1g -t 8 -F /mnt/gfs/f{0,1,2,3,4,5,6,7,8}.ioz Iozone: Performance Test of File I/O Version $Revision: 3.471 $ Compiled for 64 bit mode. Build: linux-AMD64 Contributors:William Norcott, Don Capps, Isom Crawford, Kirby Collins Al Slater, Scott Rhine, Mike Wisner, Ken Goss Steve Landherr, Brad Smith, Mark Kelly, Dr. Alain CYR, Randy Dunlap, Mark Montague, Dan Million, Gavin Brebner, Jean-Marc Zucconi, Jeff Blomberg,</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Istio 1.8 版本变更简单翻译 - Fatkun&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fatkun" /><meta name="description" content="Known Issues 已知问题 Memory leak in TCP Wasm extensions affecting TCP telemetry (see Issue #24720). The leak occurs when upstream connections are interrupted mid-stream. Wasm extensions内存泄露 Wasm extension configuration updates are disruptive(see Issue #13690). The configuration is immediately applied for existing requests and connections, and is not reverted if the outer xDS is rejected." /><meta name="keywords" content="Hugo, fatkun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="https://fatkun.github.io/post/2020/istio1.8-release-note/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Istio 1.8 版本变更简单翻译" />
+<meta property="og:description" content="Known Issues 已知问题 Memory leak in TCP Wasm extensions affecting TCP telemetry (see Issue #24720). The leak occurs when upstream connections are interrupted mid-stream. Wasm extensions内存泄露 Wasm extension configuration updates are disruptive(see Issue #13690). The configuration is immediately applied for existing requests and connections, and is not reverted if the outer xDS is rejected." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fatkun.github.io/post/2020/istio1.8-release-note/" />
+<meta property="article:published_time" content="2020-12-27T16:51:11+08:00" />
+<meta property="article:modified_time" content="2020-12-27T16:51:11+08:00" />
+<meta itemprop="name" content="Istio 1.8 版本变更简单翻译">
+<meta itemprop="description" content="Known Issues 已知问题 Memory leak in TCP Wasm extensions affecting TCP telemetry (see Issue #24720). The leak occurs when upstream connections are interrupted mid-stream. Wasm extensions内存泄露 Wasm extension configuration updates are disruptive(see Issue #13690). The configuration is immediately applied for existing requests and connections, and is not reverted if the outer xDS is rejected.">
+<meta itemprop="datePublished" content="2020-12-27T16:51:11&#43;08:00" />
+<meta itemprop="dateModified" content="2020-12-27T16:51:11&#43;08:00" />
+<meta itemprop="wordCount" content="2476">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Istio 1.8 版本变更简单翻译"/>
+<meta name="twitter:description" content="Known Issues 已知问题 Memory leak in TCP Wasm extensions affecting TCP telemetry (see Issue #24720). The leak occurs when upstream connections are interrupted mid-stream. Wasm extensions内存泄露 Wasm extension configuration updates are disruptive(see Issue #13690). The configuration is immediately applied for existing requests and connections, and is not reverted if the outer xDS is rejected."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fatkun&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">存档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fatkun&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">存档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Istio 1.8 版本变更简单翻译</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-27 </span>
+        
+          <span class="more-meta"> 约 2476 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#known-issues-已知问题">Known Issues 已知问题</a></li>
+        <li><a href="#traffic-management-流量管理">Traffic Management 流量管理</a></li>
+        <li><a href="#security-安全">Security 安全</a></li>
+        <li><a href="#telemetry-遥测">Telemetry 遥测</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#istioctl">istioctl</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="known-issues-已知问题">Known Issues 已知问题</h2>
+<ul>
+<li>Memory leak in TCP Wasm extensions affecting TCP telemetry (see <a href="https://github.com/istio/istio/issues/24720">Issue #24720</a>). The leak occurs when upstream connections are interrupted mid-stream. Wasm extensions内存泄露</li>
+<li>Wasm extension configuration updates are disruptive(see <a href="https://github.com/envoyproxy/envoy/issues/13690">Issue #13690</a>). The configuration is immediately applied for existing requests and connections, and is not reverted if the outer xDS is rejected.</li>
+<li>Race condition with Envoy aggregate cluster when creating an <code>EnvoyFilter</code> and <code>ServiceEntry</code> for the same service. Istio-injected pods are unable to start up due to <code>istio-proxy</code> crashing with a segfault. See <a href="https://github.com/istio/istio/issues/28620">Issue #28620</a> for more information. 竞争关系</li>
+</ul>
+<h2 id="traffic-management-流量管理">Traffic Management 流量管理</h2>
+<ul>
+<li>
+<p><strong>Added</strong> DNS capture in istio-agent by default for VMs installed using <code>istioctl x workload entry configure</code>. 在虚拟机场景下，默认使用istio-agent捕获DNS请求</p>
+</li>
+<li>
+<p><strong>Added</strong> <code>holdApplicationUntilProxyStarts</code> field to <code>ProxyConfig</code>, allowing it to be configured at the pod level. Should not be used in conjunction with the deprecated <code>values.global.proxy.holdApplicationUntilProxyStarts</code> value. (<a href="https://github.com/istio/istio/issues/27696">Issue #27696</a>)  允许在pod级别配置</p>
+</li>
+<li>
+<p><strong>Added</strong> support for <code>INSERT_FIRST</code>, <code>INSERT_BEFORE</code>, <code>INSERT_AFTER</code> insert operations for <code>HTTP_ROUTE</code> in <code>EnvoyFilter</code> (<a href="https://github.com/istio/istio/issues/26692">Issue #26692</a>) EnvoyFilter增加hook</p>
+</li>
+<li>
+<p><strong>Added</strong> <code>REPLACE</code> operation for <code>EnvoyFilter</code>. <code>REPLACE</code> operation can replace the contents of a named filter with new contents. It is only valid for <code>HTTP_FILTER</code> and <code>NETWORK_FILTER</code>. (<a href="https://github.com/istio/istio/issues/27425">Issue #27425</a>) EnvoyFIlter增加Replace操作</p>
+</li>
+<li>
+<p><strong>Added</strong> Istio resource status now includes observed generation (<a href="https://github.com/istio/istio/issues/28003">Issue #28003</a>) 增加observedGeneration，用于判断status是否已经更新了</p>
+<ul>
+<li>在1.6开始提供status，需要手工开启，alpha状态。 <a href="https://istio.io/latest/docs/reference/config/config-status/">https://istio.io/latest/docs/reference/config/config-status/</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Fixed</strong> remove endpoints when the new labels in <code>WorkloadEntry</code> do not match the <code>workloadSelector</code> in <code>ServiceEntry</code>. (<a href="https://github.com/istio/istio/issues/25678">Issue #25678</a>) ServiceEntry如果label不match后，需要移除endpoint</p>
+</li>
+<li>
+<p><strong>Fixed</strong> when a node has multiple IP addresses (e.g., a VM in the mesh expansion scenario), Istio Proxy will now bind <code>inbound</code> listeners to the first applicable address in the list (new behavior) rather than to the last one (former behavior). (<a href="https://github.com/istio/istio/issues/28269">Issue #28269</a>) 如果有多个IP，优先绑定第一个ip，之前是最后一个</p>
+</li>
+</ul>
+<h2 id="security-安全">Security 安全</h2>
+<ul>
+<li><strong>Improved</strong> Gateway certificates to be read and distributed from Istiod, rather than in the gateway pods. This reduces the permissions required in the gateways, improves performance, and makes certificate reading more extensible. This change is fully backwards compatible with the old mechanism, and requires no changes to your cluster. If required, it can be disabled by setting the <code>ISTIOD_ENABLE_SDS_SERVER=false</code> environment variable in Istiod. (<a href="https://github.com/istio/istio/pull/27744">Pull Request #27744</a>) 网关证书通过istiod分发，减少gateway pod自己获取需要权限。</li>
+<li><strong>Improved</strong> TLS configuration on sidecar server side inbound paths to enforce <code>TLSv2</code> version along with recommended cipher suites. If this is not needed or creates problems with non Envoy clients, it can disabled by setting Istiod env variable <code>PILOT_SIDECAR_ENABLE_INBOUND_TLS_V2</code> to false. (<a href="https://github.com/istio/istio/pull/27500">Pull Request #27500</a>) 默认强制使用TLSv2</li>
+<li><strong>Updated</strong> The <code>ipBlocks</code>/<code>notIpBlocks</code> fields of an <code>AuthorizationPolicy</code> now strictly refer to the source IP address of the IP packet as it arrives at the sidecar. Prior to this release, if using the Proxy Protocol, then the <code>ipBlocks</code>/<code>notIpBlocks</code> would refer to the IP address determined by the Proxy Protocol. Now the <code>remoteIpBlocks</code>/<code>notRemoteIpBlocks</code> fields must be used to refer to the client IP address from the Proxy Protocol. (<a href="https://istio.io/latest/docs/reference/config/security/authorization-policy/">reference</a>)(<a href="https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/">usage</a>)(<a href="https://istio.io/latest/docs/tasks/security/authorization/authz-ingress/">usage</a>) (<a href="https://github.com/istio/istio/issues/22341">Issue #22341</a>) AuthorizationPolicy里面ip来源问题</li>
+<li><strong>Added</strong> <code>AuthorizationPolicy</code> now supports nested JWT claims. (<a href="https://github.com/istio/istio/issues/21340">Issue #21340</a>) AuthorizationPolicy支持嵌套JWT</li>
+<li><strong>Added</strong> support for client side Envoy secure naming config when trust domain alias is used. This fixes the multi-cluster service discovery client SAN generation to use all endpoints’ service accounts rather than the first found service registry. (<a href="https://github.com/istio/istio/pull/26185">Pull Request #26185</a>)  可信域相关</li>
+<li><strong>Added</strong> Experimental feature support allowing Istiod to integrate with external certificate authorities using Kubernetes CSR API (&gt;=1.18 only). (<a href="https://github.com/istio/istio/issues/27606">Issue #27606</a>)(<a href="https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/">usage</a>) 实验性使用K8S CSR API（&gt;=1.18）支持外部证书签发机构</li>
+<li><strong>Added</strong> Enable user to set the custom VM identity provider for credential authentication (<a href="https://github.com/istio/istio/issues/27947">Issue #27947</a>) 允许用户自定义VM的身份提供方</li>
+<li><strong>Added</strong> action ‘AUDIT’ to Authorization Policy that can be used to determine which requests should be audited. (<a href="https://github.com/istio/istio/issues/25591">Issue #25591</a>) 在Authorization Policy的AUDIT action，可以指定哪些请求需要审计</li>
+<li><strong>Added</strong> support for migration and concurrent use of regular K8S tokens as well as new K8S tokens with audience. This feature is enabled by default, can be disabled by <code>REQUIRE_3P_TOKEN</code> environment variable in Istiod, which will require new tokens with audience. The <code>TOKEN_AUDIENCES</code> environment variable allows customizing the checked audience, default remains <code>istio-ca</code>. (<a href="https://github.com/istio/istio/pull/26482">Pull Request #26482</a>) 解决证书轮换中，JWT的token轮换会导致SDS的断开和重连</li>
+<li><strong>Added</strong> <code>AuthorizationPolicy</code> now supports a <code>Source</code> of type <code>remoteIpBlocks</code>/<code>notRemoteIpBlocks</code> that map to a new <code>Condition</code> attribute called <code>remote.ip</code> that can also be used in the “when” clause. If using an http/https load balancer in front of the ingress gateway, the <code>remote.ip</code> attribute is set to the original client IP address determined by the <code>X-Forwarded-For</code> http header from the trusted proxy configured through the <code>numTrustedProxies</code> field of the <code>gatewayTopology</code> under the <code>meshConfig</code> when you install Istio or set it via an annotation on the ingress gateway. See the documentation here: <a href="https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/">Configuring Gateway Network Topology</a>. If using a TCP load balancer with the Proxy Protocol in front of the ingress gateway, the <code>remote.ip</code> is set to the original client IP address as given by the Proxy Protocol. (<a href="https://istio.io/latest/docs/reference/config/security/authorization-policy/">reference</a>)(<a href="https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/">usage</a>)(<a href="https://istio.io/latest/docs/tasks/security/authorization/authz-ingress/">usage</a>) (<a href="https://github.com/istio/istio/issues/22341">Issue #22341</a>) <code>AuthorizationPolicy</code>支持<code>remoteIpBlocks</code>配置，remoteIp来自于X-Forwarded-For或 Proxy Protocol。</li>
+</ul>
+<p>A critical <a href="https://groups.google.com/g/envoy-security-announce/c/aqtBt5VUor0">bug</a> has been identified in Envoy that the proxy protocol downstream address is restored incorrectly for non-HTTP connections.</p>
+<p>Please DO NOT USE the <code>remoteIpBlocks</code> field and <code>remote_ip</code> attribute with proxy protocol on non-HTTP connections until a newer version of Istio is released with a proper fix.</p>
+<p>Note that Istio doesn’t support the proxy protocol and it can be enabled only with the <code>EnvoyFilter</code> API and should be used at your own risk.</p>
+<h2 id="telemetry-遥测">Telemetry 遥测</h2>
+<ul>
+<li><strong>Updated</strong> the “Control Plane Dashboard” and the “Performance Dashboard” to use the <code>container_memory_working_set_bytes</code> metric to display memory. This metric only counts memory that <em>cannot be reclaimed</em> by the kernel even under memory pressure, and therefore more relevant for tracking. It is also consistent with <code>kubectl top</code>. The reported values are lower than the previous values. 更换内存显示的指标，只计算那些就算内存压力也不会回收的内存</li>
+<li><strong>Updated</strong> the Istio Workload and Istio Service dashboards resulting in faster load time. (<a href="https://github.com/istio/istio/issues/22408">Issue #22408</a>) 优化速度</li>
+<li><strong>Added</strong> <code>datasource</code> parameter to Grafana dashboards (<a href="https://github.com/istio/istio/issues/22408">Issue #22408</a>) 增加<code>datasource</code>参数</li>
+<li><strong>Added</strong> Listener Access Logs when <code>ResponseFlag</code> from Envoy is set. (<a href="https://github.com/istio/istio/issues/26851">Issue #26851</a>) 如果Envoy设置了<code>ResponseFlag</code>，记录listerner的访问日志</li>
+<li><strong>Added</strong> support for <code>OpenCensusAgent</code> formatted trace export with configurable trace context headers. 支持trace格式定义</li>
+<li><strong>Added</strong> Proxy config to control Envoy native stats generation. (<a href="https://github.com/istio/istio/issues/26546">Issue #26546</a>) Proxy config控制envoy统计数据的生成</li>
+<li><strong>Added</strong> Istio Wasm Extension Grafana Dashboard. (<a href="https://github.com/istio/istio/issues/25843">Issue #25843</a>) 增加Istio Wasm Extension 展示</li>
+<li><strong>Added</strong> gRPC streaming message count proxy Prometheus <code>metrics istio_request_messages_total</code> and <code>istio_response_messages_total</code> (<a href="https://github.com/istio/proxy/pull/3048">Pull Request #3048</a>)</li>
+<li><strong>Added</strong> support for properly labeling traffic in client metrics for cases when the destination is not reached or is not behind a proxy. (<a href="https://github.com/istio/istio/issues/20538">Issue #20538</a>)</li>
+<li><strong>Fixed</strong> interpretation of <code>$(HOST_IP)</code> in Zipkin and Datadog tracer address. (<a href="https://github.com/istio/istio/issues/27911">Issue #27911</a>)</li>
+<li><strong>Removed</strong> all Mixer-related features and functionality. This is a scheduled removal of a deprecated Istio services and deployments, as well as Mixer-focused CRDs and component and related functionality. (<a href="https://github.com/istio/istio/issues/25333">Issue #25333</a>),(<a href="https://github.com/istio/istio/issues/24300">Issue #24300</a>) 移除所有mixser相关代码</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li><strong>Promoted</strong> <a href="https://istio.io/latest/docs/setup/additional-setup/external-controlplane/">external control plane</a> to alpha. (<a href="https://github.com/istio/enhancements/issues/11">Issue #11</a>) 远程控制面</li>
+<li><img src="https://lh6.googleusercontent.com/HtKZoeSPWBiNJXMM_6aUgcZw42fHR0Bd2YW4BI61Y1JwnOoF2A_Bs-gRUSW-j-rlKjtJh3XmhyyoiKsXXQAPIgClobVkJhgQ0Z4Zqt4fpeBJWxIGmKwKV25eEqC88j4V_u8oSvtJ" alt="img"></li>
+<li><strong>Updated</strong> Kiali addon to version 1.26.</li>
+<li><strong>Added</strong> support for <a href="https://istio.io/latest/docs/setup/install/helm/">installing and upgrading Istio</a> using <a href="https://helm.sh/docs/">Helm 3</a> 支持Helm3安装</li>
+<li><strong>Improved</strong> multi-network configuration so that labeling a service with <code>topology.istio.io/network=network-name</code> can configure cross-network gateways without using <a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshNetworks">mesh networks</a>. 支持使用label指定网络</li>
+<li><strong>Improved</strong> sidecar injection to not modify the pod <code>securityPolicy.fsGroup</code> which could conflict with existing settings and secret mounts. This option is enabled automatically on Kubernetes 1.19+ and is not supported on older versions. (<a href="https://github.com/istio/istio/issues/26882">Issue #26882</a>) sidecar injection 不修改<code>securityPolicy.fsGroup</code></li>
+<li><strong>Improved</strong> Generated operator manifests for use with <code>kustomize</code> are available in the <a href="https://github.com/istio/istio/tree/release-1.8/manifests/charts/istio-operator/files">manifests</a> directory. (<a href="https://github.com/istio/istio/issues/27139">Issue #27139</a>) 可以在manifests目录使用kustomize</li>
+<li><strong>Updated</strong> install script to bypass GitHub API Rate Limiting. (<a href="https://github.com/istio/istio/pull/23469">Pull Request #23469</a>) 安装脚本优化</li>
+<li><strong>Added</strong> port <code>15012</code> to the default list of ports for the <code>istio-ingressgateway</code> Service. (<a href="https://github.com/istio/istio/issues/25933">Issue #25933</a>) 默认端口</li>
+<li><strong>Added</strong> support for Kubernetes versions 1.16 to 1.19 to Istio 1.8. (<a href="https://github.com/istio/istio/issues/28814">Issue #28814</a>) 支持k8s 1.16 - 1.19</li>
+<li><strong>Added</strong> the ability to specify the network for a Pod using the label <code>topology.istio.io/network</code>. This overrides the setting for the cluster’s installation values (<code>values.globalnetwork</code>). If the label isn’t set, it is injected based on the global value for the cluster. (<a href="https://github.com/istio/istio/issues/25500">Issue #25500</a>)</li>
+<li><strong>Deprecated</strong> installation flags <code>values.global.meshExpansion.enabled</code> in favor of user-managed config and <code>values.gateways.istio-ingressgateway.meshExpansionPorts</code> in favor of <code>components.ingressGateways[name=istio-ingressgateway].k8s.service.ports</code> (<a href="https://github.com/istio/istio/issues/25933">Issue #25933</a>)</li>
+<li><strong>Fixed</strong> Istio operator manager to allow configuring <code>RENEW_DEADLINE</code>. (<a href="https://github.com/istio/istio/issues/27509">Issue #27509</a>)</li>
+<li><strong>Fixed</strong> an issue preventing <code>NodePort</code> services from being used as the <code>registryServiceName</code> in <code>meshNetworks</code>.</li>
+<li><strong>Removed</strong> support for installing third-party telemetry applications with <code>istioctl</code>. These applications (Prometheus, Grafana, Zipkin, Jaeger, and Kiali), often referred to as the Istio addons, must now be installed separately. This does not impact Istio’s ability to produce telemetry for those use in the addons. See <a href="https://istio.io/latest/blog/2020/addon-rework/">Reworking our Addon Integrations</a> for more info. (<a href="https://github.com/istio/istio/issues/23868">Issue #23868</a>),(<a href="https://github.com/istio/istio/issues/23583">Issue #23583</a>)  取消支持使用istioctl安装第三方遥测组件</li>
+<li><strong>Removed</strong> <code>istio-telemetry</code> and <code>istio-policy</code> services and deployments from installation by <code>istioctl</code>. (<a href="https://github.com/istio/istio/issues/23868">Issue #23868</a>),(<a href="https://github.com/istio/istio/issues/23583">Issue #23583</a>)</li>
+<li><strong>Fixed</strong> Istio Grafana Dashboards queries which have <code>reporter</code> field. (<a href="https://github.com/istio/istio/issues/27595">Issue #27595</a>)</li>
+</ul>
+<h2 id="istioctl">istioctl</h2>
+<ul>
+<li><strong>Improved</strong> <code>istioctl analyze</code> to find the exact line number with configuration errors when analyzing yaml files. Before, it would return the first line of the resource with the error. (<a href="https://github.com/istio/istio/issues/22872">Issue #22872</a>) 在<code>istioctl analyze</code>检查yaml文件时所有出错的行数，之前只列出第一行。</li>
+<li><strong>Updated</strong> <code>istioctl experimental version</code> and <code>proxy-status</code> to use token security. A new option, <code>--plaintext</code>, has been created for testing without tokens. (<a href="https://github.com/istio/istio/issues/24905">Issue #24905</a>) 使用token</li>
+<li><strong>Added</strong> istioctl commands may now refer to pods indirectly, for example <code>istioctl dashboard envoy deployment/httpbin</code> (<a href="https://github.com/istio/istio/issues/26080">Issue #26080</a>) 可以间接引用pod</li>
+<li><strong>Added</strong> <code>io</code> as short name for Istio Operator resources in addition to <code>iop</code>. (<a href="https://github.com/istio/istio/issues/27159">Issue #27159</a>) 添加io短名称</li>
+<li><strong>Added</strong> <code>--type</code> for <code>istioctl experimental create-remote-secret</code> to allow user specify type for the created secret. 创建证书可以指定类型</li>
+<li><strong>Added</strong> an experimental OpenShift Kubernetes platform profile to <code>istioctl</code>. To install with the OpenShift profile, use <code>istioctl install --set profile=openshift</code>. (<a href="https://istio.io/latest/docs/setup/platform-setup/openshift/">OpenShift Platform Setup</a>)(<a href="https://istio.io/latest/docs/setup/install/istioctl/#install-a-different-profile">Install OpenShift using <code>istioctl</code></a>) 实验性支持OpenShift</li>
+<li><strong>Added</strong> <code>istioctl bug-report</code> command to generate an archive of Istio and cluster information to assist with debugging. (<a href="https://github.com/istio/istio/issues/26045">Issue #26045</a>) 生成错误报告</li>
+<li><strong>Added</strong> new command <code>istioctl experimental istiod log</code> to enable managing logging levels of <code>istiod</code> components. (<a href="https://github.com/istio/istio/issues/25276">Issue #25276</a>),(<a href="https://github.com/istio/istio/issues/27797">Issue #27797</a>) 控制日志级别</li>
+<li><strong>Deprecated</strong> <code>centralIstiod</code> flag in favor of <code>externalIstiod</code> to better support external control plane model. (<a href="https://github.com/istio/istio/issues/24471">Issue #24471</a>) 更改名称</li>
+<li><strong>Fixed</strong> an issue which allowed an empty revision flag on install. (<a href="https://github.com/istio/istio/issues/26940">Issue #26940</a>)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fatkun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-12-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020/2020-12-27-istio-1.8-release/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Istio 1.8 主要变化</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2020/go-json-marshal/">
+            <span class="next-text nav-default">Go Json Marshal字段不输出</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
+  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2009 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
