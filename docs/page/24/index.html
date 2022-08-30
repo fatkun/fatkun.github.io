@@ -116,6 +116,69 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2014/01/1597.html">vim格式化json</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-01-08 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 52 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在vim输入以下命令就可以格式化 :%!python -m json.tool 可以在~/.vimrc增加快捷键 map &lt;F4&gt; &lt;Esc&gt;:%!python -m json.tool&lt;CR&gt; 来源: http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/ vim快捷键： http://uniquejava.iteye.com/blog/1485884
+    </div>
+    <div class="read-more">
+      <a href="/2014/01/1597.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2013/12/register-udf.html">动态注册hive udf</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-12-22 </span>
+      <div class="post-category">
+          <a href="/categories/hive/"> hive </a>
+          </div>
+        <span class="more-meta"> 约 840 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="目标">目标</h2>
+<p>可以不重启hive服务端动态增加或更新udf，本文用到动态加载以及hive hook实现。</p>
+<h2 id="看看原来的代码是怎样写的">看看原来的代码是怎样写的</h2>
+<p>我看的是cdh4.3.0代码，目前有两个地方注册udf，
+一个是在org.apache.hadoop.hive.ql.exec.FunctionRegistry类里，大部分的内置udf都是在这里注册的，很多网站都是通过修改这里代码重新打包来注册udf。
+第二个是最近新增了一个hive-builtins*.jar文件，注册函数是在</p>
+<pre lang="java" escaped="true">public SessionState(HiveConf conf) {
+...
+      Class&lt;?&gt; pluginClass = Utilities.getBuiltinUtilsClass();
+      URL jarLocation = pluginClass.getProtectionDomain().getCodeSource().getLocation();
+      add_builtin_resource(ResourceType.JAR, jarLocation.toString());
+      FunctionRegistry.registerFunctionsFromPluginJar(jarLocation, pluginClass.getClassLoader());
+...
+  }</pre>
+<p>通过找到org.apache.hive.builtins.BuiltinUtils类定位jar的位置，把jar包加入hive.added.jars.path配置里，然后通过FunctionRegistry.registerFunctionsFromPluginJar来注册udf</p>
+<pre lang="java" escaped="true">//我们可以用这两个方法来注册udf
+public static void registerTemporaryUDF(String functionName, Class&lt;? extends UDF&gt; UDFClass, boolean isOperator)
+public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader classLoader)</pre>
+    </div>
+    <div class="read-more">
+      <a href="/2013/12/register-udf.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2013/12/impala-jdbc-example.html">使用jdbc连接impala例子</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2013-12-15 </span>
@@ -183,52 +246,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/12/auto-ssh.html">免密码ssh登陆</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-12-10 </span>
-      <div class="post-category">
-          <a href="/categories/linux/"> Linux </a>
-          </div>
-        <span class="more-meta"> 约 342 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      场景：机器A想要无密码访问机器B 方法一：手工操作 在机器A执行，ssh-keygen 按几次回车 把生成的id_rsa.pub传输到机器B /tmp/ 目录下
-    </div>
-    <div class="read-more">
-      <a href="/2013/12/auto-ssh.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/11/hiveserver2-python-client.html">hiveserver2 python client</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-11-17 </span>
-      <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 554 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      一个hiveserver2 python客户端的例子，大部分代码来自于hue。 忽略了一些必要的判断，只是做一个简单的例子。 需要安装thrift
-    </div>
-    <div class="read-more">
-      <a href="/2013/11/hiveserver2-python-client.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +285,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

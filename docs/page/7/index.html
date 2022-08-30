@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html">cloudera manager在下载日志返回502 BAD_GATEWAY错误</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-12-26 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 93 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      下载日志是通过status_server.py的download_log方法进行的 /usr/lib64/cmf/agent/build/env/lib/python2.6/site-packages/cmf-5.13.1-py2.6.egg/cmf/status_server.py 如果日志目录包含以下开头就禁止下载 # Simple blacklist of path prefixes that are not reasonable for
+    </div>
+    <div class="read-more">
+      <a href="/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/12/deploy-hadoop-hdfs-use-docker.html">使用docker部署hadoop hdfs</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-12-24 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 314 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      先创建一个网络 docker network create hadoop 把本机新建一个目录hadoop，以下xml保存为docker-compose.yml version: "3" services: namenode: image: uhopper/hadoop-namenode hostname: namenode1 container_name: namenode1 # 要和netw
+    </div>
+    <div class="read-more">
+      <a href="/2017/12/deploy-hadoop-hdfs-use-docker.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/12/docker-command.html">docker常用命令</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2017-12-24 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/11/hive-windowing-function-lead-reduce-oom.html">HIVE-13936 Hive windowing function 导致 reduce OOM</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-11-09 </span>
-      <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 15 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      这个是row_number https://issues.apache.org/jira/browse/HIVE-13936 http://grokbase.com/t/hive/user/148m45m9ge/help-needed-out-of-memory-with-windowing-functions
-    </div>
-    <div class="read-more">
-      <a href="/2017/11/hive-windowing-function-lead-reduce-oom.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/11/hive-11315-hive%E5%A4%A7%E8%AF%AD%E5%8F%A5%E7%BC%96%E8%AF%91%E7%BC%93%E6%85%A2.html">HIVE-11315 hive大语句编译缓慢</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-11-03 </span>
-      <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 1 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      https://issues.apache.org/jira/browse/HIVE-11315
-    </div>
-    <div class="read-more">
-      <a href="/2017/11/hive-11315-hive%E5%A4%A7%E8%AF%AD%E5%8F%A5%E7%BC%96%E8%AF%91%E7%BC%93%E6%85%A2.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/01/apache-php-no-cache.html">apache php 不缓存配置</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-01-25 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 118 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      ExpiresDefault可以设置所有文件的缓存时间 针对php设置 header, “private, must-revalidate” 设成这个还能够后退，
+    </div>
+    <div class="read-more">
+      <a href="/2015/01/apache-php-no-cache.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/01/analyze-slow-impala-2.html">从日志分析impala查询慢的原因（2）</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-01-03 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 1955 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt='2014-04-08' I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103
+    </div>
+    <div class="read-more">
+      <a href="/2015/01/analyze-slow-impala-2.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2014/12/analyze-slow-impala.html">从日志分析impala查询慢的原因（1）</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2014-12-28 </span>
@@ -183,53 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2014/11/httpfs-and-webhdfs.html">hdfs httpfs与webhdfs的简单使用</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-11-02 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 1147 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      HttpFS和WebHDFS 通过http协议操作hdfs有两个组件，httpfs和webhdfs，我一开始还以为这两个是同一个东西，其实不是
-    </div>
-    <div class="read-more">
-      <a href="/2014/11/httpfs-and-webhdfs.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2014/09/spark-with-lzo.html">cdh4 spark配置LZO</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-09-27 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 294 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      使用的hadoop是cdh4.2.1版本 spark1.1，需要配置hadoop-native和lzo native 在spark-env.sh加入 HADOOP_CONF_DIR=/etc/hadoop/conf SPARK_SUBMIT_CLASSPATH=$SPARK_SUBMIT_CLASSPATH:/etc/hive/conf:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/hadoop-lzo.jar #SPARK_SUBMIT_LIBRARY_PATH=$SPARK_SUBMIT_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native
-    </div>
-    <div class="read-more">
-      <a href="/2014/09/spark-with-lzo.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -269,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

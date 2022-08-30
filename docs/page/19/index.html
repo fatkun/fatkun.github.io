@@ -116,6 +116,53 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/05/namenode-standby-checkponit.html">namenode standby checkponit时间过长导致的问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-05-03 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 1748 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      我们当前使用的版本是cdh-4.2.1，standby namenode默认每小时生成一个editlog文件，由于操作很多，这个保存时间超过了
+    </div>
+    <div class="read-more">
+      <a href="/2015/05/namenode-standby-checkponit.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html">hdfs选择datanode策略</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-04-23 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 2182 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前几天报错如下： Error: org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/xxx/part-r-00002 could only be replicated to 0 nodes instead of minReplication (=1). There are 11 datanode(s) running and no node(s) are excluded in this operation. at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget(BlockManager.java:1327) at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2278) at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:480) at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:297) at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java:44080) at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:453) at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1002) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1695) at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1691) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:396) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408) at org.apache.hadoop.ipc.Server$Handler.run(Server.java:1689) 阅读一下代码了
+    </div>
+    <div class="read-more">
+      <a href="/2015/04/hdfs%E9%80%89%E6%8B%A9datanode%E7%AD%96%E7%95%A5.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/test/js-flowchart-diagrams/">JS Flowchart Diagrams</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2015-03-04 </span>
@@ -231,52 +278,6 @@ Andrew-&gt;&gt;China: I am good thanks!
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/01/apache-php-no-cache.html">apache php 不缓存配置</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-01-25 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 118 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      ExpiresDefault可以设置所有文件的缓存时间 针对php设置 header, “private, must-revalidate” 设成这个还能够后退，
-    </div>
-    <div class="read-more">
-      <a href="/2015/01/apache-php-no-cache.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/01/analyze-slow-impala-2.html">从日志分析impala查询慢的原因（2）</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-01-03 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 1955 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      上一篇文章看到 requestTblLoadAndWait 速度缓慢，继续分析。先上日志 # impalad日志 I0103 15:09:35.503356 27319 impala-beeswax-server.cc:170] query(): query=select distinct(disp_id) from default_impala.kpi_disp_user_info_stat_tb where pt='2014-04-08' I0103 15:11:36.109915 27319 Frontend.java:779] Missing tables were not received in 120000ms. Load request will be retried. I0103 15:11:36.110705 27319 Frontend.java:709] Requesting prioritized load of table(s): default_impala.kpi_disp_user_info_stat_tb I0103
-    </div>
-    <div class="read-more">
-      <a href="/2015/01/analyze-slow-impala-2.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -316,7 +317,7 @@ Andrew-&gt;&gt;China: I am good thanks!
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

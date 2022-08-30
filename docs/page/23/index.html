@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2014/03/mysql-alter-collate.html">mysql 排序规则 COLLATE 修改</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-03-24 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          </div>
+        <span class="more-meta"> 约 91 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      使用以下语句转换。 alter table &lt;some_table&gt; convert to character set utf8 collate utf8_unicode_ci; 来源：http://stackoverflow.com/questions/742205/mysql-
+    </div>
+    <div class="read-more">
+      <a href="/2014/03/mysql-alter-collate.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2014/03/hadoop-2-0-yarn-state.html">【转】HADOOP 2.0 YARN中的MR/RM/NM状态转换图</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-03-23 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 35 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      hadoop2 可以用GRAPHVIZ来生成状态图，点击下面的连接查看状态转换图。 http://www.rigongyizu.com/generate-hadoop-yarn-state-transit-graph/
+    </div>
+    <div class="read-more">
+      <a href="/2014/03/hadoop-2-0-yarn-state.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2014/02/debug-mapreduce-with-eclipse.html">在eclipse远程调试mapreduce（hadoop2）</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2014-02-22 </span>
@@ -183,69 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2014/01/1597.html">vim格式化json</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-01-08 </span>
-      <div class="post-category">
-          <a href="/categories/linux/"> Linux </a>
-          </div>
-        <span class="more-meta"> 约 52 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      在vim输入以下命令就可以格式化 :%!python -m json.tool 可以在~/.vimrc增加快捷键 map &lt;F4&gt; &lt;Esc&gt;:%!python -m json.tool&lt;CR&gt; 来源: http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/ vim快捷键： http://uniquejava.iteye.com/blog/1485884
-    </div>
-    <div class="read-more">
-      <a href="/2014/01/1597.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/12/register-udf.html">动态注册hive udf</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-12-22 </span>
-      <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 840 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="目标">目标</h2>
-<p>可以不重启hive服务端动态增加或更新udf，本文用到动态加载以及hive hook实现。</p>
-<h2 id="看看原来的代码是怎样写的">看看原来的代码是怎样写的</h2>
-<p>我看的是cdh4.3.0代码，目前有两个地方注册udf，
-一个是在org.apache.hadoop.hive.ql.exec.FunctionRegistry类里，大部分的内置udf都是在这里注册的，很多网站都是通过修改这里代码重新打包来注册udf。
-第二个是最近新增了一个hive-builtins*.jar文件，注册函数是在</p>
-<pre lang="java" escaped="true">public SessionState(HiveConf conf) {
-...
-      Class&lt;?&gt; pluginClass = Utilities.getBuiltinUtilsClass();
-      URL jarLocation = pluginClass.getProtectionDomain().getCodeSource().getLocation();
-      add_builtin_resource(ResourceType.JAR, jarLocation.toString());
-      FunctionRegistry.registerFunctionsFromPluginJar(jarLocation, pluginClass.getClassLoader());
-...
-  }</pre>
-<p>通过找到org.apache.hive.builtins.BuiltinUtils类定位jar的位置，把jar包加入hive.added.jars.path配置里，然后通过FunctionRegistry.registerFunctionsFromPluginJar来注册udf</p>
-<pre lang="java" escaped="true">//我们可以用这两个方法来注册udf
-public static void registerTemporaryUDF(String functionName, Class&lt;? extends UDF&gt; UDFClass, boolean isOperator)
-public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader classLoader)</pre>
-    </div>
-    <div class="read-more">
-      <a href="/2013/12/register-udf.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -285,7 +268,7 @@ public static void registerFunctionsFromPluginJar(URL jarLocation, ClassLoader c
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

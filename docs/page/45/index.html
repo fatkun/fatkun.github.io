@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2011/05/mysql-alter-charset.html">mysql修改表、字段、库的字符集</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2011-05-02 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          </div>
+        <span class="more-meta"> 约 242 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      修改数据库字符集： ALTER DATABASE db_name DEFAULT CHARACTER SET character_name [COLLATE ...]; 把表默认的字符集和所有字符列（CHAR,VARCHAR,TEXT）改为新的字符集： ALTER TABLE tbl_name CONVERT TO CHARACTER SET character_name [COLLATE ...] 如
+    </div>
+    <div class="read-more">
+      <a href="/2011/05/mysql-alter-charset.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2011/05/vim-ctrl-s.html">在VIM加入Ctrl&#43;S快捷键保存当前文件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2011-05-01 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 99 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      由于Ctrl+S被其他使用，首先要修改~/.bashrc文件，在最后加上 stty stop '' 然后在~/.vimrc文件中加入 map &lt;C-s&gt; :w&lt;CR&gt; imap &lt;C-s&gt; &lt;C-o&gt;:w&lt;CR&gt; 参考来源，有修改：
+    </div>
+    <div class="read-more">
+      <a href="/2011/05/vim-ctrl-s.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2011/04/deploy-outlook-addin.html">部署outlook2003插件</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2011-04-21 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/04/vs2008-microsoft-visual-studio-web.html">安装VS2008失败，Microsoft Visual Studio Web创作组件安装失败</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2011-04-02 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/"> 电脑知识 </a>
-          </div>
-        <span class="more-meta"> 约 458 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      我的计算机系统是vista家庭版的，已经安装了Office 2007，在安装VS2008的过程中出现安装失败的窗口。 先把vs2008镜像文件下
-    </div>
-    <div class="read-more">
-      <a href="/2011/04/vs2008-microsoft-visual-studio-web.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2011/04/org-hibernate-nonuniqueobjectexception.html">org.hibernate.NonUniqueObjectException的原因与解决方法</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2011-04-01 </span>
-      <div class="post-category">
-          <a href="/categories/j2ee/"> J2EE </a>
-          </div>
-        <span class="more-meta"> 约 393 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      使用hibernate更新对象时，出现如下错误： org.hibernate.NonUniqueObjectException: a different object with the same identifier value was already associated with the session:[com.fatkun.dao.hibernate.User#12] 原因 在同一个session内，如果已经有一个对象已经是持久化状
-    </div>
-    <div class="read-more">
-      <a href="/2011/04/org-hibernate-nonuniqueobjectexception.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

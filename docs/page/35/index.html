@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2012/07/hive-cmd-nullpointerexception.html">hive命令行抛NullPointerException</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-07-18 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 154 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      我只是执行了一下这个代码 create temporary function strip as 'com.fatkun.Strip'; 就抛出异常 hive&gt; create temporary function strip as 'com.fatkun.Strip'; OK Exception in thread "main" java.lang.NullPointerException at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:221) at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:286) at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:516) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) at java.lang.reflect.Method.invoke(Method.java:597) at org.apache.hadoop.util.RunJar.main(RunJar.java:197) 从代码中看CliDriver.ja
+    </div>
+    <div class="read-more">
+      <a href="/2012/07/hive-cmd-nullpointerexception.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2012/07/mount-fuse-dfs.html">挂载fuse-dfs遇到的问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-07-18 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 352 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      以下是在ubuntu12.04 amd64， hadoop cdh3u3下安装 在${HADOOP_HOME}/contrib/fuse-dfs目录下已经帮我
+    </div>
+    <div class="read-more">
+      <a href="/2012/07/mount-fuse-dfs.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2012/07/fatkun%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD1-4%E7%89%88%E6%9B%B4%E6%96%B0.html">Fatkun图片批量下载1.4版更新</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2012-07-08 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/06/android-popupwindow.html">android PopupWindow</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2012-06-24 </span>
-      <div class="post-category">
-          <a href="/categories/android/"> Android </a>
-          </div>
-        <span class="more-meta"> 约 299 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      View loadingView = this.getLayoutInflater().inflate(R.layout.loading, null); PopupWindow loaddingPopup = new PopupWindow(loadingView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT); loaddingPopup.setAnimationStyle(R.style.popupWindow); //配置动画 loaddingPopup.update(); loaddingPopup.showAtLocation(findViewById(R.id.btnRefresh), Gravity.CENTER, 0, 0); //显示在中间 配置一个animate, popupwindow.xml &lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;set xmlns:android="http://schemas.android.com/apk/res/android" &gt; &lt;alpha android:duration="500" android:fromAlpha="0.0" android:interpolator="@android:anim/accelerate_interpolator" android:toAlpha="1.0" /&gt; &lt;/set&gt; 除了要配置一个animat
-    </div>
-    <div class="read-more">
-      <a href="/2012/06/android-popupwindow.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2012/06/hive-select-star.html">Hive Select * 替换回列字段</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2012-06-03 </span>
-      <div class="post-category">
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 570 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Hive中会把TOK_ALLCOLREF替换成各个列名称，来看看代码中是如何做到的。 我以TOK_ALLCOLREF入手看代码，执行顺序不是这
-    </div>
-    <div class="read-more">
-      <a href="/2012/06/hive-select-star.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

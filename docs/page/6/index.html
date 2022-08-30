@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2018/05/linux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.html">linux系统镜像</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-08 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 23 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      debian sed -i "s#deb.debian.org#mirrors.aliyun.com#g" /etc/apt/sources.list sed -i "s#security.debian.org#mirrors.aliyun.com#g" /etc/apt/sources.list ubuntu sed -i "s#archive.ubuntu.com#mirrors.aliyun.com#g" /etc/apt/sources.list sed -i "s#security.ubuntu.com#mirrors.aliyun.com#g" /etc/apt/sources.list alpline sed -i "s#dl-cdn.alpinelinux.org#mirrors.aliyun.com#g" /etc/apk/repositories
+    </div>
+    <div class="read-more">
+      <a href="/2018/05/linux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2018/04/k8s-install-zookeeper.html">k8s安装zookeeper</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-30 </span>
+      <div class="post-category">
+          <a href="/categories/docker/"> docker </a>
+          </div>
+        <span class="more-meta"> 约 135 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      使用命令安装，里面使用了gcr的镜像换一下 kubectl create -f \ https://raw.githubusercontent.com/kubernetes/contrib/master/statefulsets/zookeeper/zookeeper.yaml 但装完之后，使用zkCli.sh 无法连接，检查配置，发现server配置的hostnam
+    </div>
+    <div class="read-more">
+      <a href="/2018/04/k8s-install-zookeeper.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2018/01/docker-pull.html">docker pull 访问registry过程</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2018-01-28 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html">cloudera manager在下载日志返回502 BAD_GATEWAY错误</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-12-26 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 93 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      下载日志是通过status_server.py的download_log方法进行的 /usr/lib64/cmf/agent/build/env/lib/python2.6/site-packages/cmf-5.13.1-py2.6.egg/cmf/status_server.py 如果日志目录包含以下开头就禁止下载 # Simple blacklist of path prefixes that are not reasonable for
-    </div>
-    <div class="read-more">
-      <a href="/2017/12/cloudera-manager%E5%9C%A8%E4%B8%8B%E8%BD%BD%E6%97%A5%E5%BF%97%E8%BF%94%E5%9B%9E502-bad_gateway%E9%94%99%E8%AF%AF.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/12/deploy-hadoop-hdfs-use-docker.html">使用docker部署hadoop hdfs</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-12-24 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 314 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      先创建一个网络 docker network create hadoop 把本机新建一个目录hadoop，以下xml保存为docker-compose.yml version: "3" services: namenode: image: uhopper/hadoop-namenode hostname: namenode1 container_name: namenode1 # 要和netw
-    </div>
-    <div class="read-more">
-      <a href="/2017/12/deploy-hadoop-hdfs-use-docker.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

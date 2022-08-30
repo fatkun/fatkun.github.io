@@ -6,10 +6,19 @@
     <description>Recent content in k8s on Fatkun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Oct 2019 10:41:26 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Apr 2021 17:30:28 +0800</lastBuildDate>
     
 	<atom:link href="https://fatkun.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s Informer HasSync</title>
+      <link>https://fatkun.github.io/post/2021/k8s-informer-hassync/</link>
+      <pubDate>Sun, 18 Apr 2021 17:30:28 +0800</pubDate>
+      
+      <guid>https://fatkun.github.io/post/2021/k8s-informer-hassync/</guid>
+      <description>背景 K8S中的informer中HasSynced到底表示什么？ 分析 HasSynced的注释是这样写的，如果拿到至少一个列表后返回true。</description>
+    </item>
     
     <item>
       <title>从CustomResourceDefinition生成k8s java模型代码</title>

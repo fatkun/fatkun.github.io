@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/03/kafka%E5%85%B3%E6%B3%A8%E7%9A%84issue.html">kafka关注的issue</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-03-27 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 25 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      BrokerChangeListener computes inconsistent live/dead broker list https://issues.apache.org/jira/browse/KAFKA-3085 BrokerChangeListener missed broker id path ephemeral node deletion event. https://issues.apache.org/jira/browse/KAFKA-2448 Controller could miss a broker state change https://issues.apache.org/jira/browse/KAFKA-1120
+    </div>
+    <div class="read-more">
+      <a href="/2017/03/kafka%E5%85%B3%E6%B3%A8%E7%9A%84issue.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/03/reduce-inmemorymapoutput-oom.html">在reduce InMemoryMapOutput OOM</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-03-15 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 102 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      2017-03-14 15:41:52,724 WARN [main] org.apache.hadoop.mapred.YarnChild: Exception running child : org.apache.hadoop.mapreduce.task.reduce.Shuffle$ShuffleError: error in shuffle in fetcher#1 at org.apache.hadoop.mapreduce.task.reduce.Shuffle.run(Shuffle.java:134) at org.apache.hadoop.mapred.ReduceTask.run(ReduceTask.java:376) at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:164) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:415) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1693) at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:158) Caused by: java.lang.OutOfMemoryError: Java heap space at org.apache.hadoop.io.BoundedByteArrayOutputStream.&lt;init&gt;(BoundedByteArrayOutputStream.java:56) at org.apache.hadoop.io.BoundedByteArrayOutputStream.&lt;init&gt;(BoundedByteArrayOutputStream.java:46) at org.apache.hadoop.mapreduce.task.reduce.InMemoryMapOutput.&lt;init&gt;(InMemoryMapOutput.java:63) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.unconditionalReserve(MergeManagerImpl.java:305) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.reserve(MergeManagerImpl.java:295) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyMapOutput(Fetcher.java:514) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyFromHost(Fetcher.java:336) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.run(Fetcher.java:193) 调整这个参数 ( mapreduce.reduce.shuffle.input.percent )，默认值为0.7，
+    </div>
+    <div class="read-more">
+      <a href="/2017/03/reduce-inmemorymapoutput-oom.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/01/hadoop-job-kill-and-yarn-application-kill-diff.html">hadoop job -kill 和 yarn application -kill 区别</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2017-01-06 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/11/parquet-hive-projection-and-push-down.html">parquet-hive列裁剪和谓词下推</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-11-20 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 1035 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      一直好奇parquet和hive是怎样做列裁剪（跳过某些列）的，今天跟踪了一下代码。 parquet和hive交接的代码已经在合并在hive里
-    </div>
-    <div class="read-more">
-      <a href="/2016/11/parquet-hive-projection-and-push-down.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/11/parquet-encoding-definitions.html">parquet编码定义</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-11-13 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 2920 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      主要是翻译https://github.com/Parquet/parquet-format/blob/master/Encodings.m
-    </div>
-    <div class="read-more">
-      <a href="/2016/11/parquet-encoding-definitions.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

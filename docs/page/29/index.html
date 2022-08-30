@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2013/06/alter-table-partition-file-format.html">Hive更改输入输出文件格式</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-06-04 </span>
+      <div class="post-category">
+          <a href="/categories/hive/"> hive </a>
+          </div>
+        <span class="more-meta"> 约 491 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      文档：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
+    </div>
+    <div class="read-more">
+      <a href="/2013/06/alter-table-partition-file-format.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2013/05/hive-rename.html">Hive改表名后查询不了数据(DataNucleus缓存问题)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-05-29 </span>
+      <div class="post-category">
+          <a href="/categories/hive/"> hive </a>
+          </div>
+        <span class="more-meta"> 约 407 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      现象 改了Hive表名后查询不了任何数据。 重现方式 开启两个hive命令行， 先在第一个hive查询一条语句：select * from logs1; 然后在第二个hiv
+    </div>
+    <div class="read-more">
+      <a href="/2013/05/hive-rename.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2013/04/java-dir-classpath.html">[备忘]java指定一个目录加入classpath</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2013-04-22 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-dependentcolumnfilter.html">Hbase DependentColumnFilter</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-03-25 </span>
-      <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
-          </div>
-        <span class="more-meta"> 约 850 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Here you have a more complex filter that does not simply filter out data based on directly available information. Rather, it lets you specify a dependent column—or reference column—that controls how other columns are filtered. It uses the timestamp of the reference column and includes all other columns that have the same
-    </div>
-    <div class="read-more">
-      <a href="/2013/03/hbase-dependentcolumnfilter.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-valuefilter.html">Hbase ValueFilter</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-03-25 </span>
-      <div class="post-category">
-          <a href="/categories/hbase/"> hbase </a>
-          </div>
-        <span class="more-meta"> 约 361 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Hbase ValueFilter用于过滤值 package com.fatkun.filter.comparison; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor; import org.apache.hadoop.hbase.HTableDescriptor; import org.apache.hadoop.hbase.client.Get; import org.apache.hadoop.hbase.client.HBaseAdmin; import org.apache.hadoop.hbase.client.HTable; import org.apache.hadoop.hbase.client.Put; import org.apache.hadoop.hbase.client.Result; import org.apache.hadoop.hbase.client.ResultScanner; import org.apache.hadoop.hbase.client.Scan; import org.apache.hadoop.hbase.filter.BinaryComparator; import org.apache.hadoop.hbase.filter.CompareFilter; import org.apache.hadoop.hbase.filter.Filter; import org.apache.hadoop.hbase.filter.SubstringComparator; import org.apache.hadoop.hbase.filter.ValueFilter; import org.apache.hadoop.hbase.util.Bytes; public class TestHbaseValueFilter { String tableName = "test_value_filter"; Configuration config = HBaseConfiguration.create(); /** * 部
-    </div>
-    <div class="read-more">
-      <a href="/2013/03/hbase-valuefilter.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

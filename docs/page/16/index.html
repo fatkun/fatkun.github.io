@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-complete-file-timeout.html">hdfs complete file 超时</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-04-25 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 170 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      修改一下超时次数，具体代码在 DFSOutputStream.java private void completeFile(ExtendedBlock last) throws IOException { long localstart = Time.now(); long localTimeout = 400; boolean fileComplete = false; int retries = dfsClient.getConf().nBlockWriteLocateFollowingRetry; while (!fileComplete) { fileComplete = dfsClient.namenode.complete(src, dfsClient.clientName, last, fileId); if (!fileComplete) { final int hdfsTimeout = dfsClient.getHdfsTimeout(); if (!dfsClient.clientRunning &brvbar;&brvbar; (hdfsTimeout &gt; 0 && localstart + hdfsTimeout &lt; Time.now())) { String msg
+    </div>
+    <div class="read-more">
+      <a href="/2016/04/hdfs-complete-file-timeout.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-start.html">hdfs启动相关文章</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-04-24 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 59 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      记一次DataNode慢启动问题 ：启动过程中，datanode为了获取used size，如果超过时间，可能会执行DU。
+    </div>
+    <div class="read-more">
+      <a href="/2016/04/hdfs-start.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/04/hadoop-check-disk-error.html">hadoop检查目录健康状态</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2016-04-10 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/12/pandorabox-mwan.html">PandoraBox路由多线多拨</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-12-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 293 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      划分VLAN 在网络-&gt;交换机里面，添加一个VLAN，看一下第二个vlan是怎么配置的，WAN的接口是在哪一个，然后自己插入lan接口，
-    </div>
-    <div class="read-more">
-      <a href="/2015/12/pandorabox-mwan.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html">hdfs exceeds the limit of concurrent xcievers</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-11-23 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 101 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      版本: hadoop cdh5.4 datanode jstack，很多这样的线程 "DataXceiver for client unix:/var/run/hdfs-sockets/dn [Waiting for operation #1]" daemon prio=10 tid=0x00007ffc42de9000 nid=0x68f8 waiting on condition [0x00007ffacbd1d000] java.lang.Thread.State: WAITING (parking) at sun.misc.Unsafe.park(Native Method) - parking to wait for &lt;0x00000007a5d3d568&gt; (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject) at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186) at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043) at org.apache.hadoop.net.unix.DomainSocketWatcher.add(DomainSocketWatcher.java:316) at org.apache.hadoop.hdfs.server.datanode.ShortCircuitRegistry.createNewMemorySegment(ShortCircuitRegistry.java:322) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.requestShortCircuitShm(DataXceiver.java:418) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.opRequestShortCircuitShm(Receiver.java:214) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.processOp(Receiver.java:95) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.run(DataXceiver.java:241) at java.lang.Thread.run(Thread.java:745) 相关
-    </div>
-    <div class="read-more">
-      <a href="/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

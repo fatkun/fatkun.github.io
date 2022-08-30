@@ -1,10 +1,10 @@
 ---
 title: "K8s Informer HasSync"
 date: 2021-04-18T17:30:28+08:00
-tags: []
+tags: [k8s]
 categories: []
 author: "fatkun"
-draft: true
+draft: false
 ---
 
 # 背景

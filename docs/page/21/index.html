@@ -116,6 +116,53 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2014/11/httpfs-and-webhdfs.html">hdfs httpfs与webhdfs的简单使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-11-02 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 1147 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      HttpFS和WebHDFS 通过http协议操作hdfs有两个组件，httpfs和webhdfs，我一开始还以为这两个是同一个东西，其实不是
+    </div>
+    <div class="read-more">
+      <a href="/2014/11/httpfs-and-webhdfs.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2014/09/spark-with-lzo.html">cdh4 spark配置LZO</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-09-27 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          <a href="/categories/hive/"> hive </a>
+          </div>
+        <span class="more-meta"> 约 294 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      使用的hadoop是cdh4.2.1版本 spark1.1，需要配置hadoop-native和lzo native 在spark-env.sh加入 HADOOP_CONF_DIR=/etc/hadoop/conf SPARK_SUBMIT_CLASSPATH=$SPARK_SUBMIT_CLASSPATH:/etc/hive/conf:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/hadoop-lzo.jar #SPARK_SUBMIT_LIBRARY_PATH=$SPARK_SUBMIT_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cloudera/parcels/CDH/lib/hadoop/lib/native:/opt/cloudera/parcels/HADOOP_LZO/lib/hadoop/lib/native
+    </div>
+    <div class="read-more">
+      <a href="/2014/09/spark-with-lzo.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2014/09/phpstorm-codeigniter-%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90%E9%85%8D%E7%BD%AE.html">phpstorm CodeIgniter 自动完成配置</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2014-09-19 </span>
@@ -183,52 +230,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2014/08/linux-compile-hadoop-cdh4-2-1.html">Linux 编译 hadoop-cdh4.2.1</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-08-10 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 415 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      配置 安装Maven, Ant, Findbugs, protobuf, cmake 参考:http://cn.soulmachine.me/blog/20140214/ 注意CDH4.2.1需要用p
-    </div>
-    <div class="read-more">
-      <a href="/2014/08/linux-compile-hadoop-cdh4-2-1.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2014/08/%E6%B8%85%E7%90%86sendmail%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6.html">清理sendmail日志文件</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-08-04 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 69 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      # 关闭sendmail service sendmail stop chkconfig --list sendmail chkconfig --level 2345 sendmail off # 删除mail文件夹 rm -rf /var/spool/mqueue && mkdir /var/spool/mqueue rm -rf /var/spool/clientmqueue && mkdir /var/spool/clientmqueue rm -rf /var/spool/mail && mkdir /var/spool/mail # 删除logwatch mv /etc/cron.daily/0logwatch /etc rm -rf /var/cache/logwatch/* via: http://hi.baidu.com/chenhj_brenda/item/e46c6b3fdb8f03b9124b14f0
-    </div>
-    <div class="read-more">
-      <a href="/2014/08/%E6%B8%85%E7%90%86sendmail%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +269,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

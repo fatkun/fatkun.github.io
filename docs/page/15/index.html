@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-volume-choosing-policy.html">hadoop磁盘写入选择策略</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-07-14 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 131 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      hadoop写入时，默认磁盘选择是轮询的方式。可以改用按空间大小来分配，避免某个磁盘特别满。 参数 ：dfs.datanode.fsdatase
+    </div>
+    <div class="read-more">
+      <a href="/2016/07/hadoop-volume-choosing-policy.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html">hadoop更换namenode注意事项</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-05-25 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 179 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      所有机器hosts都要加上新namenode 新namenode要建立好以前的用户和组 zookeeper中HA的信息可以删除，然后重建zook
+    </div>
+    <div class="read-more">
+      <a href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop-11238.html">[HADOOP-11238]hdfs namenode getGroups延迟</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2016-05-15 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-complete-file-timeout.html">hdfs complete file 超时</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-04-25 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 170 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      修改一下超时次数，具体代码在 DFSOutputStream.java private void completeFile(ExtendedBlock last) throws IOException { long localstart = Time.now(); long localTimeout = 400; boolean fileComplete = false; int retries = dfsClient.getConf().nBlockWriteLocateFollowingRetry; while (!fileComplete) { fileComplete = dfsClient.namenode.complete(src, dfsClient.clientName, last, fileId); if (!fileComplete) { final int hdfsTimeout = dfsClient.getHdfsTimeout(); if (!dfsClient.clientRunning &brvbar;&brvbar; (hdfsTimeout &gt; 0 && localstart + hdfsTimeout &lt; Time.now())) { String msg
-    </div>
-    <div class="read-more">
-      <a href="/2016/04/hdfs-complete-file-timeout.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/04/hdfs-start.html">hdfs启动相关文章</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-04-24 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 59 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      记一次DataNode慢启动问题 ：启动过程中，datanode为了获取used size，如果超过时间，可能会执行DU。
-    </div>
-    <div class="read-more">
-      <a href="/2016/04/hdfs-start.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

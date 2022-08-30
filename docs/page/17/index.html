@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/12/pandorabox-mwan.html">PandoraBox路由多线多拨</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-12-12 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 293 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      划分VLAN 在网络-&gt;交换机里面，添加一个VLAN，看一下第二个vlan是怎么配置的，WAN的接口是在哪一个，然后自己插入lan接口，
+    </div>
+    <div class="read-more">
+      <a href="/2015/12/pandorabox-mwan.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html">hdfs exceeds the limit of concurrent xcievers</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-11-23 </span>
+      <div class="post-category">
+          <a href="/categories/hadoop/"> hadoop </a>
+          </div>
+        <span class="more-meta"> 约 101 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      版本: hadoop cdh5.4 datanode jstack，很多这样的线程 "DataXceiver for client unix:/var/run/hdfs-sockets/dn [Waiting for operation #1]" daemon prio=10 tid=0x00007ffc42de9000 nid=0x68f8 waiting on condition [0x00007ffacbd1d000] java.lang.Thread.State: WAITING (parking) at sun.misc.Unsafe.park(Native Method) - parking to wait for &lt;0x00000007a5d3d568&gt; (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject) at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186) at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043) at org.apache.hadoop.net.unix.DomainSocketWatcher.add(DomainSocketWatcher.java:316) at org.apache.hadoop.hdfs.server.datanode.ShortCircuitRegistry.createNewMemorySegment(ShortCircuitRegistry.java:322) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.requestShortCircuitShm(DataXceiver.java:418) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.opRequestShortCircuitShm(Receiver.java:214) at org.apache.hadoop.hdfs.protocol.datatransfer.Receiver.processOp(Receiver.java:95) at org.apache.hadoop.hdfs.server.datanode.DataXceiver.run(DataXceiver.java:241) at java.lang.Thread.run(Thread.java:745) 相关
+    </div>
+    <div class="read-more">
+      <a href="/2015/11/hdfs-exceeds-the-limit-of-concurrent-xcievers.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2015/11/hadoop-cdh5-4-windows-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.html">hadoop cdh5.4 windows 开发环境</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2015-11-15 </span>
@@ -183,53 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/07/compile-hive-cdh5-4-0.html">编译hive cdh5.4.0</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-07-23 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 10 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      编译命令 mvn clean install -Phadoop-2,dist -DskipTests https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-BuildingHivefromSource
-    </div>
-    <div class="read-more">
-      <a href="/2015/07/compile-hive-cdh5-4-0.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2015/06/hive-join-failed.html">hive1.1.0查询和旧版本不一致问题分析</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-06-28 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          <a href="/categories/hive/"> hive </a>
-          </div>
-        <span class="more-meta"> 约 1540 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      背景 在查询以下语句的时候结果不正确，无法join tab1.tm=tab2.hour。如果存在以下类似的语句，有子查询的group by，外层有
-    </div>
-    <div class="read-more">
-      <a href="/2015/06/hive-join-failed.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -269,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

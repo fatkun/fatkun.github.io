@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-dependentcolumnfilter.html">Hbase DependentColumnFilter</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-03-25 </span>
+      <div class="post-category">
+          <a href="/categories/hbase/"> hbase </a>
+          </div>
+        <span class="more-meta"> 约 850 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Here you have a more complex filter that does not simply filter out data based on directly available information. Rather, it lets you specify a dependent column—or reference column—that controls how other columns are filtered. It uses the timestamp of the reference column and includes all other columns that have the same
+    </div>
+    <div class="read-more">
+      <a href="/2013/03/hbase-dependentcolumnfilter.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-valuefilter.html">Hbase ValueFilter</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-03-25 </span>
+      <div class="post-category">
+          <a href="/categories/hbase/"> hbase </a>
+          </div>
+        <span class="more-meta"> 约 361 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Hbase ValueFilter用于过滤值 package com.fatkun.filter.comparison; import java.io.IOException; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.hbase.HBaseConfiguration; import org.apache.hadoop.hbase.HColumnDescriptor; import org.apache.hadoop.hbase.HTableDescriptor; import org.apache.hadoop.hbase.client.Get; import org.apache.hadoop.hbase.client.HBaseAdmin; import org.apache.hadoop.hbase.client.HTable; import org.apache.hadoop.hbase.client.Put; import org.apache.hadoop.hbase.client.Result; import org.apache.hadoop.hbase.client.ResultScanner; import org.apache.hadoop.hbase.client.Scan; import org.apache.hadoop.hbase.filter.BinaryComparator; import org.apache.hadoop.hbase.filter.CompareFilter; import org.apache.hadoop.hbase.filter.Filter; import org.apache.hadoop.hbase.filter.SubstringComparator; import org.apache.hadoop.hbase.filter.ValueFilter; import org.apache.hadoop.hbase.util.Bytes; public class TestHbaseValueFilter { String tableName = "test_value_filter"; Configuration config = HBaseConfiguration.create(); /** * 部
+    </div>
+    <div class="read-more">
+      <a href="/2013/03/hbase-valuefilter.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2013/03/hbase-qualifierfilter.html">Hbase QualifierFilter</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2013-03-25 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/android-recive-sms-logic.html">android接收长短信处理逻辑</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-03-10 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
-          </div>
-        <span class="more-meta"> 约 1080 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      长短信会分割成多条发送过来，每一条头部会带上总共有多少条，和这是第几条。（具体的细节我也没太深究） 手机收到其中一条短信时，如果辨别出是长短信
-    </div>
-    <div class="read-more">
-      <a href="/2013/03/android-recive-sms-logic.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2013/03/install-android-sdk-can-not-find-jdk.html">安装android sdk提示找不到JDK解决方法</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-03-10 </span>
-      <div class="post-category">
-          <a href="/categories/android/"> Android </a>
-          </div>
-        <span class="more-meta"> 约 52 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      我的环境WIN7 64bit win7可以使用mklink做软链 Can also create symbolic link if you don't want to copy the files. (requires administrator privileges): mklink C:\Windows\SysWOW64\java.exe C:\Windows\System32\java.exe mklink C:\Windows\SysWOW64\javaw.exe C:\Windows\System32\javaw.exe 参考 http://stackoverflow.com/questions/4382178/android-sdk-installation-doesnt-find-jdk http://android-er.blogspot.com/2011/02/android-sdk-cannot-detect-jdk.html
-    </div>
-    <div class="read-more">
-      <a href="/2013/03/install-android-sdk-can-not-find-jdk.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

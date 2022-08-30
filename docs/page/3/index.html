@@ -116,6 +116,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/05/kvm%E8%99%9A%E6%8B%9F%E6%9C%BAvirsh%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">kvm虚拟机virsh常用命令</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-29 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"> 未分类 </a>
+          </div>
+        <span class="more-meta"> 约 96 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      # 列出所有虚拟机 virsh --connect qemu:///system list --all # 停掉虚拟机 virsh --connect qemu:///system shutdown kvm-1 # 删除虚拟机 virsh --connect qemu:///system undefine kvm-1 更多命令见：https://www.centos.bz/2017/07
+    </div>
+    <div class="read-more">
+      <a href="/2019/05/kvm%E8%99%9A%E6%8B%9F%E6%9C%BAvirsh%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/05/knative-serving-0-6-change.html">knative serving 0.6 版本变更</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-19 </span>
+      <div class="post-category">
+          <a href="/categories/docker/"> docker </a>
+          </div>
+        <span class="more-meta"> 约 2741 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      翻译了一下0.6的版本变更 概要 新API模型 我们已经通过了knative serving “v1beta1” API模型提议，这些改变会使得kubernetes
+    </div>
+    <div class="read-more">
+      <a href="/2019/05/knative-serving-0-6-change.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2019/02/minikube%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%AF%B7%E6%B1%82%E9%9B%86%E7%BE%A4ip.html">minikube在宿主机请求集群IP</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-02-18 </span>
@@ -183,52 +229,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2018/11/failed-to-initialize-nvml-unknown-error.html">Failed to initialize NVML: Unknown Error</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-11-14 </span>
-      <div class="post-category">
-          <a href="/categories/docker/"> docker </a>
-          </div>
-        <span class="more-meta"> 约 296 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      在k8s启动的pod内执行nvidia-smi，报错Failed to initialize NVML: Unknown Error，但直接用docker run –rm nvidia/cuda:9.0-base nvidia-smi 却不会报错。 找到这里的文
-    </div>
-    <div class="read-more">
-      <a href="/2018/11/failed-to-initialize-nvml-unknown-error.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2018/09/k8s-errimagepull.html">k8s 拉取私有仓库失败</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-09-27 </span>
-      <div class="post-category">
-          <a href="/categories/docker/"> docker </a>
-          </div>
-        <span class="more-meta"> 约 209 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      k8s 报错拉取镜像失败 Error response from daemon: pull access denied for istio/citadel, repository does not exist or may require ‘docker login’ docker login后，把配置拷贝到以下目录的其中一个。如果是${HOM
-    </div>
-    <div class="read-more">
-      <a href="/2018/09/k8s-errimagepull.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +268,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 

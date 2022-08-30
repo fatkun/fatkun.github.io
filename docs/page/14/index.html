@@ -116,6 +116,92 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/test/shortcodes/">Shortcodes</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-30 </span>
+      <div class="post-category">
+          <a href="/categories/shortcodes/"> shortcodes </a>
+          </div>
+        <span class="more-meta"> 约 338 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="admonition">Admonition</h1>
+<div class="admonition note"><p class="admonition-title">I&#39;m title!</p>
+<p>biu biu biu.</p>
+<details class="admonition note"><summary class="admonition-title">note</summary>
+  <p>biu biu biu.</p>
+</details>
+<div class="admonition example">
+  <p>Without title.</p>
+</div>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{% admonition note &#34;I&#39;m title!&#34; false %}}
+biu biu biu.
+
+{{% admonition type=&#34;note&#34; title=&#34;note&#34; details=&#34;true&#34; %}}
+biu biu biu.
+{{% /admonition %}}
+
+{{% admonition example %}}
+Without title.
+{{% /admonition %}}
+
+{{% /admonition %}}
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/test/shortcodes/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/08/powermock.html">使用powermock</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-17 </span>
+      <div class="post-category">
+          <a href="/categories/j2ee/"> J2EE </a>
+          </div>
+        <span class="more-meta"> 约 145 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在pom.xml加入 &lt;dependency&gt; &lt;groupId&gt;org.easymock&lt;/groupId&gt; &lt;artifactId&gt;easymock&lt;/artifactId&gt; &lt;version&gt;3.3.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-module-junit4&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.powermock&lt;/groupId&gt; &lt;artifactId&gt;powermock-api-easymock&lt;/artifactId&gt; &lt;version&gt;1.6.5&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 如果报错，有可能项目中包含有低版本的javassist java.lang.NoSuchMethodError: javassist.CtMethod.hasAnnotation(Ljava/lang/Class;)Z 尝试加入新版本的javas
+    </div>
+    <div class="read-more">
+      <a href="/2016/08/powermock.html" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/08/get-user-group-mapping.html">获取linux用户和组映射脚本</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2016-08-08 </span>
@@ -184,52 +270,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/07/hadoop-volume-choosing-policy.html">hadoop磁盘写入选择策略</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-07-14 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 131 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      hadoop写入时，默认磁盘选择是轮询的方式。可以改用按空间大小来分配，避免某个磁盘特别满。 参数 ：dfs.datanode.fsdatase
-    </div>
-    <div class="read-more">
-      <a href="/2016/07/hadoop-volume-choosing-policy.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html">hadoop更换namenode注意事项</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-05-25 </span>
-      <div class="post-category">
-          <a href="/categories/hadoop/"> hadoop </a>
-          </div>
-        <span class="more-meta"> 约 179 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      所有机器hosts都要加上新namenode 新namenode要建立好以前的用户和组 zookeeper中HA的信息可以删除，然后重建zook
-    </div>
-    <div class="read-more">
-      <a href="/2016/05/hadoop%E6%9B%B4%E6%8D%A2namenode%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -269,7 +309,7 @@
   <span class="copyright-year">
     &copy; 
     2009 - 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
   </span>
 </div>
 
