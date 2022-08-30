@@ -17,7 +17,7 @@
       <pubDate>Tue, 30 Aug 2022 10:38:28 +0800</pubDate>
       
       <guid>https://fatkun.github.io/post/2022/jmes-path/</guid>
-      <description>JMESPath有很多方法，可以提取json内容 例如 keys(@) 可以把所有key取出来 参考 https://jmespath.org/tutorial.html https://jmespath.org/specification.html#functions</description>
+      <description>JMESPath有很多方法，可以提取json内容 例如 keys(@) 可以把所有key取出来 1 2 3 4 { &amp;#34;xx&amp;#34;: {}, &amp;#34;bb&amp;#34;: {} } 这个例子的结果是 1 2 3 4 [ &amp;#34;xx&amp;#34;, &amp;#34;bb&amp;#34; ] 参考 https://jmespath.org/tutorial.html https://jmespath.org/specification.html#functions</description>
     </item>
     
     <item>
