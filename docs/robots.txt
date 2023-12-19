@@ -1,2 +1,1 @@
 User-agent: *
-Sitemap: https://fatkun.github.io/sitemap.xml

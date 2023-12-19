@@ -1,263 +1,0 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版 - Fatkun&#39;s Blog</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="fatkun" /><meta name="description" content="Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。
-" /><meta name="keywords" content="Hugo, fatkun" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.70.0 with theme even" />
-
-
-<link rel="canonical" href="https://fatkun.github.io/2009/10/%E5%8E%9F%E5%88%9Bz-blog%E6%8F%92%E4%BB%B6-syntaxhighlighter-for-z-blog%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE0-2%E7%89%88.html" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-<link href="/sass/main.min.f8d981be68d2538153a6e4ce23201045e9549712aa5905499cc22691b43378b0.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版" />
-<meta property="og:description" content="Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://fatkun.github.io/2009/10/%E5%8E%9F%E5%88%9Bz-blog%E6%8F%92%E4%BB%B6-syntaxhighlighter-for-z-blog%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE0-2%E7%89%88.html" />
-<meta property="article:published_time" content="2009-10-13T02:27:45+00:00" />
-<meta property="article:modified_time" content="2009-10-13T02:27:45+00:00" />
-<meta itemprop="name" content="【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版">
-<meta itemprop="description" content="Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。">
-<meta itemprop="datePublished" content="2009-10-13T02:27:45&#43;00:00" />
-<meta itemprop="dateModified" content="2009-10-13T02:27:45&#43;00:00" />
-<meta itemprop="wordCount" content="779">
-
-
-
-<meta itemprop="keywords" content="SyntaxHighlighter,Z-Blog,代码高亮,插件," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版"/>
-<meta name="twitter:description" content="Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。"/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Fatkun&#39;s Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">首页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">存档</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Fatkun&#39;s Blog</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">首页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">存档</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">【原创】Z-blog插件-SyntaxHighlighter for Z-blog代码高亮0.2版</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2009-10-13 </span>
-        <div class="post-category">
-            <a href="/categories/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/"> 网页前端 </a>
-            </div>
-          <span class="more-meta"> 约 779 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，可能还有很多问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件，不过使用起来已经很好了。</p>
-<p><strong>SyntaxHighlighter</strong>是一个很多人使用的代码高亮JS工具，项目地址是<a href="http://code.google.com/p/syntaxhighlighter/" target="_blank"><a href="http://code.google.com/p/syntaxhighlighter/">http://code.google.com/p/syntaxhighlighter/</a></a>，本插件使用的是2.0版本。<br>
-Z-blog里面的代码高亮插件(Highlight)已经是很久以前的了，作为一个写代码的人怎么可以没有代码高亮，让看代码的人舒服一点。现在是0.2版，一堆语言解析，好强大，可是做插件时累坏我，文件太多了可能还有问题。插件是把Highlight改的，改了来适应SyntaxHighlighter的使用，才用Z-BLOG差不多一个月，还没研究过怎么写插件。<br>
-以前也写过<a href="http://blog.fatkun.com/view.asp?id=12" target="_blank">在Z-Blog上使用SyntaxHighlighter1.5（代码高亮，不复制行号）修改方法</a>，但是不是插件，修改起来麻烦，也不方便。<br>
-<strong>更新后记住要“文件重建”</strong><br>
-<a href="http://blog.fatkun.com/SyntaxHighlighter.rar" target="_blank"><font size="4"><b>0.2版点击此下载</b></font></a><br>
-<strong>更新信息</strong><br>
-0.2 版</p>
-<ul>
-<li>管理页面，能选择需要解析的语言。<br>
-0.1 alpha版<br>
-基础版本<br>
-<strong>当前已知的问题</strong></li>
-</ul>
-<blockquote>
-<p>1，插件没有配置页面，所以把所有JS都加载（0.2版已解决）
-<strong>使用方法</strong><br>
-<strong>[<span />code=</strong>这里填写语言，例如html、C#等**]**这里写代码**[/code]**<br>
-**下面是代码演示**</p>
-</blockquote>
-<pre class="brush:html;">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;&lt;head&gt;	&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;	&lt;title&gt;SyntaxHighlighter Build Test Page&lt;/title&gt;	&lt;script type="text/javascript" src="scripts/shCore.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushBash.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushCpp.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushCSharp.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushCss.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushDelphi.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushDiff.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushGroovy.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushJava.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushJScript.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushPhp.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushPlain.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushPython.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushRuby.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushScala.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushSql.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushVb.js"&gt;&lt;/script&gt;	&lt;script type="text/javascript" src="scripts/shBrushXml.js"&gt;&lt;/script&gt;	&lt;link type="text/css" rel="stylesheet" href="styles/shCore.css"/&gt;	&lt;link type="text/css" rel="stylesheet" href="styles/shThemeDefault.css"/&gt;	&lt;script type="text/javascript"&gt;		SyntaxHighlighter.config.clipboardSwf = 'scripts/clipboard.swf';		SyntaxHighlighter.all();	&lt;/script&gt;&lt;/head&gt;&lt;body &gt;&lt;h1&gt;SyntaxHihglighter Test&lt;/h1&gt;&lt;p&gt;This is a test file to insure that everything is working well.&lt;/p&gt;&lt;pre class="brush: c-sharp;"&gt;function test() : String{	return 10;}&lt;/pre&gt;&lt;/html&gt;</pre>
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">fatkun</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2009-10-13
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/syntaxhighlighter/">SyntaxHighlighter</a>
-          <a href="/tags/z-blog/">Z-Blog</a>
-          <a href="/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/">代码高亮</a>
-          <a href="/tags/%E6%8F%92%E4%BB%B6/">插件</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/2009/10/%E5%A4%AE%E8%A7%86%E8%B0%B7%E6%AD%8C%E6%B6%89%E5%AB%8C%E5%A4%A7%E8%8C%83%E5%9B%B4%E4%BE%B5%E7%8A%AF%E4%B8%AD%E6%96%87%E5%9B%BE%E4%B9%A6%E8%91%97%E4%BD%9C%E6%9D%83.html">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">央视:谷歌涉嫌大范围侵犯中文图书著作权</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/2009/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8flickr-com7p.html">
-            <span class="next-text nav-default">第一次使用Flickr.com【7P】</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-  
-
-  
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/fatkun" class="iconfont icon-github" title="github"></a>
-  <a href="https://fatkun.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2009 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fatkun</span>
-  </span>
-</div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-
-
-
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
-
-
-
-
-
-
-
-
-</body>
-</html>
