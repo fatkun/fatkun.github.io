@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 16 Jan 2024 02:24:58 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 16 Jan 2024 15:31:43 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://fatkun.github.io/rss.xml" />
         
@@ -614,6 +614,7 @@
 &lt;p&gt;这个streamObserver是在com.alibaba.nacos.core.remote.grpc.GrpcBiStreamRequestAcceptor#requestBiStream调用时，前面看到的grpc方法，客户端在建立双向流后，使用streamObserver给客户端推送请求。&lt;/p&gt;
 &lt;h1 id=&#34;参考文章&#34;&gt;参考文章&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://juejin.cn/column/7207620183308255292&#34;&gt;Nacos源码分析&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/6986887722283565069&#34;&gt;程序猿阿越 Nacos源码分东西&lt;/a&gt;&lt;/p&gt;
 </description>
                 
                 

@@ -354,3 +354,5 @@ public void configDataChanged(String groupKey, String dataId, String group, Stri
 
 [Nacos源码分析](https://juejin.cn/column/7207620183308255292)
 
+[程序猿阿越 Nacos源码分东西](https://juejin.cn/post/6986887722283565069)
+

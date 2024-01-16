@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Fatkun&#39;s Blog</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2024-01-16T02:24:58&#43;08:00</updated>
+    <updated>2024-01-16T15:31:42&#43;08:00</updated>
     <id>https://fatkun.github.io/</id>
     <link rel="alternate" type="text/html" href="https://fatkun.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://fatkun.github.io/atom.xml" />
@@ -18,7 +18,7 @@
             <title type="text">Nacos配置服务源码分析</title>
             <link rel="alternate" type="text/html" href="https://fatkun.github.io/post/2024/nacos-config/" />
             <id>https://fatkun.github.io/post/2024/nacos-config/</id>
-            <updated>2024-01-16T02:21:16&#43;08:00</updated>
+            <updated>2024-01-16T15:31:21&#43;08:00</updated>
             <published>2024-01-15T20:05:39&#43;08:00</published>
             <author>
                     <name>fatkun</name>
@@ -608,6 +608,7 @@
 &lt;p&gt;这个streamObserver是在com.alibaba.nacos.core.remote.grpc.GrpcBiStreamRequestAcceptor#requestBiStream调用时，前面看到的grpc方法，客户端在建立双向流后，使用streamObserver给客户端推送请求。&lt;/p&gt;
 &lt;h1 id=&#34;参考文章&#34;&gt;参考文章&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://juejin.cn/column/7207620183308255292&#34;&gt;Nacos源码分析&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/6986887722283565069&#34;&gt;程序猿阿越 Nacos源码分东西&lt;/a&gt;&lt;/p&gt;
 </content>
             
             
