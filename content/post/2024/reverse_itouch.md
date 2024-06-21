@@ -65,7 +65,7 @@ chmod +x frida-server
 frida-hexdump -U -f com.touchtv.touchtv
 ```
 
-从看雪这里找到[一篇文章](https://www.kancloud.cn/ay947528/aypy/2837384)，发现可以导出dex
+这里找到[一篇文章](https://www.kancloud.cn/ay947528/aypy/2837384)，发现可以导出dex
 
 脚本地址：https://github.com/r0ysue/frida_dump 
 
