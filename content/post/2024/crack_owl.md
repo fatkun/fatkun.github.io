@@ -54,7 +54,7 @@ typora-root-url: ./..\..\..\static
 
 ```javascript
 Java.perform(function(){
-    let AbstractC5530a0 = Java.use("com.skyjos.fileexplorer.purchase.account.a0");
+    let AbstractC5530a0 = Java.use("com.*****.fileexplorer.purchase.account.a0");
     AbstractC5530a0["g"].implementation = function (context) {
         console.log(`AbstractC5530a0.m6862g is called: context=${context}`);
         let result = this["g"](context);
