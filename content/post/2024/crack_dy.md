@@ -100,5 +100,7 @@ public final void a(SplashAdInfo splashAdInfo) {
 
 在if之前直接使用goto 跳到最后的返回。
 
+## 其他广告
+右侧浮动广告，代码在`com.****.module.player.p092p.adfloatball.AdFloatBallNeuron`里。
 
 
