@@ -216,3 +216,29 @@ public final class XHCommonPlayerBannerView2$bindData$1 implements Runnable {
     }
 
 ```
+
+## 其他广告
+`com.*****.module.yuba2.dynamic.hometab.follow.DynamicVideoAdManager`
+不知道是什么广告
+
+## 通用广告
+`com.*****.sdk.ad.AdView`
+能够屏蔽首页的一些广告，但会导致部分地方空白。能够屏蔽热议首页广告（不完全）。
+
+```java
+    public void bindAd(AdBean adBean) {
+        IAdView iAdView;
+        if (PatchProxy.proxy(new Object[]{adBean}, this, patch$Redirect, false, "8331d9cb", new Class[]{AdBean.class}, Void.TYPE).isSupport || (iAdView = this.mAdView) == null) {
+            return;
+        }
+        iAdView.b(adBean);
+    }
+
+    public void bindAdByJson(String str) {
+        IAdView iAdView;
+        if (PatchProxy.proxy(new Object[]{str}, this, patch$Redirect, false, "a5187cea", new Class[]{String.class}, Void.TYPE).isSupport || (iAdView = this.mAdView) == null) {
+            return;
+        }
+        iAdView.b((AdBean) Utils.t(str, AdBean.class));
+    }
+```
