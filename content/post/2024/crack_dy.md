@@ -100,7 +100,119 @@ public final void a(SplashAdInfo splashAdInfo) {
 
 在if之前直接使用goto 跳到最后的返回。
 
-## 其他广告
+## 右侧浮动广告
 右侧浮动广告，代码在`com.****.module.player.p092p.adfloatball.AdFloatBallNeuron`里。
 
+AdFloatBallNeuron类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdFloatBallView$bindData$2`、`AdFloatBallView$bindData$3`，可以在call方法里面直接返回。
 
+其中有一个是返回Boolean对象，在smali语法里面是这样写
+```
+    sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+    return-object v0
+```
+
+
+## 中部横幅广告
+如何找到对应的代码？我是先用autojs分析布局，找出对应控件的id，但是由于id是混淆的，有重复的，只能一个个找，看看在某个layout里面是否都有这些id。但是找到layout好像也没用，在代码中没有找到对应layout。
+
+之后通过搜索R.id.xxx 找到相关的代码。
+``` java
+        View.inflate(context, R.layout.f264114j0, this);
+        View findViewById = findViewById(R.id.a5n);
+        Intrinsics.checkNotNullExpressionValue(findViewById, "findViewById(R.id.bg_view_for_rambo)");
+        this.ivViewBackground = findViewById;
+        findViewById.setBackgroundColor(((Number) com.*****.sdk.apkdownload.ExtensionsKt.m123158n(RoomUtil.m60539s(this), Integer.valueOf(BaseThemeUtils.m14626b(context, R.attr.f258987f9)), 0)).intValue());
+        View findViewById2 = findViewById(R.id.erx);
+        Intrinsics.checkNotNullExpressionValue(findViewById2, "findViewById(R.id.iv_game_bg)");
+        this.ivGameBackground = (DYImageView) findViewById2;
+        View findViewById3 = findViewById(R.id.erz);
+        Intrinsics.checkNotNullExpressionValue(findViewById3, "findViewById(R.id.iv_game_icon)");
+        this.ivGameIcon = (DYImageView) findViewById3;
+        View findViewById4 = findViewById(R.id.el2);
+        Intrinsics.checkNotNullExpressionValue(findViewById4, "findViewById(R.id.iv_close)");
+        ImageView imageView = (ImageView) findViewById4;
+
+```
+
+代码在`XHCommonPlayerBannerView`和`XHCommonPlayerBannerView2`里面，可以在bindData里面拦截。
+
+以XHCommonPlayerBannerView2举例，在匿名类`class XHCommonPlayerBannerView2$bindData$1`里面，在run方法里面拦截
+```java
+public final class XHCommonPlayerBannerView2$bindData$1 implements Runnable {
+
+    /* renamed from: c */
+    public static PatchRedirect f76594c;
+
+    /* renamed from: b */
+    public final /* synthetic */ XHCommonBannerStyleData f76596b;
+
+    public XHCommonPlayerBannerView2$bindData$1(XHCommonBannerStyleData xHCommonBannerStyleData) {
+        data = xHCommonBannerStyleData;
+    }
+
+    @Override // java.lang.Runnable
+    public final void run() {
+        if (PatchProxy.proxy(new Object[0], this, f76594c, false, "7ca8490d", new Class[0], Void.TYPE).isSupport) {
+            return;
+        }
+        XHCommonBannerStyleData xHCommonBannerStyleData = data;
+        if (xHCommonBannerStyleData instanceof DefaultStyle) {
+            XHCommonPlayerBannerView2.m56696Jc(XHCommonPlayerBannerView2.this, (DefaultStyle) xHCommonBannerStyleData);
+        }
+        Activity m14684a = DYActivityUtils.m14684a(XHCommonPlayerBannerView2.this);
+        if (m14684a != null) {
+            ThemeResBean m75780c = RamboSkinProviderUtil.INSTANCE.m75780c(m14684a);
+            int m74739g = RamboProviderUtil.m74739g(m14684a);
+            XHCommonPlayerBannerView2.this.mo56399J7(m74739g, ThemeResBeanKt.m75790a(m74739g, m75780c));
+        }
+    }
+}
+```
+
+如果只是上面拦截，广告不加载了，但是有一个空白的框，找到调用它的上一层方法，从这里拦截。
+`com.*****.module.player.p106p.animatedad.widget.commonbanner.NewGamePlayerAdPresenter`
+```java
+    /* renamed from: n */
+    private final void m56626n(Context context, String bizType) {
+        ILandHalfContentProvider iLandHalfContentProvider;
+        if (PatchProxy.proxy(new Object[]{context, bizType}, this, f76460h, false, "ab81d0c2", new Class[]{Context.class, String.class}, Void.TYPE).isSupport) {
+            return;
+        }
+        if (RoomUtil.m60538r(context)) {
+            RamboXHAnimatedAdCompatNeuron ramboXHAnimatedAdCompatNeuron = (RamboXHAnimatedAdCompatNeuron) Hand.m132371l(DYActivityUtils.m14690g(context), RamboXHAnimatedAdCompatNeuron.class);
+            if (ramboXHAnimatedAdCompatNeuron != null) {
+                ramboXHAnimatedAdCompatNeuron.m74770tI(m56629q());
+            }
+        } else if (RoomUtil.m60535o(context) && (iLandHalfContentProvider = (ILandHalfContentProvider) DYRouter.getInstance().navigationLive(context, ILandHalfContentProvider.class)) != null) {
+            iLandHalfContentProvider.mo67745c1(m56629q().mo56402j());
+            iLandHalfContentProvider.mo67754n0(0L, 0);
+        }
+        IXHCommonBannerView m56629q = m56629q();
+        XHCommonBannerStyleData xHCommonBannerStyleData = null;
+        XHCommonPlayerBannerView xHCommonPlayerBannerView = (XHCommonPlayerBannerView) (!(m56629q instanceof XHCommonPlayerBannerView) ? null : m56629q);
+        if (xHCommonPlayerBannerView != null) {
+            xHCommonPlayerBannerView.setGifFrequencyController(new FrequencyControlGif(this.mFreq));
+            xHCommonPlayerBannerView.setMp4FrequencyController(new FrequencyControlMp4(this.mFreq));
+        }
+        IAbsAdBean iAbsAdBean = this.mRealGameData;
+        if (iAbsAdBean instanceof StarSeaDataBean) {
+            if (!(iAbsAdBean instanceof StarSeaDataBean)) {
+                iAbsAdBean = null;
+            }
+            StarSeaDataBean starSeaDataBean = (StarSeaDataBean) iAbsAdBean;
+            if (starSeaDataBean != null) {
+                xHCommonBannerStyleData = XHCommonBannerStyleKt.m56671d(starSeaDataBean, bizType);
+            }
+        } else if (iAbsAdBean instanceof CommonAdBean) {
+            if (!(iAbsAdBean instanceof CommonAdBean)) {
+                iAbsAdBean = null;
+            }
+            CommonAdBean commonAdBean = (CommonAdBean) iAbsAdBean;
+            if (commonAdBean != null) {
+                xHCommonBannerStyleData = XHCommonBannerStyleKt.m56670c(commonAdBean);
+            }
+        }
+        m56629q.mo56398C8(xHCommonBannerStyleData);
+    }
+
+```
