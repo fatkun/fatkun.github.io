@@ -242,3 +242,25 @@ public final class XHCommonPlayerBannerView2$bindData$1 implements Runnable {
         iAdView.b((AdBean) Utils.t(str, AdBean.class));
     }
 ```
+
+## 关播广告
+找到一个类似播放广告视频的类`com.*****.sdk.ad.douyu.video.AdVideoPlayerPresenter`，使用frida监控这个类的所有方法，可以看到有一个是从这个类请求的。`com.*****.module.player.p.liveclose.rambo.widget.CloseRoomAdViewFullscreen`
+
+```java
+    public final void Bd(@Nullable AdBean adBean) {
+        final DyAdBean dyAdBean;
+        boolean z7 = true;
+        if (PatchProxy.proxy(new Object[]{adBean}, this, f50296r, false, "5d1c3069", new Class[]{AdBean.class}, Void.TYPE).isSupport || adBean == null || (dyAdBean = adBean.getDyAdBean()) == null) {
+            return;
+        }
+        if (dyAdBean.localIsPlayedCompleted) {
+            DYInstantLog.e("关播广告", "已经播放完成了，不再播放");
+            return;
+        }
+        if (this.currentDyAdBean != null) {
+            DYInstantLog.e("关播广告", "已经有广告数据了，不再重复播放");
+            return;
+        }
+        省略...
+    }
+```
