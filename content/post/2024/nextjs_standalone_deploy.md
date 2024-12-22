@@ -35,6 +35,8 @@ cp .next/static ./tmp/.next/
 cp public ./tmp/
 ```
 
+如果你有环境配置，也需要拷贝进来，例如`.env.local`文件
+
 拷贝完成之后，可以执行以下命令启动
 
 ```bash
