@@ -1,6 +1,6 @@
 ---
 title: "nextjs v15.x独立部署"
-date: 2024-12-23T14:51:54+08:00
+date: 2024-12-22T12:30:46+08:00
 tags: [前端, nextjs, react]
 categories: [前端]
 author: "fatkun"
@@ -42,6 +42,4 @@ cp public ./tmp/
 ```bash
 node server.js
 ```
-
-
 
