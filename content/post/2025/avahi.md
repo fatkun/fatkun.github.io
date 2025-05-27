@@ -56,6 +56,23 @@ avahi-tools 软件包包括许多方便的实用程序，可用于检查系统�
 $ avahi-browse -a -r
 ```
 
+## 绑定.local域名
+在 /etc/avahi/hosts 目录添加域名
+```
+10.0.0.210 xxx.local
+```
+
+修改完后重启
+```
+sudo systemctl restart avahi
+
+# 查看日志
+sudo systemctl status avahi
+sudo journalctl -u avahi
+```
+如果IP重复，日志里面会报错误，貌似一个IP只能配置一个域名。
+mdns在windows可以解析，但是在安卓我解析不了。
+
 ## 匿名FTP
 为了使用匿名用户登录FTP，我安装了proftpd，匿名用户会使用ftp账户的目录。
 
