@@ -22,7 +22,12 @@ useradd -md /var/ftp ftp
 
 修改 /etc/proftpd/proftpd.conf，去掉下面这句的#号。
 ```
+DefaultRoot ~
 Include /etc/proftpd/virtuals.conf
+
+# 解决登录慢
+UseReverseDNS off
+
 ```
 
 在/etc/proftpd/virtuals.conf增加配置
