@@ -5,6 +5,7 @@ tags: [逆向， IDA]
 categories: [逆向]
 author: "fatkun"
 draft: false
+typora-root-url: ./..\..\..\static
 ---
 
 # 说明
@@ -63,7 +64,7 @@ DummyDll/Assembly-CSharp.dll: 可以用ILSpy查看，也是类和方法
 
 一般来说，这个方法返回一个bool类型，在方法开头直接返回true就行，但是担心会漏掉某些逻辑没执行，还是做谨慎一点，可以交给AI分析在哪里处理。
 
-![image-20250719165403102](static/img/crack_movie_game/image-20250719165403102.png)
+![image-20250719165403102](/img/crack_movie_game/image-20250719165403102.png)
 
 这里我根据AI的提示，把某处的 `xor a1,a1` 改成了 `mov a1,1`，这里表示给a1赋值为1，也就是返回true。修改指令可以在 `Edit->Patch Program->Assemble` 修改，改完之后还不会真正在文件中修改，需要在`Edit->Patch Program->Apply patches to input file` 才真正生效。
 
@@ -216,7 +217,7 @@ if __name__ == "__main__":
 
 如果是我自己找，估计还不一定能找到解密的方法，估计要看汇编里怎么读取哪个文件解包的，才能写出上面的代码。使用上面的代码调用函数 de_ab() 解密后用 AssetStudio导出文件，然后再用上面的代码对lua解密。看起来没那么复杂的加密，但是如果让我自己搞，估计还不一定能找到这些解密方法，需要找到ab文件的加载过程，然后lua文件读取过程的汇编代码位置，我自己跟踪代码只找到执行回调的地方 `XLua_DelegateBridge____Gen_Delegate_Imp6`。
 
-![image-20250719172732303](static/img/crack_movie_game/image-20250719172732303.png)
+![image-20250719172732303](/img/crack_movie_game/image-20250719172732303.png)
 
 拿到所有的lua代码就好办了，看了一下代码，简直明文啊，参数命名什么的都很好。搜索一些请求地址，找到登录的代码。刚开始想着能不能把lua代码改了，然后塞回去，发现没我想的那么简单，不知道怎么把lua塞回去，重新封装为ab文件。
 
