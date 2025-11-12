@@ -102,7 +102,7 @@ public final void a(SplashAdInfo splashAdInfo) {
             return;
         }
         final long b10 = AdSdk.k() != null ? r0.b() : 2000L;
-        f27858m.n().timeout(b10, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<SplashAdInfo>() { // from class: com.douyu.module.ad.launch.ColdStartSplashAd$observeSplashAdResult$1
+        f27858m.n().timeout(b10, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<SplashAdInfo>() { // from class: com.dou**.module.ad.launch.ColdStartSplashAd$observeSplashAdResult$1
 
             /* renamed from: b, reason: collision with root package name */
             public static PatchRedirect f27880b;
@@ -121,7 +121,7 @@ public final void a(SplashAdInfo splashAdInfo) {
 ```smali
     if-eqz v0, :cond_1
 
-    invoke-interface {v0}, Lcom/douyu/sdk/ad/callback/AdInitCallback;->b()I
+    invoke-interface {v0}, Lcom/dou**/sdk/ad/callback/AdInitCallback;->b()I
 
     move-result v0
 
@@ -138,17 +138,13 @@ public final void a(SplashAdInfo splashAdInfo) {
     # FIX 改这里超时时间！！！改为1毫秒
     const-wide/16 v0, 0x1
     
-    sget-object v2, Lcom/douyu/module/ad/launch/ColdStartSplashAd;->m:Lcom/douyu/module/ad/launch/data/SplashAdManager;
+    sget-object v2, Lcom/dou**/module/ad/launch/ColdStartSplashAd;->m:Lcom/dou**/module/ad/launch/data/SplashAdManager;
 
-    invoke-virtual {v2}, Lcom/douyu/module/ad/launch/data/SplashAdManager;->n()Lrx/Observable;
+    invoke-virtual {v2}, Lcom/dou**/module/ad/launch/data/SplashAdManager;->n()Lrx/Observable;
 
     move-result-object v2
 ```
 
-
-![image-20240805152554462](/img/crack_dy/image-20240805152554462.png)
-
-在if之前直接使用goto 跳到最后的返回。
 
 ## 右侧浮动广告
 右侧浮动广告，代码在`com.****.module.player.p092p.adfloatball.AdFloatBallView`里。
@@ -157,16 +153,16 @@ AdFloatBallView类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdF
 
 搜索bindData可以找到一个方法
 ```java
-    public final void kf(@org.jetbrains.annotations.NotNull final com.douyu.sdk.ad.AdBean r16, final boolean r17, @org.jetbrains.annotations.Nullable final java.lang.Runnable r18, @org.jetbrains.annotations.Nullable final java.lang.Runnable r19, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r20) {
+    public final void kf(@org.jetbrains.annotations.NotNull final com.dou**.sdk.ad.AdBean r16, final boolean r17, @org.jetbrains.annotations.Nullable final java.lang.Runnable r18, @org.jetbrains.annotations.Nullable final java.lang.Runnable r19, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r20) {
         /*
         L9f:
             rx.Observable r0 = r15.Ef(r4)
-            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$1 r1 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$1
+            com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$1 r1 = new com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$1
             r1.<init>()
             rx.Observable r0 = r0.map(r1)
         Lac:
             r12 = r0
-            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$2 r13 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$2
+            com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$2 r13 = new com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$2
             r0 = r13
             r1 = r15
             r2 = r20
@@ -175,7 +171,7 @@ AdFloatBallView类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdF
             r7 = r17
             r8 = r16
             r0.<init>()
-            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$3 r0 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$3
+            com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$3 r0 = new com.dou**.module.player.p.adfloatball.AdFloatBallView$bindData$3
             r0.<init>()
             rx.Subscription r0 = r12.subscribe(r13, r0)
             r9.bindDataSubscription = r0
@@ -198,7 +194,7 @@ AdFloatBallView类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdF
         }
         MpNativeAd mpNativeAd = this.mpNativeAd;
         if (mpNativeAd != null) {
-            mpNativeAd.e(posId, clickRunnable, new Function1<Integer, Unit>() { // from class: com.douyu.module.player.p.adfloatball.AdFloatBallView$bindDataForSdkAD$1
+            mpNativeAd.e(posId, clickRunnable, new Function1<Integer, Unit>() { // from class: com.dou**.module.player.p.adfloatball.AdFloatBallView$bindDataForSdkAD$1
                 public static PatchRedirect patch$Redirect;
 
 ```
@@ -337,7 +333,7 @@ public final class XHCommonPlayerBannerView2$bindData$1 implements Runnable {
 ```
 
 ## 关播广告
-找到一个类似播放广告视频的类`com.*****.sdk.ad.douyu.video.AdVideoPlayerPresenter`，使用frida监控这个类的所有方法，可以看到有一个是从这个类请求的。`com.*****.module.player.p.liveclose.rambo.widget.CloseRoomAdViewFullscreen`
+找到一个类似播放广告视频的类`com.*****.sdk.ad.dou**.video.AdVideoPlayerPresenter`，使用frida监控这个类的所有方法，可以看到有一个是从这个类请求的。`com.*****.module.player.p.liveclose.rambo.widget.CloseRoomAdViewFullscreen`
 
 ```java
     public final void Bd(@Nullable AdBean adBean) {
