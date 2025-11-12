@@ -69,47 +69,140 @@ public final void a(SplashAdInfo splashAdInfo) {
 
 找到对应方法的smali代码，插入 `return-void`，注意这个是匿名方法，在一个$的文件里面。
 
-再来分析冷启动的代码，这里主要是找有没有一些关键字，AD、广告之类的，最终看到是这里的代码。
+再来分析冷启动的代码`ColdStartSplashAd`，这里主要是找有没有一些关键字，AD、广告之类的，最终看到是这里的代码。
 
 ```java
-    /* renamed from: A */
-    public final Observable<Boolean> m22662A() {
-        PatchProxyResult proxy = PatchProxy.proxy(new Object[0], this, f28551k, false, "55b00877", new Class[0], Observable.class);
+    public final Observable<Boolean> B() {
+        PatchProxyResult proxy = PatchProxy.proxy(new Object[0], this, f27857l, false, "55b00877", new Class[0], Observable.class);
         if (proxy.isSupport) {
             return (Observable) proxy.result;
         }
-        f28552l.m22902n();
-        MADProviderUtils.m22425a(LaunchAnalyzerConstant.f7610f);
-        SplashAdDot.f28661z.m22769C(System.currentTimeMillis());
-        OperationInfoPreload operationInfoPreload = OperationInfoPreload.f28825d;
-        OperationInfo m22958c = operationInfoPreload.m22958c();
-        DYLogSdk.m11965e("launcher", "检查是否有运营图:" + m22958c.getHasOperation() + "  运营图数据加载过？ " + operationInfoPreload.m22957b());
-        if (m22958c.getHasOperation()) {
-            m22675P(m22958c);
+        f27858m.r(true);
+        MADProviderUtils.a(LaunchAnalyzerConstant.f8829f);
+        SplashAdDot.f27953z.C(System.currentTimeMillis());
+        OperationInfoPreload operationInfoPreload = OperationInfoPreload.f28123d;
+        OperationInfo c10 = operationInfoPreload.c();
+        DYLogSdk.i("launcher", "检查是否有运营图:" + c10.getHasOperation() + "  运营图数据加载过？ " + operationInfoPreload.b());
+        if (c10.getHasOperation()) {
+            R(c10);
         } else {
-            MonitorLog.f30456c.m24217b(LaunchStageLog.NO_LAUNCH_OPERATION);
-            m22664C();
+            MonitorLog.f29755c.b(LaunchStageLog.NO_LAUNCH_OPERATION);
+            D();
         }
         return this.homeObservable;
     }
+
 ```
 
-这里代码是检查是否有运营图，如果有就展示运营图，没有就展示广告。我都不想展示，直接跳过好了。
+不能直接跳过D方法，否则会导致下面的导航栏位置不对。进入D()方法，里面有一个timeout方法，把超时时间改为1毫秒跳过广告。
+
+```java
+    public final void D() {
+        if (PatchProxy.proxy(new Object[0], this, f27857l, false, "f4df8d85", new Class[0], Void.TYPE).isSupport) {
+            return;
+        }
+        final long b10 = AdSdk.k() != null ? r0.b() : 2000L;
+        f27858m.n().timeout(b10, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<SplashAdInfo>() { // from class: com.douyu.module.ad.launch.ColdStartSplashAd$observeSplashAdResult$1
+
+            /* renamed from: b, reason: collision with root package name */
+            public static PatchRedirect f27880b;
+
+            public final void a(SplashAdInfo it) {
+                if (PatchProxy.proxy(new Object[]{it}, this, f27880b, false, "9beacd31", new Class[]{SplashAdInfo.class}, Void.TYPE).isSupport) {
+                    return;
+                }
+                MonitorLog.f29755c.b(LaunchStageLog.LAUNCH_AD_REQUEST_COMPLETE_SHOW_AD);
+                ColdStartSplashAd coldStartSplashAd = ColdStartSplashAd.this;
+                Intrinsics.checkNotNullExpressionValue(it, "it");
+                ColdStartSplashAd.g(coldStartSplashAd, it);
+            }
+```
+
+```smali
+    if-eqz v0, :cond_1
+
+    invoke-interface {v0}, Lcom/douyu/sdk/ad/callback/AdInitCallback;->b()I
+
+    move-result v0
+
+    int-to-long v0, v0
+
+    goto :goto_0
+
+    :cond_1
+    const-wide/16 v0, 0x7d0 # 这里是原来的超时时间2000毫秒
+
+    .line 2
+    :goto_0
+
+    # FIX 改这里超时时间！！！改为1毫秒
+    const-wide/16 v0, 0x1
+    
+    sget-object v2, Lcom/douyu/module/ad/launch/ColdStartSplashAd;->m:Lcom/douyu/module/ad/launch/data/SplashAdManager;
+
+    invoke-virtual {v2}, Lcom/douyu/module/ad/launch/data/SplashAdManager;->n()Lrx/Observable;
+
+    move-result-object v2
+```
+
 
 ![image-20240805152554462](/img/crack_dy/image-20240805152554462.png)
 
 在if之前直接使用goto 跳到最后的返回。
 
 ## 右侧浮动广告
-右侧浮动广告，代码在`com.****.module.player.p092p.adfloatball.AdFloatBallNeuron`里。
+右侧浮动广告，代码在`com.****.module.player.p092p.adfloatball.AdFloatBallView`里。
 
-AdFloatBallNeuron类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdFloatBallView$bindData$2`、`AdFloatBallView$bindData$3`，可以在call方法里面直接返回。
+AdFloatBallView类里面有三个匿名类，`AdFloatBallView$bindData$1`、`AdFloatBallView$bindData$2`、`AdFloatBallView$bindData$3`
 
-其中有一个是返回Boolean对象，在smali语法里面是这样写
+搜索bindData可以找到一个方法
+```java
+    public final void kf(@org.jetbrains.annotations.NotNull final com.douyu.sdk.ad.AdBean r16, final boolean r17, @org.jetbrains.annotations.Nullable final java.lang.Runnable r18, @org.jetbrains.annotations.Nullable final java.lang.Runnable r19, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r20) {
+        /*
+        L9f:
+            rx.Observable r0 = r15.Ef(r4)
+            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$1 r1 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$1
+            r1.<init>()
+            rx.Observable r0 = r0.map(r1)
+        Lac:
+            r12 = r0
+            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$2 r13 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$2
+            r0 = r13
+            r1 = r15
+            r2 = r20
+            r5 = r18
+            r6 = r19
+            r7 = r17
+            r8 = r16
+            r0.<init>()
+            com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$3 r0 = new com.douyu.module.player.p.adfloatball.AdFloatBallView$bindData$3
+            r0.<init>()
+            rx.Subscription r0 = r12.subscribe(r13, r0)
+            r9.bindDataSubscription = r0
+            return
+        */
 ```
-    sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
-    return-object v0
+
+另外还有个AdFloatBallView$bindDataForSdkAD
+```java
+    public final void wf(@NotNull final AdBean adBean, @NotNull String posId, @Nullable final Runnable exposeRunnable, @Nullable Runnable clickRunnable) {
+        if (PatchProxy.proxy(new Object[]{adBean, posId, exposeRunnable, clickRunnable}, this, f65676n, false, "84fcb75c", new Class[]{AdBean.class, String.class, Runnable.class, Runnable.class}, Void.TYPE).isSupport) {
+            return;
+        }
+        Intrinsics.checkNotNullParameter(adBean, "adBean");
+        Intrinsics.checkNotNullParameter(posId, "posId");
+        reset();
+        setTag(adBean);
+        if (this.mpNativeAd == null) {
+            this.mpNativeAd = new MpNativeAd(this.idleSdkAdContainer);
+        }
+        MpNativeAd mpNativeAd = this.mpNativeAd;
+        if (mpNativeAd != null) {
+            mpNativeAd.e(posId, clickRunnable, new Function1<Integer, Unit>() { // from class: com.douyu.module.player.p.adfloatball.AdFloatBallView$bindDataForSdkAD$1
+                public static PatchRedirect patch$Redirect;
+
 ```
+
 
 
 ## 中部横幅广告
