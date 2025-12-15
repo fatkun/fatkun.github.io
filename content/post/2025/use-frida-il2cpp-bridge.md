@@ -155,3 +155,20 @@ Il2Cpp.perform(() => {
 })
 ```
 
+## 覆盖方法2
+覆盖方法的时候要注意，要记得参数有几个
+如果trace返回输出（Il2Cpp.trace(true)），也会导致无法覆盖方法
+Il2Cpp.trace(true).classes(CSharp.class("KarmaSDK.AsyncRequest")).and().attach();
+
+```ts
+
+    const dekMethod = Il2Cpp.domain.assembly("Assembly-CSharp").image.class("KarmaSDK.AsyncRequest").tryMethod("dek", 1);
+    // 需要使用ts-ignore，否则类型检查会不通过
+    // https://github.com/vfsfitvnm/frida-il2cpp-bridge/issues/428#issuecomment-1793728571
+    // @ts-ignore
+    dekMethod.implementation = function (this: Il2Cpp.Class, a1: Il2Cpp.String): Il2Cpp.String {
+        console.log("dekMethod", a1)
+        return Il2Cpp.string('')
+    };
+
+```
