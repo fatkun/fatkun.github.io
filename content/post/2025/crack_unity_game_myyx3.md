@@ -174,6 +174,86 @@ IDA进入加解密的方法，我找到的伪代码发给AI分析，让它帮我
 
 里面很多子方法调用，可以先把主方法发给AI，然后问它还需要提供哪些子方法，继续提供信息给AI就行。提供的信息越多，实现越准确。不过GROK有点奇怪，老会吹牛逼，分析DLL的时候让我上传文件给我解密，说它解密好了，给我一个下载链接，发现根本不存在这个链接。
 
+# IDA动态分析
+有一些qword_7FFF0AFECAE8，静态分析是查不到值的，需要attach进程，实时查看内存。
+
+这里是一个MD5的伪代码，sub_7FFF09EFF080是一个字符串拼接的方法
+```
+  v3 = **(_QWORD **)(qword_7FFF0AFEEA28 + 184);
+  if ( !v3 )
+    sub_7FFF091B94D0();
+  v4 = sub_7FFF09EFF080(a2, qword_7FFF0AFECAE8, *(_QWORD *)(v3 + 56));
+  v16 = (__int64 *)System_Security_Cryptography_MD5::Create(0);
+  v14 = 0;
+  v15 = &v16;
+  try
+  {
+    v5 = v16;
+    UTF8 = System_Text_Encoding::get_UTF8(0);
+    if ( !UTF8 )
+      sub_7FFF091B94D0();
+    v7 = (*(__int64 (__fastcall **)(__int64, __int64, _QWORD))(*(_QWORD *)UTF8 + 600LL))(
+           UTF8,
+           v4,
+           *(_QWORD *)(*(_QWORD *)UTF8 + 608LL));
+    if ( !v5 )
+      sub_7FFF091B94D0();
+    v8 = System_Security_Cryptography_HashAlgorithm::ComputeHash(v5, v7, 0);
+    v9 = sub_7FFF0A011DE0(v8, 0);
+  }
+```
+
+假如我想获得qword_7FFF0AFECAE8的内容，在v16这行加上一个断点，双击qword_7FFF0AFECAE8，后面有一个地址
+
+`qword_7FFED50DCAE8 dq 14D112E5840h`
+
+再双击后面的地址，这是一个unity的字符串，前面会有一些header，实际这个是“_”。可以让AI解析。
+
+```
+debug1506:0000014D112E5840 db 0D0h
+debug1506:0000014D112E5841 db 0A6h
+debug1506:0000014D112E5842 db  25h ; %
+debug1506:0000014D112E5843 db 0A0h
+debug1506:0000014D112E5844 db  4Bh ; K
+debug1506:0000014D112E5845 db    1
+debug1506:0000014D112E5846 db    0
+debug1506:0000014D112E5847 db    0
+debug1506:0000014D112E5848 db    0
+debug1506:0000014D112E5849 db    0
+debug1506:0000014D112E584A db    0
+debug1506:0000014D112E584B db    0
+debug1506:0000014D112E584C db    0
+debug1506:0000014D112E584D db    0
+debug1506:0000014D112E584E db    0
+debug1506:0000014D112E584F db    0
+debug1506:0000014D112E5850 db    1
+debug1506:0000014D112E5851 db    0
+debug1506:0000014D112E5852 db    0
+debug1506:0000014D112E5853 db    0
+debug1506:0000014D112E5854 db  5Fh ; _
+debug1506:0000014D112E5855 db    0
+debug1506:0000014D112E5856 db    0
+debug1506:0000014D112E5857 db    0
+debug1506:0000014D112E5858 db    0
+debug1506:0000014D112E5859 db    0
+debug1506:0000014D112E585A db    0
+```
+
+再看V4变量，可以直接双击，直接跳转到内存值。可以把光标移动到文字开始的地址，在`Edit>Strings>Unicode`，可以转成字符串。
+
+```
+debug1553:0000014D9D91CF44 text "UTF-16LE", '1765897011173_CJui24lxxxxxxxxxxxxxxxxxx'
+debug1553:0000014D9D91CFAA text "UTF-16LE", 'WLy22Nr',0
+```
+
+多抓取几次，发现后面这个字符串是固定的。最终获得了这个md5是如何hash的。
+
+另外这次也尝试了使用ida-pro-mcp，使用claude-sonet-4.5，它帮我分析了一下代码，但是看起来前面有些分析是错的。后面在read_qword的时候地址是错的，不知道是不是mcp错误的问题。不过帮它纠正一下还能继续分析下去。但是读取上面的String时也有问题，没给我读取完整，还得自己去分析。
+
+
+
+# 结尾
+
 到这里基本就结束了，使用解密方法尝试解密抓包的内容，发现都成功了。
 
 自从有了AI之后，分析代码的活都给AI干了，不用一行行的盯着伪代码看，试错也简单，如果AI有验证能力的话更好一些，有时候就是乱说一通。
