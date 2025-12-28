@@ -73,7 +73,7 @@ frida -U -N com.*****tv.*****tv -l DumpDex.js
 其中DumpDex.js的内容是，记得改你自己的包名，否则会报错。
 DumpDex代码来自：https://github.com/Alexjr2/Android_Dump_Dex
 
-```
+```js
 /*
 Hook fork to prevent child processes from interrupting Frida
 Returns -1 with errno EPERM
